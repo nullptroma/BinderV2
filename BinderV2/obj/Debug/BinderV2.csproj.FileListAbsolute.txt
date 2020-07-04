@@ -1,0 +1,43 @@
+C:\Users\Roman\source\repos\BinderV2\BinderV2\bin\Debug\BinderV2.exe.config
+C:\Users\Roman\source\repos\BinderV2\BinderV2\bin\Debug\BinderV2.exe
+C:\Users\Roman\source\repos\BinderV2\BinderV2\bin\Debug\BinderV2.pdb
+C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\App.g.cs
+C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\BinderV2_MarkupCompile.cache
+C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\BinderV2_MarkupCompile.lref
+C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\BinderV2.g.resources
+C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\BinderV2.Properties.Resources.resources
+C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\BinderV2.csproj.GenerateResource.cache
+C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\BinderV2.csproj.CoreCompileInputs.cache
+C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\BinderV2.exe
+C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\BinderV2.pdb
+C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\Windows\TriggersEditWindow\TriggersEditWindow.g.cs
+C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\Windows\TriggersEditWindow\TriggersEditWindow.baml
+C:\Users\Roman\source\repos\BinderV2\BinderV2\bin\Debug\Microsoft.Xaml.Behaviors.dll
+C:\Users\Roman\source\repos\BinderV2\BinderV2\bin\Debug\Microsoft.Xaml.Behaviors.pdb
+C:\Users\Roman\source\repos\BinderV2\BinderV2\bin\Debug\Microsoft.Xaml.Behaviors.xml
+C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\BinderV2.csproj.CopyComplete
+C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\Windows\TriggersEditWindow\ChooseTriggerType\ChooseTriggerTypeWindow.g.cs
+C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\Windows\TriggersEditWindow\ChooseTriggerType\ChooseTriggerTypeWindow.baml
+C:\Users\Roman\source\repos\BinderV2\BinderV2\bin\Debug\Hardcodet.Wpf.TaskbarNotification.dll
+C:\Users\Roman\source\repos\BinderV2\BinderV2\bin\Debug\Hardcodet.Wpf.TaskbarNotification.pdb
+C:\Users\Roman\source\repos\BinderV2\BinderV2\bin\Debug\Hardcodet.Wpf.TaskbarNotification.xml
+C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\App.baml
+C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\Windows\MainWindow\MainWindow.g.cs
+C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\Windows\MainWindow\MainWindow.baml
+C:\Users\Roman\source\repos\BinderV2\BinderV2\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Roman\source\repos\BinderV2\BinderV2\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\WPF Resources\Styles\CustomizedWindow\CurstomWindowStyle.baml
+C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\WPF Resources\Styles\CustomizedWindow\CurstomWindowStyle.g.cs
+C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\Windows\SettingsWindow\SettingsWindow.g.cs
+C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\Windows\SettingsWindow\SettingsWindow.baml
+C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\WPF Resources\Color Resources\InterfaceResources.baml
+C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\WPF Controls\Bind\BindElement.g.cs
+C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\WPF Controls\Triggers\KeysDownTriggerElement\KeysDownTriggerElement.g.cs
+C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\WPF Controls\Bind\BindElement.baml
+C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\WPF Controls\Triggers\KeysDownTriggerElement\KeysDownTriggerElement.baml
+C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\WPF Resources\Styles\Controls Styles\ControlsStyles.baml
+C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\WPF Resources\Styles\Scroll Viewer\ScrollStyle.baml
+C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\WPF Resources\Styles\Menu Item\MenuItem.baml
+C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\WPF Resources\Styles\ComboBox\ComboBox.baml
+C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\BinderV2.csprojAssemblyReference.cache
+C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\WPF Resources\Styles\Context Menu\ContextMenu.baml

@@ -1,0 +1,84 @@
+﻿<Window x:Class="BinderV2.Windows.TriggersEdit.TriggersEditWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BinderV2.Windows.TriggersEdit"
+        xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+        mc:Ignorable="d"
+        Title="TriggersEditWindow" Height="380" Width="700" Icon="/BinderV2;component/Images/редактировать.png"
+        Style="{DynamicResource CurstomWindowStyle}" MinWidth="700" MinHeight="250">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+        <Border Margin="2" BorderThickness="2">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+
+                <Button  Height="20" Width="20" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="2" Command="{Binding CreateTriggerCommand}">
+                    <Image Margin="0" Source="/BinderV2;component/Images/Плюс.png"/>
+                </Button>
+
+                <Border Grid.Row="1" BorderThickness="2" Margin="-2">
+                    <ScrollViewer x:Name="TriggerScrollViewer" ScrollChanged="TriggerScrollViewer_ScrollChanged" >
+                        <ItemsControl ItemsSource="{Binding triggersControls}">
+
+                        </ItemsControl>
+                    </ScrollViewer>
+                </Border>
+            </Grid>
+        </Border>
+
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <Border Grid.Row="0" Grid.RowSpan="2" BorderThickness="2" Margin="-4,2,2,2">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition Height="35"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <TextBox x:Name="scriptTextBox"
+                     Text="{Binding ScriptTextBoxText}"
+                     Margin="6"
+                     Grid.Row="0"
+                     GotFocus="scriptTextBox_GotFocus"
+                     LostFocus="scriptTextBox_LostFocus">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="GotFocus">
+                                <i:InvokeCommandAction Command="{Binding DisableTriggersCommand}"/>
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="LostFocus">
+                                <i:InvokeCommandAction Command="{Binding EnableTriggersCommand}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </TextBox>
+                    <Button Content="Сохранить" Grid.Row="1" Margin="6" Width="70" HorizontalAlignment="Right" Command="{Binding SaveTriggerScriptCommand}" CommandParameter="{Binding ElementName=scriptTextBox, Path=Text}"/>
+                </Grid>
+            </Border>
+        </Grid>
+
+    </Grid>
+</Window>

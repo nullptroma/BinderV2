@@ -1,0 +1,19 @@
+﻿<Application x:Class="BinderV2.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:BinderV2"
+             StartupUri="Windows/MainWindow/MainWindow.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="WPF Resources/Styles/CustomizedWindow/CurstomWindowStyle.xaml" />
+                <ResourceDictionary Source="WPF Resources/Color Resources/InterfaceResources.xaml" />
+                <ResourceDictionary Source="WPF Resources/Styles/Controls Styles/ControlsStyles.xaml" />
+                <ResourceDictionary Source="WPF Resources/Styles/Scroll Viewer/ScrollStyle.xaml" />
+                <ResourceDictionary Source="WPF Resources/Styles/Menu Item/MenuItem.xaml" />
+                <ResourceDictionary Source="WPF Resources/Styles/ComboBox/ComboBox.xaml" />
+                <ResourceDictionary Source="WPF Resources/Styles/Context Menu/ContextMenu.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

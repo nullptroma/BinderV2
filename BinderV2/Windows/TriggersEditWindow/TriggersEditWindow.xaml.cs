@@ -1,0 +1,46 @@
+﻿using BinderV2.Trigger.Types;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
+using BinderV2.BindModel;
+
+namespace BinderV2.Windows.TriggersEdit
+{
+    public partial class TriggersEditWindow : Window
+    {
+        public TriggersEditWindow(Bind bind)
+        {
+            InitializeComponent();
+            DataContext = new TriggerEditViewModel(bind);//В TriggerEditViewModel мне нужны и bind, и его закрытое поле triggers
+            Title = bind.Name + "     Id " + bind.Id;
+        }
+       
+        private void scriptTextBox_GotFocus(object sender, RoutedEventArgs e)
+        {
+            BaseTrigger.EnableAllTriggers = false;//пока пишем скрипт - отключаем всё
+        }
+
+        private void scriptTextBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            BaseTrigger.EnableAllTriggers = true;//перестали писать скрипт - включаем фокус
+        }
+
+        private async void TriggerScrollViewer_ScrollChanged(object sender, System.Windows.Controls.ScrollChangedEventArgs e)
+        {
+            if(e.ExtentHeightChange!=0)
+                await ScrollDown(TriggerScrollViewer).ConfigureAwait(true);
+        }
+
+        private async Task ScrollDown(System.Windows.Controls.ScrollViewer sv)
+        {
+            for (var i = sv.ContentVerticalOffset; i < sv.ScrollableHeight; i += ((sv.ScrollableHeight - i) / 10) + 1)
+            {
+                sv.ScrollToVerticalOffset(i);
+                await Task.Delay(1).ConfigureAwait(true);
+            }
+        }
+    }
+}
