@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using BinderV2.WpfControls;
+﻿using System.Collections.Generic;
 using BinderV2.WpfControls.Triggers;
 using BinderV2.Trigger.Types;
 using System.Windows.Controls;
 using System.Windows.Input;
-
 
 namespace BinderV2.Trigger
 {

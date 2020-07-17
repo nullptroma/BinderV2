@@ -1,28 +1,21 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
 using BinderV2.Settings.Visuals;
 using BinderV2.Utilities;
 using Newtonsoft.Json;
 using System.IO;
+using System.Windows;
+using System.Windows.Documents;
 
 namespace BinderV2.Settings
 {
     public class ProgramSettings
     {
         private bool startWithWindows = false;
-        private bool hideOnStart = false;
-        private bool autoLoadBinds = false;
-        private string autoLoadBindsPath = "";
-        private string lastBindsPath = "";
-        public VisualsSettings VisualSettings { get; set; }
-        public bool HideOnStart { get { return hideOnStart; } set { hideOnStart = value; } }
-        public bool AutoLoadBinds { get { return autoLoadBinds; } set { autoLoadBinds = value; } }
-        public string AutoLoadBindsPath { get { return autoLoadBindsPath; } set { autoLoadBindsPath = value; } }
-        [JsonIgnore] public string LastBindsPath { get { return lastBindsPath; } set { lastBindsPath = value; } }
+        public VisualsSettings VisualSettings { get; private set; }
+        public bool HideOnStart { get; set; }
+        public bool AutoLoadBinds { get; set; }
+        public string AutoLoadBindsPath { get; set; }
+        [JsonIgnore] public string LastBindsPath { get; set; }
         public bool StartWithWindows
         {
             get { return startWithWindows; }
@@ -47,7 +40,6 @@ namespace BinderV2.Settings
         static ProgramSettings()//начинаем тут
         {
             LoadSettings();
-            VisualsSettings.ApplyVisuals(runtimeSettings.VisualSettings);
         }
 
         ~ProgramSettings()
@@ -66,7 +58,8 @@ namespace BinderV2.Settings
             {
                 runtimeSettings = JsonUtilities.Deserialize<ProgramSettings>(File.ReadAllText(ProgramSettings.SaveSettingsDirectory + @"\settings.txt"));
             }
-            catch { SaveSettings(); }
+            catch{ runtimeSettings = new ProgramSettings(); }
+            VisualsSettings.ApplyVisuals(runtimeSettings.VisualSettings);
         }
 
         public static void Initialize()

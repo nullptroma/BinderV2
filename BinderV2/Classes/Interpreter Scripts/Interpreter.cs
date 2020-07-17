@@ -1,4 +1,4 @@
-﻿using BinderV2.Interpreter.FuncClass;
+﻿using BinderV2.Interpreter.Script.FuncClass;
 using System;
 using System.Collections.Generic;
 using System.Linq;

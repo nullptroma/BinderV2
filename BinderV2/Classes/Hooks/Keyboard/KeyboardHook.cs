@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Windows;
 using System.Runtime.InteropServices;
 using System.Windows.Input;
-using System.Threading;
-using System.Windows.Forms.VisualStyles;
 
 namespace BinderV2.Hooks.Keyboard
 {

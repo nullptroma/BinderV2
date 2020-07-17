@@ -5,11 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Reflection;
 using System.Security.Cryptography;
-using BinderV2.Interpreter.DescriptionAttribute;
 using System.Windows;
-using BinderV2.Interpreter.ParametersForFuncs;
+using BinderV2.Interpreter.DescriptionAttribute;
 
-namespace BinderV2.Interpreter.FuncClass
+namespace BinderV2.Interpreter.Script.FuncClass
 {
     public class ScriptFunc
     {
@@ -33,7 +32,7 @@ namespace BinderV2.Interpreter.FuncClass
 
         public object[] GetResult(params object[] parameters)
         {
-            return method.Invoke(ParametersUtilities.GetParameters(parameters));
+            return method.Invoke(ScriptTools.GetParametersFromArray(parameters));
         }
 
         

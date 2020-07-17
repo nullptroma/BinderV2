@@ -1,9 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
-using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
-using System.Threading;
 
 namespace BinderV2.Hooks.Mouse
 {

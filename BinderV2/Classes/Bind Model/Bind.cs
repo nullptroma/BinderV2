@@ -1,19 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Windows;
-using System.Xml;
-using System.Xml.Schema;
-using System.Xml.Serialization;
 using BinderV2.BindModel.Events;
 using BinderV2.BindModel.Exeptions;
 using BinderV2.Trigger.Events;
 using BinderV2.Trigger.Types;
-using System.Windows.Input;
 using System.Collections.ObjectModel;
-using System.Linq;
 using System.Collections.Specialized;
-using BinderV2.Interpreter.DescriptionAttribute;
-using System.Reflection;
 
 namespace BinderV2.BindModel
 {
@@ -69,13 +61,6 @@ namespace BinderV2.BindModel
                 bt.Dispose();
             allIds.Remove(Id);
             GC.SuppressFinalize(this);
-        }
-
-        [ScriptDescription("Тестыыыыы")]
-        private static object[] Test(params object[] pars)
-        {
-            MessageBox.Show(string.Join("", pars));
-            return pars;
         }
 
         private void Invoke(object sender, TriggeredEventArgs e)

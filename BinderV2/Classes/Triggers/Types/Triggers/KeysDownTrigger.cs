@@ -1,13 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using BinderV2.Trigger.Types;
 using System.Windows.Input;
 using BinderV2.Hooks.Keyboard;
-using System.Windows.Forms;
-using System.Reflection;
-using System.Net.Http.Headers;
 
 namespace BinderV2.Trigger.Types
 {

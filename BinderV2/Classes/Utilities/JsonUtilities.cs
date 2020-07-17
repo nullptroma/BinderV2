@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.IO;
-using System.Windows;
+﻿using System.IO;
 
 namespace BinderV2.Utilities
 {
@@ -21,14 +15,13 @@ namespace BinderV2.Utilities
             {
                 serializer.Serialize(writer, value, value.GetType());
             }
+            outStream.Close();
         }
 
         public static void SerializeToFile(object value, string path)
         {
             if(!Directory.Exists(Path.GetDirectoryName(path)))
                 Directory.CreateDirectory(Path.GetDirectoryName(path));
-            if (!File.Exists(path))
-                File.Create(path);
             SerializeToTextWriter(value, File.CreateText(path));
         }
 
