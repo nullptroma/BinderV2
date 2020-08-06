@@ -1,11 +1,11 @@
-﻿using BinderV2.Trigger.Types;
+﻿using Trigger.Types;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using BinderV2.BindModel;
+using BindModel;
 
 namespace BinderV2.Windows.TriggersEdit
 {
@@ -18,15 +18,6 @@ namespace BinderV2.Windows.TriggersEdit
             Title = bind.Name + "     Id " + bind.Id;
         }
        
-        private void scriptTextBox_GotFocus(object sender, RoutedEventArgs e)
-        {
-            BaseTrigger.EnableAllTriggers = false;//пока пишем скрипт - отключаем всё
-        }
-
-        private void scriptTextBox_LostFocus(object sender, RoutedEventArgs e)
-        {
-            BaseTrigger.EnableAllTriggers = true;//перестали писать скрипт - включаем фокус
-        }
 
         private async void TriggerScrollViewer_ScrollChanged(object sender, System.Windows.Controls.ScrollChangedEventArgs e)
         {

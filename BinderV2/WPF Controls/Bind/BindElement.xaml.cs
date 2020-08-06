@@ -11,7 +11,7 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using BinderV2.Windows.TriggersEdit;
-using BinderV2.BindModel;
+using BindModel;
 
 namespace BinderV2.WpfControls.BindControl
 {

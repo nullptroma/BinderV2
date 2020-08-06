@@ -8,10 +8,10 @@
         xmlns:BinderV2="clr-namespace:BinderV2" x:Class="BinderV2.Windows.Settings.SettingsWindow"
         mc:Ignorable="d"
         Style="{DynamicResource CurstomWindowStyle}"
-        Title="Настройки" Height="379.5" Width="285" Icon="/BinderV2;component/Images/Settings.png" MinHeight="345" MinWidth="285" LostFocus="Window_LostFocus" GotFocus="Window_GotFocus">
+        Title="Настройки" Height="535" Width="285" Icon="/BinderV2;component/Images/Settings.png" MinHeight="511.167" MinWidth="285" ResizeMode="NoResize">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="85"/>
+            <RowDefinition Height="110"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -28,18 +28,10 @@
                         <ColumnDefinition/>
                         <ColumnDefinition Width="35"/>
                     </Grid.ColumnDefinitions>
-                    <TextBox x:Name="AutoLoadPath" Margin="35,0,0,0" MinWidth="150" Text="{Binding AutoLoadBindsPath, Mode=OneWay}" IsReadOnly="True" TextChanged="AutoLoadPath_TextChanged">
-                        <i:Interaction.Triggers>
-                            <i:EventTrigger EventName="GotFocus">
-                                <i:InvokeCommandAction Command="{Binding DisableTriggersCommand}"/>
-                            </i:EventTrigger>
-                            <i:EventTrigger EventName="LostFocus">
-                                <i:InvokeCommandAction Command="{Binding EnableTriggersCommand}"/>
-                            </i:EventTrigger>
-                        </i:Interaction.Triggers>
-                    </TextBox>
+                    <TextBox x:Name="AutoLoadPath" Margin="35,0,0,0" MinWidth="150" Text="{Binding AutoLoadBindsPath, Mode=OneWay}" IsReadOnly="True" TextChanged="AutoLoadPath_TextChanged"/>
                     <Button Grid.Column="1" Content="..." Width="25" Margin="5,0" HorizontalAlignment="Right" Command="{Binding ChooseAutoLoadBindsPathCommands}"/>
                 </Grid>
+                <CheckBox Content="Сохранять размер основного окна" IsChecked="{Binding SaveMainWindowSize}"/>
             </StackPanel>
         </Border>
 
@@ -71,52 +63,28 @@
                                     <Label Content="R="/>
                                     <Label Content="{Binding currentRed}" Margin="-10,0,0,0"/>
                                 </StackPanel>
-                                <Slider Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Bottom" Maximum="255" Value="{Binding currentRed}" Height="128">
-                                    <i:Interaction.Triggers>
-                                        <i:EventTrigger EventName="ValueChanged">
-                                            <i:InvokeCommandAction Command="{Binding ColorChangedCommand}" CommandParameter="Red"/>
-                                        </i:EventTrigger>
-                                    </i:Interaction.Triggers>
-                                </Slider>
+                                <Slider Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Bottom" Maximum="255" Value="{Binding currentRed, Mode=TwoWay}" Height="128"/>
                             </StackPanel>
                             <StackPanel Grid.Column="1">
                                 <StackPanel Orientation="Horizontal">
                                     <Label Content="G="/>
                                     <Label Content="{Binding currentGreen}" Margin="-10,0,0,0"/>
                                 </StackPanel>
-                                <Slider Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Bottom" Maximum="255" Value="{Binding currentGreen}" Height="128">
-                                    <i:Interaction.Triggers>
-                                        <i:EventTrigger EventName="ValueChanged">
-                                            <i:InvokeCommandAction Command="{Binding ColorChangedCommand}" CommandParameter="Green"/>
-                                        </i:EventTrigger>
-                                    </i:Interaction.Triggers>
-                                </Slider>
+                                <Slider Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Bottom" Maximum="255" Value="{Binding currentGreen}" Height="128"/>
                             </StackPanel>
                             <StackPanel Grid.Column="2">
                                 <StackPanel Orientation="Horizontal">
                                     <Label Content="B="/>
                                     <Label Content="{Binding currentBlue}" Margin="-10,0,0,0"/>
                                 </StackPanel>
-                                <Slider Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Bottom" Maximum="255" Value="{Binding currentBlue}" Height="128">
-                                    <i:Interaction.Triggers>
-                                        <i:EventTrigger EventName="ValueChanged">
-                                            <i:InvokeCommandAction Command="{Binding ColorChangedCommand}" CommandParameter="Blue"/>
-                                        </i:EventTrigger>
-                                    </i:Interaction.Triggers>
-                                </Slider>
+                                <Slider Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Bottom" Maximum="255" Value="{Binding currentBlue}" Height="128"/>
                             </StackPanel>
                             <StackPanel Grid.Column="3">
                                 <StackPanel Orientation="Horizontal">
                                     <Label Content="A="/>
                                     <Label Content="{Binding currentAlpha}" Margin="-10,0,0,0"/>
                                 </StackPanel>
-                                <Slider Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Bottom" Maximum="255" Value="{Binding currentAlpha}" Height="128">
-                                    <i:Interaction.Triggers>
-                                        <i:EventTrigger EventName="ValueChanged">
-                                            <i:InvokeCommandAction Command="{Binding ColorChangedCommand}" CommandParameter="Alpha"/>
-                                        </i:EventTrigger>
-                                    </i:Interaction.Triggers>
-                                </Slider>
+                                <Slider Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Bottom" Maximum="255" Value="{Binding currentAlpha}" Height="128"/>
                             </StackPanel>
                         </Grid>
                     </Border>
@@ -124,32 +92,39 @@
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition/>
-                            <ColumnDefinition Width="30"/>
+                            <ColumnDefinition Width="35"/>
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
                             <RowDefinition/>
                         </Grid.RowDefinitions>
-                        <Button Grid.Column="1" Height="20" Width="25" Content="OK" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="2" Command="{Binding ApplyTextSettingsCommand}"/>
 
-                        <StackPanel Grid.Row="0" Orientation="Horizontal">
-                            <Label Content="WindowBorderThickness:"/>
-                            <TextBox Text="{Binding windowBorderThickness, Mode=TwoWay}" Margin="2" Width="52">
-                                <i:Interaction.Triggers>
-                                    <i:EventTrigger EventName="GotFocus">
-                                        <i:InvokeCommandAction Command="{Binding DisableTriggersCommand}"/>
-                                    </i:EventTrigger>
-                                    <i:EventTrigger EventName="LostFocus">
-                                        <i:InvokeCommandAction Command="{Binding EnableTriggersCommand}"/>
-                                    </i:EventTrigger>
-                                </i:Interaction.Triggers>
-                            </TextBox>
+
+                        <StackPanel>
+                            <StackPanel Grid.Row="0" Orientation="Horizontal">
+                                <Label Content="WindowBorderThickness:"/>
+                                <TextBox Text="{Binding WindowBorderThickness, Mode=TwoWay}" Margin="2" Width="52"/>
+                            </StackPanel>
+                            <StackPanel Grid.Row="0" Orientation="Horizontal">
+                                <Label Content="WindowIconMargin:"/>
+                                <TextBox Text="{Binding WindowIconMargin, Mode=TwoWay}" Margin="2" Width="52"/>
+                            </StackPanel>
+                            <StackPanel Grid.Row="0" Orientation="Horizontal">
+                                <Label Content="HeightWindowTitle:"/>
+                                <TextBox Text="{Binding HeightWindowTitle, Mode=TwoWay}" Margin="2" Width="52"/>
+                            </StackPanel>
+                            <StackPanel Grid.Row="0" Orientation="Horizontal">
+                                <Label Content="WindowIconSize:"/>
+                                <TextBox Text="{Binding WindowIconSize, Mode=TwoWay}" Margin="2" Width="52"/>
+                            </StackPanel>
+                            <StackPanel Grid.Row="0" Orientation="Horizontal">
+                                <Label Content="TitleFontSize:"/>
+                                <TextBox Text="{Binding TitleFontSize, Mode=TwoWay}" Margin="2" Width="52"/>
+                            </StackPanel>
+                            <Button Height="27" Width="60" HorizontalAlignment="Left" VerticalAlignment="Bottom" Content="Сброс" Grid.Column="2" Command="{Binding ResetSettingsCommand}"/>
                         </StackPanel>
-                        
                     </Grid>
                 </StackPanel>
             </DockPanel>
         </Border>
-
     </Grid>
-
 </Window>

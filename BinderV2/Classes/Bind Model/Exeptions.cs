@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace BinderV2.BindModel.Exeptions
+namespace BindModel.Exeptions
 {
     [Serializable]
     public sealed class DuplicateBindIDException : Exception

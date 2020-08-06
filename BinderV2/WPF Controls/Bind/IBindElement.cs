@@ -1,4 +1,4 @@
-﻿using BinderV2.BindModel;
+﻿using BindModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;

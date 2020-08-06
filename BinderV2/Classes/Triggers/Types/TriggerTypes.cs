@@ -1,5 +1,5 @@
 ﻿
-namespace BinderV2.Trigger.Types
+namespace Trigger.Types
 {
     public enum TriggerType
     {

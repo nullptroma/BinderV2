@@ -30,7 +30,6 @@ C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\WPF Resources\Styles\Cus
 C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\WPF Resources\Styles\CustomizedWindow\CurstomWindowStyle.g.cs
 C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\Windows\SettingsWindow\SettingsWindow.g.cs
 C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\Windows\SettingsWindow\SettingsWindow.baml
-C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\WPF Resources\Color Resources\InterfaceResources.baml
 C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\WPF Controls\Bind\BindElement.g.cs
 C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\WPF Controls\Triggers\KeysDownTriggerElement\KeysDownTriggerElement.g.cs
 C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\WPF Controls\Bind\BindElement.baml
@@ -39,5 +38,11 @@ C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\WPF Resources\Styles\Con
 C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\WPF Resources\Styles\Scroll Viewer\ScrollStyle.baml
 C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\WPF Resources\Styles\Menu Item\MenuItem.baml
 C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\WPF Resources\Styles\ComboBox\ComboBox.baml
-C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\BinderV2.csprojAssemblyReference.cache
 C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\WPF Resources\Styles\Context Menu\ContextMenu.baml
+C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\WPF Resources\Interface Resources\InterfaceResources.baml
+C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\WPF Resources\Styles\Button\Button Style.baml
+C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\Windows\HelpWindow\HelpWindow.g.cs
+C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\Windows\HelpWindow\HelpWindow.baml
+C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\WPF Resources\Styles\TabControl\TabControlStyle.baml
+C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\WPF Resources\Styles\TextBox\TextBox Style.baml
+C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\BinderV2.csprojAssemblyReference.cache

@@ -1,28 +1,29 @@
-﻿using BinderV2.Interpreter.Script.UserFunc.Exceptions;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Policy;
 using System.Text;
 using System.Windows.Controls;
+using InterpreterScripts.UserFunc.Exceptions;
+using InterpreterScripts.Script;
 
-namespace BinderV2.Interpreter.Script.UserFunc
+namespace InterpreterScripts.UserFunc
 {
     public class UserFunc
     {
         public string Name { get; private set; }
         private string Script { get; set; }
-        private string[] paramsNames;
-        public string[] ParamsNames 
+        private string[] funcsParamsNames;
+        public string[] FuncsParamsNames
         {
-            get { return paramsNames; }
+            get { return funcsParamsNames; }
             set
             {
                 if (value == null)
                     throw new NullReferenceException();
-                paramsNames = new string[value.Length];
-                for (int i = 0; i < paramsNames.Length; i++)
-                    paramsNames[i] = value[i];
+                funcsParamsNames = new string[value.Length];
+                for (int i = 0; i < funcsParamsNames.Length; i++)
+                    funcsParamsNames[i] = value[i];
             }
         }
 
@@ -30,14 +31,14 @@ namespace BinderV2.Interpreter.Script.UserFunc
         {
             Name = name;
             Script = script;
-            ParamsNames = parameters;
+            FuncsParamsNames = parameters;
         }
 
         public string GetScriptWithParameters(params string[] parameters)
         {
-            if (parameters.Length != ParamsNames.Length)
-                throw new WrongNumberOfParameters(parameters.Length, ParamsNames.Length);
-            return ScriptTools.ReplaceParams(Script, ParamsNames, parameters);
+            if (parameters.Length != FuncsParamsNames.Length)
+                throw new WrongNumberOfParametersException(parameters.Length, FuncsParamsNames.Length);
+            return ScriptTools.ReplaceParams(Script, FuncsParamsNames, parameters);
         }
     }
 }

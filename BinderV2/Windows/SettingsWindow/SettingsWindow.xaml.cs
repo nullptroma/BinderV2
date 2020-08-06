@@ -1,5 +1,4 @@
-﻿using BinderV2.Trigger.Types;
-using BinderV2.Windows.SettingsWindow;
+﻿using Trigger.Types;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,16 +28,6 @@ namespace BinderV2.Windows.Settings
             
         }
 
-        private void Window_LostFocus(object sender, RoutedEventArgs e)
-        {
-            BaseTrigger.EnableAllTriggers = true;
-        }
-
-        private void Window_GotFocus(object sender, RoutedEventArgs e)
-        {
-            BaseTrigger.EnableAllTriggers = false;
-            
-        }
 
         private void AutoLoadPath_TextChanged(object sender, TextChangedEventArgs e)
         {

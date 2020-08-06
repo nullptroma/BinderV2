@@ -7,12 +7,15 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="WPF Resources/Styles/CustomizedWindow/CurstomWindowStyle.xaml" />
-                <ResourceDictionary Source="WPF Resources/Color Resources/InterfaceResources.xaml" />
+                <ResourceDictionary Source="WPF Resources/Interface Resources/InterfaceResources.xaml" />
                 <ResourceDictionary Source="WPF Resources/Styles/Controls Styles/ControlsStyles.xaml" />
                 <ResourceDictionary Source="WPF Resources/Styles/Scroll Viewer/ScrollStyle.xaml" />
                 <ResourceDictionary Source="WPF Resources/Styles/Menu Item/MenuItem.xaml" />
                 <ResourceDictionary Source="WPF Resources/Styles/ComboBox/ComboBox.xaml" />
                 <ResourceDictionary Source="WPF Resources/Styles/Context Menu/ContextMenu.xaml" />
+                <ResourceDictionary Source="WPF Resources/Styles/Button/Button Style.xaml" />
+                <ResourceDictionary Source="WPF Resources/Styles/TabControl/TabControlStyle.xaml" />
+                <ResourceDictionary Source="WPF Resources/Styles/TextBox/TextBox Style.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

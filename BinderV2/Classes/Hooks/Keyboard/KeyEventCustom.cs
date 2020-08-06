@@ -1,6 +1,6 @@
 ﻿using System.Windows.Input;
 
-namespace BinderV2.Hooks.Keyboard
+namespace Hooks.Keyboard
 {
     public class KeyEventArgsCustom
     {

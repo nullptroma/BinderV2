@@ -8,7 +8,7 @@ using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
-using BinderV2.Trigger.Types;
+using Trigger.Types;
 using System.Windows.Media;
 using BinderV2.Settings;
 
@@ -21,13 +21,15 @@ namespace BinderV2.Windows.Main
     {
         public MainWindow()
         {
-            
             InitializeComponent();
-            BinderV2.Settings.ProgramSettings.Initialize();
             DataContext = new MainViewModel();
             if (ProgramSettings.runtimeSettings.HideOnStart)
                 HideWindow();
-            
+            if (ProgramSettings.runtimeSettings.SaveMainWindowSize)
+            {
+                Application.Current.MainWindow.Width = ProgramSettings.runtimeSettings.MainWindowSize.Width;
+                Application.Current.MainWindow.Height = ProgramSettings.runtimeSettings.MainWindowSize.Height;
+            }
         }
 
         private void ShowWindowButton_Click(object sender, RoutedEventArgs e)
@@ -77,6 +79,12 @@ namespace BinderV2.Windows.Main
         private void TaskBarIcon_TrayMouseDoubleClick(object sender, RoutedEventArgs e)
         {
             ShowWindow();
+        }
+
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            BinderV2.Settings.ProgramSettings.runtimeSettings.MainWindowSize = this.DesiredSize;
+            
         }
     }
 }

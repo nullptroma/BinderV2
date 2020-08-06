@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace BinderV2.Trigger.Events
+namespace Trigger.Events
 {
     public class TriggeredEventArgs : EventArgs
     {

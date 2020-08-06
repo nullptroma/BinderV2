@@ -1,17 +1,17 @@
 ﻿using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
-using BinderV2.Hooks.Keyboard;
 using System.Windows.Input;
 using System.Windows.Media;
-using BinderV2.Trigger.Types;
+using Hooks.Keyboard;
+using Trigger.Types;
 
 namespace BinderV2.WpfControls.Triggers
 {
     /// <summary>
     /// Логика взаимодействия для KeysDownTriggerElement.xaml
     /// </summary>
-    public partial class KeysDownTriggerElement : UserControl, ITriggerElement
+    public partial class KeysDownTriggerControl : UserControl, ITriggerControl
     {
         public KeysDownTrigger trigger;
         
@@ -40,7 +40,7 @@ namespace BinderV2.WpfControls.Triggers
             }
         }
 
-        public KeysDownTriggerElement(KeysDownTrigger trigger)
+        public KeysDownTriggerControl(KeysDownTrigger trigger)
         {
             InitializeComponent();
             this.trigger = trigger;

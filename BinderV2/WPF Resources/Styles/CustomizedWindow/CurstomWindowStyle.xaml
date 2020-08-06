@@ -1,10 +1,11 @@
 <ResourceDictionary 
-    x:Class="Whush.Demo.Styles.CustomizedWindow.WindowStyle"
+    x:Class="CustomizedWindow.WindowStyle"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
     <Style x:Key="WindowStyleTitleBarButton" TargetType="{x:Type Button}">
         <Setter Property="Focusable" Value="false" />
+        <Setter Property="Foreground" Value="{DynamicResource WindowButtonsColorInactive}"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
@@ -17,13 +18,10 @@
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter TargetName="PART_border" Property="Background" Value="#FFF" />
-                            <Setter TargetName="PART_border" Property="Opacity" Value="0.7" />
+                            <Setter TargetName="PART_border" Property="Background" Value="{DynamicResource WindowButtonsMouseOverColor}" />
                         </Trigger>
                         <Trigger Property="IsPressed" Value="True">
                             <Setter TargetName="PART_border" Property="Background" Value="{DynamicResource WindowBorderBrush}"/>
-                            <Setter TargetName="PART_border" Property="Opacity" Value="1" />
-                            <Setter Property="Foreground" Value="#FFF"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -49,22 +47,7 @@
                         Margin="7"
                         TextOptions.TextRenderingMode="ClearType"
                         TextOptions.TextFormattingMode="Display">
-                        <Border
-                            x:Name="PART_Border"
-                            Width="Auto"
-                            Height="Auto"
-                            Background="{DynamicResource WindowBackground}"
-                            BorderBrush="{DynamicResource WindowBorderBrush}"
-                            BorderThickness="{DynamicResource WindowBorderThickness}"
-                            Padding="0">
-                            <Border.Effect>
-                                <DropShadowEffect
-                                    Color="black"
-                                    Opacity="0.5"
-                                    BlurRadius="7"
-                                    ShadowDepth="2"
-                                    Direction="315"/>
-                            </Border.Effect>
+                        <Border x:Name="Border" BorderThickness="{DynamicResource WindowBorderThickness}" BorderBrush="{DynamicResource WindowBorderBrushInactive}">
                             <DockPanel   
                                 HorizontalAlignment="Stretch"
                                 Background="Transparent"
@@ -78,9 +61,9 @@
                                     MouseLeftButtonDown="TitleBarMouseLeftButtonDown"
                                     MouseMove="TitleBarMouseMove"
                                     >
-                                    <Grid Height="32">
+                                    <Grid Height="{DynamicResource HeightWindowTitle}">
                                         <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="36"/>
+                                            <ColumnDefinition Width="Auto"/>
                                             <ColumnDefinition />
                                             <ColumnDefinition Width="34"/>
                                             <ColumnDefinition Width="34"/>
@@ -91,9 +74,9 @@
                                             Grid.Column="0"
                                             Source="{Binding Path=Icon, Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}" 
                                             HorizontalAlignment="Right"
-                                            Margin="4,-7,0,7"
-                                            Width="32"
-                                            Height="32"
+                                            Height="{DynamicResource WindowIconSize}"
+                                            Width="{DynamicResource WindowIconSize}"
+                                            Margin="{DynamicResource WindowIconMargin}"
                                             MouseLeftButtonDown="IconMouseLeftButtonDown"
                                             />
                                         <TextBlock
@@ -103,9 +86,10 @@
                                             VerticalAlignment="Center"
                                             Margin="4,0,0,0"
                                             FontFamily="Segoe UI"
-                                            FontSize="12"
+                                            FontSize="{DynamicResource TitleFontSize}"
                                             Opacity="0.66"
                                             Text="{Binding Path=Title, Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}"
+                                            Foreground="{DynamicResource TitleBarForegroundBrush}"
                                             />
                                         <Button
                                             x:Name="MinButton" 
@@ -166,7 +150,9 @@
                                         </Button>
                                     </Grid>
                                 </Border>
-                                <ContentPresenter />
+                                <Border Background="{DynamicResource WindowBackground}" BorderThickness="0">
+                                    <ContentPresenter />
+                                </Border>
                             </DockPanel>
                         </Border>
                         <Line
@@ -212,8 +198,11 @@
                         <Trigger Property="WindowState" Value="Maximized">
                             <Setter TargetName="PART_MaxButton_Path" Property="Data" Value="M0,3 H5 V8 H0 V3 M0,4 H5 M3,0 H8 V5 H7 M3,1 H8"/>
                         </Trigger>
-                        <Trigger Property="IsActive" Value="False">
-                            <Setter TargetName="PART_Border" Property="BorderBrush" Value="{DynamicResource WindowBorderBrushInactive}"/>
+                        <Trigger Property="IsActive" Value="True">
+                            <Setter TargetName="Border" Property="BorderBrush" Value="{DynamicResource WindowBorderBrush}"/>
+                            <Setter TargetName="MinButton" Property="Foreground" Value="{DynamicResource WindowButtonsColor}"/>
+                            <Setter TargetName="MaxButton" Property="Foreground" Value="{DynamicResource WindowButtonsColor}"/>
+                            <Setter TargetName="CloseButton" Property="Foreground" Value="{DynamicResource WindowButtonsColor}"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

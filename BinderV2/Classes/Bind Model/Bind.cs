@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using BinderV2.BindModel.Events;
-using BinderV2.BindModel.Exeptions;
-using BinderV2.Trigger.Events;
-using BinderV2.Trigger.Types;
+using Trigger.Events;
+using Trigger.Types;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
+using BindModel.Events;
+using BindModel.Exeptions;
 
-namespace BinderV2.BindModel
+namespace BindModel
 {
     public sealed class Bind : IDisposable
     {

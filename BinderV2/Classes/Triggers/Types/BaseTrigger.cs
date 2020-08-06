@@ -1,7 +1,8 @@
-﻿using System;
-using BinderV2.Trigger.Events;
+﻿using InterpreterScripts;
+using System;
+using Trigger.Events;
 
-namespace BinderV2.Trigger.Types
+namespace Trigger.Types
 {
     public abstract class BaseTrigger : IDisposable
     {
@@ -15,8 +16,8 @@ namespace BinderV2.Trigger.Types
         public bool EnableTrigger
         {
             get { return enableTrigger; }
-            set 
-            { 
+            set
+            {
                 enableTrigger = value;
                 EnableChanged?.Invoke(this, new EnableTriggerChangedEventArgs(enableTrigger));
             }
@@ -30,8 +31,14 @@ namespace BinderV2.Trigger.Types
 
         public void Invoke()
         {
+            Interpreter.ExecuteScript("", null);
             if (EnableTrigger && EnableAllTriggers)
                 Triggered?.Invoke(this, new TriggeredEventArgs(Name, Script));
+        }
+
+        private void InvokeEvent()
+        {
+
         }
 
         public override string ToString()

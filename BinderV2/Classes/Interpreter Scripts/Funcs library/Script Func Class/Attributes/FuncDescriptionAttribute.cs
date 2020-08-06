@@ -4,13 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BinderV2.Interpreter.DescriptionAttribute
+namespace InterpreterScripts.Funcslibrary
 {
     [AttributeUsage(AttributeTargets.Method)]
-    class ScriptDescriptionAttribute : Attribute
+    class FuncDescriptionAttribute : Attribute
     {
         public string Description { get; private set; }
-        public ScriptDescriptionAttribute(string desc)
+        public FuncDescriptionAttribute(string desc)
         {
             Description = desc;
         }

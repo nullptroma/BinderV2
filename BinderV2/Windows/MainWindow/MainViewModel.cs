@@ -6,26 +6,28 @@ using System.Collections.ObjectModel;
 using System.Windows.Controls;
 using System.Windows;
 using System.ComponentModel;
-using BinderV2.Trigger.Types;
-using BinderV2.Trigger;
-using BinderV2.BindModel;
+using Trigger.Types;
+using Trigger;
+using BindModel;
 using BinderV2.Commands;
 using BinderV2.WpfControls.BindControl;
 using System.IO;
 using System.Xml.Serialization;
 using Newtonsoft.Json;
+using BinderV2.Windows.Help;
 using BinderV2.Windows.Settings;
 using Microsoft.Win32;
 using System.Net.Mail;
 using BinderV2.Settings;
 using System.Windows.Input;
 
-namespace BinderV2
+namespace BinderV2.Windows.Main
 {
     class MainViewModel : INotifyPropertyChanged
     {
         public ObservableCollection<IBindElement> bindsControls { get; set; }
         private SettingsWindow SettingsWindow;
+        private HelpWindow HelpWindow;
         private IBindElement selectedBind;
         private string currentBindScript = "";
 
@@ -55,28 +57,18 @@ namespace BinderV2
                 }
         }
 
-        private RelayCommand disableTriggersCommand;
-        public RelayCommand DisableTriggersCommand
+        private RelayCommand openHelpWindowCommand;
+        public RelayCommand OpenHelpWindowCommand
         {
             get
             {
-                return disableTriggersCommand ??
-                  (disableTriggersCommand = new RelayCommand(obj =>
+                return openHelpWindowCommand ??
+                  (openHelpWindowCommand = new RelayCommand(obj =>
                   {
-                      BaseTrigger.EnableAllTriggers = false;
-                  }));
-            }
-        }
-
-        private RelayCommand enableTriggersCommand;
-        public RelayCommand EnableTriggersCommand
-        {
-            get
-            {
-                return enableTriggersCommand ??
-                  (enableTriggersCommand = new RelayCommand(obj =>
-                  {
-                      BaseTrigger.EnableAllTriggers = true;
+                      if (HelpWindow != null)
+                          HelpWindow.Close();
+                      HelpWindow = new HelpWindow();
+                      HelpWindow.Show();
                   }));
             }
         }

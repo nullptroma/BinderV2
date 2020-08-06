@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Input;
-using BinderV2.Hooks.Keyboard;
+using Hooks.Keyboard;
 
-namespace BinderV2.Trigger.Types
+namespace Trigger.Types
 {
     public class KeysDownTrigger : BaseTrigger
     {

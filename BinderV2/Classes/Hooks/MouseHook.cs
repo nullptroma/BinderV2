@@ -3,7 +3,7 @@ using System.ComponentModel;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
-namespace BinderV2.Hooks.Mouse
+namespace Hooks.Mouse
 {
     public static class MouseHook
     {

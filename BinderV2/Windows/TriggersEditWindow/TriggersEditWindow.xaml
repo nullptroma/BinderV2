@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:BinderV2.Windows.TriggersEdit"
         xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
         mc:Ignorable="d"
-        Title="TriggersEditWindow" Height="380" Width="700" Icon="/BinderV2;component/Images/редактировать.png"
+        Title="TriggersEditWindow" Height="380" Width="700" Icon="/BinderV2;component/Images/Edit.png"
         Style="{DynamicResource CurstomWindowStyle}" MinWidth="700" MinHeight="250">
 
     <Grid>
@@ -29,7 +29,7 @@
                 </Grid.ColumnDefinitions>
 
                 <Button  Height="20" Width="20" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="2" Command="{Binding CreateTriggerCommand}">
-                    <Image Margin="0" Source="/BinderV2;component/Images/Плюс.png"/>
+                    <Image Margin="0" Source="/BinderV2;component/Images/Plus.png"/>
                 </Button>
 
                 <Border Grid.Row="1" BorderThickness="2" Margin="-2">
@@ -63,18 +63,7 @@
                     <TextBox x:Name="scriptTextBox"
                      Text="{Binding ScriptTextBoxText}"
                      Margin="6"
-                     Grid.Row="0"
-                     GotFocus="scriptTextBox_GotFocus"
-                     LostFocus="scriptTextBox_LostFocus">
-                        <i:Interaction.Triggers>
-                            <i:EventTrigger EventName="GotFocus">
-                                <i:InvokeCommandAction Command="{Binding DisableTriggersCommand}"/>
-                            </i:EventTrigger>
-                            <i:EventTrigger EventName="LostFocus">
-                                <i:InvokeCommandAction Command="{Binding EnableTriggersCommand}"/>
-                            </i:EventTrigger>
-                        </i:Interaction.Triggers>
-                    </TextBox>
+                     Grid.Row="0"/>
                     <Button Content="Сохранить" Grid.Row="1" Margin="6" Width="70" HorizontalAlignment="Right" Command="{Binding SaveTriggerScriptCommand}" CommandParameter="{Binding ElementName=scriptTextBox, Path=Text}"/>
                 </Grid>
             </Border>

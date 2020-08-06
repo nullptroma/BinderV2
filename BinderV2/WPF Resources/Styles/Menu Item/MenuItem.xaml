@@ -20,10 +20,10 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type MenuItem}">
                     <Border x:Name="Border"
-                        Background="{DynamicResource WindowBackground}"
+                        Background="{DynamicResource MenuItemColor}"
                         BorderBrush="{DynamicResource BorderColors}"
                         BorderThickness="{TemplateBinding BorderThickness}">
-                        <Grid>
+                        <Grid Background="Transparent">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition x:Name="Col0" MinWidth="17" Width="Auto" SharedSizeGroup="MenuItemIconColumnGroup"/>
                                 <ColumnDefinition Width="Auto" SharedSizeGroup="MenuTextColumnGroup"/>
@@ -59,11 +59,11 @@
                             </Grid>
 
                             <!-- The Popup is the body of the menu which expands down or across depending on the level of the item -->
-                            <Popup IsOpen="{Binding Path=IsSubmenuOpen, RelativeSource={RelativeSource TemplatedParent}}" Placement="Right" x:Name="SubMenuPopup" Focusable="false" PopupAnimation="{DynamicResource {x:Static SystemParameters.MenuPopupAnimationKey}}">
-                                <Border x:Name="SubMenuBorder" BorderBrush="{Binding Path=Foreground, RelativeSource={RelativeSource AncestorType={x:Type Menu}}}" BorderThickness="1" Padding="2,2,2,2">
-                                    <Grid x:Name="SubMenu" Grid.IsSharedSizeScope="True">
+                            <Popup IsOpen="{Binding Path=IsSubmenuOpen, RelativeSource={RelativeSource TemplatedParent}}" Placement="Right" AllowsTransparency="True" x:Name="SubMenuPopup" Focusable="false" PopupAnimation="{DynamicResource {x:Static SystemParameters.MenuPopupAnimationKey}}">
+                                <Border x:Name="SubMenuBorder" BorderBrush="{DynamicResource BorderColors}" BorderThickness="2" Background="{DynamicResource MenuPopupBrush}">
+                                    <Grid x:Name="SubMenu" Grid.IsSharedSizeScope="True" Background="Transparent">
                                         <!-- StackPanel holds children of the menu. This is set by IsItemsHost=True -->
-                                        <StackPanel IsItemsHost="True" KeyboardNavigation.DirectionalNavigation="Cycle"/>
+                                        <StackPanel IsItemsHost="True" KeyboardNavigation.DirectionalNavigation="Cycle" Background="Transparent"/>
                                     </Grid>
                                 </Border>
                             </Popup>

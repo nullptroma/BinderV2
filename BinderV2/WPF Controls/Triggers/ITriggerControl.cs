@@ -1,8 +1,8 @@
-﻿using BinderV2.Trigger.Types;
+﻿using Trigger.Types;
 
 namespace BinderV2.WpfControls.Triggers
 {
-    interface ITriggerElement
+    interface ITriggerControl
     {
         BaseTrigger GetTrigger();
         bool Selected { get; set; }

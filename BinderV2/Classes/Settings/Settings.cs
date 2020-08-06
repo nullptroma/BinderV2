@@ -15,7 +15,10 @@ namespace BinderV2.Settings
         public bool HideOnStart { get; set; }
         public bool AutoLoadBinds { get; set; }
         public string AutoLoadBindsPath { get; set; }
-        [JsonIgnore] public string LastBindsPath { get; set; }
+        public bool SaveMainWindowSize { get; set; }
+        public Size MainWindowSize { get; set; }
+        [JsonIgnore] private string lastBindsPath = "";
+        [JsonIgnore] public string LastBindsPath { get { return lastBindsPath; } set { lastBindsPath = value; } }
         public bool StartWithWindows
         {
             get { return startWithWindows; }
@@ -59,17 +62,18 @@ namespace BinderV2.Settings
                 runtimeSettings = JsonUtilities.Deserialize<ProgramSettings>(File.ReadAllText(ProgramSettings.SaveSettingsDirectory + @"\settings.txt"));
             }
             catch{ runtimeSettings = new ProgramSettings(); }
-            VisualsSettings.ApplyVisuals(runtimeSettings.VisualSettings);
+            try
+            {
+                VisualsSettings.ApplyVisuals(runtimeSettings.VisualSettings);
+            }
+            catch { Reset(); }
         }
 
-        public static void Initialize()
-        {
-            
-        }
 
         public static void Reset()
         {
             runtimeSettings = new ProgramSettings();
+            VisualsSettings.ApplyVisuals(runtimeSettings.VisualSettings);
             SaveSettings();
         }
     }

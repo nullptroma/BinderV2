@@ -2,27 +2,15 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     >
     
-    <Style TargetType="TextBox">
-        <Setter Property="Background" Value="{DynamicResource TextBoxColor}"/>
-        <Setter Property="Foreground" Value="{DynamicResource TextColor}"/>
-        <Setter Property="SelectionBrush" Value="{DynamicResource TextBoxSelectionColor}"/>
-        <Setter Property="CaretBrush" Value="{DynamicResource TextBoxSelectionColor}"/>
-    </Style>
     <Style TargetType="Border">
         <Setter Property="BorderBrush" Value="{DynamicResource BorderColors}"/>
-    </Style>
-    <Style TargetType="Button">
-        <Setter Property="Background" Value="{DynamicResource ButtonsBackground}"/>
-        <Setter Property="Foreground" Value="{DynamicResource TextColor}"/>
     </Style>
     <Style TargetType="Label">
         <Setter Property="Foreground" Value="{DynamicResource TextColor}"/>
     </Style>
-    <Style TargetType="MenuItem">
-        <Setter Property="Foreground" Value="{DynamicResource TextColor}"/>
-        <Setter Property="Background" Value="{DynamicResource WindowBackground}"/>
-    </Style>
     <Style TargetType="CheckBox">
         <Setter Property="Foreground" Value="{DynamicResource TextColor}"/>
     </Style>
+    
+    
 </ResourceDictionary>

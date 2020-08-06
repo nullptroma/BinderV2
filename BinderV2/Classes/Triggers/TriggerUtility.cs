@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
-using BinderV2.WpfControls.Triggers;
-using BinderV2.Trigger.Types;
 using System.Windows.Controls;
 using System.Windows.Input;
+using Trigger.Types;
+using BinderV2.WpfControls.Triggers;
 
-namespace BinderV2.Trigger
+namespace Trigger.Tools
 {
     static class TriggerUtility
     {
@@ -15,7 +15,7 @@ namespace BinderV2.Trigger
             {
                 case "KeysDownTrigger":
                     {
-                        control = new KeysDownTriggerElement((KeysDownTrigger)trig);
+                        control = new KeysDownTriggerControl((KeysDownTrigger)trig);
                         break; 
                     }
                 default:

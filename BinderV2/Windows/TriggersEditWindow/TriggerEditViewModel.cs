@@ -8,9 +8,9 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Collections.ObjectModel;
 using System.Windows.Controls;
-using BinderV2.Trigger.Types;
-using BinderV2.Trigger;
-using BinderV2.BindModel;
+using Trigger.Types;
+using Trigger.Tools;
+using BindModel;
 using BinderV2.Commands;
 using BinderV2.WpfControls.Triggers;
 
@@ -19,8 +19,8 @@ namespace BinderV2.Windows.TriggersEdit
 {
     class TriggerEditViewModel: INotifyPropertyChanged
     {
-        public ObservableCollection<ITriggerElement> triggersControls { get; set; }
-        private ITriggerElement selectedTrigger;
+        public ObservableCollection<ITriggerControl> triggersControls { get; set; }
+        private ITriggerControl selectedTrigger;
         private Bind bind;
         private string scriptTextBoxText = "";
         public string ScriptTextBoxText
@@ -39,7 +39,7 @@ namespace BinderV2.Windows.TriggersEdit
         public TriggerEditViewModel(Bind bind)
         {
             this.bind = bind;
-            triggersControls = new ObservableCollection<ITriggerElement>();//создаём коллекцию контролов
+            triggersControls = new ObservableCollection<ITriggerControl>();//создаём коллекцию контролов
             AddTriggerControls();//добавляем контроллы из триггеров
         }
 
@@ -48,38 +48,13 @@ namespace BinderV2.Windows.TriggersEdit
             foreach (BaseTrigger bt in bind.Triggers)
             {
                 var control = TriggerUtility.GetControlFromTrigger(bt);
-                triggersControls.Add((ITriggerElement)control);
+                triggersControls.Add((ITriggerControl)control);
             }
             OnPropertyChanged("triggersControls");
             OnPropertyChanged("triggersControls");
             
         }
 
-        private RelayCommand disableTriggersCommand;
-        public RelayCommand DisableTriggersCommand
-        {
-            get
-            {
-                return disableTriggersCommand ??
-                  (disableTriggersCommand = new RelayCommand(obj =>
-                  {
-                      BaseTrigger.EnableAllTriggers = false;
-                  }));
-            }
-        }
-
-        private RelayCommand enableTriggersCommand;
-        public RelayCommand EnableTriggersCommand
-        {
-            get
-            {
-                return enableTriggersCommand ??
-                  (enableTriggersCommand = new RelayCommand(obj =>
-                  {
-                      BaseTrigger.EnableAllTriggers = true;
-                  }));
-            }
-        }
 
         private RelayCommand createTriggerCommand;
         public RelayCommand CreateTriggerCommand
@@ -99,7 +74,7 @@ namespace BinderV2.Windows.TriggersEdit
 
                       Control triggerControl = TriggerUtility.GetControlFromTrigger(newTrigger);
 
-                      triggersControls.Add((ITriggerElement)triggerControl);
+                      triggersControls.Add((ITriggerControl)triggerControl);
                       OnPropertyChanged("triggersControls");
                   }));
             }
@@ -113,7 +88,7 @@ namespace BinderV2.Windows.TriggersEdit
                 return removeTriggerCommand ??
                   (removeTriggerCommand = new RelayCommand(obj =>
                   {
-                      ITriggerElement triggerElement = (ITriggerElement)obj;
+                      ITriggerControl triggerElement = (ITriggerControl)obj;
                       if (MessageBox.Show("Удалить триггер \"" + triggerElement.GetTrigger().Name + "\"?", "Вы уверены?", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
                       {
                           if (!bind.Triggers.Remove(triggerElement.GetTrigger()))
@@ -138,9 +113,9 @@ namespace BinderV2.Windows.TriggersEdit
                   {
                       if (triggersControls.Contains(obj))
                       {
-                          foreach (ITriggerElement trigEl in triggersControls)
+                          foreach (ITriggerControl trigEl in triggersControls)
                               trigEl.Selected = false;
-                          var currentElement = (ITriggerElement)obj;
+                          var currentElement = (ITriggerControl)obj;
                           selectedTrigger = currentElement;
                           currentElement.Selected = true;
 

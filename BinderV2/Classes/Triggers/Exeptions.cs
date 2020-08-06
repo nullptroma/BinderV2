@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace BinderV2.Trigger.TriggersExeptions
+namespace Trigger.TriggersExeptions
 {
     class UnknownTriggerTypeExeption : Exception
     {

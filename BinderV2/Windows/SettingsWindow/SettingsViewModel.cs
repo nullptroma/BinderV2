@@ -6,9 +6,9 @@ using System.Collections.ObjectModel;
 using System.Windows.Controls;
 using System.Windows;
 using System.ComponentModel;
-using BinderV2.Trigger.Types;
-using BinderV2.Trigger;
-using BinderV2.BindModel;
+using Trigger.Types;
+using Trigger;
+using BindModel;
 using BinderV2.Commands;
 using BinderV2.WpfControls.BindControl;
 using System.IO;
@@ -22,7 +22,7 @@ using System.CodeDom.Compiler;
 using Microsoft.CSharp;
 using Microsoft.Win32;
 
-namespace BinderV2.Windows.SettingsWindow
+namespace BinderV2.Windows.Settings
 {
     class SettingsViewModel : INotifyPropertyChanged
     {
@@ -31,88 +31,210 @@ namespace BinderV2.Windows.SettingsWindow
         public static bool StartWithWindows { get { return ProgramSettings.runtimeSettings.StartWithWindows; } set { ProgramSettings.runtimeSettings.StartWithWindows = value; } }
         public static bool HideOnStart { get { return ProgramSettings.runtimeSettings.HideOnStart; } set { ProgramSettings.runtimeSettings.HideOnStart = value; } }
         public static bool AutoLoadBinds { get { return ProgramSettings.runtimeSettings.AutoLoadBinds; } set { ProgramSettings.runtimeSettings.AutoLoadBinds = value; } }
+        public static bool SaveMainWindowSize { get { return ProgramSettings.runtimeSettings.SaveMainWindowSize; } set { ProgramSettings.runtimeSettings.SaveMainWindowSize = value; } }
         public static string AutoLoadBindsPath { get { return ProgramSettings.runtimeSettings.AutoLoadBindsPath; } set { ProgramSettings.runtimeSettings.AutoLoadBindsPath = value; } }
 
         public ObservableCollection<string> colorFields { get; set; }//все цветные параметры
         public string SelectedColorField { get; set; }//выбранный цветной параметр
 
         //для редактирования цвета
-        public byte currentRed { get; set; }
-        public byte currentGreen { get; set; }
-        public byte currentBlue { get; set; }
-        public byte currentAlpha { get; set; }
-
-        //для редактирования других полей
-        public string windowBorderThickness { get; set; }
-
-        private RelayCommand applyTextSettingsCommand;//команда для обновления всех текстовых параметров
-        public RelayCommand ApplyTextSettingsCommand
+        public byte currentRed 
+        {
+            get 
+            {
+                try { return ((Color)currentVsEdit.GetType().GetRuntimeField(SelectedColorField).GetValue(currentVsEdit)).R; }
+                catch { return 0; }
+            }
+            set 
+            {
+                UpdateColors(currentAlpha, value, currentGreen, currentBlue);
+                OnPropertyChanged("currentRed");
+            }
+        }
+        public byte currentGreen
         {
             get
             {
-                return applyTextSettingsCommand ??
-                  (applyTextSettingsCommand = new RelayCommand(obj =>
-                  {
-                      UpdateBorderThickness();
-                      VisualsSettings.ApplyVisuals(currentVsEdit);
-                      MessageBox.Show("Если ошибок не было, значит сохранено", "Успех");
-                  }));
+                try { return ((Color)currentVsEdit.GetType().GetRuntimeField(SelectedColorField).GetValue(currentVsEdit)).G; }
+                catch { return 0; }
+            }
+            set
+            {
+                UpdateColors(currentAlpha, currentRed, value, currentBlue);
+                OnPropertyChanged("currentGreen");
+            }
+        }
+        public byte currentBlue
+        {
+            get
+            {
+                try { return ((Color)currentVsEdit.GetType().GetRuntimeField(SelectedColorField).GetValue(currentVsEdit)).B; }
+                catch { return 0; }
+            }
+            set
+            {
+                UpdateColors(currentAlpha, currentRed, currentGreen, value);
+                OnPropertyChanged("currentBlue");
+            }
+        }
+        public byte currentAlpha
+        {
+            get
+            {
+                try { return ((Color)currentVsEdit.GetType().GetRuntimeField(SelectedColorField).GetValue(currentVsEdit)).A; }
+                catch { return 0; }
+            }
+            set
+            {
+                UpdateColors(value, currentRed, currentGreen, currentBlue);
+                OnPropertyChanged("currentAlpha");
             }
         }
 
-        private void UpdateBorderThickness()
+        private void UpdateColors(byte a, byte r, byte g, byte b)
         {
-            windowBorderThickness = windowBorderThickness.Replace(" ", "");
+            currentVsEdit.GetType().GetRuntimeField(SelectedColorField).SetValue(currentVsEdit, Color.FromArgb(a, r, g, b));
+            VisualsSettings.ApplyVisuals(currentVsEdit);
+        }
+
+        private void NotifyAboutCurrentColors()
+        {
+            OnPropertyChanged("currentRed");
+            OnPropertyChanged("currentGreen");
+            OnPropertyChanged("currentBlue");
+            OnPropertyChanged("currentAlpha");
+        }
+
+        public string WindowBorderThickness 
+        { 
+            get 
+            {
+                return currentVsEdit.WindowBorderThickness.ToString(); 
+            } 
+            set 
+            {
+                currentVsEdit.WindowBorderThickness = GetThickness(value);
+                OnPropertyChanged("WindowBorderThickness");
+                VisualsSettings.ApplyVisuals(currentVsEdit);
+            }
+        }
+        public string WindowIconMargin
+        {
+            get
+            {
+                return currentVsEdit.WindowIconMargin.ToString();
+            }
+            set
+            {
+                currentVsEdit.WindowIconMargin = GetThickness(value);
+                OnPropertyChanged("WindowIconMargin");
+                VisualsSettings.ApplyVisuals(currentVsEdit);
+            }
+        }
+        public string HeightWindowTitle
+        {
+            get
+            {
+                return currentVsEdit.HeightWindowTitle.ToString();
+            }
+            set
+            {
+                try
+                {
+                    currentVsEdit.HeightWindowTitle = double.Parse(value);
+                    OnPropertyChanged("HeightWindowTitle");
+                    VisualsSettings.ApplyVisuals(currentVsEdit);
+                }
+                catch { }
+            }
+        }
+        public string WindowIconSize
+        {
+            get
+            {
+                return currentVsEdit.WindowIconSize.ToString();
+            }
+            set
+            {
+                try
+                {
+                    currentVsEdit.WindowIconSize = double.Parse(value);
+                    OnPropertyChanged("WindowIconSize");
+                    VisualsSettings.ApplyVisuals(currentVsEdit);
+                }
+                catch { }
+            }
+        }
+        public string TitleFontSize
+        {
+            get
+            {
+                return currentVsEdit.TitleFontSize.ToString();
+            }
+            set
+            {
+                try
+                {
+                    currentVsEdit.TitleFontSize = double.Parse(value);
+                    OnPropertyChanged("TitleFontSize");
+                    VisualsSettings.ApplyVisuals(currentVsEdit);
+                }
+                catch { }
+            }
+        }
+
+        private Thickness GetThickness(string thickness)
+        {
+            Thickness answer;
+            thickness = thickness.Replace(" ", "");
             double output;
-            if (windowBorderThickness.Count(ch => ch == ',') == 3)
+            if (thickness.Count(ch => ch == ',') == 3)
             {
                 double[] nums = new double[4];
-                string[] numsString = windowBorderThickness.Split(',');
+                string[] numsString = thickness.Split(',');
                 for (int i = 0; i < 4; i++)
                 {
                     try
                     {
                         nums[i] = double.Parse(numsString[i]);
                     }
-                    catch { MessageBox.Show("windowBorderThickness в неверном формате", "Ошибка"); break; }
-                    currentVsEdit.WindowBorderThickness = new Thickness(nums[0], nums[1], nums[2], nums[3]);
+                    catch { throw new FormatException("Wrong format " + thickness); }
                 }
+                answer = new Thickness(nums[0], nums[1], nums[2], nums[3]);
             }
-            else if (double.TryParse(windowBorderThickness, out output))
+            else if (double.TryParse(thickness, out output))
             {
-                currentVsEdit.WindowBorderThickness = new Thickness(output);
+                answer = new Thickness(output);
             }
             else
             {
-                MessageBox.Show("windowBorderThickness в неверном формате", "Ошибка");
+                throw new FormatException("Wrong format " + thickness);
             }
+            return answer;
         }
 
-        private RelayCommand disableTriggersCommand;
-        public RelayCommand DisableTriggersCommand
+        private RelayCommand resetSettingsCommand;
+        public RelayCommand ResetSettingsCommand
         {
             get
             {
-                return disableTriggersCommand ??
-                  (disableTriggersCommand = new RelayCommand(obj =>
+                return resetSettingsCommand ??
+                  (resetSettingsCommand = new RelayCommand(obj =>
                   {
-                      BaseTrigger.EnableAllTriggers = false;
+                      if (MessageBox.Show("Сбросить все настройки?", "Вы уверены?", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                      {
+                          ProgramSettings.Reset();
+                          this.currentVsEdit = ProgramSettings.runtimeSettings.VisualSettings;
+                          OnPropertyChanged("WindowBorderThickness");
+                          OnPropertyChanged("WindowIconMargin");
+                          OnPropertyChanged("HeightWindowTitle");
+                          OnPropertyChanged("WindowIconSize");
+                      }
                   }));
             }
         }
 
-        private RelayCommand enableTriggersCommand;
-        public RelayCommand EnableTriggersCommand
-        {
-            get
-            {
-                return enableTriggersCommand ??
-                  (enableTriggersCommand = new RelayCommand(obj =>
-                  {
-                      BaseTrigger.EnableAllTriggers = true;
-                  }));
-            }
-        }
+        
 
         private RelayCommand colorFieldChangedCommand;
         public RelayCommand ColorFieldChangedCommand
@@ -124,59 +246,11 @@ namespace BinderV2.Windows.SettingsWindow
                   {
                       if (SelectedColorField == "None")
                           return;
-                      Color fieldColor = (Color)currentVsEdit.GetType().GetRuntimeField(SelectedColorField).GetValue(currentVsEdit);
-                      currentRed = fieldColor.R;
-                      currentGreen = fieldColor.G;
-                      currentBlue = fieldColor.B;
-                      currentAlpha = fieldColor.A;
-
-                      OnPropertyChanged("currentRed");
-                      OnPropertyChanged("currentGreen");
-                      OnPropertyChanged("currentBlue");
-                      OnPropertyChanged("currentAlpha");
+                      NotifyAboutCurrentColors();
                   }));
             }
         } 
-
-        private RelayCommand colorChangedCommand;
-        public RelayCommand ColorChangedCommand
-        {
-            get
-            {
-                return colorChangedCommand ??
-                  (colorChangedCommand = new RelayCommand(obj =>
-                  {
-                      switch (obj.ToString())
-                      {
-                          case "Red":
-                              {
-                                  OnPropertyChanged("currentRed");
-                                  break;
-                              }
-                          case "Green":
-                              {
-                                  OnPropertyChanged("currentGreen");
-                                  break;
-                              }
-                          case "Blue":
-                              {
-                                  OnPropertyChanged("currentBlue");
-                                  break;
-                              }
-                          case "Alpha":
-                              {
-                                  OnPropertyChanged("currentAlpha");
-                                  break;
-                              }
-                      }
-                      if (SelectedColorField != "None")
-                      {
-                          currentVsEdit.GetType().GetRuntimeField(SelectedColorField).SetValue(currentVsEdit, Color.FromArgb(currentAlpha, currentRed, currentGreen, currentBlue));
-                          VisualsSettings.ApplyVisuals(currentVsEdit);
-                      }
-                  }));
-            }
-        }
+        
 
         private RelayCommand chooseAutoLoadBindsPathCommands;//команда для выбора пути для автозагрузки биндов
         public RelayCommand ChooseAutoLoadBindsPathCommands
@@ -200,26 +274,22 @@ namespace BinderV2.Windows.SettingsWindow
 
         public SettingsViewModel()
         {
-            windowBorderThickness = currentVsEdit.WindowBorderThickness.ToString();
             OnPropertyChanged("windowBorderThickness");
-            SetFields();
+            SetColorFields();
         }
 
-        private void SetFields()
+        private void SetColorFields()
         {
             colorFields = new ObservableCollection<string>();
             colorFields.Add("None");
             SelectedColorField = "None";
-
             foreach (FieldInfo fi in currentVsEdit.GetType().GetRuntimeFields())
             {
                 if (fi.IsPublic)
                     if(fi.FieldType == typeof(Color))
                         colorFields.Add(fi.Name);
             }
-            
             OnPropertyChanged("colorFields");
-            OnPropertyChanged("textFields");
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

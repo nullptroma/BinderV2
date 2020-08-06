@@ -2,7 +2,7 @@
 using System.Runtime.InteropServices;
 using System.Windows.Input;
 
-namespace BinderV2.Hooks.Keyboard
+namespace Hooks.Keyboard
 {
     class KeyboardHook
     {

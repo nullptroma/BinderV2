@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 using System.Windows.Media;
 using System.Collections;
 
-namespace Whush.Demo.Styles.CustomizedWindow
+namespace CustomizedWindow
 {
     internal static class LocalExtensions
     {

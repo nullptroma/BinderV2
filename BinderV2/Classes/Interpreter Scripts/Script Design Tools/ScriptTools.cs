@@ -1,5 +1,4 @@
-﻿using BinderV2.Interpreter.Script.UserFunc.Exceptions;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection.Emit;
@@ -7,8 +6,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Annotations;
+using InterpreterScripts.UserFunc.Exceptions;
+using InterpreterScripts.Script.Exceptions;
 
-namespace BinderV2.Interpreter.Script
+namespace InterpreterScripts.Script
 {
     public static class ScriptTools
     {
@@ -36,7 +37,7 @@ namespace BinderV2.Interpreter.Script
         public static string ReplaceParams(string script, string[] oldPars, string[] newPars)//заменяет параметры всех функций в скрипте 
         {
             if (oldPars.Length != newPars.Length)
-                throw new WrongNumberOfParameters(newPars.Length, oldPars.Length);
+                throw new WrongNumberOfParametersException(newPars.Length, oldPars.Length);
             StringBuilder answer = new StringBuilder();
             int countMarks = 0;
             int countBrackets = 0;
@@ -59,7 +60,7 @@ namespace BinderV2.Interpreter.Script
                 {
                     i++;
                     if (i >= script.Length)
-                        throw new IncorrectScriptDesign("Неверный формат скрипта");
+                        throw new IncorrectScriptDesignException("Неверный формат скрипта");
 
                     if (script[i] == '\"')
                         countMarks++;
@@ -129,11 +130,11 @@ namespace BinderV2.Interpreter.Script
             GetParametersFromArrays(ref answer, sourceParams);
             return answer;
         }
+
         private static void GetParametersFromArrays(ref object[] outputParameters, object[] parameters)
         {
             foreach (object parameter in parameters)
             {
-
                 if (parameter is object[])
                 {
                     GetParametersFromArrays(ref outputParameters, (object[])parameter);

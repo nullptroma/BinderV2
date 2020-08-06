@@ -20,7 +20,7 @@
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition />
-                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="105"/>
             </Grid.ColumnDefinitions>
 
             <Grid Grid.Column="0">
@@ -44,9 +44,9 @@
                             </i:EventTrigger>
                         </i:Interaction.Triggers>
                     </TextBox>
-                    <Button x:Name="EditNameButton" Content="Ред." Width="35" Margin="4" Height="25" Click="EditNameButton_Click"/>
+                    <Button x:Name="EditNameButton" Content="Ред." Width="35" Margin="4" Height="27" Click="EditNameButton_Click"/>
                 </StackPanel>
-                <Button x:Name="TriggerEditButton" Content="Триггеры" Width="60" Margin="4" Height="25" Click="TriggerEditButton_Click" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+                <Button x:Name="TriggerEditButton" Content="Триггеры" Width="63" Margin="4,0,0,4" Height="27" Click="TriggerEditButton_Click" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Bottom" HorizontalContentAlignment="Center" VerticalContentAlignment="Top"/>
             </Grid>
             <Grid Grid.Column="1">
                 <Grid.RowDefinitions>
@@ -57,10 +57,10 @@
                     <ColumnDefinition></ColumnDefinition>
                 </Grid.ColumnDefinitions>
 
-                <StackPanel Orientation="Horizontal" >
-                    <Button  x:Name="EnableButton" Content="Неактивен" Margin="5" Height="20" Width="65" VerticalAlignment="Top" HorizontalAlignment="Right" Click="EnableButton_Click" Background="#FFCFCFCF"/>
+                <StackPanel Orientation="Horizontal">
+                    <Button  x:Name="EnableButton" Content="Неактивен" Margin="5,4,5,0" Height="27" Width="71" VerticalAlignment="Top" HorizontalAlignment="Right" Click="EnableButton_Click" Background="#FFCFCFCF"/>
                     <Button  x:Name="DeleteBindButton" Margin="0,5,10,5" Height="20" Width="20" VerticalAlignment="Top" HorizontalAlignment="Right" Command="{Binding RemoveBindCommand}" CommandParameter="{Binding ElementName=BindControl}">
-                        <Image Source="/BinderV2;component/Images/Крестик.png" />
+                        <Image Source="/BinderV2;component/Images/Cross.png" />
                     </Button>
                 </StackPanel>
                 <Label x:Name="Idlabel" Grid.Row="1" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="2,2,2,2"/>
