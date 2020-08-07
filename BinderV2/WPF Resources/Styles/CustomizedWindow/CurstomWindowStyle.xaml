@@ -34,6 +34,11 @@
         <Setter Property="WindowStyle" Value="None" />
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="ResizeMode" Value="CanResizeWithGrip" />
+        <Setter Property="WindowChrome.WindowChrome">
+            <Setter.Value>
+                <WindowChrome/>
+            </Setter.Value>
+        </Setter>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Window}">
@@ -52,14 +57,14 @@
                                 HorizontalAlignment="Stretch"
                                 Background="Transparent"
                                 VerticalAlignment="Stretch"
+                                
                                 >
                                 <Border
                                     x:Name="TitleBar"
                                     DockPanel.Dock="Top"
                                     Background="{DynamicResource TitleBarBackgroundBrush}"
                                     BorderThickness="0"
-                                    MouseLeftButtonDown="TitleBarMouseLeftButtonDown"
-                                    MouseMove="TitleBarMouseMove"
+                                    
                                     >
                                     <Grid Height="{DynamicResource HeightWindowTitle}">
                                         <Grid.ColumnDefinitions>
@@ -77,7 +82,6 @@
                                             Height="{DynamicResource WindowIconSize}"
                                             Width="{DynamicResource WindowIconSize}"
                                             Margin="{DynamicResource WindowIconMargin}"
-                                            MouseLeftButtonDown="IconMouseLeftButtonDown"
                                             />
                                         <TextBlock
                                             x:Name="Caption"
@@ -99,6 +103,7 @@
                                             Height="26"
                                             Style="{DynamicResource WindowStyleTitleBarButton}"
                                             Click="MinButtonClick"
+                                            WindowChrome.IsHitTestVisibleInChrome="True"
                                             >
                                             <Grid MaxHeight="9" MaxWidth="9">
                                                 <Path
@@ -118,6 +123,7 @@
                                             Height="26"
                                             Style="{DynamicResource WindowStyleTitleBarButton}"
                                             Click="MaxButtonClick"
+                                            WindowChrome.IsHitTestVisibleInChrome="True"
                                             >
                                             <Grid MaxHeight="9" MaxWidth="9">
                                                 <Path
@@ -138,6 +144,7 @@
                                             Height="26"
                                             Style="{DynamicResource WindowStyleTitleBarButton}"
                                             Click="CloseButtonClick"
+                                            WindowChrome.IsHitTestVisibleInChrome="True"
                                             >
                                             <Grid MaxHeight="9" MaxWidth="9">
                                                 <Path
@@ -155,46 +162,16 @@
                                 </Border>
                             </DockPanel>
                         </Border>
-                        <Line
-                            MouseDown="OnSizeNorth"
-                            x:Name="lnSizeNorth"
-                            Stroke="Transparent"   
-                            Cursor="SizeNS"
-                            X1="1" X2="{TemplateBinding ActualWidth}" Y1="1" Y2="1"
-                            StrokeThickness="3"
-                            />
-                        <Line
-                            MouseDown="OnSizeSouth"
-                            x:Name="lnSizeSouth"
-                            Stroke="Transparent"
-                            VerticalAlignment="Bottom" 
-                            Cursor="SizeNS"
-                            X1="1" X2="{TemplateBinding ActualWidth}" Y1="{TemplateBinding ActualHeight}" Y2="{TemplateBinding ActualHeight}"
-                            StrokeThickness="3"
-                            />
-                        <Line
-                            MouseDown="OnSizeWest"
-                            x:Name="lnSizeWest"
-                            Stroke="Transparent"
-                            Cursor="SizeWE"
-                            X1="1" X2="1" Y1="1" Y2="{TemplateBinding ActualHeight}"
-                            StrokeThickness="3"
-                            />
-                        <Line
-                            MouseDown="OnSizeEast"
-                            x:Name="lnSizeEast"
-                            Stroke="Transparent"
-                            HorizontalAlignment="Right" 
-                            Cursor="SizeWE"
-                            X1="{TemplateBinding ActualWidth}" X2="{TemplateBinding ActualWidth}" Y1="1" Y2="{TemplateBinding ActualHeight}"
-                            StrokeThickness="3"
-                            />
-                        <Rectangle MouseDown="OnSizeNorthWest" x:Name="rectSizeNorthWest" Cursor="SizeNWSE" Fill="Transparent" Width="5" Height="5" VerticalAlignment="Top" HorizontalAlignment="Left" />
-                        <Rectangle MouseDown="OnSizeNorthEast" x:Name="rectSizeNorthEast" Cursor="SizeNESW" Fill="Transparent" Width="5" Height="5" VerticalAlignment="Top" HorizontalAlignment="Right" />
-                        <Rectangle MouseDown="OnSizeSouthWest" x:Name="rectSizeSouthWest" Cursor="SizeNESW" Fill="Transparent" Width="5" Height="5" VerticalAlignment="Bottom" HorizontalAlignment="Left" />
-                        <Rectangle MouseDown="OnSizeSouthEast" x:Name="rectSizeSouthEast" Cursor="SizeNWSE" Fill="Transparent" Width="5" Height="5" VerticalAlignment="Bottom" HorizontalAlignment="Right" />
+                        
                     </Grid>
                     <ControlTemplate.Triggers>
+                        <Trigger Property="ResizeMode" Value="NoResize">
+                            <Setter TargetName="MaxButton" Property="IsEnabled" Value="False"/>
+                            <Setter TargetName="MinButton" Property="IsEnabled" Value="False"/>
+                        </Trigger>
+                        <Trigger Property="ResizeMode" Value="CanMinimize">
+                            <Setter TargetName="MaxButton" Property="IsEnabled" Value="False"/>
+                        </Trigger>
                         <Trigger Property="WindowState" Value="Maximized">
                             <Setter TargetName="PART_MaxButton_Path" Property="Data" Value="M0,3 H5 V8 H0 V3 M0,4 H5 M3,0 H8 V5 H7 M3,1 H8"/>
                         </Trigger>

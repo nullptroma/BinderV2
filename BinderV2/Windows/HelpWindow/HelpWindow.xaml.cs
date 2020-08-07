@@ -29,7 +29,8 @@ namespace BinderV2.Windows.Help
         private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
         {
             int count = FunctionsHelp.Items.Count;
-            double widthForOne = (this.Width / count)-(29.0/count);
+            Thickness windowBorder = (Thickness)App.Current.Resources["WindowBorderThickness"];
+            double widthForOne = (this.Width / count)-((windowBorder.Left + windowBorder.Right + 5)*1.0 /count);
             for (int i = 0; i < count; i++)
             {
                 var buf = ((Control)FunctionsHelp.Items[i]);

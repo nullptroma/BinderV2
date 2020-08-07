@@ -83,7 +83,7 @@ namespace BinderV2.Windows.Main
 
         private void Window_Closed(object sender, EventArgs e)
         {
-            BinderV2.Settings.ProgramSettings.runtimeSettings.MainWindowSize = this.DesiredSize;
+            BinderV2.Settings.ProgramSettings.runtimeSettings.MainWindowSize = new Size(Width, Height);
             
         }
     }

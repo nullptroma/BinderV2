@@ -30,6 +30,11 @@ namespace CustomizedWindow
             if (window != null) action(window);
         }
 
+        public static Window GetWindowFromTemplate(this object templateFrameworkElement)
+        {
+            return ((FrameworkElement)templateFrameworkElement).TemplatedParent as Window;
+        }
+
         public static IntPtr GetWindowHandle(this Window window)
         {
             WindowInteropHelper helper = new WindowInteropHelper(window);
@@ -40,40 +45,6 @@ namespace CustomizedWindow
     public partial class WindowStyle
     {
         #region sizing event handlers
-
-        void OnSizeSouth(object sender, MouseButtonEventArgs e) { OnSize(sender, SizingAction.South); }
-        void OnSizeNorth(object sender, MouseButtonEventArgs e) { OnSize(sender, SizingAction.North); }
-        void OnSizeEast(object sender, MouseButtonEventArgs e) { OnSize(sender, SizingAction.East); }
-        void OnSizeWest(object sender, MouseButtonEventArgs e) { OnSize(sender, SizingAction.West); }
-        void OnSizeNorthWest(object sender, MouseButtonEventArgs e) { OnSize(sender, SizingAction.NorthWest); }
-        void OnSizeNorthEast(object sender, MouseButtonEventArgs e) { OnSize(sender, SizingAction.NorthEast); }
-        void OnSizeSouthEast(object sender, MouseButtonEventArgs e) { OnSize(sender, SizingAction.SouthEast); }
-        void OnSizeSouthWest(object sender, MouseButtonEventArgs e) { OnSize(sender, SizingAction.SouthWest); }
-
-        void OnSize(object sender, SizingAction action)
-        {
-            if (Mouse.LeftButton == MouseButtonState.Pressed)
-            {
-                sender.ForWindowFromTemplate(w =>
-                    {
-                        if (w.WindowState == WindowState.Normal)
-                            DragSize(w.GetWindowHandle(), action);
-                    });
-            }
-        }
-
-        void IconMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            if (e.ClickCount > 1)
-            {
-                sender.ForWindowFromTemplate(w => w.Close());
-            }
-            else
-            {
-                sender.ForWindowFromTemplate(w =>
-                    SendMessage(w.GetWindowHandle(), WM_SYSCOMMAND, (IntPtr)SC_KEYMENU, (IntPtr)' '));
-            }
-        }
 
         void CloseButtonClick(object sender, RoutedEventArgs e)
         {
@@ -90,40 +61,6 @@ namespace CustomizedWindow
             sender.ForWindowFromTemplate(w => w.WindowState = (w.WindowState == WindowState.Maximized) ? WindowState.Normal : WindowState.Maximized);
         }
 
-        void TitleBarMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            if (e.ClickCount > 1)
-            {
-                MaxButtonClick(sender, e);
-            }
-            else if (e.LeftButton == MouseButtonState.Pressed)
-            {
-                sender.ForWindowFromTemplate(w => w.DragMove());
-            }
-        }
-
-        void TitleBarMouseMove(object sender, MouseEventArgs e)
-        {
-            if (e.LeftButton == MouseButtonState.Pressed)
-            {
-                sender.ForWindowFromTemplate(w =>
-                    {
-                        if (w.WindowState == WindowState.Maximized)
-                        {
-                            w.BeginInit();
-                            double adjustment = 40.0;
-                            var mouse1 = e.MouseDevice.GetPosition(w);
-                            var width1 = Math.Max(w.ActualWidth - 2 * adjustment, adjustment);
-                            w.WindowState = WindowState.Normal;
-                            var width2 = Math.Max(w.ActualWidth - 2 * adjustment, adjustment);
-                            w.Left = (mouse1.X - adjustment) * (1 - width2 / width1);
-                            w.Top = -7;
-                            w.EndInit();
-                            w.DragMove();
-                        }
-                    });
-            }
-        }
 
         #endregion
 

@@ -3,9 +3,9 @@
                     xmlns:sys="clr-namespace:System;assembly=mscorlib">
 
     <Thickness x:Key="WindowBorderThickness" Bottom="2" Left="2" Right="2" Top="2" />
-    <Thickness x:Key="WindowIconMargin" Left="4" Top="-7" Right="0" Bottom="7" />
+    <Thickness x:Key="WindowIconMargin" Left="1" Top="1" Right="1" Bottom="1" />
     <sys:Double x:Key="HeightWindowTitle">32</sys:Double>
-    <sys:Double x:Key="WindowIconSize">32</sys:Double>
+    <sys:Double x:Key="WindowIconSize">30</sys:Double>
     <sys:Double x:Key="TitleFontSize">12</sys:Double>
     <SolidColorBrush x:Key="WindowBackground" Color="#EFEFF2"/>
     <SolidColorBrush x:Key="WindowBorderBrush" Color="#747474"/>

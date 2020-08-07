@@ -8,9 +8,9 @@ namespace BinderV2.Settings.Visuals
     public class VisualsSettings
     {
         public Thickness WindowBorderThickness = new Thickness(2);
-        public Thickness WindowIconMargin = new Thickness(4,-7,0,7);
+        public Thickness WindowIconMargin = new Thickness(1,1,1,1);
         public double HeightWindowTitle = 32;
-        public double WindowIconSize = 32;
+        public double WindowIconSize = 30;
         public double TitleFontSize = 12;
         public Color WindowBackground = (Color)ColorConverter.ConvertFromString("#EFEFF2");
         public Color WindowBorderBrush = (Color)ColorConverter.ConvertFromString("#747474");
