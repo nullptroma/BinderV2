@@ -1,6 +1,6 @@
 ﻿using Microsoft.Win32;
 
-namespace BinderV2.Utilities
+namespace Utilities
 {
     public static class AutoRun
     {

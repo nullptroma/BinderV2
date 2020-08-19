@@ -4,8 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel;
-using InterpreterScripts.Funcslibrary;
+using InterpreterScripts.InterpretationScriptData.StandartFunctions;
 using System.Security.Cryptography;
+using InterpreterScripts;
+using System.Windows.Forms;
 
 namespace BinderV2.Windows.Help
 {
@@ -98,7 +100,7 @@ namespace BinderV2.Windows.Help
 
         private void SetHelpTexts()
         {
-            foreach (Function f in FuncsLibManager.GetLibrary())
+            foreach (Function f in Interpreter.GetAllLibrary())
             {
                 AddForType(f.Description, f.ReturnType);
                 AddToGroups(f);

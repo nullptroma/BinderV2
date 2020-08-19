@@ -8,11 +8,11 @@
         xmlns:BinderV2="clr-namespace:BinderV2" x:Class="BinderV2.Windows.Settings.SettingsWindow"
         mc:Ignorable="d"
         Style="{DynamicResource CurstomWindowStyle}"
-        Title="Настройки" Height="535" Width="285" Icon="/BinderV2;component/Images/Settings.png" MinHeight="511.167" MinWidth="285" ResizeMode="CanMinimize">
-    <Grid>
+        Title="Настройки"  Icon="/BinderV2;component/Images/Settings.png" ResizeMode="CanMinimize">
+    <Grid x:Name="GridWindow">
         <Grid.RowDefinitions>
-            <RowDefinition Height="110"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>

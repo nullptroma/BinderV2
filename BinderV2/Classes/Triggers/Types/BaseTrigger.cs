@@ -1,5 +1,6 @@
 ﻿using InterpreterScripts;
 using System;
+using System.Threading.Tasks;
 using Trigger.Events;
 
 namespace Trigger.Types
@@ -27,18 +28,16 @@ namespace Trigger.Types
         {
             this.Name = name;
             EnableAllTriggers = true;//при добавлелии любого триггера включаем всё
+            Script = "StartBindScript();";
         }
 
-        public void Invoke()
+        public Task Invoke()
         {
-            Interpreter.ExecuteScript("", null);
-            if (EnableTrigger && EnableAllTriggers)
-                Triggered?.Invoke(this, new TriggeredEventArgs(Name, Script));
-        }
-
-        private void InvokeEvent()
-        {
-
+            return Task.Run(()=> 
+            {
+                if (EnableTrigger && EnableAllTriggers)
+                    Triggered?.Invoke(this, new TriggeredEventArgs(Name, Script));
+            });
         }
 
         public override string ToString()

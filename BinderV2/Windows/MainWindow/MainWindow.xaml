@@ -45,6 +45,7 @@
                 <MenuItem Header="Настройки" Command="{Binding OpenSettingsWindowCommand}" BorderThickness="1,0,1,0" Height="20"/>
                 <MenuItem Header="Помощь" Command="{Binding OpenHelpWindowCommand}" BorderThickness="1,0,1,0"/>
                 <MenuItem Header="Запись" BorderThickness="1,0,2,0"/>
+                <MenuItem Header="Запись" BorderThickness="1,0,2,0" Click="MenuItem_Click"/>
 
             </Menu>
         </Border>

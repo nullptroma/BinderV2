@@ -11,6 +11,7 @@ using System.Windows.Input;
 using Trigger.Types;
 using System.Windows.Media;
 using BinderV2.Settings;
+using InterpreterScripts;
 
 namespace BinderV2.Windows.Main
 {
@@ -85,6 +86,11 @@ namespace BinderV2.Windows.Main
         {
             BinderV2.Settings.ProgramSettings.runtimeSettings.MainWindowSize = new Size(Width, Height);
             
+        }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            Test.RunTest();
         }
     }
 }

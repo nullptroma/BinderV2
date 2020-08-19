@@ -63,8 +63,9 @@
                     <TextBox x:Name="scriptTextBox"
                      Text="{Binding ScriptTextBoxText}"
                      Margin="6"
-                     Grid.Row="0"/>
-                    <Button Content="Сохранить" Grid.Row="1" Margin="6" Width="70" HorizontalAlignment="Right" Command="{Binding SaveTriggerScriptCommand}" CommandParameter="{Binding ElementName=scriptTextBox, Path=Text}"/>
+                     Grid.Row="0"
+                     AcceptsReturn="True" FontSize="16" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto"/>
+                    <Button Content="Сохранить" Grid.Row="1" Margin="0,0,6,8" Width="70" Height="27" HorizontalAlignment="Right" Command="{Binding SaveTriggerScriptCommand}" CommandParameter="{Binding ElementName=scriptTextBox, Path=Text}"/>
                 </Grid>
             </Border>
         </Grid>

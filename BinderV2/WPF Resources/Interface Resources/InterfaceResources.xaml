@@ -4,6 +4,7 @@
 
     <Thickness x:Key="WindowBorderThickness" Bottom="2" Left="2" Right="2" Top="2" />
     <Thickness x:Key="WindowIconMargin" Left="1" Top="1" Right="1" Bottom="1" />
+    <sys:Double x:Key="CaptionWindowHeight">34</sys:Double>
     <sys:Double x:Key="HeightWindowTitle">32</sys:Double>
     <sys:Double x:Key="WindowIconSize">30</sys:Double>
     <sys:Double x:Key="TitleFontSize">12</sys:Double>

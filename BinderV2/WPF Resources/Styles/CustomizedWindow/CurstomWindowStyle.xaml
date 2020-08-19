@@ -36,7 +36,7 @@
         <Setter Property="ResizeMode" Value="CanResizeWithGrip" />
         <Setter Property="WindowChrome.WindowChrome">
             <Setter.Value>
-                <WindowChrome/>
+                <WindowChrome CaptionHeight="{DynamicResource CaptionWindowHeight}"/>
             </Setter.Value>
         </Setter>
         <Setter Property="Template">
@@ -48,6 +48,7 @@
                     between maximized window and screen edges; smaller numbers show parts of
                     the window outside of the current monitor on multi-display computers.
                     -->
+                    
                     <Grid
                         Margin="7"
                         TextOptions.TextRenderingMode="ClearType"

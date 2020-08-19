@@ -6,6 +6,12 @@ using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using BindModel.Events;
 using BindModel.Exeptions;
+using InterpreterScripts;
+using InterpreterScripts.InterpretationScriptData;
+using InterpreterScripts.InterpretationScriptData.StandartFunctions;
+using System.Reflection;
+using System.Windows;
+using System.Threading.Tasks;
 
 namespace BindModel
 {
@@ -67,12 +73,16 @@ namespace BindModel
         {
             if (!Enable)//если выключено - выходим
                 return;
-            
-            //MessageBox.Show("Бинд сработал");
-            //MessageBox.Show("Скрипт бинда: " + Script + "\nСкрипт триггера: " + e.TriggerScript);
-            
-            //TODO
-            //Сделать выпонения скрипта триггера, а если встетится команда запуска скрипта бинда, запустить его.
+
+            InterpretationData data = new InterpretationData();
+            data.AdditionalFunctions.Add(new Function(new Func<object[], object>(StartBindScript), FuncType.Parameters, "StartBind"));
+            Interpreter.ExecuteScript(e.TriggerScript, data);
+        }
+
+        private object StartBindScript(params object[] ps)
+        {
+            Interpreter.ExecuteScript(Script);
+            return ps;
         }
 
         private void TriggersChanged(object sender, NotifyCollectionChangedEventArgs e)

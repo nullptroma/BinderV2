@@ -1,6 +1,6 @@
 ﻿using System;
 using BinderV2.Settings.Visuals;
-using BinderV2.Utilities;
+using Utilities;
 using Newtonsoft.Json;
 using System.IO;
 using System.Windows;
