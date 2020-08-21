@@ -12,6 +12,8 @@ namespace InterpreterScripts.SyntacticConstructions.Constructions
 {
     class ParallelRepeat : ISyntacticConstruction
     {
+        public string Description { get { return "parallelRepeat(quant)\n{\n  <скрипт>\n} - параллельно выполняет скрипт quant раз."; } }
+
         public Task<object> Execute(CommandModel cmd, InterpretationData data)
         {
             return Task.Run(new Func<object>(() =>

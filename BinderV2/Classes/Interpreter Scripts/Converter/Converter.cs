@@ -13,16 +13,13 @@ namespace InterpreterScripts.TypeConverter
         private static Func<string, object>[] converters = new Func<string, object>[] { StringConverter, IntConverter, DoubleConverter, BoolConverter };
         public static Task<object> ToSimpleType(string strValue)
         {
-            return Task.Run(()=> 
+            foreach (Func<string, object> converter in converters)
             {
-                foreach (Func<string, object> converter in converters)
-                {
-                    object result = converter(strValue);
-                    if (result != null)
-                        return result;
-                }
-                return null;
-            });
+                object result = converter(strValue);
+                if (result != null)
+                    return Task.FromResult<object>(result);
+            }
+            return Task.FromResult<object>(null);
         }
 
         public static bool CanConvertToSimpleType(string strValue)

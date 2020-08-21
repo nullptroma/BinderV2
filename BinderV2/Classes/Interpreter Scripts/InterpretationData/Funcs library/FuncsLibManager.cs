@@ -31,7 +31,7 @@ namespace InterpreterScripts.InterpretationScriptData.StandartFunctions
                 Function buffer;
                 try
                 {
-                    buffer = new Function(mi, funcType);
+                    buffer = new Function(mi, null, funcType);
                     AddToArray(ref library, buffer);
                 }
                 catch {  };

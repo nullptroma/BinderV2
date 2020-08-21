@@ -48,6 +48,7 @@ namespace BinderV2.Windows.Main
                 try
                 {
                     OpenBindsInPath(ProgramSettings.runtimeSettings.AutoLoadBindsPath);
+                    ProgramSettings.runtimeSettings.LastBindsPath = ProgramSettings.runtimeSettings.AutoLoadBindsPath;
                 }
                 catch 
                 { 

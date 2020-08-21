@@ -19,7 +19,7 @@ namespace InterpreterScripts.InterpretationScriptData.StandartFunctions.Library
     static public class BoolScripts
     {
         [Description("HideDesktopBackground() - скрывает фон рабочего стола. Возвращает результат операции.")]
-        public static bool HideDesktopBackground(params object[] ps)
+        public static object HideDesktopBackground(params object[] ps)
         {
             bool show = true;
             IntPtr hWin = Meths.FindWindow("Progman", null);
@@ -30,7 +30,7 @@ namespace InterpreterScripts.InterpretationScriptData.StandartFunctions.Library
         }
 
         [Description("ShowDesktopBackground() - показывает фон рабочего стола. Возвращает результат операции.")]
-        public static bool ShowDesktopBackground(params object[] ps)
+        public static object ShowDesktopBackground(params object[] ps)
         {
             bool show = false;
             IntPtr hWin = Meths.FindWindow("Progman", null);
@@ -43,7 +43,7 @@ namespace InterpreterScripts.InterpretationScriptData.StandartFunctions.Library
         
 
         [Description("MoreThan(object left, object right) - сравнивает 2 значения и возвращает true если left>right.")]
-        public static bool MoreThan(params object[] ps)
+        public static object MoreThan(params object[] ps)
         {
             if (ps.Length < 2)
             {
@@ -55,7 +55,7 @@ namespace InterpreterScripts.InterpretationScriptData.StandartFunctions.Library
         }
 
         [Description("LessThan(object left, object right) - сравнивает 2 значения и возвращает true если left<right.")]
-        public static bool LessThan(params object[] ps)
+        public static object LessThan(params object[] ps)
         {
             if (ps.Length < 2)
             {
@@ -67,7 +67,7 @@ namespace InterpreterScripts.InterpretationScriptData.StandartFunctions.Library
         }
 
         [Description("Equal(object left, object right) - сравнивает 2 значения и возвращает true если left==right.")]
-        public static bool Equal(params object[] ps)
+        public static object Equal(params object[] ps)
         {
             if (ps.Length < 2)
             {
@@ -82,7 +82,7 @@ namespace InterpreterScripts.InterpretationScriptData.StandartFunctions.Library
         }
 
         [Description("And(bool b1, bool b2....) - применяет операцию AND ко все параметрам и возвращает результат.")]
-        public static bool And(params object[] ps)
+        public static object And(params object[] ps)
         {
             if (ps.Length == 0)
             {
@@ -102,7 +102,7 @@ namespace InterpreterScripts.InterpretationScriptData.StandartFunctions.Library
         }
 
         [Description("Or(bool b1, bool b2....) - применяет операцию OR ко все параметрам и возвращает результат.")]
-        public static bool Or(params object[] ps)
+        public static object Or(params object[] ps)
         {
             if (ps.Length == 0)
             {
@@ -122,7 +122,7 @@ namespace InterpreterScripts.InterpretationScriptData.StandartFunctions.Library
         }
 
         [Description("Not(bool b) - возвращает инвертированное значение b.")]
-        public static bool Not(params object[] ps)
+        public static object Not(params object[] ps)
         {
             try
             {

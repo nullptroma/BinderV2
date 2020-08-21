@@ -115,6 +115,7 @@
     <Compile Include="Classes\Interpreter Scripts\InterpretationData\User Func\UserFunc.cs" />
     <Compile Include="Classes\Interpreter Scripts\InterpretationData\Variable\Variables.cs" />
     <Compile Include="Classes\Interpreter Scripts\ScriptCommand\CommandModel.cs" />
+    <Compile Include="Classes\Interpreter Scripts\Syntactic Constructs\Constructs\CodeBlock.cs" />
     <Compile Include="Classes\Interpreter Scripts\Syntactic Constructs\Constructs\Operators\Break.cs" />
     <Compile Include="Classes\Interpreter Scripts\Syntactic Constructs\ConstructionsExceptions.cs" />
     <Compile Include="Classes\Interpreter Scripts\Syntactic Constructs\Constructs\FunctionDefinition.cs" />

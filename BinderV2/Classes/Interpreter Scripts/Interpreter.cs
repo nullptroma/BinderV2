@@ -74,7 +74,7 @@ namespace InterpreterScripts
             }
             else if (Library.Find(Func => Func.Name == cmd.KeyWord) != null)//ищем встроенную функцию
             {
-                object[] parameters = GetParametersFromStringArray(cmd.GetParameters(), data);
+                object[] parameters =  GetParametersFromStringArray(cmd.GetParameters(), data);
                 commandTask = Library.Find(Func => Func.Name == cmd.KeyWord).GetResult(parameters);
             }
             else//если ничего не удалось, возвращаем входную команду, как строку

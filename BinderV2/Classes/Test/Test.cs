@@ -25,50 +25,23 @@ namespace BinderV2
     {
         public static void RunTest()
         {
-            string script = File.ReadAllText(Environment.GetFolderPath(Environment.SpecialFolder.Desktop)+ @"\Новый текстовый документ2.txt") ;
-            int count = 0;
-            Stopwatch sw = new Stopwatch();
-            sw.Start();
-            while (sw.ElapsedMilliseconds < 1000)
+            Task.Run(()=> 
             {
-                Interpreter.ExecuteScript(script);
-                count++;
-            }
-            sw.Stop();
-            MessageBox.Show("Результат: " + count, "Тест скорости за "+ sw.ElapsedMilliseconds);
+                string script = File.ReadAllText(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"\Новый текстовый документ2.txt");
+                int count = 0;
+                Stopwatch sw = new Stopwatch();
+                sw.Start();
+                while (sw.ElapsedMilliseconds < 1000)
+                {
+                    Interpreter.ExecuteScript(script);
+                    count++;
+                }
+                sw.Stop();
+                MessageBox.Show("Результат: " + count, "Тест скорости за " + sw.ElapsedMilliseconds);
+            });
+
+            
         }
 
-        private static long CountTicks(Action action)
-        {
-            Stopwatch sw = new Stopwatch();
-            sw.Start();
-            action();
-            sw.Stop();
-            return sw.ElapsedTicks;
-        }
-
-        private static object TestAdditional(params object[] strs)
-        {
-            MessageBox.Show(string.Join("", strs), "Успех");
-            return strs;
-        }
-
-        private static List<Type> expectedTypes = new List<Type>() { typeof(int), typeof(double), typeof(bool) };
-        private static object GetSpecificTypeValue(string strValue)
-        {
-            foreach (var t in expectedTypes)
-            {
-                var converter = TypeDescriptor.GetConverter(t);
-
-                if (!(converter.CanConvertFrom(typeof(string))
-                    && converter.IsValid(strValue))) continue;
-
-                var answer = converter.ConvertFromInvariantString(strValue);
-
-                if (answer != null)
-                    return answer;
-            }
-            return null;
-        }
     }
 }

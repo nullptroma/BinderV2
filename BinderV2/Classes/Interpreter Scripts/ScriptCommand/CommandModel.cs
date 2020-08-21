@@ -17,27 +17,29 @@ namespace InterpreterScripts.ScriptCommand
 
         public CommandModel(string cmd)
         {
-            if (cmd.StartsWith("async "))
+            if (cmd.StartsWith("async"))
             {
                 IsAsync = true;
                 cmd = cmd.Remove(0, "async".Length).Trim();
             }
             Command = cmd;//берём команду, когда в ней нет async
-            try { ParseFuncData(cmd); }//пытаемся получить данные для функции
-            catch //в случае неудачи пихаем заглушки
+            if (!ParseFuncData(cmd))
             {
                 int spaceIndex = Command.IndexOf(' ');
-                KeyWord = Command.Substring(0, spaceIndex!=-1 ? spaceIndex : Command.Length).Trim();
+                KeyWord = Command.Substring(0, spaceIndex != -1 ? spaceIndex : Command.Length).Trim();
                 parameters = new string[0];
             }
         }
 
-        private void ParseFuncData(string cmd)
+        private bool ParseFuncData(string cmd)
         {
-            KeyWord = cmd.Substring(0, cmd.IndexOf('('));//берём ключевое слово: всё до параметров
+            int bracketIndex = cmd.IndexOf('(');
+            if (bracketIndex == -1)
+                return false;
+            KeyWord = cmd.Substring(0, bracketIndex);//берём ключевое слово: всё до параметров
             if (KeyWord.Contains(' '))//если ключевое слово состоит более чем из 1 слова
-                throw new FormatException();
-            int startParsIndex = cmd.IndexOf('(') + 1;//Начинаем с символа после первой скобки
+                return false;
+            int startParsIndex = bracketIndex + 1;//Начинаем с символа после первой скобки
             int lastParsIndex = startParsIndex;
             int bracketsCount = 1;
             int marksCount = 0;
@@ -56,11 +58,12 @@ namespace InterpreterScripts.ScriptCommand
                     break;
             }
             parameters = ScriptTools.GetParameters(cmd.Substring(startParsIndex, lastParsIndex - startParsIndex));
+            return true;
         }
 
         public string[] GetParameters()
         {
-            return (string[])parameters.Clone();        
+            return parameters;        
         }
     }
 }

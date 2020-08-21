@@ -13,6 +13,8 @@ namespace InterpreterScripts.SyntacticConstructions.Constructions
 {
     class SetVarNamespaced : ISyntacticConstruction
     {
+        public string Description { get { return "Namespace.Name = value - позволяет задать значение переменной Name в пространстве имён Namespace."; } }
+
         public Task<object> Execute(CommandModel cmd, InterpretationData data)
         {
             return Task.Run(new Func<object>(() =>

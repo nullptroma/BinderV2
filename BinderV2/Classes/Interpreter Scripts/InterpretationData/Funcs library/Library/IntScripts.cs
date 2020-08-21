@@ -18,7 +18,7 @@ namespace InterpreterScripts.InterpretationScriptData.StandartFunctions.Library
     static public class IntScripts
     {
         [Description("SumInt(int n1, int n2...) - возвращает результат сложения всех переданных аргументов.")]
-        public static int SumInt(params object[] ps)
+        public static object SumInt(params object[] ps)
         {
             try
             {
@@ -29,7 +29,7 @@ namespace InterpreterScripts.InterpretationScriptData.StandartFunctions.Library
         }
 
         [Description("MinusInt(int num, int n1...) - возвращает результат вычитания всех чисел начиная с n1 из num.")]
-        public static int MinusInt(params object[] ps)
+        public static object MinusInt(params object[] ps)
         {
             try
             {
@@ -43,7 +43,7 @@ namespace InterpreterScripts.InterpretationScriptData.StandartFunctions.Library
         }
 
         [Description("MultyplyInt(int num1, int num2) - возвращает результат умножения чисел num1 и num2.")]
-        public static int MultyplyInt(params object[] ps)
+        public static object MultyplyInt(params object[] ps)
         {
             try
             {
@@ -54,7 +54,7 @@ namespace InterpreterScripts.InterpretationScriptData.StandartFunctions.Library
         }
 
         [Description("DivInt(int num1, int num2) - возвращает результат деления чисела num1 на num2.")]
-        public static int DivInt(params object[] ps)
+        public static object DivInt(params object[] ps)
         {
             try
             {
@@ -65,7 +65,7 @@ namespace InterpreterScripts.InterpretationScriptData.StandartFunctions.Library
         }
 
         [Description("ConvertFromStringToInt(string str) - пытается конвернитровать string в int.")]
-        public static int ConvertFromStringToInt(params object[] ps)
+        public static object ConvertFromStringToInt(params object[] ps)
         {
             try
             {
@@ -76,7 +76,7 @@ namespace InterpreterScripts.InterpretationScriptData.StandartFunctions.Library
         }
 
         [Description("Compare(object l, object r) - производит компарирование со значениями l и r.")]
-        public static int Compare(params object[] ps)
+        public static object Compare(params object[] ps)
         {
             if (ps.Length < 2)
             {
@@ -87,7 +87,7 @@ namespace InterpreterScripts.InterpretationScriptData.StandartFunctions.Library
         }
 
         [Description("GetProcessID(string name) - возвращает ID процесса с именем name. Если процесс не найден вернёт -1.")]
-        public static int GetProcessID(params object[] ps)
+        public static object GetProcessID(params object[] ps)
         {
             if (ps.Length == 0)
             {
@@ -98,7 +98,7 @@ namespace InterpreterScripts.InterpretationScriptData.StandartFunctions.Library
         }
 
         [Description("GetProcessIDForgedWindow() - возвращает ID процесса активного окна.")]
-        public static int GetProcessIDForgedWindow(params object[] ps)
+        public static object GetProcessIDForgedWindow(params object[] ps)
         {
             int id = -1;
             Meths.GetWindowThreadProcessId(Meths.GetForegroundWindow(), ref id);
@@ -106,13 +106,13 @@ namespace InterpreterScripts.InterpretationScriptData.StandartFunctions.Library
         }
 
         [Description("GetCursorPosX() - возвращает позицию курсора по координате X.")]
-        public static int GetCursorPosX(params object[] ps)
+        public static object GetCursorPosX(params object[] ps)
         {
             return Cursor.Position.X;
         }
 
         [Description("GetCursorPosY() - возвращает позицию курсора по координате Y.")]
-        public static int GetCursorPosY(params object[] ps)
+        public static object GetCursorPosY(params object[] ps)
         {
             return Cursor.Position.Y;
         }

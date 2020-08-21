@@ -31,6 +31,7 @@ namespace InterpreterScripts.SyntacticConstructions
                 new SetVarNamespaced(),
                 new GetVarNamespaced(),
                 new CheckVarNamespaced(),
+                new CodeBlock(),
                 new ParallelRepeat()
             };
         }

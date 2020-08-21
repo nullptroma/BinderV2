@@ -8,6 +8,7 @@ using InterpreterScripts.InterpretationScriptData.StandartFunctions;
 using System.Security.Cryptography;
 using InterpreterScripts;
 using System.Windows.Forms;
+using InterpreterScripts.SyntacticConstructions;
 
 namespace BinderV2.Windows.Help
 {
@@ -92,6 +93,17 @@ namespace BinderV2.Windows.Help
             }
         }
 
+        private string сonstructionsHelp = "";
+        public string ConstructionsHelp
+        {
+            get { return сonstructionsHelp; }
+            set
+            {
+                сonstructionsHelp = value;
+                OnPropertyChanged("ConstructionsHelp");
+            }
+        }
+
 
         public HelpViewModel()
         {
@@ -105,6 +117,8 @@ namespace BinderV2.Windows.Help
                 AddForType(f.Description, f.ReturnType);
                 AddToGroups(f);
             }
+
+            AddToConstructions();
 
             foreach (string key in groups.Keys)
             {
@@ -165,6 +179,16 @@ namespace BinderV2.Windows.Help
                         OtherFuncsHelp += desc;
                         break;
                     }
+            }
+        }
+
+        private void AddToConstructions()
+        {
+            ConstructionsHelp = "После каждой команды нужно писать ;.\nЧтобы сделать команду асинхронной нужно добавить async перед ней. Конструкции так же считаются командами. Нераспознанные команды превращаются в строку.\nСписок всех доступных конструкций для интерпретатора.\n";
+            int count = 0;
+            foreach (ISyntacticConstruction sc in SyntacticConstructionsManager.GetSyntacticConstructs())
+            {
+                ConstructionsHelp += count++ + ") " +  sc.Description + "\n\n";
             }
         }
 

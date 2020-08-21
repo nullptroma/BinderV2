@@ -75,11 +75,11 @@ namespace BindModel
                 return;
 
             InterpretationData data = new InterpretationData();
-            data.AdditionalFunctions.Add(new Function(new Func<object[], object>(StartBindScript), FuncType.Parameters, "StartBind"));
+            data.AdditionalFunctions.Add(new Function(new Func<object[], object>(StartBind), FuncType.Parameters));
             Interpreter.ExecuteScript(e.TriggerScript, data);
         }
 
-        private object StartBindScript(params object[] ps)
+        private object StartBind(params object[] ps)
         {
             Interpreter.ExecuteScript(Script);
             return ps;

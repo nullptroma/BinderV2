@@ -19,7 +19,7 @@ namespace InterpreterScripts.InterpretationScriptData.StandartFunctions.Library
     static public class StringScripts
     {
         [Description("ToString(object o1, object o2...) - возвращает строковое представление объекта(ов)(можно использовать для объединения строк).")]
-        public static string ToString(params object[] ps)
+        public static object ToString(params object[] ps)
         {
             if(ps.Length!=0)
                 return string.Join("", ps);
@@ -28,13 +28,13 @@ namespace InterpreterScripts.InterpretationScriptData.StandartFunctions.Library
 
 
         [Description("GetDesktopPath() - возвращает путь до рабочего стола.")]
-        public static string GetDesktopPath(params object[] ps)
+        public static object GetDesktopPath(params object[] ps)
         {
             return Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
         }
 
         [Description("ReplaceString(string str, string subStr, string replace) - возвращает строку с заменёнными subStr на replace.")]
-        public static string ReplaceString(params object[] ps)
+        public static object ReplaceString(params object[] ps)
         {
             try
             {
@@ -45,14 +45,14 @@ namespace InterpreterScripts.InterpretationScriptData.StandartFunctions.Library
 
 
         [Description("GetUserName() - возвращает имя текущего пользователя.")]
-        public static string GetUserName(params object[] ps)
+        public static object GetUserName(params object[] ps)
         {
             return Environment.UserName;
         }
 
 
         [Description("GetKeysHelp() - возвращает помощь по кнопкам.")]
-        public static string GetKeysHelp(params object[] ps)
+        public static object GetKeysHelp(params object[] ps)
         {
             string ans = "";
             foreach (var k in Enum.GetValues(typeof(Keys)))
@@ -63,14 +63,14 @@ namespace InterpreterScripts.InterpretationScriptData.StandartFunctions.Library
         }
 
         [Description("GetSendKeysHelp() - возвращает помощь для скрипта SendKeysWait.")]
-        public static string GetSendKeysHelp(params object[] ps)
+        public static object GetSendKeysHelp(params object[] ps)
         {
             return "SendKeysWait() посылает активному окну последовательность клавиш. Чтобы отправить обычный текст просто запишите его так: SendKeysWait(\"Hello\"). Чтобы имитировать нажатие например CTRL+C: SendKeysWait(^{C}).";
         }
 
         
         [Description("GetMouseEventsHelp() - возвращает помощь для скрипта MouseEvent.")]
-        public static string GetMouseEventsHelp(params object[] ps)
+        public static object GetMouseEventsHelp(params object[] ps)
         {
             string ans = "";
             foreach (var k in Enum.GetValues(typeof(Meths.MouseEventFlags)))
@@ -81,7 +81,7 @@ namespace InterpreterScripts.InterpretationScriptData.StandartFunctions.Library
         }
 
         [Description("GetClipboardText() - возвращает текст из буфера обмена Windows.")]
-        public static string GetClipboardText(params object[] ps)
+        public static object GetClipboardText(params object[] ps)
         {
             return Clipboard.GetText();
         }
@@ -89,7 +89,7 @@ namespace InterpreterScripts.InterpretationScriptData.StandartFunctions.Library
 
 
         [Description("LayoutSimbols(string text) - возвращает текст с изменённой раскладкой русский-английский по QWERTY.")]
-        public static string LayoutSimbols(params object[] ps)
+        public static object LayoutSimbols(params object[] ps)
         {
             if (ps.Length == 0)
             {

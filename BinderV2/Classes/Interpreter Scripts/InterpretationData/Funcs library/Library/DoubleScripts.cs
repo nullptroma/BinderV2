@@ -18,7 +18,7 @@ namespace InterpreterScripts.InterpretationScriptData.StandartFunctions.Library
     static public class DoubleScripts
     {
         [Description("SumDouble(double n1, double n2...) - возвращает результат сложения всех переданных аргументов.")]
-        public static double SumDouble(params object[] ps)
+        public static object SumDouble(params object[] ps)
         {
             try
             {
@@ -32,7 +32,7 @@ namespace InterpreterScripts.InterpretationScriptData.StandartFunctions.Library
         }
 
         [Description("MinusDouble(double num, double n1...) - возвращает результат вычитания всех чисел начиная с n1 из num.")]
-        public static double MinusDouble(params object[] ps)
+        public static object MinusDouble(params object[] ps)
         {
             try
             {
@@ -46,7 +46,7 @@ namespace InterpreterScripts.InterpretationScriptData.StandartFunctions.Library
         }
 
         [Description("MultyplyDouble(double num1, double num2) - возвращает результат умножения чисел num1 и num2.")]
-        public static double MultyplyDouble(params object[] ps)
+        public static object MultyplyDouble(params object[] ps)
         {
             try
             {
@@ -57,7 +57,7 @@ namespace InterpreterScripts.InterpretationScriptData.StandartFunctions.Library
         }
 
         [Description("DivDouble(double num1, double num2) - возвращает результат деления чисела num1 на num2.")]
-        public static double DivDouble(params object[] ps)
+        public static object DivDouble(params object[] ps)
         {
             try
             {
@@ -68,7 +68,7 @@ namespace InterpreterScripts.InterpretationScriptData.StandartFunctions.Library
         }
 
         [Description("ConvertStringToDouble(string str) - пытается конвернитровать string в double.")]
-        public static double ConvertStringToDouble(params object[] ps)
+        public static object ConvertStringToDouble(params object[] ps)
         {
             try
             {

@@ -10,6 +10,7 @@ using InterpreterScripts.Exceptions;
 using InterpreterScripts.Script;
 using InterpreterScripts.FuncAttributes;
 using System.ComponentModel;
+using System.CodeDom;
 
 namespace InterpreterScripts.InterpretationScriptData.StandartFunctions
 {
@@ -19,17 +20,16 @@ namespace InterpreterScripts.InterpretationScriptData.StandartFunctions
         public string Description { get; private set; }
         public string GroupName { get; private set; }
         public FuncType ReturnType { get; private set; }
-        private MethodInfo meth;
-        private object methodTarget = null;
+        private Func<object[], object> meth;
 
-        public Function(MethodInfo mi, FuncType returnType)
+        public Function(MethodInfo mi, object target, FuncType returnType)
         {
             if (mi == null)
                 throw new ArgumentNullException();
-            if (!mi.IsStatic)
+            if (!mi.IsStatic && target == null)
                 throw new MethodIsNotStaticException();
-
-            meth = mi;
+            
+            meth = (Func<object[], object>)mi.CreateDelegate(typeof(Func<object[], object>), target);
             Name = mi.Name;
             ReturnType = returnType;
             
@@ -42,25 +42,15 @@ namespace InterpreterScripts.InterpretationScriptData.StandartFunctions
                 GroupName = "None";
         }
 
-        public Function(Delegate func, FuncType returnType, string name, string description = "", string group = "")
-        {
-            meth = func.Method;
-            methodTarget = func.Target;
-            ReturnType = returnType;
-            Name = name;
-            Description = description;
-            GroupName = group;
-        }
+        public Function(Delegate func, FuncType returnType) : this(func.Method, func.Target, returnType)
+        {  }
 
-        public Function(Delegate func, FuncType returnType) : this(func.Method, returnType)
-        {
-        }
 
         public Task<object> GetResult(params object[] parameters)
         {
             return Task.Run(() =>
             {
-                return meth.Invoke(methodTarget, new object[] { ScriptTools.GetParametersFromArray(parameters) });
+                return meth.Invoke(ScriptTools.GetParametersFromArray(parameters));
             });
         }
 
@@ -69,7 +59,7 @@ namespace InterpreterScripts.InterpretationScriptData.StandartFunctions
             if(obj is Function)
             {
                 Function f2 = (Function)obj;
-                return Name == f2.Name && meth == f2.meth && methodTarget == f2.methodTarget;
+                return Name == f2.Name && meth == f2.meth;
             }
             else
                 return false;

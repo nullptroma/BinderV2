@@ -13,6 +13,8 @@ namespace InterpreterScripts.SyntacticConstructions.Constructions
 {
     class Return : ISyntacticConstruction
     {
+        public string Description { get { return "return value - возвращает значение value из функции."; } }
+
         public Task<object> Execute(CommandModel cmd, InterpretationData data)
         {
             return Task.Run(new Func<object>(() => throw new ReturnException(Interpreter.ExecuteCommand(cmd.Command.Remove(0, "return".Length).Trim()))));

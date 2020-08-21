@@ -65,6 +65,9 @@
         <TabItem Header="By groups">
             <TextBox Text="{Binding FuncsHelpByGroups}"/>
         </TabItem>
+        <TabItem Header="Constructions">
+            <TextBox Text="{Binding ConstructionsHelp}"/>
+        </TabItem>
     </TabControl>
 
 </Window>

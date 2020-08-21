@@ -13,6 +13,8 @@ namespace InterpreterScripts.SyntacticConstructions.Constructions
 {
     class IfThenConstruction : ISyntacticConstruction
     {
+        public string Description { get { return "if(<условие1>)\n{\n  <скрипт1>\n}\nelse if(<условие2>)\n{\n  <скрипт1>\n}\nelse\n{\n  <скрипт3>\n} - конструкция if-else. Может иметь любую конфигурацию. После последнего блока кода нужно ставить ;."; } }
+
         public Task<object> Execute(CommandModel cmd, InterpretationData data)
         {
             return Task.Run(new Func<object>(()=> {
