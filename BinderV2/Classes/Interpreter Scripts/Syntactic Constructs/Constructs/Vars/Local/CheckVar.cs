@@ -19,7 +19,7 @@ namespace InterpreterScripts.SyntacticConstructions.Constructions
             {
                 var pars = cmd.GetParameters();
                 if (pars.Length == 1)
-                    return data.Vars.HasVar(Interpreter.ExecuteCommand(pars[0], data).ToString());
+                    return data.Vars.HasVar(Interpreter.ExecuteCommand(pars[0].Trim(), data).ToString());
                 return false;
             }));
         }

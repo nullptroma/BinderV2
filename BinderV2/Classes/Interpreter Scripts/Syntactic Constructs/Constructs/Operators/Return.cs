@@ -17,7 +17,7 @@ namespace InterpreterScripts.SyntacticConstructions.Constructions
 
         public Task<object> Execute(CommandModel cmd, InterpretationData data)
         {
-            return Task.Run(new Func<object>(() => throw new ReturnException(Interpreter.ExecuteCommand(cmd.Command.Remove(0, "return".Length).Trim()))));
+            return Task.Run(new Func<object>(() => throw new ReturnException(Interpreter.ExecuteCommand(cmd.Command.Remove(0, "return".Length).Trim(), data))));
         }
 
         public bool IsValidConstruction(CommandModel cmd, InterpretationData data)

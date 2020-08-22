@@ -34,6 +34,7 @@ namespace InterpreterScripts
         }
         public static void ExecuteScript(string script, InterpretationData data)
         {
+
             string[] commands = ScriptTools.GetCommands(script);
             foreach (var cmd in commands)
                 ExecuteCommand(cmd, data);

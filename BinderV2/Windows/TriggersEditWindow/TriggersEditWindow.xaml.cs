@@ -15,7 +15,7 @@ namespace BinderV2.Windows.TriggersEdit
         {
             InitializeComponent();
             DataContext = new TriggerEditViewModel(bind);//В TriggerEditViewModel мне нужны и bind, и его закрытое поле triggers
-            Title = bind.Name + "     Id " + bind.Id;
+            Title = "Редактирование " + bind.Name;
         }
        
 

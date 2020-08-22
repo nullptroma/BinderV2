@@ -20,6 +20,10 @@ using Microsoft.Win32;
 using System.Net.Mail;
 using BinderV2.Settings;
 using System.Windows.Input;
+using Utilities;
+using InterpreterScripts;
+using InterpreterScripts.InterpretationScriptData.StandartFunctions;
+using InterpreterScripts.FuncAttributes;
 
 namespace BinderV2.Windows.Main
 {
@@ -41,37 +45,65 @@ namespace BinderV2.Windows.Main
             }
         }
 
+        [Description("EnableBind(string name1, string name2...) - включает бинды с переданными именами.")]
+        [FuncGroup("BindControl")]
+        public object[] EnableBindsByNames(params object[] ps)
+        {
+            foreach (var bindName in ps)
+            {
+                var bindsWithName = bindsControls.Where(bc => bc.GetBind().Name == bindName.ToString());
+                if (bindsWithName.Count() != 0)
+                    foreach (IBindElement be in bindsWithName)
+                        be.GetBind().Enable = true;
+            }
+
+            return ps;
+        }
+
+        [Description("DisableBindsByNames(string name1, string name2...) - выключает бинды с переданными именами.")]
+        [FuncGroup("BindControl")]
+        public object[] DisableBindsByNames(params object[] ps)
+        {
+            foreach (var bindName in ps)
+            {
+                var bindsWithName = bindsControls.Where(bc => bc.GetBind().Name == bindName.ToString());
+                if (bindsWithName.Count() != 0)
+                    foreach (IBindElement be in bindsWithName)
+                        be.GetBind().Enable = false;
+            }
+
+            return ps;
+        }
+
         public MainViewModel()
         {
             bindsControls = new ObservableCollection<IBindElement>();
+            CheckAutoLoadAndLoad();
+            AddFuncsToLib();
+        }
+
+        private void CheckAutoLoadAndLoad()
+        {
             if (ProgramSettings.runtimeSettings.AutoLoadBinds)
+            {
                 try
                 {
                     OpenBindsInPath(ProgramSettings.runtimeSettings.AutoLoadBindsPath);
                     ProgramSettings.runtimeSettings.LastBindsPath = ProgramSettings.runtimeSettings.AutoLoadBindsPath;
                 }
-                catch 
-                { 
+                catch
+                {
                     MessageBox.Show("Не удаётся открыть файл " + ProgramSettings.runtimeSettings.AutoLoadBindsPath, "Ошибка");
-                    ProgramSettings.runtimeSettings.AutoLoadBinds = false; 
-                    ProgramSettings.runtimeSettings.AutoLoadBindsPath = ""; 
+                    ProgramSettings.runtimeSettings.AutoLoadBinds = false;
+                    ProgramSettings.runtimeSettings.AutoLoadBindsPath = "";
                 }
+            }
         }
 
-        private RelayCommand openHelpWindowCommand;
-        public RelayCommand OpenHelpWindowCommand
+        private void AddFuncsToLib()
         {
-            get
-            {
-                return openHelpWindowCommand ??
-                  (openHelpWindowCommand = new RelayCommand(obj =>
-                  {
-                      if (HelpWindow != null)
-                          HelpWindow.Close();
-                      HelpWindow = new HelpWindow();
-                      HelpWindow.Show();
-                  }));
-            }
+            Interpreter.AddToLibrary(new Function(new Func<object[], object>(EnableBindsByNames), FuncType.Parameters));
+            Interpreter.AddToLibrary(new Function(new Func<object[], object>(DisableBindsByNames), FuncType.Parameters));
         }
 
         private RelayCommand saveBindsInNewPathCommand;
@@ -166,20 +198,6 @@ namespace BinderV2.Windows.Main
             }
         }
 
-        private RelayCommand createBindCommand;
-        public RelayCommand CreateBindCommand
-        {
-            get
-            {
-                return createBindCommand ??
-                  (createBindCommand = new RelayCommand(obj =>
-                  {
-                      bindsControls.Add((IBindElement)new BindElement());
-                      OnPropertyChanged("bindsControls");
-                  }));
-            }
-        }
-
         private RelayCommand selectBindCommand;
         public RelayCommand SelectBindCommand
         {
@@ -223,6 +241,20 @@ namespace BinderV2.Windows.Main
             }
         }
 
+        private RelayCommand createBindCommand;
+        public RelayCommand CreateBindCommand
+        {
+            get
+            {
+                return createBindCommand ??
+                  (createBindCommand = new RelayCommand(obj =>
+                  {
+                      bindsControls.Add((IBindElement)new BindElement());
+                      OnPropertyChanged("bindsControls");
+                  }));
+            }
+        }
+
         private RelayCommand removeBindCommand;
         public RelayCommand RemoveBindCommand
         {
@@ -256,6 +288,22 @@ namespace BinderV2.Windows.Main
                           SettingsWindow.Close();
                       SettingsWindow = new SettingsWindow();
                       SettingsWindow.Show();
+                  }));
+            }
+        }
+
+        private RelayCommand openHelpWindowCommand;
+        public RelayCommand OpenHelpWindowCommand
+        {
+            get
+            {
+                return openHelpWindowCommand ??
+                  (openHelpWindowCommand = new RelayCommand(obj =>
+                  {
+                      if (HelpWindow != null)
+                          HelpWindow.Close();
+                      HelpWindow = new HelpWindow();
+                      HelpWindow.Show();
                   }));
             }
         }

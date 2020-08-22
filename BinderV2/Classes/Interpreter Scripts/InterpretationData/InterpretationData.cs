@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using InterpreterScripts.InterpretationScriptData.StandartFunctions;
 using InterpreterScripts.InterpretationScriptData.CustomFunctions;
 using InterpreterScripts.InterpretationScriptData.Vars;
+using System.Net.Http.Headers;
 
 namespace InterpreterScripts.InterpretationScriptData
 {

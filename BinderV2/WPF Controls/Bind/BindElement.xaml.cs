@@ -28,7 +28,6 @@ namespace BinderV2.WpfControls.BindControl
             InitializeComponent();
             bind = b;
             labelName.Content = bind.Name;
-            Idlabel.Content = "Id=" + bind.Id;
             bind.EnableChanged += (sender, e) => 
             {
                 UpdateVisualization();

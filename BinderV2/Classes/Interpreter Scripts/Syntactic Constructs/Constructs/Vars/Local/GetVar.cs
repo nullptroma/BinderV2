@@ -23,7 +23,7 @@ namespace InterpreterScripts.SyntacticConstructions.Constructions
 
         public bool IsValidConstruction(CommandModel cmd, InterpretationData data)
         {
-            return data.Vars[cmd.Command] !=null;
+            return data.Vars.HasVar(cmd.Command.Trim());
         }
     }
 }

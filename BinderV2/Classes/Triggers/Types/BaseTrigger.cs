@@ -28,7 +28,7 @@ namespace Trigger.Types
         {
             this.Name = name;
             EnableAllTriggers = true;//при добавлелии любого триггера включаем всё
-            Script = "StartBindScript();";
+            Script = "StartBind();";
         }
 
         public Task Invoke()

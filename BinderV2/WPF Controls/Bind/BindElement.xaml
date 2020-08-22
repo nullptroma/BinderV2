@@ -34,16 +34,7 @@
 
                 <StackPanel Grid.Row="0" Orientation="Horizontal" Height="35" VerticalAlignment="Top" HorizontalAlignment="Left">
                     <Label x:Name="labelName" Content="Bind" Margin="4" Height="25"/>
-                    <TextBox x:Name="textBoxName" TextWrapping="Wrap" Text="{Binding ElementName=labelName, Path=Content}" Margin="4" Height="25" Visibility="Collapsed" KeyDown="textBoxName_KeyDown" MaxLength="16">
-                        <i:Interaction.Triggers>
-                            <i:EventTrigger EventName="GotFocus">
-                                <i:InvokeCommandAction Command="{Binding DisableTriggersCommand}"/>
-                            </i:EventTrigger>
-                            <i:EventTrigger EventName="LostFocus">
-                                <i:InvokeCommandAction Command="{Binding EnableTriggersCommand}"/>
-                            </i:EventTrigger>
-                        </i:Interaction.Triggers>
-                    </TextBox>
+                    <TextBox x:Name="textBoxName" TextWrapping="Wrap" Text="{Binding ElementName=labelName, Path=Content}" Margin="4" Height="25" Visibility="Collapsed" KeyDown="textBoxName_KeyDown" MaxLength="16"/>
                     <Button x:Name="EditNameButton" Content="Ред." Width="35" Margin="4" Height="27" Click="EditNameButton_Click"/>
                 </StackPanel>
                 <Button x:Name="TriggerEditButton" Content="Триггеры" Width="63" Margin="4,0,0,4" Height="27" Click="TriggerEditButton_Click" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Bottom" HorizontalContentAlignment="Center" VerticalContentAlignment="Top"/>
@@ -63,7 +54,6 @@
                         <Image Source="/BinderV2;component/Images/Cross.png" />
                     </Button>
                 </StackPanel>
-                <Label x:Name="Idlabel" Grid.Row="1" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="2,2,2,2"/>
             </Grid>
         </Grid>
     </Border>
