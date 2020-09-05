@@ -1,0 +1,76 @@
+﻿<Window x:Class="BinderV2.Windows.Record.RecordWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+        xmlns:local="clr-namespace:BinderV2.Windows.Record"
+        mc:Ignorable="d"
+        Title="Запись" Height="450" Width="800" Style="{DynamicResource CurstomWindowStyle}" MinWidth="100" MinHeight="100">
+    
+    <Window.Resources>
+        <Style TargetType="TextBox" BasedOn="{StaticResource UnselectedTextBox}" >
+            <Setter Property="IsReadOnly" Value="False"/>
+        </Style>
+    </Window.Resources>
+    
+    <Border Margin="2" BorderThickness="2">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <StackPanel>
+                <Grid Height="26" VerticalAlignment="Top">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition MaxWidth="140"/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Бинд для начала/остановки записи:"/>
+                        <Label Content="{Binding KeysForRecordString}">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="MouseDown">
+                                    <i:InvokeCommandAction Command="{Binding ChangeKeysCommand}"/>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </Label>
+                    </StackPanel>
+                    <Label Grid.Column="1" Content="Идёт запись..." HorizontalAlignment="Right" Visibility="{Binding Path=Recording, Converter={StaticResource BoolToVis}}"/>
+                </Grid>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition MaxWidth="160"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Content="Для имитации клавиатуры использовать: " VerticalAlignment="Center"/>
+                    <ComboBox Grid.Column="1" Margin="5" MaxWidth="140" SelectedIndex="{Binding SelectedKeyboardImitationIndex}">
+                        <ComboBoxItem Content="AHKKeyDown/Up()"/>
+                        <ComboBoxItem Content="KeyDown/Up()"/>
+                    </ComboBox>
+                </Grid>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition MaxWidth="160"/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Записывать " VerticalAlignment="Center"/>
+                        <TextBox Width="35" Margin="0,5" Text="{Binding PercentMouseMoveToRecord_string}" MaxLines="1" MaxLength="3" MouseLeave="TextBox_MouseLeave"/>
+                        <Label Content="% движений мыши с помощью: " VerticalAlignment="Center" Margin="-3,0,0,0"/>
+                    </StackPanel>
+                    <ComboBox Grid.Column="1" Margin="5" MaxWidth="140" SelectedIndex="{Binding SelectedMouseMoveImitationIndex}">
+                        <ComboBoxItem Content="SetCursorPos"/>
+                        <ComboBoxItem Content="MoveCursor"/>
+                    </ComboBox>
+                </Grid>
+            </StackPanel>
+            <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button Margin="5,2,5,1" Content="Очистить" Command="{Binding ClearScriptCommand}"/>
+                <Button Margin="5,2,5,1" Content="Копировать" Command="{Binding CopyScriptToClipboardCommand}"/>
+            </StackPanel>
+            <TextBox x:Name="scriptBox" Grid.Row="2" Margin="5" Text="{Binding RecordedScript}" IsReadOnly="True" />
+        </Grid>
+    </Border>
+</Window>

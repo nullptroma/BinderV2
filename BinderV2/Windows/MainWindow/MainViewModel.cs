@@ -16,6 +16,7 @@ using System.Xml.Serialization;
 using Newtonsoft.Json;
 using BinderV2.Windows.Help;
 using BinderV2.Windows.Settings;
+using BinderV2.Windows.Record;
 using Microsoft.Win32;
 using System.Net.Mail;
 using BinderV2.Settings;
@@ -32,6 +33,7 @@ namespace BinderV2.Windows.Main
         public ObservableCollection<IBindElement> bindsControls { get; set; }
         private SettingsWindow SettingsWindow;
         private HelpWindow HelpWindow;
+        private RecordWindow RecordWindow;
         private IBindElement selectedBind;
         private string currentBindScript = "";
 
@@ -304,6 +306,22 @@ namespace BinderV2.Windows.Main
                           HelpWindow.Close();
                       HelpWindow = new HelpWindow();
                       HelpWindow.Show();
+                  }));
+            }
+        }
+
+        private RelayCommand openRecordWindowCommand;
+        public RelayCommand OpenRecordWindowCommand
+        {
+            get
+            {
+                return openRecordWindowCommand ??
+                  (openRecordWindowCommand = new RelayCommand(obj =>
+                  {
+                      if (RecordWindow != null)
+                          RecordWindow.Close();
+                      RecordWindow = new RecordWindow();
+                      RecordWindow.Show();
                   }));
             }
         }

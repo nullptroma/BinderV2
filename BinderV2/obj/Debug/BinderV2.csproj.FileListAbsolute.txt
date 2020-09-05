@@ -48,3 +48,5 @@ C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\WPF Resources\Styles\Tex
 C:\Users\Roman\source\repos\BinderV2\BinderV2\bin\Debug\System.ValueTuple.dll
 C:\Users\Roman\source\repos\BinderV2\BinderV2\bin\Debug\System.ValueTuple.xml
 C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\BinderV2.csprojAssemblyReference.cache
+C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\Windows\RecordWindow\RecordWindow.g.cs
+C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\Windows\RecordWindow\RecordWindow.baml

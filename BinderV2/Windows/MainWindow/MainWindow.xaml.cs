@@ -84,8 +84,8 @@ namespace BinderV2.Windows.Main
 
         private void Window_Closed(object sender, EventArgs e)
         {
-            BinderV2.Settings.ProgramSettings.runtimeSettings.MainWindowSize = new Size(Width, Height);
-            
+            ProgramSettings.runtimeSettings.MainWindowSize = new Size(Width, Height);
+            Hooks.Mouse.MouseHook.UnInstallHook();
         }
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)

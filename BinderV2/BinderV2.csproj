@@ -152,6 +152,10 @@
     <Compile Include="Windows\HelpWindow\HelpWindow.xaml.cs">
       <DependentUpon>HelpWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\RecordWindow\RecordViewModel.cs" />
+    <Compile Include="Windows\RecordWindow\RecordWindow.xaml.cs">
+      <DependentUpon>RecordWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\SettingsWindow\SettingsViewModel.cs" />
     <Compile Include="Windows\SettingsWindow\SettingsWindow.xaml.cs">
       <DependentUpon>SettingsWindow.xaml</DependentUpon>
@@ -176,6 +180,10 @@
     </Compile>
     <Compile Include="WPF Controls\Triggers\ITriggerControl.cs" />
     <Page Include="Windows\HelpWindow\HelpWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\RecordWindow\RecordWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

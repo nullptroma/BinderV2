@@ -17,6 +17,8 @@
                 <ResourceDictionary Source="WPF Resources/Styles/TabControl/TabControlStyle.xaml" />
                 <ResourceDictionary Source="WPF Resources/Styles/TextBox/TextBox Style.xaml" />
             </ResourceDictionary.MergedDictionaries>
+
+            <BooleanToVisibilityConverter x:Key="BoolToVis" />
         </ResourceDictionary>
     </Application.Resources>
 </Application>

@@ -57,14 +57,14 @@ namespace Hooks.Mouse
         static IntPtr hHook = IntPtr.Zero;
         static IntPtr hModule = IntPtr.Zero;
         static bool hookInstall = false;
-        static bool localHook = true;
+        static bool localHook = false;
         static API.HookProc hookDel;
         #endregion
 
         /// <summary>
         /// Hook install method.
         /// </summary>
-        public static void InstallHook()
+        private static void InstallHook()
         {
             if (IsHookInstalled)
                 return;
@@ -100,22 +100,7 @@ namespace Hooks.Mouse
         {
             get { return hModule; }
         }
-        /// <summary>
-        /// If true local hook will installed, either global.
-        /// </summary>
-        public static bool LocalHook
-        {
-            get { return localHook; }
-            set
-            {
-                if (value != localHook)
-                {
-                    if (IsHookInstalled)
-                        throw new Win32Exception("Can't change type of hook than it install!");
-                    localHook = value;
-                }
-            }
-        }
+
         /// <summary>
         /// Uninstall hook method.
         /// </summary>
@@ -129,6 +114,12 @@ namespace Hooks.Mouse
                 hModule = IntPtr.Zero;
                 hookInstall = false;
             }
+        }
+
+        static MouseHook()
+        {
+            
+            InstallHook();
         }
 
         /// <summary>
