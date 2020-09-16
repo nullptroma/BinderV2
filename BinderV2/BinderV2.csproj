@@ -60,12 +60,14 @@
   <ItemGroup>
     <Reference Include="Hardcodet.Wpf.TaskbarNotification, Version=1.0.5.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Hardcodet.NotifyIcon.Wpf.1.0.8\lib\net451\Hardcodet.Wpf.TaskbarNotification.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Xaml.Behaviors, Version=1.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Xaml.Behaviors.Wpf.1.1.19\lib\net45\Microsoft.Xaml.Behaviors.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -73,6 +75,7 @@
     <Reference Include="System.Runtime.Serialization.Formatters.Soap" />
     <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.ValueTuple.4.5.0\lib\netstandard1.0\System.ValueTuple.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
@@ -98,6 +101,7 @@
     <Compile Include="Classes\Bind Model\Exeptions.cs" />
     <Compile Include="Classes\Commands\EnableDisableTriggers.cs" />
     <Compile Include="Classes\Interpreter Scripts\Converter\Converter.cs" />
+    <Compile Include="Classes\Interpreter Scripts\Syntactic Constructs\Constructs\Delay.cs" />
     <Compile Include="Classes\Interpreter Scripts\InterpretationData\InterpretationData.cs" />
     <Compile Include="Classes\Interpreter Scripts\InterpretationData\Funcs library\FuncType.cs" />
     <Compile Include="Classes\Interpreter Scripts\InterpretationData\Funcs library\Library\BoolScripts.cs" />
@@ -148,6 +152,7 @@
     <Compile Include="Classes\Triggers\TriggerUtility.cs" />
     <Compile Include="Classes\Utilities\ICollectionExtensionMethods.cs" />
     <Compile Include="Classes\Utilities\JsonUtilities.cs" />
+    <Compile Include="Dependencies\Resolver.cs" />
     <Compile Include="Windows\HelpWindow\HelpViewModel.cs" />
     <Compile Include="Windows\HelpWindow\HelpWindow.xaml.cs">
       <DependentUpon>HelpWindow.xaml</DependentUpon>
@@ -320,6 +325,11 @@
   <ItemGroup>
     <Resource Include="Images\Биндер.ico" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Dependencies\Hardcodet.Wpf.TaskbarNotification.dll" />
+    <EmbeddedResource Include="Dependencies\Microsoft.Xaml.Behaviors.dll" />
+    <EmbeddedResource Include="Dependencies\Newtonsoft.Json.dll" />
+    <EmbeddedResource Include="Dependencies\System.ValueTuple.dll" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

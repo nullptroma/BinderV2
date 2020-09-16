@@ -13,19 +13,12 @@ C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\BinderV2.pdb
 C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\Windows\TriggersEditWindow\TriggersEditWindow.g.cs
 C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\Windows\TriggersEditWindow\TriggersEditWindow.baml
 C:\Users\Roman\source\repos\BinderV2\BinderV2\bin\Debug\Microsoft.Xaml.Behaviors.dll
-C:\Users\Roman\source\repos\BinderV2\BinderV2\bin\Debug\Microsoft.Xaml.Behaviors.pdb
-C:\Users\Roman\source\repos\BinderV2\BinderV2\bin\Debug\Microsoft.Xaml.Behaviors.xml
 C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\BinderV2.csproj.CopyComplete
 C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\Windows\TriggersEditWindow\ChooseTriggerType\ChooseTriggerTypeWindow.g.cs
 C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\Windows\TriggersEditWindow\ChooseTriggerType\ChooseTriggerTypeWindow.baml
-C:\Users\Roman\source\repos\BinderV2\BinderV2\bin\Debug\Hardcodet.Wpf.TaskbarNotification.dll
-C:\Users\Roman\source\repos\BinderV2\BinderV2\bin\Debug\Hardcodet.Wpf.TaskbarNotification.pdb
-C:\Users\Roman\source\repos\BinderV2\BinderV2\bin\Debug\Hardcodet.Wpf.TaskbarNotification.xml
 C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\App.baml
 C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\Windows\MainWindow\MainWindow.g.cs
 C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\Windows\MainWindow\MainWindow.baml
-C:\Users\Roman\source\repos\BinderV2\BinderV2\bin\Debug\Newtonsoft.Json.dll
-C:\Users\Roman\source\repos\BinderV2\BinderV2\bin\Debug\Newtonsoft.Json.xml
 C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\WPF Resources\Styles\CustomizedWindow\CurstomWindowStyle.baml
 C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\WPF Resources\Styles\CustomizedWindow\CurstomWindowStyle.g.cs
 C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\Windows\SettingsWindow\SettingsWindow.g.cs
@@ -45,8 +38,10 @@ C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\Windows\HelpWindow\HelpW
 C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\Windows\HelpWindow\HelpWindow.baml
 C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\WPF Resources\Styles\TabControl\TabControlStyle.baml
 C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\WPF Resources\Styles\TextBox\TextBox Style.baml
-C:\Users\Roman\source\repos\BinderV2\BinderV2\bin\Debug\System.ValueTuple.dll
-C:\Users\Roman\source\repos\BinderV2\BinderV2\bin\Debug\System.ValueTuple.xml
-C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\BinderV2.csprojAssemblyReference.cache
 C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\Windows\RecordWindow\RecordWindow.g.cs
 C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\Windows\RecordWindow\RecordWindow.baml
+C:\Users\Roman\source\repos\BinderV2\BinderV2\bin\Debug\Microsoft.Xaml.Behaviors.pdb
+C:\Users\Roman\source\repos\BinderV2\BinderV2\bin\Debug\Microsoft.Xaml.Behaviors.xml
+C:\Users\Roman\source\repos\BinderV2\BinderV2\bin\Debug\Hardcodet.Wpf.TaskbarNotification.dll
+C:\Users\Roman\source\repos\BinderV2\BinderV2\bin\Debug\Hardcodet.Wpf.TaskbarNotification.pdb
+C:\Users\Roman\source\repos\BinderV2\BinderV2\bin\Debug\Hardcodet.Wpf.TaskbarNotification.xml

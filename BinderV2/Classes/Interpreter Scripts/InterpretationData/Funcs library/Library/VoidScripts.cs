@@ -7,6 +7,7 @@ using System.Diagnostics;
 using System.Windows.Forms;
 using InterpreterScripts.FuncAttributes;
 using System.ComponentModel;
+using System.Windows.Input;
 
 namespace InterpreterScripts.InterpretationScriptData.StandartFunctions.Library
 {
@@ -32,6 +33,33 @@ namespace InterpreterScripts.InterpretationScriptData.StandartFunctions.Library
             return ps;
         }
 
+        [Description("KeyDown(string key) - нажимает кнопку.")]
+        public static object[] KeyDown(params object[] ps)
+        {
+            try
+            {
+                if (ps.Length == 0)
+                    return ps;
+                string key = ps[0].ToString();
+                Meths.keybd_event((int)Enum.Parse(typeof(Keys), key), 0, 0, 0);
+                return ps;
+            }
+            catch { MessageBox.Show("В KeyDown первый аргумент типа, несоотвествующего string"); return ps; }
+        }
+
+        [Description("KeyUp(string key) - поднимает кнопку.")]
+        public static object[] KeyUp(params object[] ps)
+        {
+            try
+            {
+                if (ps.Length == 0)
+                    return ps;
+                string key = ps[0].ToString();
+                Meths.keybd_event((int)Enum.Parse(typeof(Keys), key), 0, 0x02, 0);
+                return ps;
+            }
+            catch { MessageBox.Show("В KeyDown первый аргумент типа, несоотвествующего string"); return ps; }
+        }
 
         [Description("ShowHideDesktopIcons(bool show) - показывает/скрывает значки рабочего стола.")]
         public static object[] ShowHideDesktopIcons(params object[] ps)
@@ -43,20 +71,7 @@ namespace InterpreterScripts.InterpretationScriptData.StandartFunctions.Library
                 Meths.EnumWindows(new Meths.EnumCallback(Meths.EnumWins), (bool)ps[0] ? (IntPtr)5 : IntPtr.Zero);
                 return ps;
             }
-            catch { MessageBox.Show("В MsgBox первый аргумент типа, несоотвествующего Boolean"); return ps; }
-        }
-
-        [Description("Delay(int ms) - приостанавливает выполнение скрипта на ms миллисекунд.")]
-        public static object[] Delay(params object[] ps)
-        {
-            try
-            {
-                if (ps.Length == 0)
-                    return ps;
-                Thread.Sleep((int)ps[0]);
-                return ps;
-            }
-            catch { MessageBox.Show("В Delay первый аргумент типа, несоотвествующего Int"); return ps; }
+            catch { MessageBox.Show("В ShowHideDesktopIcons первый аргумент типа, несоотвествующего Boolean"); return ps; }
         }
 
         [Description("KillProcessesByName(string name1, string name2...) - находит процессы с именами name... и останавливает их.")]
@@ -129,10 +144,26 @@ namespace InterpreterScripts.InterpretationScriptData.StandartFunctions.Library
         {
             try
             {
-                Meths.SetForegroundWindow(Meths.GetForegroundWindow());
                 SendKeys.SendWait(ps[0].ToString());
             }
             catch (Exception e) { MessageBox.Show(e.ToString()); return ps; }
+            return ps;
+        }
+
+        [Description("WriteText(string text, int delay) - пишет текст посимвольно.")]
+        public static object WriteText(params object[] ps)
+        {
+            try
+            {
+                int delay = (int)ps[1];
+                foreach (var sim in ps[0].ToString())
+                {
+                    //TODO сделать на AHK
+                    Interpreter.ExecuteCommand($"Delay({delay})");
+                }
+            }
+            catch (IndexOutOfRangeException) { MessageBox.Show("В WriteText не передан текст."); }
+            catch (InvalidCastException) { MessageBox.Show("В WriteText передана неподходящая задержка."); }
             return ps;
         }
 
@@ -158,7 +189,7 @@ namespace InterpreterScripts.InterpretationScriptData.StandartFunctions.Library
                 int delay = (int)ps[2];
                 while (true)
                 {
-                    var pos = Cursor.Position;
+                    var pos = System.Windows.Forms.Cursor.Position;
                     if (pos.X != endX)
                     {
                         pos.X += pos.X < endX ? 1 : -1;

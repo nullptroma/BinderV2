@@ -27,20 +27,19 @@ namespace BinderV2
         {
             Task.Run(()=> 
             {
-                string script = File.ReadAllText(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"\Новый текстовый документ2.txt");
-                int count = 0;
-                Stopwatch sw = new Stopwatch();
-                sw.Start();
-                while (sw.ElapsedMilliseconds < 1000)
+                Interpreter.ExecuteCommand("Delay(1)");
+                for (int n = 1; n < 500; n+=10)
                 {
-                    Interpreter.ExecuteScript(script);
-                    count++;
+                    Stopwatch sw = new Stopwatch();
+                    string cmd = $"Delay({n})";
+                    sw.Start();
+                    Interpreter.ExecuteCommand(cmd);
+                    sw.Stop();
+                    if (sw.ElapsedMilliseconds != n)
+                        MessageBox.Show("Ожидалось: " + n + "\nПолучено: " + sw.ElapsedMilliseconds);
                 }
-                sw.Stop();
-                MessageBox.Show("Результат: " + count, "Тест скорости за " + sw.ElapsedMilliseconds);
+                MessageBox.Show("Тесты пройдены.");
             });
-
-            
         }
 
     }

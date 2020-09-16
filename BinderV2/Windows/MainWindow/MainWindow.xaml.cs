@@ -22,6 +22,8 @@ namespace BinderV2.Windows.Main
     {
         public MainWindow()
         {
+            DependencyResolver.Resolver.RegisterDependencyResolver();//прежде всего подключаем все зависимости
+            
             InitializeComponent();
             DataContext = new MainViewModel();
             if (ProgramSettings.runtimeSettings.HideOnStart)

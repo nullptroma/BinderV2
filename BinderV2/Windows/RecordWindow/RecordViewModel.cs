@@ -178,16 +178,20 @@ namespace BinderV2.Windows.Record
 
         private void MouseDown(object sender, System.Windows.Forms.MouseEventArgs e)
         {
+            AddCommand(string.Format(mouseMoveCmd, e.Location.X, e.Location.Y));
             AddCommand($"MouseEvent(\"{e.Button.ToString().ToUpper() + "DOWN"}\")");
         }
 
         private void MouseUp(object sender, System.Windows.Forms.MouseEventArgs e)
         {
+            AddCommand(string.Format(mouseMoveCmd, e.Location.X, e.Location.Y));
             AddCommand($"MouseEvent(\"{e.Button.ToString().ToUpper() + "UP"}\")");
         }
 
         private void MouseMove(object sender, System.Windows.Forms.MouseEventArgs e)
         {
+            if (timer.ElapsedMilliseconds < 1)
+                return;
             if(mouseMoveCount < percentMouseMoveToRecord)
                 AddCommand(string.Format(mouseMoveCmd, e.Location.X, e.Location.Y));
             mouseMoveCount++;

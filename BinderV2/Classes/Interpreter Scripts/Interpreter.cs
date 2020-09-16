@@ -16,6 +16,7 @@ using InterpreterScripts.TypeConverter;
 using System.Runtime.CompilerServices;
 using Utilities;
 using InterpreterScripts.InterpretationScriptData.CustomFunctions;
+using System.Diagnostics;
 
 namespace InterpreterScripts
 {
@@ -51,7 +52,7 @@ namespace InterpreterScripts
             CommandModel cmd = new CommandModel(cmdString);
             Task<object> commandTask = null;
 
-            if (Converter.CanConvertToSimpleType(cmd.Command))//берём простой тип
+            if(Converter.CanConvertToSimpleType(cmd.Command))//берём простой тип
             {
                 commandTask = Converter.ToSimpleType(cmd.Command);
             }

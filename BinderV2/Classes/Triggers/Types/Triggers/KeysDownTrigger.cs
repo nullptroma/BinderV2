@@ -4,6 +4,9 @@ using System.Linq;
 using System.Windows.Input;
 using Hooks.Keyboard;
 
+using System.Threading;
+using System.Windows.Forms;
+
 namespace Trigger.Types
 {
     public class KeysDownTrigger : BaseTrigger
@@ -67,12 +70,16 @@ namespace Trigger.Types
 
         private static void KeysDown(object sender, KeyEventArgsCustom e)
         {
+            if (pressedKeys.Contains(e.Key))
+                return;
+
             pressedKeys.Add(e.Key);
             //проверяем все триггеры
             AllKeyDownTriggers.AsParallel().ForAll(trig =>
             {
                 trig.InvokeIfHaveNeedKeys(pressedKeys);//если есть необходимые кнопки - запускаем
             });
+            
         }
         private static void KeysUp(object sender, KeyEventArgsCustom e)
         {

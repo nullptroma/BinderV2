@@ -88,7 +88,6 @@ namespace InterpreterScripts.InterpretationScriptData.StandartFunctions.Library
         [DllImport("user32.dll")]
         public static extern UInt32 GetWindowThreadProcessId(IntPtr hwnd, ref Int32 pid);
 
-
         [DllImport("user32.dll", SetLastError = true)]
         public static extern void mouse_event(uint dwFlags, uint dx, uint dy, uint dwData, int dwExtraInfo);
 
@@ -102,7 +101,10 @@ namespace InterpreterScripts.InterpretationScriptData.StandartFunctions.Library
 
 
         [DllImport("user32.dll", SetLastError = true)]
-        public static extern void keybd_event(byte bVk, byte bScan, uint dwFlags, int dwExtraInfo);
+        public static extern void keybd_event(int bVk, byte bScan, uint dwFlags, int dwExtraInfo);
+
+        [DllImport("user32.dll", SetLastError = true)]
+        public static extern void keybd_event(char bVk, byte bScan, uint dwFlags, int dwExtraInfo);
 
 
         [DllImport("USER32.DLL")]

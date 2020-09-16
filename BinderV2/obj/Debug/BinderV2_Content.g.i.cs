@@ -8,6 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("classes/save/cursor1.cur")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("dependencies/system.valuetuple.dll")]
 
 

@@ -19,6 +19,7 @@ namespace InterpreterScripts.SyntacticConstructions
             //сюда добавлять конструкции
             return new ISyntacticConstruction[] 
             { 
+                new Delay(),
                 new IfThenConstruction(),
                 new FunctionDefinition(),
                 new Return(), 
