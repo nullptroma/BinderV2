@@ -183,10 +183,10 @@ namespace InterpreterScripts.InterpretationScriptData.StandartFunctions.Library
         {
             try
             {
-
                 int endX = (int)ps[0];
                 int endY = (int)ps[1];
                 int delay = (int)ps[2];
+                string delayCmd = $"Delay({delay})";
                 while (true)
                 {
                     var pos = System.Windows.Forms.Cursor.Position;
@@ -201,7 +201,7 @@ namespace InterpreterScripts.InterpretationScriptData.StandartFunctions.Library
                     Meths.SetCursorPos(pos.X, pos.Y);
                     if (pos.X == endX && pos.Y == endY)
                         break;
-                    Thread.Sleep(delay);
+                    Interpreter.ExecuteCommand(delayCmd);
                 }
             }
             catch (Exception e) { MessageBox.Show(e.ToString()); return ps; }

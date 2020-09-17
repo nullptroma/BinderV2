@@ -45,3 +45,4 @@ C:\Users\Roman\source\repos\BinderV2\BinderV2\bin\Debug\Microsoft.Xaml.Behaviors
 C:\Users\Roman\source\repos\BinderV2\BinderV2\bin\Debug\Hardcodet.Wpf.TaskbarNotification.dll
 C:\Users\Roman\source\repos\BinderV2\BinderV2\bin\Debug\Hardcodet.Wpf.TaskbarNotification.pdb
 C:\Users\Roman\source\repos\BinderV2\BinderV2\bin\Debug\Hardcodet.Wpf.TaskbarNotification.xml
+C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\BinderV2.csprojAssemblyReference.cache

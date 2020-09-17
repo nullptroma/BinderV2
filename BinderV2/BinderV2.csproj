@@ -126,6 +126,7 @@
     <Compile Include="Classes\Interpreter Scripts\Syntactic Constructs\Constructs\IfThenConstruction.cs" />
     <Compile Include="Classes\Interpreter Scripts\Syntactic Constructs\Constructs\Cycles\Repeat\ParallelRepeat.cs" />
     <Compile Include="Classes\Interpreter Scripts\Syntactic Constructs\Constructs\Cycles\Repeat\Repeat.cs" />
+    <Compile Include="Classes\Interpreter Scripts\Syntactic Constructs\Constructs\Operators\MathOperators.cs" />
     <Compile Include="Classes\Interpreter Scripts\Syntactic Constructs\Constructs\Operators\Return.cs" />
     <Compile Include="Classes\Interpreter Scripts\Syntactic Constructs\Constructs\Cycles\While.cs" />
     <Compile Include="Classes\Interpreter Scripts\Syntactic Constructs\Constructs\Vars\Local\CheckVar.cs" />

@@ -52,13 +52,13 @@ namespace InterpreterScripts
             CommandModel cmd = new CommandModel(cmdString);
             Task<object> commandTask = null;
 
-            if(Converter.CanConvertToSimpleType(cmd.Command))//берём простой тип
-            {
-                commandTask = Converter.ToSimpleType(cmd.Command);
-            }
-            else if (SyntacticConstructionsManager.IsValidConstruction(cmd, data))//ищем конструкции
+            if (SyntacticConstructionsManager.IsValidConstruction(cmd, data))//ищем конструкции
             {
                 commandTask = SyntacticConstructionsManager.ExecuteConstruction(cmd, data);
+            }
+            else if(Converter.CanConvertToSimpleType(cmd.Command))//берём простой тип
+            {
+                commandTask = Converter.ToSimpleType(cmd.Command);
             }
             else if (data.CustomFunctions.Find(cFunc => cFunc.Name == cmd.KeyWord) != null)//ищем пользовательскую функцию
             {
