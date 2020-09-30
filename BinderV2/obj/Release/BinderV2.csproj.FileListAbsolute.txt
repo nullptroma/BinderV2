@@ -2,11 +2,9 @@ C:\Users\Roman\source\repos\BinderV2\BinderV2\bin\Release\BinderV2.exe.config
 C:\Users\Roman\source\repos\BinderV2\BinderV2\bin\Release\BinderV2.exe
 C:\Users\Roman\source\repos\BinderV2\BinderV2\bin\Release\BinderV2.pdb
 C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Release\BinderV2.csprojAssemblyReference.cache
-C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Release\Windows\TriggersEditWindow\TriggersEditWindow.g.cs
 C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Release\App.g.cs
 C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Release\BinderV2_MarkupCompile.cache
 C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Release\BinderV2_MarkupCompile.lref
-C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Release\Windows\TriggersEditWindow\TriggersEditWindow.baml
 C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Release\BinderV2.g.resources
 C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Release\BinderV2.Properties.Resources.resources
 C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Release\BinderV2.csproj.GenerateResource.cache
@@ -18,12 +16,8 @@ C:\Users\Roman\source\repos\BinderV2\BinderV2\bin\Release\Microsoft.Xaml.Behavio
 C:\Users\Roman\source\repos\BinderV2\BinderV2\bin\Release\Microsoft.Xaml.Behaviors.xml
 C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Release\BinderV2.csproj.CopyComplete
 C:\Users\Roman\source\repos\BinderV2\BinderV2\bin\Release\Hardcodet.Wpf.TaskbarNotification.dll
-C:\Users\Roman\source\repos\BinderV2\BinderV2\bin\Release\Newtonsoft.Json.dll
-C:\Users\Roman\source\repos\BinderV2\BinderV2\bin\Release\System.ValueTuple.dll
 C:\Users\Roman\source\repos\BinderV2\BinderV2\bin\Release\Hardcodet.Wpf.TaskbarNotification.pdb
 C:\Users\Roman\source\repos\BinderV2\BinderV2\bin\Release\Hardcodet.Wpf.TaskbarNotification.xml
-C:\Users\Roman\source\repos\BinderV2\BinderV2\bin\Release\Newtonsoft.Json.xml
-C:\Users\Roman\source\repos\BinderV2\BinderV2\bin\Release\System.ValueTuple.xml
 C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Release\WPF Resources\Interface Resources\InterfaceResources.baml
 C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Release\WPF Resources\Styles\Button\Button Style.baml
 C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Release\WPF Resources\Styles\ComboBox\ComboBox.baml
@@ -33,20 +27,23 @@ C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Release\WPF Resources\Styles\C
 C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Release\WPF Resources\Styles\Menu Item\MenuItem.baml
 C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Release\WPF Resources\Styles\Scroll Viewer\ScrollStyle.baml
 C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Release\WPF Resources\Styles\TabControl\TabControlStyle.baml
-C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Release\Windows\HelpWindow\HelpWindow.g.cs
-C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Release\Windows\SettingsWindow\SettingsWindow.g.cs
 C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Release\WPF Resources\Styles\CustomizedWindow\CurstomWindowStyle.g.cs
-C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Release\Windows\MainWindow\MainWindow.g.cs
-C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Release\Windows\TriggersEditWindow\ChooseTriggerType\ChooseTriggerTypeWindow.g.cs
-C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Release\WPF Controls\Bind\BindElement.g.cs
-C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Release\WPF Controls\Triggers\KeysDownTriggerElement\KeysDownTriggerElement.g.cs
 C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Release\App.baml
-C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Release\Windows\HelpWindow\HelpWindow.baml
-C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Release\Windows\SettingsWindow\SettingsWindow.baml
-C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Release\Windows\MainWindow\MainWindow.baml
-C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Release\Windows\TriggersEditWindow\ChooseTriggerType\ChooseTriggerTypeWindow.baml
-C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Release\WPF Controls\Bind\BindElement.baml
-C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Release\WPF Controls\Triggers\KeysDownTriggerElement\KeysDownTriggerElement.baml
 C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Release\WPF Resources\Styles\TextBox\TextBox Style.baml
-C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Release\Windows\RecordWindow\RecordWindow.g.cs
-C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Release\Windows\RecordWindow\RecordWindow.baml
+C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Release\MVVM\Views\HelpWindow.g.cs
+C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Release\MVVM\Views\RecordWindow.g.cs
+C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Release\MVVM\Views\SettingsWindow.g.cs
+C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Release\MVVM\Views\MainWindow.g.cs
+C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Release\MVVM\Views\ChooseTriggerTypeWindow.g.cs
+C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Release\MVVM\Views\TriggersEditWindow.g.cs
+C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Release\MVVM\Views\Bind\BindElement.g.cs
+C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Release\MVVM\Views\Triggers\KeysDownTriggerElement\KeysDownTriggerElement.g.cs
+C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Release\GeneratedInternalTypeHelper.g.cs
+C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Release\MVVM\Views\HelpWindow.baml
+C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Release\MVVM\Views\RecordWindow.baml
+C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Release\MVVM\Views\SettingsWindow.baml
+C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Release\MVVM\Views\MainWindow.baml
+C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Release\MVVM\Views\ChooseTriggerTypeWindow.baml
+C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Release\MVVM\Views\TriggersEditWindow.baml
+C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Release\MVVM\Views\Bind\BindElement.baml
+C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Release\MVVM\Views\Triggers\KeysDownTriggerElement\KeysDownTriggerElement.baml

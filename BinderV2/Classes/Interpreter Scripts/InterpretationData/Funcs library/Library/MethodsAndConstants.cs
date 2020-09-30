@@ -103,10 +103,6 @@ namespace InterpreterScripts.InterpretationScriptData.StandartFunctions.Library
         [DllImport("user32.dll", SetLastError = true)]
         public static extern void keybd_event(int bVk, byte bScan, uint dwFlags, int dwExtraInfo);
 
-        [DllImport("user32.dll", SetLastError = true)]
-        public static extern void keybd_event(char bVk, byte bScan, uint dwFlags, int dwExtraInfo);
-
-
         [DllImport("USER32.DLL")]
         public static extern bool SetForegroundWindow(IntPtr hWnd);
 

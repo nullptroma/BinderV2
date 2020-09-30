@@ -60,10 +60,11 @@
   <ItemGroup>
     <Reference Include="Hardcodet.Wpf.TaskbarNotification, Version=1.0.5.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Hardcodet.NotifyIcon.Wpf.1.0.8\lib\net451\Hardcodet.Wpf.TaskbarNotification.dll</HintPath>
-      <Private>True</Private>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.Xaml.Behaviors, Version=1.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Xaml.Behaviors.Wpf.1.1.19\lib\net45\Microsoft.Xaml.Behaviors.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -100,6 +101,7 @@
     <Compile Include="Classes\Bind Model\Events.cs" />
     <Compile Include="Classes\Bind Model\Exeptions.cs" />
     <Compile Include="Classes\Commands\EnableDisableTriggers.cs" />
+    <Compile Include="Classes\Initializer.cs" />
     <Compile Include="Classes\Interpreter Scripts\Converter\Converter.cs" />
     <Compile Include="Classes\Interpreter Scripts\Syntactic Constructs\Constructs\Delay.cs" />
     <Compile Include="Classes\Interpreter Scripts\InterpretationData\InterpretationData.cs" />
@@ -154,46 +156,48 @@
     <Compile Include="Classes\Utilities\ICollectionExtensionMethods.cs" />
     <Compile Include="Classes\Utilities\JsonUtilities.cs" />
     <Compile Include="Dependencies\Resolver.cs" />
-    <Compile Include="Windows\HelpWindow\HelpViewModel.cs" />
-    <Compile Include="Windows\HelpWindow\HelpWindow.xaml.cs">
+    <Compile Include="MVVM\Models\HelpModel.cs" />
+    <Compile Include="MVVM\ViewModels\BaseViewModel.cs" />
+    <Compile Include="MVVM\ViewModels\HelpViewModel.cs" />
+    <Compile Include="MVVM\Views\HelpWindow.xaml.cs">
       <DependentUpon>HelpWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Windows\RecordWindow\RecordViewModel.cs" />
-    <Compile Include="Windows\RecordWindow\RecordWindow.xaml.cs">
+    <Compile Include="MVVM\ViewModels\RecordViewModel.cs" />
+    <Compile Include="MVVM\Views\RecordWindow.xaml.cs">
       <DependentUpon>RecordWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Windows\SettingsWindow\SettingsViewModel.cs" />
-    <Compile Include="Windows\SettingsWindow\SettingsWindow.xaml.cs">
+    <Compile Include="MVVM\ViewModels\SettingsViewModel.cs" />
+    <Compile Include="MVVM\Views\SettingsWindow.xaml.cs">
       <DependentUpon>SettingsWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="WPF Resources\Styles\CustomizedWindow\WindowStyle.cs" />
     <Compile Include="Classes\Utilities\AutoRun.cs" />
-    <Compile Include="Windows\MainWindow\MainViewModel.cs" />
-    <Compile Include="Windows\TriggersEditWindow\ChooseTriggerType\ChooseTriggerTypeWindow.xaml.cs">
+    <Compile Include="MVVM\ViewModels\MainViewModel.cs" />
+    <Compile Include="MVVM\Views\ChooseTriggerTypeWindow.xaml.cs">
       <DependentUpon>ChooseTriggerTypeWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Classes\Triggers\Types\TriggerTypes.cs" />
-    <Compile Include="Windows\TriggersEditWindow\TriggerEditViewModel.cs" />
-    <Compile Include="Windows\TriggersEditWindow\TriggersEditWindow.xaml.cs">
+    <Compile Include="MVVM\ViewModels\TriggerEditViewModel.cs" />
+    <Compile Include="MVVM\Views\TriggersEditWindow.xaml.cs">
       <DependentUpon>TriggersEditWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="WPF Controls\Bind\BindElement.xaml.cs">
+    <Compile Include="MVVM\Views\Bind\BindElement.xaml.cs">
       <DependentUpon>BindElement.xaml</DependentUpon>
     </Compile>
-    <Compile Include="WPF Controls\Bind\IBindElement.cs" />
-    <Compile Include="WPF Controls\Triggers\KeysDownTriggerElement\KeysDownTriggerElement.xaml.cs">
+    <Compile Include="MVVM\Views\Bind\IBindElement.cs" />
+    <Compile Include="MVVM\Views\Triggers\KeysDownTriggerElement\KeysDownTriggerElement.xaml.cs">
       <DependentUpon>KeysDownTriggerElement.xaml</DependentUpon>
     </Compile>
-    <Compile Include="WPF Controls\Triggers\ITriggerControl.cs" />
-    <Page Include="Windows\HelpWindow\HelpWindow.xaml">
+    <Compile Include="MVVM\Views\Triggers\ITriggerControl.cs" />
+    <Page Include="MVVM\Views\HelpWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Windows\RecordWindow\RecordWindow.xaml">
+    <Page Include="MVVM\Views\RecordWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Windows\SettingsWindow\SettingsWindow.xaml">
+    <Page Include="MVVM\Views\SettingsWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -221,7 +225,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Windows\MainWindow\MainWindow.xaml">
+    <Page Include="MVVM\Views\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -229,23 +233,23 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Windows\MainWindow\MainWindow.xaml.cs">
+    <Compile Include="MVVM\Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Windows\TriggersEditWindow\ChooseTriggerType\ChooseTriggerTypeWindow.xaml">
+    <Page Include="MVVM\Views\ChooseTriggerTypeWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Windows\TriggersEditWindow\TriggersEditWindow.xaml">
+    <Page Include="MVVM\Views\TriggersEditWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="WPF Controls\Bind\BindElement.xaml">
+    <Page Include="MVVM\Views\Bind\BindElement.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="WPF Controls\Triggers\KeysDownTriggerElement\KeysDownTriggerElement.xaml">
+    <Page Include="MVVM\Views\Triggers\KeysDownTriggerElement\KeysDownTriggerElement.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -332,5 +336,6 @@
     <EmbeddedResource Include="Dependencies\Newtonsoft.Json.dll" />
     <EmbeddedResource Include="Dependencies\System.ValueTuple.dll" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
