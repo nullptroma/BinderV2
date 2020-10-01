@@ -28,8 +28,10 @@ namespace BinderV2
             Task.Run(()=> 
             {
                 Interpreter.ExecuteCommand("Delay(1)");
-                for (int n = 1; n < 500; n+=10)
+                int sum = 0;
+                for (int n = 1; n < 100; n+=10)
                 {
+                    sum += n;
                     Stopwatch sw = new Stopwatch();
                     string cmd = $"Delay({n})";
                     sw.Start();
@@ -38,7 +40,7 @@ namespace BinderV2
                     if (sw.ElapsedMilliseconds != n)
                         MessageBox.Show("Ожидалось: " + n + "\nПолучено: " + sw.ElapsedMilliseconds);
                 }
-                MessageBox.Show("Тесты пройдены.");
+                MessageBox.Show("Тесты пройдены.", "sum = " + sum);
             });
         }
 

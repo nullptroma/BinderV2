@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BinderV2.MVVM.ViewModels.Triggers;
+using Hooks.Keyboard;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,27 +12,27 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using BinderV2.MVVM.ViewModels;
-using BinderV2.MVVM.Views;
-using BindModel;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+using Trigger.Types;
 
-namespace BinderV2.WpfControls.BindControl
+namespace BinderV2.MVVM.Views.Triggers
 {
     /// <summary>
-    /// Логика взаимодействия для BindElement.xaml
+    /// Логика взаимодействия для KeysDownTriggerControl.xaml
     /// </summary>
-    public partial class BindElement : UserControl
+    public partial class KeysDownTriggerControl : UserControl
     {
-        public BindElement(Bind b) : this()
-        {
-            DataContext = new BindViewModel(b);
-        }
-
-        public BindElement()
+        public KeysDownTriggerControl()
         {
             InitializeComponent();
         }
 
+        private void EditNameButton_Click(object sender, RoutedEventArgs e)
+        {
+            StartEditName();
+        }
 
         private void StartEditName()
         {
@@ -46,12 +48,6 @@ namespace BinderV2.WpfControls.BindControl
             textBoxName.Visibility = Visibility.Collapsed;
             labelName.Focus();
         }
-
-        private void EditNameButton_Click(object sender, RoutedEventArgs e)
-        {
-            StartEditName();
-        }
-
 
         private void textBoxName_KeyDown(object sender, KeyEventArgs e)
         {

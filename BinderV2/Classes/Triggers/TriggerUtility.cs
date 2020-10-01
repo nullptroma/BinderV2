@@ -2,20 +2,20 @@
 using System.Windows.Controls;
 using System.Windows.Input;
 using Trigger.Types;
-using BinderV2.WpfControls.Triggers;
+using BinderV2.MVVM.ViewModels.Triggers;
 
 namespace Trigger.Tools
 {
     static class TriggerUtility
     {
-        public static Control GetControlFromTrigger(BaseTrigger trig)
+        public static BaseTriggerViewModel GetViewModelForTrigger(BaseTrigger trig)
         {
-            Control control = null;
+            BaseTriggerViewModel vm = null;
             switch(trig.GetType().Name)
             {
                 case "KeysDownTrigger":
                     {
-                        control = new KeysDownTriggerControl((KeysDownTrigger)trig);
+                        vm = new KeysDownTriggerViewModel((KeysDownTrigger)trig);
                         break; 
                     }
                 default:
@@ -23,7 +23,7 @@ namespace Trigger.Tools
                         throw new Trigger.TriggersExeptions.UnknownTriggerTypeExeption(trig.GetType());
                     }
             }
-            return control;
+            return vm;
             
         }
 

@@ -10,7 +10,6 @@ using Trigger.Types;
 using Trigger;
 using BindModel;
 using BinderV2.Commands;
-using BinderV2.WpfControls.BindControl;
 using System.IO;
 using System.Xml.Serialization;
 using Newtonsoft.Json;

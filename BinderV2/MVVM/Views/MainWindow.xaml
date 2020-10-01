@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:bind="clr-namespace:BinderV2.WpfControls.BindControl"
+        xmlns:bind="clr-namespace:BinderV2.MVVM.Views"
         x:Class="BinderV2.MVVM.Views.MainWindow"
         xmlns:tb="http://www.hardcodet.net/taskbar"
         xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
@@ -20,7 +20,7 @@
             <ColumnDefinition  Width="320"/>
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
-
+        
         <tb:TaskbarIcon x:Name="TaskBarIcon" IconSource="/BinderV2;component/Images/Биндер.ico"
                         ToolTipText="Binder"
                         TrayMouseDoubleClick="TaskBarIcon_TrayMouseDoubleClick">
@@ -57,11 +57,11 @@
                         </Button>
                     </DockPanel>
                 </Border>
-                <ScrollViewer x:Name="BindsScrollViewer" DockPanel.Dock="Top" ScrollChanged="BindsScrollViewer_ScrollChanged" Margin="0,2,0,0">
+                <ScrollViewer x:Name="BindsScrollViewer" DockPanel.Dock="Top" ScrollChanged="BindsScrollViewer_ScrollChanged" Margin="0,2,0,0" PreviewMouseWheel="BindsScrollViewer_PreviewMouseWheel">
                     <ItemsControl ItemsSource="{Binding Binds}" >
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
-                                <bind:BindElement/>
+                                <bind:BindControl/>
                             </DataTemplate>
                         </ItemsControl.ItemTemplate>
                     </ItemsControl>

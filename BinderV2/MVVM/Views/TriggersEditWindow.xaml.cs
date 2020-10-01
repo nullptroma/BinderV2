@@ -34,5 +34,17 @@ namespace BinderV2.MVVM.Views
                 await Task.Delay(1).ConfigureAwait(true);
             }
         }
+
+        private async void ItemsControl_PreviewMouseWheel(object sender, System.Windows.Input.MouseWheelEventArgs e)
+        {
+            e.Handled = true;
+            int length = e.Delta * -1;
+            double step = length / 12;
+            for (int i = 0; i < 12; i++)
+            {
+                TriggerScrollViewer.Dispatcher.Invoke(() => TriggerScrollViewer.ScrollToVerticalOffset(TriggerScrollViewer.VerticalOffset + step));
+                await Task.Delay(1);
+            }
+        }
     }
 }

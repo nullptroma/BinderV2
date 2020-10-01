@@ -22,21 +22,21 @@ C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\WPF Resources\Interface 
 C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\WPF Resources\Styles\Button\Button Style.baml
 C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\WPF Resources\Styles\TabControl\TabControlStyle.baml
 C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\WPF Resources\Styles\TextBox\TextBox Style.baml
-C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\BinderV2.csprojAssemblyReference.cache
 C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\MVVM\Views\HelpWindow.g.cs
 C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\MVVM\Views\RecordWindow.g.cs
 C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\MVVM\Views\SettingsWindow.g.cs
 C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\MVVM\Views\MainWindow.g.cs
 C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\MVVM\Views\ChooseTriggerTypeWindow.g.cs
 C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\MVVM\Views\TriggersEditWindow.g.cs
-C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\MVVM\Views\Bind\BindElement.g.cs
-C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\MVVM\Views\Triggers\KeysDownTriggerElement\KeysDownTriggerElement.g.cs
 C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\MVVM\Views\HelpWindow.baml
 C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\MVVM\Views\RecordWindow.baml
 C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\MVVM\Views\SettingsWindow.baml
 C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\MVVM\Views\MainWindow.baml
 C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\MVVM\Views\ChooseTriggerTypeWindow.baml
 C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\MVVM\Views\TriggersEditWindow.baml
-C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\MVVM\Views\Bind\BindElement.baml
-C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\MVVM\Views\Triggers\KeysDownTriggerElement\KeysDownTriggerElement.baml
 C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\MVVM\Views\Bind\BindControl.g.cs
+C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\MVVM\Views\Bind\BindControl.baml
+C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\MVVM\Views\Triggers\KeysDownTriggerElement\KeysDownTriggerControl.g.cs
+C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\MVVM\Views\Triggers\KeysDownTriggerElement\KeysDownTriggerControl.baml
+C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\BinderV2.csprojAssemblyReference.cache

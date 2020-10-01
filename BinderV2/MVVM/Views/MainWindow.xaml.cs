@@ -64,14 +64,26 @@ namespace BinderV2.MVVM.Views
             for (var i = sv.ContentVerticalOffset; i < sv.ScrollableHeight; i += ((sv.ScrollableHeight - i) / 10)+1)
             {
                 sv.ScrollToVerticalOffset(i);
-                await Task.Delay(1).ConfigureAwait(true);
+                await Task.Delay(1);
             }
         }
 
         private async void BindsScrollViewer_ScrollChanged(object sender, ScrollChangedEventArgs e)
         {
-            if(e.ExtentHeightChange!=0)
-                await ScrollDown(BindsScrollViewer).ConfigureAwait(true);
+            if (e.ExtentHeightChange != 0)
+                await ScrollDown(BindsScrollViewer);
+        }
+
+        private async void BindsScrollViewer_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
+        {
+            e.Handled = true;
+            int length = e.Delta * -1;
+            double step = length / 12;
+            for (int i = 0; i < 12; i++)
+            {
+                BindsScrollViewer.Dispatcher.Invoke(() => BindsScrollViewer.ScrollToVerticalOffset(BindsScrollViewer.VerticalOffset + step));
+                await Task.Delay(1);
+            }
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
@@ -95,5 +107,7 @@ namespace BinderV2.MVVM.Views
         {
             Test.RunTest();
         }
+
+        
     }
 }

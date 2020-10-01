@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -17,6 +16,7 @@ using System.Runtime.CompilerServices;
 using Utilities;
 using InterpreterScripts.InterpretationScriptData.CustomFunctions;
 using System.Diagnostics;
+using System.Linq;
 
 namespace InterpreterScripts
 {
@@ -114,7 +114,7 @@ namespace InterpreterScripts
 
         public static Function[] GetAllLibrary()
         {
-            return Library.Concat(AdditionalLibrary).ToArray();
+            return Enumerable.Concat(Library, AdditionalLibrary).ToArray();
         }
     }
 }

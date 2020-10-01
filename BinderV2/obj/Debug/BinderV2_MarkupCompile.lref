@@ -1,9 +1,10 @@
 ﻿
 FC:\Users\Roman\source\repos\BinderV2\BinderV2\App.xaml;;
 FC:\Users\Roman\source\repos\BinderV2\BinderV2\MVVM\Views\SettingsWindow.xaml;;
+FC:\Users\Roman\source\repos\BinderV2\BinderV2\MVVM\Views\Triggers\KeysDownTriggerElement\KeysDownTriggerControl.xaml;;
 FC:\Users\Roman\source\repos\BinderV2\BinderV2\MVVM\Views\MainWindow.xaml;;
 FC:\Users\Roman\source\repos\BinderV2\BinderV2\MVVM\Views\ChooseTriggerTypeWindow.xaml;;
-FC:\Users\Roman\source\repos\BinderV2\BinderV2\MVVM\Views\Bind\BindElement.xaml;;
-FC:\Users\Roman\source\repos\BinderV2\BinderV2\MVVM\Views\Triggers\KeysDownTriggerElement\KeysDownTriggerElement.xaml;;
+FC:\Users\Roman\source\repos\BinderV2\BinderV2\MVVM\Views\TriggersEditWindow.xaml;;
+FC:\Users\Roman\source\repos\BinderV2\BinderV2\MVVM\Views\Bind\BindControl.xaml;;
 FC:\Users\Roman\source\repos\BinderV2\BinderV2\WPF Resources\Styles\TextBox\TextBox Style.xaml;;
 

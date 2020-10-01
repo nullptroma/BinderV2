@@ -10,7 +10,6 @@ using Trigger.Types;
 using Trigger;
 using BindModel;
 using BinderV2.Commands;
-using BinderV2.WpfControls.BindControl;
 using System.IO;
 using System.Xml.Serialization;
 using Newtonsoft.Json;
@@ -32,11 +31,7 @@ namespace BinderV2.MVVM.ViewModels
         #region BindsManager
         private BindsManager bindsManager = new BindsManager();
         public ObservableCollection<BindViewModel> Binds { get { return bindsManager.Binds; } }
-        public BindViewModel SelectedBind 
-        { 
-            get { return bindsManager.SelectedBind; }
-            set { bindsManager.SelectedBind = value; OnPropertyChanged("SelectedBind"); }
-        }
+
         public string SelectedBindScript
         {
             get { return bindsManager.SelectedBindScript; }
@@ -153,7 +148,7 @@ namespace BinderV2.MVVM.ViewModels
             }
         }
 
-        private void OnBindManagerPropertyChanged(object sender, PropertyChangedEventArgs e)
+        private void OnBindsManagerPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             OnPropertyChanged(e.PropertyName);
         }
@@ -204,7 +199,7 @@ namespace BinderV2.MVVM.ViewModels
 
         public MainViewModel()
         {
-            bindsManager.PropertyChanged += OnBindManagerPropertyChanged;
+            bindsManager.PropertyChanged += OnBindsManagerPropertyChanged;
         }
         
         private RelayCommand appShutdownCommand;

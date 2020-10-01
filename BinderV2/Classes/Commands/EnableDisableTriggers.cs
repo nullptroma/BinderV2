@@ -8,7 +8,7 @@ using Trigger.Types;
 
 namespace BinderV2.Commands
 {
-    public static class EnableDisableTriggers
+    public static class EnableDisableTriggers//прописано в стили текстбокса, чтобы при редактировании любого текстбокса выключались триггеры
     {
         private static RelayCommand disableTriggersCommand;
         public static RelayCommand DisableTriggersCommand

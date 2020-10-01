@@ -159,9 +159,12 @@
     <Compile Include="MVVM\Models\HelpModel.cs" />
     <Compile Include="MVVM\Models\MainModels\BindsManager.cs" />
     <Compile Include="MVVM\Models\MainModels\WindowsManager.cs" />
+    <Compile Include="MVVM\Models\TriggersManager.cs" />
     <Compile Include="MVVM\ViewModels\BaseViewModel.cs" />
     <Compile Include="MVVM\ViewModels\BindViewModel.cs" />
     <Compile Include="MVVM\ViewModels\HelpViewModel.cs" />
+    <Compile Include="MVVM\ViewModels\Triggers\BaseTriggerViewModel.cs" />
+    <Compile Include="MVVM\ViewModels\Triggers\KeysDownTriggerViewModel.cs" />
     <Compile Include="MVVM\Views\HelpWindow.xaml.cs">
       <DependentUpon>HelpWindow.xaml</DependentUpon>
     </Compile>
@@ -172,6 +175,9 @@
     <Compile Include="MVVM\ViewModels\SettingsViewModel.cs" />
     <Compile Include="MVVM\Views\SettingsWindow.xaml.cs">
       <DependentUpon>SettingsWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\Views\Triggers\KeysDownTriggerElement\KeysDownTriggerControl.xaml.cs">
+      <DependentUpon>KeysDownTriggerControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="WPF Resources\Styles\CustomizedWindow\WindowStyle.cs" />
     <Compile Include="Classes\Utilities\AutoRun.cs" />
@@ -184,13 +190,9 @@
     <Compile Include="MVVM\Views\TriggersEditWindow.xaml.cs">
       <DependentUpon>TriggersEditWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MVVM\Views\Bind\BindElement.xaml.cs">
-      <DependentUpon>BindElement.xaml</DependentUpon>
+    <Compile Include="MVVM\Views\Bind\BindControl.xaml.cs">
+      <DependentUpon>BindControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MVVM\Views\Triggers\KeysDownTriggerElement\KeysDownTriggerElement.xaml.cs">
-      <DependentUpon>KeysDownTriggerElement.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="MVVM\Views\Triggers\ITriggerControl.cs" />
     <Page Include="MVVM\Views\HelpWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -200,6 +202,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="MVVM\Views\SettingsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVVM\Views\Triggers\KeysDownTriggerElement\KeysDownTriggerControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -247,11 +253,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MVVM\Views\Bind\BindElement.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="MVVM\Views\Triggers\KeysDownTriggerElement\KeysDownTriggerElement.xaml">
+    <Page Include="MVVM\Views\Bind\BindControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

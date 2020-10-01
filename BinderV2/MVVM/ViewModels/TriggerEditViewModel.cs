@@ -12,50 +12,26 @@ using Trigger.Types;
 using Trigger.Tools;
 using BindModel;
 using BinderV2.Commands;
-using BinderV2.WpfControls.Triggers;
 using BinderV2.MVVM.Views;
-
+using BinderV2.MVVM.ViewModels.Triggers;
+using BinderV2.MVVM.Models;
 
 namespace BinderV2.MVVM.ViewModels
 {
     class TriggerEditViewModel : BaseViewModel
     {
-        public ObservableCollection<ITriggerControl> triggersControls { get; set; }
-        private ITriggerControl selectedTrigger;
-        private Bind bind;
-        private string scriptTextBoxText = "";
-        public string ScriptTextBoxText
+        #region TriggersManager
+        TriggersManager triggersManager;
+        public ObservableCollection<BaseTriggerViewModel> Triggers { get { return triggersManager.Triggers; } }
+        public string SelectedTriggerScript
         {
-            get { return scriptTextBoxText; }
-            set 
-            { 
-                scriptTextBoxText = value;
-                OnPropertyChanged("ScriptTextBoxText");
-            }
-        }
-
-        
-        
-
-        public TriggerEditViewModel(Bind bind)
-        {
-            this.bind = bind;
-            triggersControls = new ObservableCollection<ITriggerControl>();//создаём коллекцию контролов
-            AddTriggerControls();//добавляем контроллы из триггеров
-        }
-
-        private void AddTriggerControls()
-        {
-            foreach (BaseTrigger bt in bind.Triggers)
+            get { return triggersManager.SelectedTriggerScript; }
+            set
             {
-                var control = TriggerUtility.GetControlFromTrigger(bt);
-                triggersControls.Add((ITriggerControl)control);
+                triggersManager.SelectedTriggerScript = value;
+                OnPropertyChanged("SelectedTriggerScript");
             }
-            OnPropertyChanged("triggersControls");
-            OnPropertyChanged("triggersControls");
-            
         }
-
 
         private RelayCommand createTriggerCommand;
         public RelayCommand CreateTriggerCommand
@@ -65,18 +41,7 @@ namespace BinderV2.MVVM.ViewModels
                 return createTriggerCommand ??
                   (createTriggerCommand = new RelayCommand(obj =>
                   {
-                      
-                      ChooseTriggerTypeWindow ctw = new ChooseTriggerTypeWindow();
-                      ctw.ShowDialog();
-                      if (ctw.SelectedType == TriggerType.None)
-                          return;
-                      BaseTrigger newTrigger = TriggerUtility.GetTriggerFromTriggerType("Новый триггер", ctw.SelectedType);
-                      bind.Triggers.Add(newTrigger);
-
-                      Control triggerControl = TriggerUtility.GetControlFromTrigger(newTrigger);
-
-                      triggersControls.Add((ITriggerControl)triggerControl);
-                      OnPropertyChanged("triggersControls");
+                      triggersManager.CreateNewTrigger();
                   }));
             }
         }
@@ -89,16 +54,13 @@ namespace BinderV2.MVVM.ViewModels
                 return removeTriggerCommand ??
                   (removeTriggerCommand = new RelayCommand(obj =>
                   {
-                      ITriggerControl triggerElement = (ITriggerControl)obj;
-                      if (MessageBox.Show("Удалить триггер \"" + triggerElement.GetTrigger().Name + "\"?", "Вы уверены?", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                      if (!(obj is BaseTriggerViewModel))
+                          return;
+                      BaseTriggerViewModel bindElement = (BaseTriggerViewModel)obj;
+                      if (MessageBox.Show("Удалить триггер \"" + bindElement.Trigger.Name + "\"?", "Вы уверены?", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
                       {
-                          if (!bind.Triggers.Remove(triggerElement.GetTrigger()))
+                          if (!triggersManager.RemoveTrigger((BaseTriggerViewModel)obj))
                               MessageBox.Show("Ошибка удаления");
-
-                          triggersControls.Remove(triggerElement);
-                          OnPropertyChanged("triggersControls");
-
-                          ScriptTextBoxText = "";
                       }
                   }));
             }
@@ -112,16 +74,8 @@ namespace BinderV2.MVVM.ViewModels
                 return selectTriggerCommand ??
                   (selectTriggerCommand = new RelayCommand(obj =>
                   {
-                      if (triggersControls.Contains(obj))
-                      {
-                          foreach (ITriggerControl trigEl in triggersControls)
-                              trigEl.Selected = false;
-                          var currentElement = (ITriggerControl)obj;
-                          selectedTrigger = currentElement;
-                          currentElement.Selected = true;
-
-                          ScriptTextBoxText = selectedTrigger.GetTrigger().Script;
-                      }
+                      if (obj is BaseTriggerViewModel)
+                          triggersManager.SelectedTrigger = (BaseTriggerViewModel)obj;
                   }));
             }
         }
@@ -134,19 +88,26 @@ namespace BinderV2.MVVM.ViewModels
                 return saveTriggerScriptCommand ??
                   (saveTriggerScriptCommand = new RelayCommand(obj =>
                   {
-                      if (selectedTrigger != null)
+                      if (obj != null)
                       {
-                          selectedTrigger.GetTrigger().Script = obj.ToString();
-                          MessageBox.Show("Сохранено");
-                      }
-                      else
-                      {
-                          MessageBox.Show("Выберите триггер", "Ошибка");
+                          triggersManager.SaveScriptToSelectedBind(obj.ToString());
+                          MessageBox.Show("Сохранено", "Успех");
                       }
                   }));
             }
         }
 
+        public void OnTriggersManagerPropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            OnPropertyChanged(e.PropertyName);
+        }
+        #endregion
+
+        public TriggerEditViewModel(Bind bind)
+        {
+            triggersManager = new TriggersManager(bind);
+            triggersManager.PropertyChanged += OnTriggersManagerPropertyChanged;
+        }
 
         public override event PropertyChangedEventHandler PropertyChanged;
         public override void OnPropertyChanged(string prop)
