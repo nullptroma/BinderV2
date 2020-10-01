@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -9,6 +10,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using BinderV2.MVVM.ViewModels;
 using BinderV2.MVVM.Views;
 using BindModel;
 
@@ -17,53 +19,16 @@ namespace BinderV2.WpfControls.BindControl
     /// <summary>
     /// Логика взаимодействия для BindElement.xaml
     /// </summary>
-    public partial class BindElement : UserControl, IBindElement
+    public partial class BindElement : UserControl
     {
-        private Bind bind;
-        
+        public BindElement(Bind b) : this()
+        {
+            DataContext = new BindViewModel(b);
+        }
 
-        public BindElement(Bind b)
+        public BindElement()
         {
             InitializeComponent();
-            bind = b;
-            labelName.Content = bind.Name;
-            bind.EnableChanged += (sender, e) => 
-            {
-                UpdateVisualization();
-            };
-            UpdateVisualization();
-        }
-
-        public BindElement() : this(new Bind())
-        {
-            
-        }
-
-        public void UpdateVisualization()//обновляет все цвета и текст на кнопке
-        {
-            this.Dispatcher.Invoke(()=> 
-            {
-                if (selected)
-                {
-                    border.SetResourceReference(Border.BackgroundProperty, "BindTriggerBackgroundSelected");
-                    border.SetResourceReference(Border.BorderBrushProperty, "BindTriggerBorderSelected");
-                }
-                else
-                {
-                    border.SetResourceReference(Border.BackgroundProperty, "BindTriggerBackgroundUnSelected");
-                    border.SetResourceReference(Border.BorderBrushProperty, "BindTriggerBorderUnSelected");
-                }
-                if (bind.Enable)
-                {
-                    EnableButton.SetResourceReference(Button.BackgroundProperty, "EnableButtonOn");
-                    EnableButton.Content = "Активен";
-                }
-                else
-                {
-                    EnableButton.SetResourceReference(Button.BackgroundProperty, "EnableButtonOff");
-                    EnableButton.Content = "Неактивен";
-                }
-            });
         }
 
 
@@ -77,8 +42,6 @@ namespace BinderV2.WpfControls.BindControl
 
         private void EndEditName()
         {
-            bind.Name = textBoxName.Text;
-            labelName.Content = bind.Name;
             labelName.Visibility = Visibility.Visible;
             textBoxName.Visibility = Visibility.Collapsed;
             labelName.Focus();
@@ -97,35 +60,5 @@ namespace BinderV2.WpfControls.BindControl
                 EndEditName();
             }
         }
-        
-
-        private void TriggerEditButton_Click(object sender, RoutedEventArgs e)
-        {
-            new TriggersEditWindow(bind).ShowDialog();
-        }
-
-        private void EnableButton_Click(object sender, RoutedEventArgs e)
-        {
-            bind.Enable = !bind.Enable;
-        }
-
-        #region IBindElement
-        private bool selected = false;
-
-        public bool Selected
-        {
-            get { return selected; }
-            set
-            {
-                selected = value;
-                UpdateVisualization();
-            }
-        }
-
-        public Bind GetBind()
-        {
-            return bind;
-        }
-        #endregion
     }
 }

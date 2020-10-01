@@ -39,3 +39,4 @@ C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\MVVM\Views\ChooseTrigger
 C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\MVVM\Views\TriggersEditWindow.baml
 C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\MVVM\Views\Bind\BindElement.baml
 C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\MVVM\Views\Triggers\KeysDownTriggerElement\KeysDownTriggerElement.baml
+C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\GeneratedInternalTypeHelper.g.cs

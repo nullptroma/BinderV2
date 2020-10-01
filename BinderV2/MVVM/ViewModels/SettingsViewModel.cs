@@ -26,13 +26,13 @@ namespace BinderV2.MVVM.ViewModels
 {
     class SettingsViewModel : BaseViewModel
     {
-        private VisualsSettings currentVsEdit = ProgramSettings.runtimeSettings.VisualSettings;//ссылка на настройки интерфейса программы
+        private VisualsSettings currentVsEdit = ProgramSettings.RuntimeSettings.VisualSettings;//ссылка на настройки интерфейса программы
 
-        public static bool StartWithWindows { get { return ProgramSettings.runtimeSettings.StartWithWindows; } set { ProgramSettings.runtimeSettings.StartWithWindows = value; } }
-        public static bool HideOnStart { get { return ProgramSettings.runtimeSettings.HideOnStart; } set { ProgramSettings.runtimeSettings.HideOnStart = value; } }
-        public static bool AutoLoadBinds { get { return ProgramSettings.runtimeSettings.AutoLoadBinds; } set { ProgramSettings.runtimeSettings.AutoLoadBinds = value; } }
-        public static bool SaveMainWindowSize { get { return ProgramSettings.runtimeSettings.SaveMainWindowSize; } set { ProgramSettings.runtimeSettings.SaveMainWindowSize = value; } }
-        public static string AutoLoadBindsPath { get { return ProgramSettings.runtimeSettings.AutoLoadBindsPath; } set { ProgramSettings.runtimeSettings.AutoLoadBindsPath = value; } }
+        public static bool StartWithWindows { get { return ProgramSettings.RuntimeSettings.StartWithWindows; } set { ProgramSettings.RuntimeSettings.StartWithWindows = value; } }
+        public static bool HideOnStart { get { return ProgramSettings.RuntimeSettings.HideOnStart; } set { ProgramSettings.RuntimeSettings.HideOnStart = value; } }
+        public static bool AutoLoadBinds { get { return ProgramSettings.RuntimeSettings.AutoLoadBinds; } set { ProgramSettings.RuntimeSettings.AutoLoadBinds = value; } }
+        public static bool SaveMainWindowSize { get { return ProgramSettings.RuntimeSettings.SaveMainWindowSize; } set { ProgramSettings.RuntimeSettings.SaveMainWindowSize = value; } }
+        public static string AutoLoadBindsPath { get { return ProgramSettings.RuntimeSettings.AutoLoadBindsPath; } set { ProgramSettings.RuntimeSettings.AutoLoadBindsPath = value; } }
 
         public ObservableCollection<string> colorFields { get; set; }//все цветные параметры
         public string SelectedColorField { get; set; }//выбранный цветной параметр
@@ -224,7 +224,7 @@ namespace BinderV2.MVVM.ViewModels
                       if (MessageBox.Show("Сбросить все настройки?", "Вы уверены?", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
                       {
                           ProgramSettings.Reset();
-                          this.currentVsEdit = ProgramSettings.runtimeSettings.VisualSettings;
+                          this.currentVsEdit = ProgramSettings.RuntimeSettings.VisualSettings;
                           OnPropertyChanged("WindowBorderThickness");
                           OnPropertyChanged("WindowIconMargin");
                           OnPropertyChanged("HeightWindowTitle");
@@ -264,11 +264,11 @@ namespace BinderV2.MVVM.ViewModels
                       ofd.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
                       if (ofd.ShowDialog().Value)
                       {
-                          ProgramSettings.runtimeSettings.AutoLoadBindsPath = ofd.FileName;
+                          ProgramSettings.RuntimeSettings.AutoLoadBindsPath = ofd.FileName;
                           OnPropertyChanged("AutoLoadBindsPath");
                       }
                   },
-                  obj => ProgramSettings.runtimeSettings.AutoLoadBinds));
+                  obj => ProgramSettings.RuntimeSettings.AutoLoadBinds));
             }
         }
 

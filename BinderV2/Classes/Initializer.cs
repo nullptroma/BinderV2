@@ -13,7 +13,7 @@ namespace BinderV2.Classes
         {
             DependencyResolver.Resolver.RegisterDependencyResolver();//прежде всего подключаем все зависимости
             Interpreter.ExecuteCommand("Initialize");//Прогоняем команду в интерпретаторе
-            Settings.ProgramSettings.runtimeSettings.ToString();//обращаемся к настройкам, чтобы они подгрузились
+            Settings.ProgramSettings.RuntimeSettings.ToString();//обращаемся к настройкам, чтобы они подгрузились
         }
     }
 }

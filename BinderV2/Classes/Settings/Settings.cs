@@ -17,8 +17,8 @@ namespace BinderV2.Settings
         public string AutoLoadBindsPath { get; set; }
         public bool SaveMainWindowSize { get; set; }
         public Size MainWindowSize { get; set; }
-        [JsonIgnore] private string lastBindsPath = "";
-        [JsonIgnore] public string LastBindsPath { get { return lastBindsPath; } set { lastBindsPath = value; } }
+
+
         public bool StartWithWindows
         {
             get { return startWithWindows; }
@@ -38,7 +38,7 @@ namespace BinderV2.Settings
         }
 
         public static readonly string SaveSettingsDirectory = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\BinderV2";
-        public static ProgramSettings runtimeSettings { get; private set; }
+        public static ProgramSettings RuntimeSettings { get; private set; }
 
         static ProgramSettings()//начинаем тут
         {
@@ -52,19 +52,19 @@ namespace BinderV2.Settings
 
         private static void SaveSettings()
         {
-            JsonUtilities.SerializeToFile(runtimeSettings, ProgramSettings.SaveSettingsDirectory + @"\settings.txt");
+            JsonUtilities.SerializeToFile(RuntimeSettings, ProgramSettings.SaveSettingsDirectory + @"\settings.txt");
         }
 
         private static void LoadSettings()
         {
             try
             {
-                runtimeSettings = JsonUtilities.Deserialize<ProgramSettings>(File.ReadAllText(ProgramSettings.SaveSettingsDirectory + @"\settings.txt"));
+                RuntimeSettings = JsonUtilities.Deserialize<ProgramSettings>(File.ReadAllText(ProgramSettings.SaveSettingsDirectory + @"\settings.txt"));
             }
-            catch{ runtimeSettings = new ProgramSettings(); }
+            catch{ RuntimeSettings = new ProgramSettings(); }
             try
             {
-                VisualsSettings.ApplyVisuals(runtimeSettings.VisualSettings);
+                VisualsSettings.ApplyVisuals(RuntimeSettings.VisualSettings);
             }
             catch { Reset(); }
         }
@@ -72,8 +72,8 @@ namespace BinderV2.Settings
 
         public static void Reset()
         {
-            runtimeSettings = new ProgramSettings();
-            VisualsSettings.ApplyVisuals(runtimeSettings.VisualSettings);
+            RuntimeSettings = new ProgramSettings();
+            VisualsSettings.ApplyVisuals(RuntimeSettings.VisualSettings);
             SaveSettings();
         }
     }

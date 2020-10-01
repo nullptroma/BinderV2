@@ -27,12 +27,12 @@ namespace BinderV2.MVVM.Views
             Initializer.Initialize();
             InitializeComponent();
             DataContext = new MainViewModel();
-            if (ProgramSettings.runtimeSettings.HideOnStart)
+            if (ProgramSettings.RuntimeSettings.HideOnStart)
                 HideWindow();
-            if (ProgramSettings.runtimeSettings.SaveMainWindowSize)
+            if (ProgramSettings.RuntimeSettings.SaveMainWindowSize)
             {
-                Application.Current.MainWindow.Width = ProgramSettings.runtimeSettings.MainWindowSize.Width;
-                Application.Current.MainWindow.Height = ProgramSettings.runtimeSettings.MainWindowSize.Height;
+                Application.Current.MainWindow.Width = ProgramSettings.RuntimeSettings.MainWindowSize.Width;
+                Application.Current.MainWindow.Height = ProgramSettings.RuntimeSettings.MainWindowSize.Height;
             }
         }
 
@@ -87,7 +87,7 @@ namespace BinderV2.MVVM.Views
 
         private void Window_Closed(object sender, EventArgs e)
         {
-            ProgramSettings.runtimeSettings.MainWindowSize = new Size(Width, Height);
+            ProgramSettings.RuntimeSettings.MainWindowSize = new Size(Width, Height);
             Hooks.Mouse.MouseHook.UnInstallHook();
         }
 

@@ -24,9 +24,9 @@
     <SolidColorBrush x:Key="TextBoxBorderMouseOverColor" Color="#FF78AEF8"/>
     <SolidColorBrush x:Key="TextColor" Color="#FF000000"/>
     <SolidColorBrush x:Key="TextBoxSelectionColor" Color="#FF0078D7"/>
-    <SolidColorBrush x:Key="BindTriggerBackgroundUnSelected" Color="#FFB9B9B9"/>
     <SolidColorBrush x:Key="BindTriggerBorderUnSelected" Color="#FF616161"/>
     <SolidColorBrush x:Key="BindTriggerBorderSelected" Color="#FF328232"/>
+    <SolidColorBrush x:Key="BindTriggerBackgroundUnSelected" Color="#FFB9B9B9"/>
     <SolidColorBrush x:Key="BindTriggerBackgroundSelected" Color="#FFB9C3B9"/>
     <SolidColorBrush x:Key="ScrollViewerColor" Color="#51000000"/>
     <SolidColorBrush x:Key="ComboboxBackground" Color="#EFEFF2"/>

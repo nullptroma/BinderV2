@@ -23,87 +23,28 @@ using Utilities;
 using InterpreterScripts;
 using InterpreterScripts.InterpretationScriptData.StandartFunctions;
 using InterpreterScripts.FuncAttributes;
+using BinderV2.MVVM.Models.MainModels;
 
 namespace BinderV2.MVVM.ViewModels
 {
     class MainViewModel : BaseViewModel
     {
-        public ObservableCollection<IBindElement> bindsControls { get; set; }
-        private SettingsWindow SettingsWindow;
-        private HelpWindow HelpWindow;
-        private RecordWindow RecordWindow;
-        private IBindElement selectedBind;
-        private string currentBindScript = "";
-
-        public string CurrentBindScript
+        #region BindsManager
+        private BindsManager bindsManager = new BindsManager();
+        public ObservableCollection<BindViewModel> Binds { get { return bindsManager.Binds; } }
+        public BindViewModel SelectedBind 
+        { 
+            get { return bindsManager.SelectedBind; }
+            set { bindsManager.SelectedBind = value; OnPropertyChanged("SelectedBind"); }
+        }
+        public string SelectedBindScript
         {
-            get { return currentBindScript; }
+            get { return bindsManager.SelectedBindScript; }
             set
             {
-                currentBindScript = value;
-                OnPropertyChanged("currentBindScript");
+                bindsManager.SelectedBindScript = value;
+                OnPropertyChanged("SelectedBindScript");
             }
-        }
-
-        [Description("EnableBind(string name1, string name2...) - включает бинды с переданными именами.")]
-        [FuncGroup("BindControl")]
-        public object[] EnableBindsByNames(params object[] ps)
-        {
-            foreach (var bindName in ps)
-            {
-                var bindsWithName = bindsControls.Where(bc => bc.GetBind().Name == bindName.ToString());
-                if (bindsWithName.Count() != 0)
-                    foreach (IBindElement be in bindsWithName)
-                        be.GetBind().Enable = true;
-            }
-
-            return ps;
-        }
-
-        [Description("DisableBindsByNames(string name1, string name2...) - выключает бинды с переданными именами.")]
-        [FuncGroup("BindControl")]
-        public object[] DisableBindsByNames(params object[] ps)
-        {
-            foreach (var bindName in ps)
-            {
-                var bindsWithName = bindsControls.Where(bc => bc.GetBind().Name == bindName.ToString());
-                if (bindsWithName.Count() != 0)
-                    foreach (IBindElement be in bindsWithName)
-                        be.GetBind().Enable = false;
-            }
-
-            return ps;
-        }
-
-        public MainViewModel()
-        {
-            bindsControls = new ObservableCollection<IBindElement>();
-            CheckAutoLoadAndLoad();
-            AddFuncsToLib();
-        }
-
-        private void CheckAutoLoadAndLoad()
-        {
-            if (ProgramSettings.runtimeSettings.AutoLoadBinds)
-            {
-                try
-                {
-                    OpenBindsInPath(ProgramSettings.runtimeSettings.AutoLoadBindsPath);
-                    ProgramSettings.runtimeSettings.LastBindsPath = ProgramSettings.runtimeSettings.AutoLoadBindsPath;
-                }
-                catch
-                {
-                    MessageBox.Show("Не удаётся открыть файл " + ProgramSettings.runtimeSettings.AutoLoadBindsPath, "Ошибка");
-                    ProgramSettings.runtimeSettings.AutoLoadBinds = false;
-                    ProgramSettings.runtimeSettings.AutoLoadBindsPath = "";
-                }
-            }
-        }
-
-        private void AddFuncsToLib()
-        {
-            Interpreter.AddToLibrary(new Function(new Func<object[], object>(EnableBindsByNames), FuncType.Parameters));
-            Interpreter.AddToLibrary(new Function(new Func<object[], object>(DisableBindsByNames), FuncType.Parameters));
         }
 
         private RelayCommand saveBindsInNewPathCommand;
@@ -114,13 +55,7 @@ namespace BinderV2.MVVM.ViewModels
                 return saveBindsInNewPathCommand ??
                   (saveBindsInNewPathCommand = new RelayCommand(obj =>
                   {
-                      SaveFileDialog sfd = new SaveFileDialog();
-                      sfd.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
-                      if (sfd.ShowDialog().Value)
-                      {
-                          ProgramSettings.runtimeSettings.LastBindsPath = sfd.FileName;
-                          SaveBindsCommand.Execute(null);
-                      }
+                      bindsManager.SaveBindsInNewPath();
                   }));
             }
         }
@@ -133,15 +68,7 @@ namespace BinderV2.MVVM.ViewModels
                 return saveBindsCommand ??
                   (saveBindsCommand = new RelayCommand(obj =>
                   {
-                      if (ProgramSettings.runtimeSettings.LastBindsPath.Length != 0)
-                      {
-                          Bind[] binds = new Bind[bindsControls.Count];
-                          for (int i = 0; i < binds.Length; i++)
-                              binds[i] = bindsControls[i].GetBind();
-                          Utilities.JsonUtilities.SerializeToFile(binds, ProgramSettings.runtimeSettings.LastBindsPath);
-                      }
-                      else
-                          SaveBindsInNewPathCommand.Execute(null);
+                      bindsManager.SaveBinds();
                   }));
             }
         }
@@ -154,46 +81,7 @@ namespace BinderV2.MVVM.ViewModels
                 return openBindsCommand ??
                   (openBindsCommand = new RelayCommand(obj =>
                   {
-                      OpenFileDialog ofd = new OpenFileDialog();
-                      ofd.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
-                      if (ofd.ShowDialog().Value)
-                      {
-                          try
-                          {
-                              ProgramSettings.runtimeSettings.LastBindsPath = ofd.FileName;
-                              OpenBindsInPath(ProgramSettings.runtimeSettings.LastBindsPath);
-                              OnPropertyChanged("bindsControls");
-                          }
-                          catch { MessageBox.Show("Не удаётся открыть файл " + ofd.FileName, "Ошибка"); }
-                      }
-                  }));
-            }
-        }
-
-        private void OpenBindsInPath(string path)
-        {
-            ClearBinds();
-            Bind[] binds = Utilities.JsonUtilities.Deserialize<Bind[]>(File.ReadAllText(path));
-            foreach (Bind b in binds)
-                bindsControls.Add(new BindElement(b));
-        }
-
-        private void ClearBinds()
-        {
-            foreach (IBindElement be in bindsControls)
-                be.GetBind().Dispose();
-            bindsControls.Clear();
-        }
-
-        private RelayCommand appShutdownCommand;
-        public RelayCommand AppShutdownCommand
-        {
-            get
-            {
-                return appShutdownCommand ??
-                  (appShutdownCommand = new RelayCommand(obj =>
-                  {
-                      Environment.Exit(0);
+                      bindsManager.OpenBinds();
                   }));
             }
         }
@@ -206,16 +94,11 @@ namespace BinderV2.MVVM.ViewModels
                 return selectBindCommand ??
                   (selectBindCommand = new RelayCommand(obj =>
                   {
-                      if (obj is BindElement)
+                      if (obj is BindViewModel)
                       {
-                          foreach (IBindElement bindControl in bindsControls)
-                              bindControl.Selected = false;
-                          IBindElement currentBind = (IBindElement)obj;
-                          currentBind.Selected = true;
-                          selectedBind = currentBind;
-
-                          CurrentBindScript = selectedBind.GetBind().Script;
+                          bindsManager.SelectedBind = (BindViewModel)obj;
                       }
+
                   }));
             }
         }
@@ -228,15 +111,11 @@ namespace BinderV2.MVVM.ViewModels
                 return saveCurrentScript ??
                   (saveCurrentScript = new RelayCommand(obj =>
                   {
-                      if (selectedBind != null)
+                      if (obj != null)
                       {
-                          selectedBind.GetBind().Script = obj.ToString();
-                          MessageBox.Show("Сохранено");
-                      }
-                      else
-                      {
-                          MessageBox.Show("Выберите бинд", "Ошибка");
-                      }
+                          bindsManager.SaveScriptToSelectedBind(obj.ToString());
+                          MessageBox.Show("Сохранено", "Успех");
+                      }    
                   }));
             }
         }
@@ -249,8 +128,7 @@ namespace BinderV2.MVVM.ViewModels
                 return createBindCommand ??
                   (createBindCommand = new RelayCommand(obj =>
                   {
-                      bindsControls.Add((IBindElement)new BindElement());
-                      OnPropertyChanged("bindsControls");
+                      bindsManager.CreateNewBind();
                   }));
             }
         }
@@ -263,18 +141,26 @@ namespace BinderV2.MVVM.ViewModels
                 return removeBindCommand ??
                   (removeBindCommand = new RelayCommand(obj =>
                   {
-                      IBindElement bindElement = (IBindElement)obj;
-                      if (MessageBox.Show("Удалить бинд \"" + bindElement.GetBind().Name + "\"?", "Вы уверены?", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                      if (!(obj is BindViewModel))
+                          return;
+                      BindViewModel bindElement = (BindViewModel)obj;
+                      if (MessageBox.Show("Удалить бинд \"" + bindElement.Bind.Name + "\"?", "Вы уверены?", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
                       {
-                          if (!bindsControls.Remove(bindElement))
+                          if (!bindsManager.RemoveBind(bindElement))
                               MessageBox.Show("Ошибка удаления");
-                          bindElement.GetBind().Dispose();//освобождаем удаляемый бинд
-                          OnPropertyChanged("bindsControls");
-                          CurrentBindScript = "";
                       }
                   }));
             }
         }
+
+        private void OnBindManagerPropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            OnPropertyChanged(e.PropertyName);
+        }
+        #endregion
+
+        #region WindowsManager
+        private WindowsManager wm = new WindowsManager();
 
         private RelayCommand openSettingsWindowCommand;
         public RelayCommand OpenSettingsWindowCommand
@@ -284,10 +170,7 @@ namespace BinderV2.MVVM.ViewModels
                 return openSettingsWindowCommand ??
                   (openSettingsWindowCommand = new RelayCommand(obj =>
                   {
-                      if (SettingsWindow != null)
-                          SettingsWindow.Close();
-                      SettingsWindow = new SettingsWindow();
-                      SettingsWindow.Show();
+                      wm.OpenSettingsWindow();
                   }));
             }
         }
@@ -300,10 +183,7 @@ namespace BinderV2.MVVM.ViewModels
                 return openHelpWindowCommand ??
                   (openHelpWindowCommand = new RelayCommand(obj =>
                   {
-                      if (HelpWindow != null)
-                          HelpWindow.Close();
-                      HelpWindow = new HelpWindow();
-                      HelpWindow.Show();
+                      wm.OpenHelpWindow();
                   }));
             }
         }
@@ -316,10 +196,26 @@ namespace BinderV2.MVVM.ViewModels
                 return openRecordWindowCommand ??
                   (openRecordWindowCommand = new RelayCommand(obj =>
                   {
-                      if (RecordWindow != null)
-                          RecordWindow.Close();
-                      RecordWindow = new RecordWindow();
-                      RecordWindow.Show();
+                      wm.OpenRecordWindow();
+                  }));
+            }
+        }
+        #endregion
+
+        public MainViewModel()
+        {
+            bindsManager.PropertyChanged += OnBindManagerPropertyChanged;
+        }
+        
+        private RelayCommand appShutdownCommand;
+        public RelayCommand AppShutdownCommand
+        {
+            get
+            {
+                return appShutdownCommand ??
+                  (appShutdownCommand = new RelayCommand(obj =>
+                  {
+                      Environment.Exit(0);
                   }));
             }
         }

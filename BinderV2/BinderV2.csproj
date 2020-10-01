@@ -157,7 +157,10 @@
     <Compile Include="Classes\Utilities\JsonUtilities.cs" />
     <Compile Include="Dependencies\Resolver.cs" />
     <Compile Include="MVVM\Models\HelpModel.cs" />
+    <Compile Include="MVVM\Models\MainModels\BindsManager.cs" />
+    <Compile Include="MVVM\Models\MainModels\WindowsManager.cs" />
     <Compile Include="MVVM\ViewModels\BaseViewModel.cs" />
+    <Compile Include="MVVM\ViewModels\BindViewModel.cs" />
     <Compile Include="MVVM\ViewModels\HelpViewModel.cs" />
     <Compile Include="MVVM\Views\HelpWindow.xaml.cs">
       <DependentUpon>HelpWindow.xaml</DependentUpon>
@@ -184,7 +187,6 @@
     <Compile Include="MVVM\Views\Bind\BindElement.xaml.cs">
       <DependentUpon>BindElement.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MVVM\Views\Bind\IBindElement.cs" />
     <Compile Include="MVVM\Views\Triggers\KeysDownTriggerElement\KeysDownTriggerElement.xaml.cs">
       <DependentUpon>KeysDownTriggerElement.xaml</DependentUpon>
     </Compile>
