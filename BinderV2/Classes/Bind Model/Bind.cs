@@ -49,7 +49,7 @@ namespace BindModel
             GC.SuppressFinalize(this);
         }
 
-        private void Invoke(object sender, TriggeredEventArgs e)
+        private void Invoked(object sender, TriggeredEventArgs e)
         {
             if (!Enable)//если выключено - выходим
                 return;
@@ -69,10 +69,10 @@ namespace BindModel
         {
             if (e.Action == System.Collections.Specialized.NotifyCollectionChangedAction.Add)
                 foreach (BaseTrigger newBt in e.NewItems)
-                    newBt.Triggered += Invoke;
+                    newBt.AddCallback(Invoked);
             else if (e.Action == System.Collections.Specialized.NotifyCollectionChangedAction.Remove)
                 foreach (BaseTrigger newBt in e.OldItems)
-                    newBt.Triggered -= Invoke;
+                    newBt.RemoveCallback(Invoked);
         }
 
         ~Bind()

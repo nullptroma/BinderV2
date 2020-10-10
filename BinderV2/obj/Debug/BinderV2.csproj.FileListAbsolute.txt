@@ -37,6 +37,8 @@ C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\MVVM\Views\TriggersEditW
 C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\GeneratedInternalTypeHelper.g.cs
 C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\MVVM\Views\Bind\BindControl.g.cs
 C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\MVVM\Views\Bind\BindControl.baml
-C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\MVVM\Views\Triggers\KeysDownTriggerElement\KeysDownTriggerControl.g.cs
-C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\MVVM\Views\Triggers\KeysDownTriggerElement\KeysDownTriggerControl.baml
 C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\BinderV2.csprojAssemblyReference.cache
+C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\MVVM\Views\Triggers\KeysDownTriggerControl.g.cs
+C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\MVVM\Views\Triggers\OnAddCallbackTriggerControl.g.cs
+C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\MVVM\Views\Triggers\KeysDownTriggerControl.baml
+C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\MVVM\Views\Triggers\OnAddCallbackTriggerControl.baml

@@ -101,6 +101,7 @@
     <Compile Include="Classes\Bind Model\Events.cs" />
     <Compile Include="Classes\Bind Model\Exeptions.cs" />
     <Compile Include="Classes\Commands\EnableDisableTriggers.cs" />
+    <Compile Include="Classes\Utilities\KeyCodeToUnicode.cs" />
     <Compile Include="Classes\Initializer.cs" />
     <Compile Include="Classes\Interpreter Scripts\Converter\Converter.cs" />
     <Compile Include="Classes\Interpreter Scripts\Syntactic Constructs\Constructs\Delay.cs" />
@@ -153,12 +154,14 @@
     <Compile Include="Classes\Triggers\Types\BaseTrigger.cs" />
     <Compile Include="Classes\Triggers\TriggerEvents.cs" />
     <Compile Include="Classes\Triggers\TriggerUtility.cs" />
+    <Compile Include="Classes\Triggers\Types\Triggers\OnAddCallbackTrigger.cs" />
     <Compile Include="Classes\Utilities\ICollectionExtensionMethods.cs" />
     <Compile Include="Classes\Utilities\JsonUtilities.cs" />
     <Compile Include="Dependencies\Resolver.cs" />
     <Compile Include="MVVM\Models\HelpModel.cs" />
     <Compile Include="MVVM\Models\MainModels\BindsManager.cs" />
     <Compile Include="MVVM\Models\MainModels\WindowsManager.cs" />
+    <Compile Include="MVVM\Models\RecordModel.cs" />
     <Compile Include="MVVM\Models\TriggersManager.cs" />
     <Compile Include="MVVM\ViewModels\BaseViewModel.cs" />
     <Compile Include="MVVM\ViewModels\BindViewModel.cs" />
@@ -176,8 +179,11 @@
     <Compile Include="MVVM\Views\SettingsWindow.xaml.cs">
       <DependentUpon>SettingsWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MVVM\Views\Triggers\KeysDownTriggerElement\KeysDownTriggerControl.xaml.cs">
+    <Compile Include="MVVM\Views\Triggers\KeysDownTriggerControl.xaml.cs">
       <DependentUpon>KeysDownTriggerControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\Views\Triggers\OnAddCallbackTriggerControl.xaml.cs">
+      <DependentUpon>OnAddCallbackTriggerControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="WPF Resources\Styles\CustomizedWindow\WindowStyle.cs" />
     <Compile Include="Classes\Utilities\AutoRun.cs" />
@@ -205,7 +211,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MVVM\Views\Triggers\KeysDownTriggerElement\KeysDownTriggerControl.xaml">
+    <Page Include="MVVM\Views\Triggers\KeysDownTriggerControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVVM\Views\Triggers\OnAddCallbackTriggerControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

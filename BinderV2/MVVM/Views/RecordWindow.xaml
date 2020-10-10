@@ -28,7 +28,7 @@
                     </Grid.ColumnDefinitions>
                     <StackPanel Orientation="Horizontal">
                         <Label Content="Бинд для начала/остановки записи:"/>
-                        <Label Content="{Binding KeysForRecordString}">
+                        <Label Content="{Binding RecordHotkeyString}">
                             <i:Interaction.Triggers>
                                 <i:EventTrigger EventName="MouseDown">
                                     <i:InvokeCommandAction Command="{Binding ChangeKeysCommand}"/>
@@ -36,7 +36,7 @@
                             </i:Interaction.Triggers>
                         </Label>
                     </StackPanel>
-                    <Label Grid.Column="1" Content="Идёт запись..." HorizontalAlignment="Right" Visibility="{Binding Path=Recording, Converter={StaticResource BoolToVis}}"/>
+                    <Label Grid.Column="1" Content="Идёт запись..." HorizontalAlignment="Right" Visibility="{Binding Path=IsRecording, Converter={StaticResource BoolToVis}}"/>
                 </Grid>
                 <Grid>
                     <Grid.ColumnDefinitions>

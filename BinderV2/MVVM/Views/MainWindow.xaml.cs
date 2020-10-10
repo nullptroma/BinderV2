@@ -18,7 +18,7 @@ using BinderV2.MVVM.ViewModels;
 namespace BinderV2.MVVM.Views
 {
     /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
+    /// Логика взаимодействия для MainWindow.xaml 
     /// </summary>
     public partial class MainWindow : Window
     {

@@ -1,7 +1,8 @@
 ﻿
 FC:\Users\Roman\source\repos\BinderV2\BinderV2\App.xaml;;
 FC:\Users\Roman\source\repos\BinderV2\BinderV2\MVVM\Views\SettingsWindow.xaml;;
-FC:\Users\Roman\source\repos\BinderV2\BinderV2\MVVM\Views\Triggers\KeysDownTriggerElement\KeysDownTriggerControl.xaml;;
+FC:\Users\Roman\source\repos\BinderV2\BinderV2\MVVM\Views\Triggers\KeysDownTriggerControl.xaml;;
+FC:\Users\Roman\source\repos\BinderV2\BinderV2\MVVM\Views\Triggers\OnAddCallbackTriggerControl.xaml;;
 FC:\Users\Roman\source\repos\BinderV2\BinderV2\MVVM\Views\MainWindow.xaml;;
 FC:\Users\Roman\source\repos\BinderV2\BinderV2\MVVM\Views\ChooseTriggerTypeWindow.xaml;;
 FC:\Users\Roman\source\repos\BinderV2\BinderV2\MVVM\Views\TriggersEditWindow.xaml;;

@@ -11,6 +11,7 @@
     <Border BorderThickness="2" Margin="2">
         <StackPanel>
             <Button Margin="4,4,4,8" Height="40" Command="{Binding TriggerTypeSelectCommand}" CommandParameter="{x:Static mainNS:TriggerType.KeysDown}" Content="KeysDown"/>
+            <Button Margin="4,4,4,8" Height="40" Command="{Binding TriggerTypeSelectCommand}" CommandParameter="{x:Static mainNS:TriggerType.OnAddCallback}" Content="OnAddCallback"/>
         </StackPanel>
     </Border>
 </Window>

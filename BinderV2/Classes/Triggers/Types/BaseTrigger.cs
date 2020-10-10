@@ -10,8 +10,9 @@ namespace Trigger.Types
         public static bool EnableAllTriggers { get; set; }
         public string Name { get; set; }
         public string Script { get; set; }//каждый триггер может выполнять свои действия, перед действиями бинда
-        public event TriggeredEventHandler Triggered;//при событии, мы передаём имя и скрипт триггера
         public event EnableTriggerChangedEventHandler EnableChanged;
+        private event TriggeredEventHandler Triggered;
+        protected event CallbackEditEventHandler CallbackAdded;
         private bool enableTrigger = true;
 
         public bool EnableTrigger
@@ -27,18 +28,29 @@ namespace Trigger.Types
         public BaseTrigger(string name = "Без имени")
         {
             this.Name = name;
-            EnableAllTriggers = true;//при добавлелии любого триггера включаем всё
+            EnableAllTriggers = true;//при добавлении любого триггера включаем всё
             Script = "StartBind();";
         }
 
-        public Task Invoke()
+        protected Task Invoke()
         {
-            return Task.Run(()=> 
+            return Task.Run(() =>
             {
                 if (EnableTrigger && EnableAllTriggers)
                     Triggered?.Invoke(this, new TriggeredEventArgs(Name, Script));
             });
         }
+
+        public void AddCallback(TriggeredEventHandler meth)
+        {
+            Triggered += meth;
+            CallbackAdded?.Invoke(this, new CallbackEditEventArgs(meth));
+        }
+        public void RemoveCallback(TriggeredEventHandler meth)
+        {
+            Triggered -= meth;
+        }
+
 
         public override string ToString()
         {

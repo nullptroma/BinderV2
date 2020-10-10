@@ -60,6 +60,11 @@ namespace Trigger.Types
             GC.SuppressFinalize(this);
         }
 
+        ~KeysDownTrigger()
+        {
+            AllKeyDownTriggers.Remove(this);
+        }
+
         private static HashSet<KeysDownTrigger> AllKeyDownTriggers = new HashSet<KeysDownTrigger>();
         private static HashSet<Key> pressedKeys = new HashSet<Key>();
         static KeysDownTrigger()

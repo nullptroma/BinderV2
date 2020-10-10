@@ -9,7 +9,7 @@ using Trigger.Types;
 
 namespace BinderV2.MVVM.ViewModels.Triggers
 {
-    public abstract class BaseTriggerViewModel : BaseViewModel
+    public class BaseTriggerViewModel : BaseViewModel
     {
         private bool isSelected = false;
         public bool IsSelected { get { return isSelected; } set { isSelected = value; OnPropertyChanged("IsSelected"); } }

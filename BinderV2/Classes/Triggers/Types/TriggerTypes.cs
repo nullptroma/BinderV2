@@ -4,6 +4,7 @@ namespace Trigger.Types
     public enum TriggerType
     {
         None,
-        KeysDown
+        KeysDown,
+        OnAddCallback
     }
 }

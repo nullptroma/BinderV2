@@ -3,6 +3,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using Trigger.Types;
 using BinderV2.MVVM.ViewModels.Triggers;
+using Triggers.Types;
 
 namespace Trigger.Tools
 {
@@ -17,6 +18,11 @@ namespace Trigger.Tools
                     {
                         vm = new KeysDownTriggerViewModel((KeysDownTrigger)trig);
                         break; 
+                    }
+                case "OnAddCallbackTrigger":
+                    {
+                        vm = new BaseTriggerViewModel((OnAddCallbackTrigger)trig);
+                        break;
                     }
                 default:
                     {
@@ -34,9 +40,11 @@ namespace Trigger.Tools
             {
                 case TriggerType.KeysDown:
                     return new KeysDownTrigger(name, new HashSet<Key>());
+                case TriggerType.OnAddCallback:
+                    return new OnAddCallbackTrigger(name);
                 default:
                     {
-                        throw new Trigger.TriggersExeptions.UnknownTriggerTypeExeption(type.GetType());
+                        throw new TriggersExeptions.UnknownTriggerTypeExeption(type.GetType());
                     }
             }
         }

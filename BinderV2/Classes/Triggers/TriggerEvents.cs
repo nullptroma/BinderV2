@@ -13,7 +13,6 @@ namespace Trigger.Events
             TriggerScript = script;
         }
     }
-
     public delegate void TriggeredEventHandler(object sendet, TriggeredEventArgs e);
 
 
@@ -25,6 +24,16 @@ namespace Trigger.Events
             enable = e;
         }
     }
-
     public delegate void EnableTriggerChangedEventHandler(object sender, EnableTriggerChangedEventArgs e);
+
+
+    public class CallbackEditEventArgs : EventArgs
+    {
+        public TriggeredEventHandler meth;
+        public CallbackEditEventArgs(TriggeredEventHandler _meth) : base()
+        {
+            meth = _meth;
+        }
+    }
+    public delegate void CallbackEditEventHandler(object sender, CallbackEditEventArgs e);
 }
