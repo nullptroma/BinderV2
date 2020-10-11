@@ -259,8 +259,10 @@ namespace BinderV2.MVVM.ViewModels
                 return chooseAutoLoadBindsPathCommands ??
                   (chooseAutoLoadBindsPathCommands = new RelayCommand(obj =>
                   {
-                      OpenFileDialog ofd = new OpenFileDialog();
-                      ofd.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
+                      OpenFileDialog ofd = new OpenFileDialog
+                      {
+                          Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*"
+                      };
                       if (ofd.ShowDialog().Value)
                       {
                           ProgramSettings.RuntimeSettings.AutoLoadBindsPath = ofd.FileName;
@@ -279,8 +281,10 @@ namespace BinderV2.MVVM.ViewModels
 
         private void SetColorFields()
         {
-            colorFields = new ObservableCollection<string>();
-            colorFields.Add("None");
+            colorFields = new ObservableCollection<string>
+            {
+                "None"
+            };
             SelectedColorField = "None";
             foreach (FieldInfo fi in currentVsEdit.GetType().GetRuntimeFields())
             {
@@ -294,8 +298,7 @@ namespace BinderV2.MVVM.ViewModels
         public override event PropertyChangedEventHandler PropertyChanged;
         public override void OnPropertyChanged(string prop)
         {
-            if (PropertyChanged != null)
-                PropertyChanged(this, new PropertyChangedEventArgs(prop));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
         }
     }
 }

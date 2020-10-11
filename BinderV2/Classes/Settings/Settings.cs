@@ -10,15 +10,16 @@ namespace BinderV2.Settings
 {
     public class ProgramSettings
     {
-        private bool startWithWindows = false;
+        public static readonly string SaveSettingsDirectory = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\BinderV2";
+        public static ProgramSettings RuntimeSettings { get; private set; }
+
         public VisualsSettings VisualSettings { get; private set; }
+        private bool startWithWindows = false;
         public bool HideOnStart { get; set; }
         public bool AutoLoadBinds { get; set; }
         public string AutoLoadBindsPath { get; set; }
         public bool SaveMainWindowSize { get; set; }
         public Size MainWindowSize { get; set; }
-
-
         public bool StartWithWindows
         {
             get { return startWithWindows; }
@@ -37,8 +38,6 @@ namespace BinderV2.Settings
             VisualSettings = new VisualsSettings();
         }
 
-        public static readonly string SaveSettingsDirectory = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\BinderV2";
-        public static ProgramSettings RuntimeSettings { get; private set; }
 
         static ProgramSettings()//начинаем тут
         {
@@ -60,13 +59,9 @@ namespace BinderV2.Settings
             try
             {
                 RuntimeSettings = JsonUtilities.Deserialize<ProgramSettings>(File.ReadAllText(ProgramSettings.SaveSettingsDirectory + @"\settings.txt"));
-            }
-            catch{ RuntimeSettings = new ProgramSettings(); }
-            try
-            {
                 VisualsSettings.ApplyVisuals(RuntimeSettings.VisualSettings);
             }
-            catch { Reset(); }
+            catch{ Reset(); }
         }
 
 

@@ -24,7 +24,6 @@ namespace BinderV2.MVVM.Views
     {
         public MainWindow()
         {
-            Initializer.Initialize();
             InitializeComponent();
             DataContext = new MainViewModel();
             if (ProgramSettings.RuntimeSettings.HideOnStart)
@@ -45,6 +44,21 @@ namespace BinderV2.MVVM.Views
         {
             HideWindow();
         }
+ 
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            //e.Cancel = true;
+            //HideWindow();
+        }
+
+        private void TaskBarIcon_TrayMouseDoubleClick(object sender, RoutedEventArgs e)
+        {
+            if (WindowState == WindowState.Minimized)
+                ShowWindow();
+            else
+                HideWindow();
+        }
 
         private void HideWindow()
         {
@@ -58,49 +72,9 @@ namespace BinderV2.MVVM.Views
             ShowInTaskbar = true;
         }
 
-
-        private async Task ScrollDown(ScrollViewer sv)
-        {
-            for (var i = sv.ContentVerticalOffset; i < sv.ScrollableHeight; i += ((sv.ScrollableHeight - i) / 10)+1)
-            {
-                sv.ScrollToVerticalOffset(i);
-                await Task.Delay(1);
-            }
-        }
-
-        private async void BindsScrollViewer_ScrollChanged(object sender, ScrollChangedEventArgs e)
-        {
-            if (e.ExtentHeightChange != 0)
-                await ScrollDown(BindsScrollViewer);
-        }
-
-        private async void BindsScrollViewer_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
-        {
-            e.Handled = true;
-            int length = e.Delta * -1;
-            double step = length / 12;
-            for (int i = 0; i < 12; i++)
-            {
-                BindsScrollViewer.Dispatcher.Invoke(() => BindsScrollViewer.ScrollToVerticalOffset(BindsScrollViewer.VerticalOffset + step));
-                await Task.Delay(1);
-            }
-        }
-
-        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            //e.Cancel = true;
-            //HideWindow();
-        }
-
-        private void TaskBarIcon_TrayMouseDoubleClick(object sender, RoutedEventArgs e)
-        {
-            ShowWindow();
-        }
-
         private void Window_Closed(object sender, EventArgs e)
         {
             ProgramSettings.RuntimeSettings.MainWindowSize = new Size(Width, Height);
-            Hooks.Mouse.MouseHook.UnInstallHook();
         }
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)

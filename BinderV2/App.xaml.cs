@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BinderV2.Classes;
+using BinderV2.MVVM.Views;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -13,5 +15,19 @@ namespace BinderV2
     /// </summary>
     public partial class App : Application
     {
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            base.OnStartup(e);
+            Initializer.Initialize();
+
+            var window = new MainWindow();
+            window.Show();
+        }
+
+        protected override void OnExit(ExitEventArgs e)
+        {
+            base.OnExit(e);
+            Finalizer.FinalActions();
+        }
     }
 }

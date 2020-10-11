@@ -137,8 +137,7 @@ namespace Hooks.Mouse
                     switch (wParam.ToInt32())
                     {
                         case WM_LBUTTONDOWN:
-                            if (MouseDown != null)
-                                MouseDown(null,
+                                MouseDown?.Invoke(null,
                                     new MouseEventArgs(MouseButtons.Left,
                                         1,
                                         mhs.pt.X,
@@ -146,8 +145,7 @@ namespace Hooks.Mouse
                                         0));
                             break;
                         case WM_LBUTTONUP:
-                            if (MouseUp != null)
-                                MouseUp(null,
+                                MouseUp?.Invoke(null,
                                     new MouseEventArgs(MouseButtons.Left,
                                         1,
                                         mhs.pt.X,
@@ -155,8 +153,7 @@ namespace Hooks.Mouse
                                         0));
                             break;
                         case WM_MBUTTONDOWN:
-                            if (MouseDown != null)
-                                MouseDown(null,
+                                MouseDown?.Invoke(null,
                                     new MouseEventArgs(MouseButtons.Middle,
                                         1,
                                         mhs.pt.X,
@@ -164,8 +161,7 @@ namespace Hooks.Mouse
                                         0));
                             break;
                         case WM_MBUTTONUP:
-                            if (MouseUp != null)
-                                MouseUp(null,
+                                MouseUp?.Invoke(null,
                                     new MouseEventArgs(MouseButtons.Middle,
                                         1,
                                         mhs.pt.X,
@@ -173,8 +169,7 @@ namespace Hooks.Mouse
                                         0));
                             break;
                         case WM_MOUSEMOVE:
-                            if (MouseMove != null)
-                                MouseMove(null,
+                                MouseMove?.Invoke(null,
                                     new MouseEventArgs(MouseButtons.None,
                                         1,
                                         mhs.pt.X,
@@ -185,8 +180,7 @@ namespace Hooks.Mouse
                             // Данный хук не позволяет узнать куда вращается колесо мыши.
                             break;
                         case WM_RBUTTONDOWN:
-                            if (MouseDown != null)
-                                MouseDown(null,
+                                MouseDown?.Invoke(null,
                                     new MouseEventArgs(MouseButtons.Right,
                                         1,
                                         mhs.pt.X,
@@ -194,8 +188,7 @@ namespace Hooks.Mouse
                                         0));
                             break;
                         case WM_RBUTTONUP:
-                            if (MouseUp != null)
-                                MouseUp(null,
+                                MouseUp?.Invoke(null,
                                     new MouseEventArgs(MouseButtons.Right,
                                         1,
                                         mhs.pt.X,
@@ -215,8 +208,7 @@ namespace Hooks.Mouse
                     switch (wParam.ToInt32())
                     {
                         case WM_LBUTTONDOWN:
-                            if (MouseDown != null)
-                                MouseDown(null,
+                                MouseDown?.Invoke(null,
                                     new MouseEventArgs(MouseButtons.Left,
                                         1,
                                         mhs.pt.X,
@@ -224,8 +216,7 @@ namespace Hooks.Mouse
                                         0));
                             break;
                         case WM_LBUTTONUP:
-                            if (MouseUp != null)
-                                MouseUp(null,
+                                MouseUp?.Invoke(null,
                                     new MouseEventArgs(MouseButtons.Left,
                                         1,
                                         mhs.pt.X,
@@ -233,8 +224,7 @@ namespace Hooks.Mouse
                                         0));
                             break;
                         case WM_MBUTTONDOWN:
-                            if (MouseDown != null)
-                                MouseDown(null,
+                                MouseDown?.Invoke(null,
                                     new MouseEventArgs(MouseButtons.Middle,
                                         1,
                                         mhs.pt.X,
@@ -242,8 +232,7 @@ namespace Hooks.Mouse
                                         0));
                             break;
                         case WM_MBUTTONUP:
-                            if (MouseUp != null)
-                                MouseUp(null,
+                                MouseUp?.Invoke(null,
                                     new MouseEventArgs(MouseButtons.Middle,
                                         1,
                                         mhs.pt.X,
@@ -251,8 +240,7 @@ namespace Hooks.Mouse
                                         0));
                             break;
                         case WM_MOUSEMOVE:
-                            if (MouseMove != null)
-                                MouseMove(null,
+                                MouseMove?.Invoke(null,
                                     new MouseEventArgs(MouseButtons.None,
                                         1,
                                         mhs.pt.X,
@@ -260,16 +248,14 @@ namespace Hooks.Mouse
                                         0));
                             break;
                         case WM_MOUSEWHEEL:
-                            if (MouseMove != null)
-                                MouseMove(null,
+                                MouseMove?.Invoke(null,
                                     new MouseEventArgs(MouseButtons.None, mhs.time,
                                         mhs.pt.X, mhs.pt.Y, mhs.mouseData >> 16));
                             //Debug.WriteLine(string.Format("X:{0}; Y:{1}; MD:{2}; Time:{3}; EI:{4}; wParam:{5}; lParam:{6}",
                             //            mhs.pt.X, mhs.pt.Y, mhs.mouseData, mhs.time, mhs.dwExtraInfo, wParam.ToString(), lParam.ToString()));
                             break;
                         case WM_RBUTTONDOWN:
-                            if (MouseDown != null)
-                                MouseDown(null,
+                                MouseDown?.Invoke(null,
                                     new MouseEventArgs(MouseButtons.Right,
                                         1,
                                         mhs.pt.X,
@@ -277,8 +263,7 @@ namespace Hooks.Mouse
                                         0));
                             break;
                         case WM_RBUTTONUP:
-                            if (MouseUp != null)
-                                MouseUp(null,
+                                MouseUp?.Invoke(null,
                                     new MouseEventArgs(MouseButtons.Right,
                                         1,
                                         mhs.pt.X,

@@ -93,14 +93,12 @@ namespace Hooks.Keyboard
                     {
                         case WinAPI.User32.WindowsMessage.KeyDown:
                         case WinAPI.User32.WindowsMessage.SysKeyDown:
-                            if (KeyDown != null)
-                                KeyDown(null, eventArgs);
+                            KeyDown?.Invoke(null, eventArgs);
                             break;
 
                         case WinAPI.User32.WindowsMessage.KeyUp:
                         case WinAPI.User32.WindowsMessage.SysKeyUp:
-                            if (KeyUp != null)
-                                KeyUp(null, eventArgs);
+                            KeyUp?.Invoke(null, eventArgs);
                             break;
                     }
                 // Если событие помечено приложением как обработанное,

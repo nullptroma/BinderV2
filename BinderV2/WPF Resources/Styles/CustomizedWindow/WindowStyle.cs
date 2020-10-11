@@ -65,19 +65,8 @@ namespace CustomizedWindow
         #endregion
 
         #region P/Invoke
-
-        const int WM_SYSCOMMAND = 0x112;
-        const int SC_SIZE = 0xF000;
-        const int SC_KEYMENU = 0xF100;
-
         [DllImport("user32.dll", CharSet = CharSet.Auto)]
         static extern IntPtr SendMessage(IntPtr hWnd, uint Msg, IntPtr wParam, IntPtr lParam);
-
-        static void DragSize(IntPtr handle, SizingAction sizingAction)
-        {
-            SendMessage(handle, WM_SYSCOMMAND, (IntPtr)(SC_SIZE + sizingAction), IntPtr.Zero);
-            SendMessage(handle, 514, IntPtr.Zero, IntPtr.Zero);
-        }
 
         public enum SizingAction
         {

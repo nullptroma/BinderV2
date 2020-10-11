@@ -34,8 +34,8 @@
                 </Button>
 
                 <Border Grid.Row="1" BorderThickness="2" Margin="-2">
-                    <ScrollViewer x:Name="TriggerScrollViewer" ScrollChanged="TriggerScrollViewer_ScrollChanged" >
-                        <ItemsControl ItemsSource="{Binding Triggers}" PreviewMouseWheel="ItemsControl_PreviewMouseWheel">
+                    <ScrollViewer x:Name="TriggerScrollViewer" Style="{DynamicResource AutoScrollViewer}">
+                        <ItemsControl ItemsSource="{Binding Triggers}">
                             <ItemsControl.Resources>
                                 <DataTemplate DataType="{x:Type triggersViewModels:KeysDownTriggerViewModel}">
                                     <triggers:KeysDownTriggerControl/>

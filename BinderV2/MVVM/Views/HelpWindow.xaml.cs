@@ -41,7 +41,7 @@ namespace BinderV2.MVVM.Views
                 }
                 catch 
                 {
-                    this.Width = this.Width + 1;
+                    this.Width += 1;
                 }
             }
         }

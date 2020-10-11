@@ -14,7 +14,7 @@ namespace Utilities
             foreach (T item in list)
                 if (predication(item))
                     return item;
-            return default(T);
+            return default;
         }
     }
 }

@@ -57,7 +57,7 @@
                         </Button>
                     </DockPanel>
                 </Border>
-                <ScrollViewer x:Name="BindsScrollViewer" DockPanel.Dock="Top" ScrollChanged="BindsScrollViewer_ScrollChanged" Margin="0,2,0,0" PreviewMouseWheel="BindsScrollViewer_PreviewMouseWheel">
+                <ScrollViewer x:Name="BindsScrollViewer" DockPanel.Dock="Top"  Margin="0,2,0,0" Style="{DynamicResource AutoScrollViewer}" >
                     <ItemsControl ItemsSource="{Binding Binds}" >
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>

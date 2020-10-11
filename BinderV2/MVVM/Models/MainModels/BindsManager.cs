@@ -113,8 +113,10 @@ namespace BinderV2.MVVM.Models.MainModels
 
         private bool GetSavePathFromUser()
         {
-            SaveFileDialog sfd = new SaveFileDialog();
-            sfd.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
+            SaveFileDialog sfd = new SaveFileDialog
+            {
+                Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*"
+            };
             if (sfd.ShowDialog().Value)
                 LastPath = sfd.FileName;
             else
@@ -123,8 +125,10 @@ namespace BinderV2.MVVM.Models.MainModels
         }
         private bool GetOpenPathFromUser()
         {
-            OpenFileDialog ofd = new OpenFileDialog();
-            ofd.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
+            OpenFileDialog ofd = new OpenFileDialog
+            {
+                Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*"
+            };
             if (ofd.ShowDialog().Value)
                 LastPath = ofd.FileName;
             else
@@ -196,8 +200,7 @@ namespace BinderV2.MVVM.Models.MainModels
         public event PropertyChangedEventHandler PropertyChanged;
         public void OnPropertyChanged(string prop)
         {
-            if (PropertyChanged != null)
-                PropertyChanged(this, new PropertyChangedEventArgs(prop));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
         }
     }
 }
