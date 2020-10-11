@@ -18,9 +18,9 @@ namespace BinderV2.MVVM.Models
 {
     class RecordModel : INotifyPropertyChanged
     {
-        private KeysDownTrigger KeysDownTriggerToRecord = new KeysDownTrigger();
-        private Stopwatch stopwatch = new Stopwatch();
-        private Queue<string> Commands = new Queue<string>();
+        private readonly KeysDownTrigger KeysDownTriggerToRecord = new KeysDownTrigger();
+        private readonly Stopwatch stopwatch = new Stopwatch();
+        private readonly Queue<string> Commands = new Queue<string>();
 
         private bool isRecording;
         public bool IsRecording

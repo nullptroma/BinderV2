@@ -165,6 +165,7 @@
     <Compile Include="MVVM\Models\MainModels\BindsManager.cs" />
     <Compile Include="MVVM\Models\MainModels\WindowsManager.cs" />
     <Compile Include="MVVM\Models\RecordModel.cs" />
+    <Compile Include="MVVM\Models\SettingsModel.cs" />
     <Compile Include="MVVM\Models\TriggersManager.cs" />
     <Compile Include="MVVM\ViewModels\BaseViewModel.cs" />
     <Compile Include="MVVM\ViewModels\BindViewModel.cs" />

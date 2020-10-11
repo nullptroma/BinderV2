@@ -29,7 +29,7 @@ namespace BinderV2.MVVM.ViewModels
     class MainViewModel : BaseViewModel
     {
         #region BindsManager
-        private BindsManager bindsManager = new BindsManager();
+        private readonly BindsManager bindsManager = new BindsManager();
         public ObservableCollection<BindViewModel> Binds { get { return bindsManager.Binds; } }
 
         public string SelectedBindScript
@@ -89,11 +89,8 @@ namespace BinderV2.MVVM.ViewModels
                 return selectBindCommand ??
                   (selectBindCommand = new RelayCommand(obj =>
                   {
-                      if (obj is BindViewModel)
-                      {
-                          bindsManager.SelectedBind = (BindViewModel)obj;
-                      }
-
+                      if (obj is BindViewModel bvm)
+                          bindsManager.SelectedBind = bvm;
                   }));
             }
         }
@@ -155,7 +152,7 @@ namespace BinderV2.MVVM.ViewModels
         #endregion
 
         #region WindowsManager
-        private WindowsManager wm = new WindowsManager();
+        private readonly WindowsManager wm = new WindowsManager();
 
         private RelayCommand openSettingsWindowCommand;
         public RelayCommand OpenSettingsWindowCommand

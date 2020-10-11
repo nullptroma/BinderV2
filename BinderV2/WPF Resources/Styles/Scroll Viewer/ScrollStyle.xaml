@@ -45,6 +45,9 @@
         <EventSetter Event="ScrollChanged" Handler="CustomScrollViewer_ScrollChanged"/>
         <EventSetter Event="PreviewMouseWheel" Handler="CustomScrollViewer_PreviewMouseWheel"/>
     </Style>
+    <Style TargetType="ScrollViewer">
+        <EventSetter Event="PreviewMouseWheel" Handler="CustomScrollViewer_PreviewMouseWheel"/>
+    </Style>
     <Style x:Key="ScrollBarLineButton" TargetType="{x:Type RepeatButton}">
         <Setter Property="Visibility" Value="Hidden"/>
         <Setter Property="SnapsToDevicePixels" Value="True"/>

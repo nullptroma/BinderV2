@@ -20,199 +20,38 @@ using System.Reflection;
 using System.CodeDom.Compiler;
 using Microsoft.CSharp;
 using Microsoft.Win32;
+using BinderV2.MVVM.Models;
 
 namespace BinderV2.MVVM.ViewModels
 {
     class SettingsViewModel : BaseViewModel
     {
-        private VisualsSettings currentVsEdit = ProgramSettings.RuntimeSettings.VisualSettings;//ссылка на настройки интерфейса программы
+        private readonly SettingsModel model = new SettingsModel();
 
-        public static bool StartWithWindows { get { return ProgramSettings.RuntimeSettings.StartWithWindows; } set { ProgramSettings.RuntimeSettings.StartWithWindows = value; } }
-        public static bool HideOnStart { get { return ProgramSettings.RuntimeSettings.HideOnStart; } set { ProgramSettings.RuntimeSettings.HideOnStart = value; } }
-        public static bool AutoLoadBinds { get { return ProgramSettings.RuntimeSettings.AutoLoadBinds; } set { ProgramSettings.RuntimeSettings.AutoLoadBinds = value; } }
-        public static bool SaveMainWindowSize { get { return ProgramSettings.RuntimeSettings.SaveMainWindowSize; } set { ProgramSettings.RuntimeSettings.SaveMainWindowSize = value; } }
-        public static string AutoLoadBindsPath { get { return ProgramSettings.RuntimeSettings.AutoLoadBindsPath; } set { ProgramSettings.RuntimeSettings.AutoLoadBindsPath = value; } }
+        public bool StartWithWindows { get { return model.StartWithWindows; } set { model.StartWithWindows = value; } }
+        public bool HideOnStart { get { return model.HideOnStart; } set { model.HideOnStart = value; } }
+        public bool AutoLoadBinds { get { return model.AutoLoadBinds; } set { model.AutoLoadBinds = value; } }
+        public string AutoLoadBindsPath { get { return model.AutoLoadBindsPath; } }
+        public bool SaveMainWindowSize { get { return model.SaveMainWindowSize; } set { model.SaveMainWindowSize = value; } }
 
-        public ObservableCollection<string> colorFields { get; set; }//все цветные параметры
-        public string SelectedColorField { get; set; }//выбранный цветной параметр
+        public ObservableCollection<string> TextParameters { get { return model.TextParameters; } }
+        public string SelectedTextParameter { get { return model.SelectedTextParameter; } set { model.SelectedTextParameter = value; } }
+        public string CurrentTextValue { get { return model.CurrentTextValue; } set { model.CurrentTextValue = value; } }
 
-        //для редактирования цвета
-        public byte currentRed 
+        public ObservableCollection<string> ColorParameters { get { return model.ColorParameters; } }
+        public string SelectedColorParameter { get { return model.SelectedColorParameter; } set { model.SelectedColorParameter = value; } }
+
+        public byte CurrentRed { get { return model.CurrentRed; } set { model.CurrentRed = value; } }
+        public byte CurrentGreen { get { return model.CurrentGreen; } set { model.CurrentGreen = value; } }
+        public byte CurrentBlue { get { return model.CurrentBlue; } set { model.CurrentBlue = value; } }
+        public byte CurrentAlpha { get { return model.CurrentAlpha; } set { model.CurrentAlpha = value; } }
+
+        private void OnSettingsModelPropertyChanded(object sender, PropertyChangedEventArgs e)
         {
-            get 
-            {
-                try { return ((Color)currentVsEdit.GetType().GetRuntimeField(SelectedColorField).GetValue(currentVsEdit)).R; }
-                catch { return 0; }
-            }
-            set 
-            {
-                UpdateColors(currentAlpha, value, currentGreen, currentBlue);
-                OnPropertyChanged("currentRed");
-            }
-        }
-        public byte currentGreen
-        {
-            get
-            {
-                try { return ((Color)currentVsEdit.GetType().GetRuntimeField(SelectedColorField).GetValue(currentVsEdit)).G; }
-                catch { return 0; }
-            }
-            set
-            {
-                UpdateColors(currentAlpha, currentRed, value, currentBlue);
-                OnPropertyChanged("currentGreen");
-            }
-        }
-        public byte currentBlue
-        {
-            get
-            {
-                try { return ((Color)currentVsEdit.GetType().GetRuntimeField(SelectedColorField).GetValue(currentVsEdit)).B; }
-                catch { return 0; }
-            }
-            set
-            {
-                UpdateColors(currentAlpha, currentRed, currentGreen, value);
-                OnPropertyChanged("currentBlue");
-            }
-        }
-        public byte currentAlpha
-        {
-            get
-            {
-                try { return ((Color)currentVsEdit.GetType().GetRuntimeField(SelectedColorField).GetValue(currentVsEdit)).A; }
-                catch { return 0; }
-            }
-            set
-            {
-                UpdateColors(value, currentRed, currentGreen, currentBlue);
-                OnPropertyChanged("currentAlpha");
-            }
+            OnPropertyChanged(e.PropertyName);
         }
 
-        private void UpdateColors(byte a, byte r, byte g, byte b)
-        {
-            currentVsEdit.GetType().GetRuntimeField(SelectedColorField).SetValue(currentVsEdit, Color.FromArgb(a, r, g, b));
-            VisualsSettings.ApplyVisuals(currentVsEdit);
-        }
-
-        private void NotifyAboutCurrentColors()
-        {
-            OnPropertyChanged("currentRed");
-            OnPropertyChanged("currentGreen");
-            OnPropertyChanged("currentBlue");
-            OnPropertyChanged("currentAlpha");
-        }
-
-        public string WindowBorderThickness 
-        { 
-            get 
-            {
-                return currentVsEdit.WindowBorderThickness.ToString(); 
-            } 
-            set 
-            {
-                currentVsEdit.WindowBorderThickness = GetThickness(value);
-                OnPropertyChanged("WindowBorderThickness");
-                VisualsSettings.ApplyVisuals(currentVsEdit);
-            }
-        }
-        public string WindowIconMargin
-        {
-            get
-            {
-                return currentVsEdit.WindowIconMargin.ToString();
-            }
-            set
-            {
-                currentVsEdit.WindowIconMargin = GetThickness(value);
-                OnPropertyChanged("WindowIconMargin");
-                VisualsSettings.ApplyVisuals(currentVsEdit);
-            }
-        }
-        public string HeightWindowTitle
-        {
-            get
-            {
-                return currentVsEdit.HeightWindowTitle.ToString();
-            }
-            set
-            {
-                try
-                {
-                    currentVsEdit.HeightWindowTitle = double.Parse(value);
-                    OnPropertyChanged("HeightWindowTitle");
-                    VisualsSettings.ApplyVisuals(currentVsEdit);
-                }
-                catch { }
-            }
-        }
-        public string WindowIconSize
-        {
-            get
-            {
-                return currentVsEdit.WindowIconSize.ToString();
-            }
-            set
-            {
-                try
-                {
-                    currentVsEdit.WindowIconSize = double.Parse(value);
-                    OnPropertyChanged("WindowIconSize");
-                    VisualsSettings.ApplyVisuals(currentVsEdit);
-                }
-                catch { }
-            }
-        }
-        public string TitleFontSize
-        {
-            get
-            {
-                return currentVsEdit.TitleFontSize.ToString();
-            }
-            set
-            {
-                try
-                {
-                    currentVsEdit.TitleFontSize = double.Parse(value);
-                    OnPropertyChanged("TitleFontSize");
-                    VisualsSettings.ApplyVisuals(currentVsEdit);
-                }
-                catch { }
-            }
-        }
-
-        private Thickness GetThickness(string thickness)
-        {
-            Thickness answer;
-            thickness = thickness.Replace(" ", "");
-            double output;
-            if (thickness.Count(ch => ch == ',') == 3)
-            {
-                double[] nums = new double[4];
-                string[] numsString = thickness.Split(',');
-                for (int i = 0; i < 4; i++)
-                {
-                    try
-                    {
-                        nums[i] = double.Parse(numsString[i]);
-                    }
-                    catch { throw new FormatException("Wrong format " + thickness); }
-                }
-                answer = new Thickness(nums[0], nums[1], nums[2], nums[3]);
-            }
-            else if (double.TryParse(thickness, out output))
-            {
-                answer = new Thickness(output);
-            }
-            else
-            {
-                throw new FormatException("Wrong format " + thickness);
-            }
-            return answer;
-        }
-
-        private RelayCommand resetSettingsCommand;
+        private RelayCommand resetSettingsCommand;//команда ресета
         public RelayCommand ResetSettingsCommand
         {
             get
@@ -220,36 +59,10 @@ namespace BinderV2.MVVM.ViewModels
                 return resetSettingsCommand ??
                   (resetSettingsCommand = new RelayCommand(obj =>
                   {
-                      if (MessageBox.Show("Сбросить все настройки?", "Вы уверены?", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
-                      {
-                          ProgramSettings.Reset();
-                          this.currentVsEdit = ProgramSettings.RuntimeSettings.VisualSettings;
-                          OnPropertyChanged("WindowBorderThickness");
-                          OnPropertyChanged("WindowIconMargin");
-                          OnPropertyChanged("HeightWindowTitle");
-                          OnPropertyChanged("WindowIconSize");
-                      }
+                      model.Reset();
                   }));
             }
         }
-
-        
-
-        private RelayCommand colorFieldChangedCommand;
-        public RelayCommand ColorFieldChangedCommand
-        {
-            get
-            {
-                return colorFieldChangedCommand ??
-                  (colorFieldChangedCommand = new RelayCommand(obj =>
-                  {
-                      if (SelectedColorField == "None")
-                          return;
-                      NotifyAboutCurrentColors();
-                  }));
-            }
-        } 
-        
 
         private RelayCommand chooseAutoLoadBindsPathCommands;//команда для выбора пути для автозагрузки биндов
         public RelayCommand ChooseAutoLoadBindsPathCommands
@@ -259,41 +72,17 @@ namespace BinderV2.MVVM.ViewModels
                 return chooseAutoLoadBindsPathCommands ??
                   (chooseAutoLoadBindsPathCommands = new RelayCommand(obj =>
                   {
-                      OpenFileDialog ofd = new OpenFileDialog
-                      {
-                          Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*"
-                      };
-                      if (ofd.ShowDialog().Value)
-                      {
-                          ProgramSettings.RuntimeSettings.AutoLoadBindsPath = ofd.FileName;
-                          OnPropertyChanged("AutoLoadBindsPath");
-                      }
+                      model.GetAutoLoadBindsPathFromUser();
                   },
-                  obj => ProgramSettings.RuntimeSettings.AutoLoadBinds));
+                  obj => model.AutoLoadBinds));
             }
         }
 
         public SettingsViewModel()
         {
-            OnPropertyChanged("windowBorderThickness");
-            SetColorFields();
+            model.PropertyChanged += OnSettingsModelPropertyChanded;
         }
 
-        private void SetColorFields()
-        {
-            colorFields = new ObservableCollection<string>
-            {
-                "None"
-            };
-            SelectedColorField = "None";
-            foreach (FieldInfo fi in currentVsEdit.GetType().GetRuntimeFields())
-            {
-                if (fi.IsPublic)
-                    if(fi.FieldType == typeof(Color))
-                        colorFields.Add(fi.Name);
-            }
-            OnPropertyChanged("colorFields");
-        }
 
         public override event PropertyChangedEventHandler PropertyChanged;
         public override void OnPropertyChanged(string prop)

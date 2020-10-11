@@ -21,7 +21,7 @@ namespace BinderV2.MVVM.ViewModels
     class TriggerEditViewModel : BaseViewModel
     {
         #region TriggersManager
-        TriggersManager triggersManager;
+        readonly TriggersManager triggersManager;
         public ObservableCollection<BaseTriggerViewModel> Triggers { get { return triggersManager.Triggers; } }
         public string SelectedTriggerScript
         {
@@ -74,8 +74,8 @@ namespace BinderV2.MVVM.ViewModels
                 return selectTriggerCommand ??
                   (selectTriggerCommand = new RelayCommand(obj =>
                   {
-                      if (obj is BaseTriggerViewModel)
-                          triggersManager.SelectedTrigger = (BaseTriggerViewModel)obj;
+                      if (obj is BaseTriggerViewModel baseTrigger)
+                          triggersManager.SelectedTrigger = baseTrigger;
                   }));
             }
         }

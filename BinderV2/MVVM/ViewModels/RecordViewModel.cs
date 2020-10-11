@@ -20,7 +20,7 @@ namespace BinderV2.MVVM.ViewModels
     class RecordViewModel : BaseViewModel
     {
         #region RecordModel
-        private RecordModel model = new RecordModel();
+        private readonly RecordModel model = new RecordModel();
 
         public string RecordHotkeyString
         {
