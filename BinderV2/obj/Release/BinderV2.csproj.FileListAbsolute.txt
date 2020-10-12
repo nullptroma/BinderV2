@@ -46,3 +46,4 @@ C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Release\MVVM\Views\Triggers\Ke
 C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Release\MVVM\Views\Triggers\OnAddCallbackTriggerControl.baml
 C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Release\MVVM\Views\Bind\BindControl.baml
 C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Release\WPF Resources\Styles\Scroll Viewer\ScrollStyle.g.cs
+C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Release\BinderV2.csprojAssemblyReference.cache

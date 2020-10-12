@@ -17,7 +17,7 @@ namespace InterpreterScripts.SyntacticConstructions.Constructions
         {
             return Task.Run(new Func<object>(() =>
             {
-                string expression = SyncTrimBrackets(cmd.Command);
+                string expression = SyncTrimBrackets(cmd.Command.Replace(" ", ""));
                 int generalIndex = GetGeneralOperatorIndex(expression);
                 char operatorSim = expression[generalIndex];
                 object leftValue = Interpreter.ExecuteCommand(expression.Substring(0, generalIndex).Trim(), data);
@@ -51,6 +51,8 @@ namespace InterpreterScripts.SyntacticConstructions.Constructions
                 return (double)left + (int)right;
             else if (left is int && right is double)
                 return (int)left + (double)right;
+            else if (left is double && right is double)
+                return (double)left + (double)right;
             else if (left is bool && right is bool)
                 return (bool)left || (bool)right;
             else
@@ -65,6 +67,8 @@ namespace InterpreterScripts.SyntacticConstructions.Constructions
                 return (double)left - (int)right;
             else if (left is int && right is double)
                 return (int)left - (double)right;
+            else if (left is double && right is double)
+                return (double)left - (double)right;
             else if (left is bool && right is bool)
                 return !((bool)left || (bool)right);
             throw new InvalidCastException();
@@ -78,6 +82,8 @@ namespace InterpreterScripts.SyntacticConstructions.Constructions
                 return (double)left * (int)right;
             else if (left is int && right is double)
                 return (int)left * (double)right;
+            else if (left is double && right is double)
+                return (double)left * (double)right;
             else if (left is bool && right is bool)
                 return (bool)left ^ (bool)right;
             throw new InvalidCastException();
@@ -91,6 +97,8 @@ namespace InterpreterScripts.SyntacticConstructions.Constructions
                 return (double)left / (int)right;
             else if (left is int && right is double)
                 return (int)left / (double)right;
+            else if (left is double && right is double)
+                return (double)left / (double)right;
             else if (left is bool && right is bool)
                 return !((bool)left ^ (bool)right);
             throw new InvalidCastException();
@@ -134,8 +142,26 @@ namespace InterpreterScripts.SyntacticConstructions.Constructions
 
         private string SyncTrimBrackets(string str)
         {
-            while (str.Length >= 2 && str[0] == '(' && str[str.Length - 1] == ')')
-                str = str.Substring(1, str.Length - 2);
+            if (str.Length < 2 || str[0] != '(' || str[str.Length - 1] != ')')
+                return str;
+
+            int countBrackets = 0;//текущий уровень скобки
+            for (int i = 1; i < str.Length - 1; i++)
+            {
+                if (str[i] == '(')
+                    countBrackets++;
+                else if (str[i] == ')')
+                    countBrackets--;
+
+                if (countBrackets == -1)
+                    return str;
+            }
+            if (countBrackets == 0)
+            {
+                string answer = str.Remove(str.Length - 1, 1).Remove(0, 1);
+                string nextAnswer = SyncTrimBrackets(answer);
+                return answer == nextAnswer ? answer : nextAnswer;
+            }
             return str;
         }
     }

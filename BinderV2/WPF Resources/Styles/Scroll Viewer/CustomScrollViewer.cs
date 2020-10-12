@@ -29,7 +29,7 @@ namespace CustomScrollViewerLogic
         private async void CustomScrollViewer_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
         {
             e.Handled = true;
-            int length = (int)(e.Delta * -0.9);
+            int length = (int)(e.Delta * -1);
             double step = length / 12;
             for (int i = 0; i < 12; i++)
             {

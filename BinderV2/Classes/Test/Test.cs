@@ -28,19 +28,16 @@ namespace BinderV2
             Task.Run(()=> 
             {
                 Interpreter.ExecuteCommand("Delay(1)");
-                int sum = 0;
-                for (int n = 1; n < 100; n+=10)
+                Stopwatch sw = new Stopwatch();
+                int count = 0;
+                sw.Start();
+                while(sw.ElapsedMilliseconds <= 1000)
                 {
-                    sum += n;
-                    Stopwatch sw = new Stopwatch();
-                    string cmd = $"Delay({n})";
-                    sw.Start();
-                    Interpreter.ExecuteCommand(cmd);
-                    sw.Stop();
-                    if (sw.ElapsedMilliseconds != n)
-                        MessageBox.Show("Ожидалось: " + n + "\nПолучено: " + sw.ElapsedMilliseconds);
+                    Interpreter.ExecuteCommand("1+3");
+                    count++;
                 }
-                MessageBox.Show("Тесты пройдены.", "sum = " + sum);
+                sw.Stop();
+                MessageBox.Show("count = " + count, "Тесты пройдены.");
             });
         }
 
