@@ -18,5 +18,10 @@ namespace BinderV2.MVVM.Views
             DataContext = new TriggerEditViewModel(bind);//В TriggerEditViewModel мне нужны и bind, и его закрытое поле triggers
             Title = "Редактирование " + bind.Name;
         }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            TriggerScrollViewer.Tag = true;
+        }
     }
 }

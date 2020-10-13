@@ -17,53 +17,6 @@ namespace InterpreterScripts.InterpretationScriptData.StandartFunctions.Library
 {
     static public class IntScripts
     {
-        [Description("SumInt(int n1, int n2...) - возвращает результат сложения всех переданных аргументов.")]
-        public static object SumInt(params object[] ps)
-        {
-            try
-            {
-                return ps.Cast<int>().Sum();
-            }
-            catch (InvalidCastException) { MessageBox.Show("В SumInt переданы значения типа, несоответвующего int"); return 0; }
-            catch (IndexOutOfRangeException) { MessageBox.Show("В SumInt не переданы агрументы"); return 0; }
-        }
-
-        [Description("MinusInt(int num, int n1...) - возвращает результат вычитания всех чисел начиная с n1 из num.")]
-        public static object MinusInt(params object[] ps)
-        {
-            try
-            {
-                int answer = (int)ps[0];
-                for (int i = 1; i < ps.Length; i++)
-                    answer -= (int)ps[i];
-                return answer;
-            }
-            catch (InvalidCastException) { MessageBox.Show("В MinusInt переданы значения типа, несоответвующего int"); return 0; }
-            catch (IndexOutOfRangeException) { MessageBox.Show("В MinusInt не переданы агрументы"); return 0; }
-        }
-
-        [Description("MultyplyInt(int num1, int num2) - возвращает результат умножения чисел num1 и num2.")]
-        public static object MultyplyInt(params object[] ps)
-        {
-            try
-            {
-                return (int)ps[0] * (int)ps[1];
-            }
-            catch (InvalidCastException) { MessageBox.Show("В MultyplyInt переданы значения типа, несоответвующего int"); return 0; }
-            catch (IndexOutOfRangeException) { MessageBox.Show("В MultyplyInt не переданы агрументы"); return 0; }
-        }
-
-        [Description("DivInt(int num1, int num2) - возвращает результат деления чисела num1 на num2.")]
-        public static object DivInt(params object[] ps)
-        {
-            try
-            {
-                return (int)ps[0] / (int)ps[1];
-            }
-            catch (InvalidCastException) { MessageBox.Show("В DivInt переданы значения типа, несоответвующего int"); return 0; }
-            catch (IndexOutOfRangeException) { MessageBox.Show("В DivInt не переданы агрументы"); return 0; }
-        }
-
         [Description("ConvertFromStringToInt(string str) - пытается конвернитровать string в int.")]
         public static object ConvertFromStringToInt(params object[] ps)
         {

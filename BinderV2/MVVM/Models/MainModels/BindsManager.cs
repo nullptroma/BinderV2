@@ -45,10 +45,11 @@ namespace BinderV2.MVVM.Models.MainModels
         public string SelectedBindScript
         {
             get { return FormateScript(selectedBind != null ? selectedBind.Bind.Script : ""); }
-            set 
-            { 
-                if (selectedBind != null)
-                    selectedBind.Bind.Script = FormateScript(value);
+            private set 
+            {
+                if (selectedBind == null)
+                    throw new NullReferenceException();
+                selectedBind.Bind.Script = FormateScript(value);
                 OnPropertyChanged("SelectedBindScript");
             }
         }

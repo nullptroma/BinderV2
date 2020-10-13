@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace InterpreterScripts.SyntacticConstructions
 {
@@ -19,22 +20,27 @@ namespace InterpreterScripts.SyntacticConstructions
             //сюда добавлять конструкции
             return new ISyntacticConstruction[] 
             { 
-                new MathOperators(),
                 new Delay(),
-                new IfThenConstruction(),
-                new FunctionDefinition(),
                 new Return(), 
                 new Break(), 
-                new Repeat(),
+                
+                new IfThenConstruction(),
+
                 new While(),
-                new SetVar(),
-                new GetVar(),
-                new CheckVar(),
-                new SetVarNamespaced(),
-                new GetVarNamespaced(),
-                new CheckVarNamespaced(),
+                new Repeat(),
                 new CodeBlock(),
-                new ParallelRepeat()
+                new ParallelRepeat(),
+
+                new FunctionDefinition(),
+
+                new MathOperators(), 
+
+                new GetVar(),
+                new GetVarNamespaced(),
+                new SetVar(),
+                new SetVarNamespaced(),
+                new CheckVar(),
+                new CheckVarNamespaced(),
             };
         }
 

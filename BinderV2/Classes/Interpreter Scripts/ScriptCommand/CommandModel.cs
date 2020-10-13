@@ -17,6 +17,7 @@ namespace InterpreterScripts.ScriptCommand
 
         public CommandModel(string cmd)
         {
+            cmd = SyncTrimBrackets(cmd);
             if (cmd.StartsWith("async"))
             {
                 IsAsync = true;
@@ -29,6 +30,31 @@ namespace InterpreterScripts.ScriptCommand
                 KeyWord = Command.Substring(0, spaceIndex != -1 ? spaceIndex : Command.Length).Trim();
                 parameters = new string[0];
             }
+        }
+
+        private string SyncTrimBrackets(string str)
+        {
+            if (str.Length < 2 || str[0] != '(' || str[str.Length - 1] != ')')
+                return str;
+
+            int countBrackets = 0;//текущий уровень скобки
+            for (int i = 1; i < str.Length - 1; i++)
+            {
+                if (str[i] == '(')
+                    countBrackets++;
+                else if (str[i] == ')')
+                    countBrackets--;
+
+                if (countBrackets == -1)
+                    return str;
+            }
+            if (countBrackets == 0)
+            {
+                string answer = str.Remove(str.Length - 1, 1).Remove(0, 1);
+                string nextAnswer = SyncTrimBrackets(answer);
+                return answer == nextAnswer ? answer : nextAnswer;
+            }
+            return str;
         }
 
         private bool ParseFuncData(string cmd)

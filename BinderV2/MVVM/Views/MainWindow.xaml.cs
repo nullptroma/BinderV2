@@ -14,6 +14,7 @@ using BinderV2.Settings;
 using InterpreterScripts;
 using BinderV2.Classes;
 using BinderV2.MVVM.ViewModels;
+using CustomScrollViewerLogic;
 
 namespace BinderV2.MVVM.Views
 {
@@ -33,6 +34,7 @@ namespace BinderV2.MVVM.Views
                 Application.Current.MainWindow.Width = ProgramSettings.RuntimeSettings.MainWindowSize.Width;
                 Application.Current.MainWindow.Height = ProgramSettings.RuntimeSettings.MainWindowSize.Height;
             }
+            
         }
 
         private void ShowWindowButton_Click(object sender, RoutedEventArgs e)
@@ -82,6 +84,9 @@ namespace BinderV2.MVVM.Views
             Test.RunTest();
         }
 
-        
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            BindsScrollViewer.Tag = true;
+        }
     }
 }

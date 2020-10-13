@@ -104,6 +104,7 @@
     <Compile Include="Classes\Bind Model\Exeptions.cs" />
     <Compile Include="Classes\Commands\EnableDisableTriggers.cs" />
     <Compile Include="Classes\Finalizer.cs" />
+    <Compile Include="Classes\Interpreter Scripts\Syntactic Constructs\Constructs\Operators\Math\Operator.cs" />
     <Compile Include="Classes\Utilities\KeyCodeToUnicode.cs" />
     <Compile Include="Classes\Initializer.cs" />
     <Compile Include="Classes\Interpreter Scripts\Converter\Converter.cs" />
@@ -132,7 +133,7 @@
     <Compile Include="Classes\Interpreter Scripts\Syntactic Constructs\Constructs\IfThenConstruction.cs" />
     <Compile Include="Classes\Interpreter Scripts\Syntactic Constructs\Constructs\Cycles\Repeat\ParallelRepeat.cs" />
     <Compile Include="Classes\Interpreter Scripts\Syntactic Constructs\Constructs\Cycles\Repeat\Repeat.cs" />
-    <Compile Include="Classes\Interpreter Scripts\Syntactic Constructs\Constructs\Operators\MathOperators.cs" />
+    <Compile Include="Classes\Interpreter Scripts\Syntactic Constructs\Constructs\Operators\Math\MathOperators.cs" />
     <Compile Include="Classes\Interpreter Scripts\Syntactic Constructs\Constructs\Operators\Return.cs" />
     <Compile Include="Classes\Interpreter Scripts\Syntactic Constructs\Constructs\Cycles\While.cs" />
     <Compile Include="Classes\Interpreter Scripts\Syntactic Constructs\Constructs\Vars\Local\CheckVar.cs" />
@@ -160,6 +161,7 @@
     <Compile Include="Classes\Triggers\Types\Triggers\OnAddCallbackTrigger.cs" />
     <Compile Include="Classes\Utilities\ICollectionExtensionMethods.cs" />
     <Compile Include="Classes\Utilities\JsonUtilities.cs" />
+    <Compile Include="Classes\Utilities\Operators.cs" />
     <Compile Include="Dependencies\Resolver.cs" />
     <Compile Include="MVVM\Models\HelpModel.cs" />
     <Compile Include="MVVM\Models\MainModels\BindsManager.cs" />

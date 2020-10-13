@@ -17,6 +17,7 @@ using Utilities;
 using InterpreterScripts.InterpretationScriptData.CustomFunctions;
 using System.Diagnostics;
 using System.Linq;
+using InterpreterScripts.SyntacticConstructions.Constructions.Exceptions;
 
 namespace InterpreterScripts
 {
@@ -35,10 +36,16 @@ namespace InterpreterScripts
         }
         public static void ExecuteScript(string script, InterpretationData data)
         {
-
-            string[] commands = ScriptTools.GetCommands(script);
-            foreach (var cmd in commands)
-                ExecuteCommand(cmd, data);
+            try
+            {
+                string[] commands = ScriptTools.GetCommands(script);
+                foreach (var cmd in commands)
+                    ExecuteCommand(cmd, data);
+            }
+            catch (Exception e) when (!(e is ReturnException) && !(e is BreakException))
+            {
+                MessageBox.Show(e.ToString(), "Ошибка");
+            }
         }
 
         public static object ExecuteCommand(string cmdString)
@@ -52,13 +59,14 @@ namespace InterpreterScripts
             CommandModel cmd = new CommandModel(cmdString);
             Task<object> commandTask = null;
 
-            if (SyntacticConstructionsManager.IsValidConstruction(cmd, data))//ищем конструкции
-            {
-                commandTask = SyntacticConstructionsManager.ExecuteConstruction(cmd, data);
-            }
-            else if(Converter.CanConvertToSimpleType(cmd.Command))//берём простой тип
+
+            if (Converter.CanConvertToSimpleType(cmd.Command))//берём простой тип
             {
                 commandTask = Converter.ToSimpleType(cmd.Command);
+            }
+            else if(SyntacticConstructionsManager.IsValidConstruction(cmd, data))//ищем конструкции
+            {
+                commandTask = SyntacticConstructionsManager.ExecuteConstruction(cmd, data);
             }
             else if (data.CustomFunctions.Find(cFunc => cFunc.Name == cmd.KeyWord) != null)//ищем пользовательскую функцию
             {

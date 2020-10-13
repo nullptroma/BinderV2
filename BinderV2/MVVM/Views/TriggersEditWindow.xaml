@@ -8,7 +8,7 @@
         xmlns:triggersViewModels="clr-namespace:BinderV2.MVVM.ViewModels.Triggers"
         mc:Ignorable="d"
         Title="TriggersEditWindow" Height="380" Width="700" Icon="/BinderV2;component/Images/Edit.png"
-        Style="{DynamicResource CurstomWindowStyle}" MinWidth="700" MinHeight="250">
+        Style="{DynamicResource CurstomWindowStyle}" MinWidth="700" MinHeight="250" Loaded="Window_Loaded">
 
     <Grid>
         <Grid.RowDefinitions>

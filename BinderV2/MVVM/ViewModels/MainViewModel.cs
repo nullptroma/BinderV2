@@ -35,11 +35,6 @@ namespace BinderV2.MVVM.ViewModels
         public string SelectedBindScript
         {
             get { return bindsManager.SelectedBindScript; }
-            set
-            {
-                bindsManager.SelectedBindScript = value;
-                OnPropertyChanged("SelectedBindScript");
-            }
         }
 
         private RelayCommand saveBindsInNewPathCommand;
@@ -105,8 +100,13 @@ namespace BinderV2.MVVM.ViewModels
                   {
                       if (obj != null)
                       {
-                          bindsManager.SaveScriptToSelectedBind(obj.ToString());
-                          MessageBox.Show("Сохранено", "Успех");
+                          try 
+                          {
+                              bindsManager.SaveScriptToSelectedBind(obj.ToString());
+                              MessageBox.Show("Сохранено", "Успех");
+                          }
+                          catch { MessageBox.Show("Выберите бинд", "Ошибка"); }
+                          
                       }    
                   }));
             }

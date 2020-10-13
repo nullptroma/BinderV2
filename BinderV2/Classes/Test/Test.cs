@@ -28,12 +28,13 @@ namespace BinderV2
             Task.Run(()=> 
             {
                 Interpreter.ExecuteCommand("Delay(1)");
+                string script = File.ReadAllText(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"\tesst.txt");
                 Stopwatch sw = new Stopwatch();
                 int count = 0;
                 sw.Start();
                 while(sw.ElapsedMilliseconds <= 1000)
                 {
-                    Interpreter.ExecuteCommand("1+3");
+                    Interpreter.ExecuteScript(script);
                     count++;
                 }
                 sw.Stop();

@@ -9,7 +9,7 @@ using System.Windows.Input;
 
 namespace CustomScrollViewerLogic
 {
-    partial class CustomScrollViewer
+    public partial class CustomScrollViewer
     {
         private async Task ScrollDown(ScrollViewer sv)
         {
@@ -22,19 +22,30 @@ namespace CustomScrollViewerLogic
 
         private async void CustomScrollViewer_ScrollChanged(object sender, ScrollChangedEventArgs e)
         {
-            if (e.ExtentHeightChange != 0)
-                await ScrollDown((ScrollViewer)sender);
+            var tag = ((ScrollViewer)sender).Tag;
+            if (tag != null && (bool)tag)
+                if (e.ExtentHeightChange > 60)
+                    await ScrollDown((ScrollViewer)sender);
         }
 
         private async void CustomScrollViewer_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
         {
             e.Handled = true;
             int length = (int)(e.Delta * -1);
-            double step = length / 12;
-            for (int i = 0; i < 12; i++)
+            double step = length / 10;
+            for (int i = 0; i < 20; i++)
             {
-                ((ScrollViewer)sender).Dispatcher.Invoke(() => ((ScrollViewer)sender).ScrollToVerticalOffset(((ScrollViewer)sender).VerticalOffset + step));
+                step /= 1.04;
+                var verticalOffset = ((ScrollViewer)sender).VerticalOffset + step;
+                ((ScrollViewer)sender).Dispatcher.Invoke(() => ((ScrollViewer)sender).ScrollToVerticalOffset(verticalOffset));
                 await Task.Delay(1);
+
+                if (step < 0)
+                    if (verticalOffset < ((ScrollViewer)sender).VerticalOffset)
+                        return;
+                if (step > 0)
+                    if (verticalOffset > ((ScrollViewer)sender).VerticalOffset)
+                        return;
             }
         }
     }
