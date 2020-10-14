@@ -17,12 +17,13 @@ using BinderV2.MVVM.Views;
 using Microsoft.Win32;
 using System.Net.Mail;
 using BinderV2.Settings;
-using System.Windows.Input;
 using Utilities;
 using InterpreterScripts;
 using InterpreterScripts.InterpretationScriptData.StandartFunctions;
 using InterpreterScripts.FuncAttributes;
 using BinderV2.MVVM.Models.MainModels;
+using System.Windows.Forms;
+using BinderV2.Classes;
 
 namespace BinderV2.MVVM.ViewModels
 {
@@ -103,9 +104,9 @@ namespace BinderV2.MVVM.ViewModels
                           try 
                           {
                               bindsManager.SaveScriptToSelectedBind(obj.ToString());
-                              MessageBox.Show("Сохранено", "Успех");
+                              System.Windows.MessageBox.Show("Сохранено", "Успех");
                           }
-                          catch { MessageBox.Show("Выберите бинд", "Ошибка"); }
+                          catch { System.Windows.MessageBox.Show("Выберите бинд", "Ошибка"); }
                           
                       }    
                   }));
@@ -136,10 +137,10 @@ namespace BinderV2.MVVM.ViewModels
                       if (!(obj is BindViewModel))
                           return;
                       BindViewModel bindElement = (BindViewModel)obj;
-                      if (MessageBox.Show("Удалить бинд \"" + bindElement.Bind.Name + "\"?", "Вы уверены?", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                      if (System.Windows.MessageBox.Show("Удалить бинд \"" + bindElement.Bind.Name + "\"?", "Вы уверены?", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
                       {
                           if (!bindsManager.RemoveBind(bindElement))
-                              MessageBox.Show("Ошибка удаления");
+                              System.Windows.MessageBox.Show("Ошибка удаления");
                       }
                   }));
             }
@@ -207,7 +208,7 @@ namespace BinderV2.MVVM.ViewModels
                 return appShutdownCommand ??
                   (appShutdownCommand = new RelayCommand(obj =>
                   {
-                      Environment.Exit(0);
+                      App.Current.Shutdown();
                   }));
             }
         }

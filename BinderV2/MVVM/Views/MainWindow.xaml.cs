@@ -15,6 +15,7 @@ using InterpreterScripts;
 using BinderV2.Classes;
 using BinderV2.MVVM.ViewModels;
 using CustomScrollViewerLogic;
+using System.Runtime.Remoting.Channels;
 
 namespace BinderV2.MVVM.Views
 {
@@ -27,6 +28,7 @@ namespace BinderV2.MVVM.Views
         {
             InitializeComponent();
             DataContext = new MainViewModel();
+            ShowWindow();
             if (ProgramSettings.RuntimeSettings.HideOnStart)
                 HideWindow();
             if (ProgramSettings.RuntimeSettings.SaveMainWindowSize)
@@ -34,7 +36,6 @@ namespace BinderV2.MVVM.Views
                 Application.Current.MainWindow.Width = ProgramSettings.RuntimeSettings.MainWindowSize.Width;
                 Application.Current.MainWindow.Height = ProgramSettings.RuntimeSettings.MainWindowSize.Height;
             }
-            
         }
 
         private void ShowWindowButton_Click(object sender, RoutedEventArgs e)
@@ -50,8 +51,8 @@ namespace BinderV2.MVVM.Views
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            //e.Cancel = true;
-            //HideWindow();
+            e.Cancel = true;
+            HideWindow();
         }
 
         private void TaskBarIcon_TrayMouseDoubleClick(object sender, RoutedEventArgs e)
@@ -65,13 +66,22 @@ namespace BinderV2.MVVM.Views
         private void HideWindow()
         {
             WindowState = WindowState.Minimized;
+            this.Visibility = Visibility.Collapsed;
             ShowInTaskbar = false;
+            Hooks.Mouse.MouseHook.MouseMove -= OnCursorPositonChanged;
         }
 
         private void ShowWindow()
         {
             WindowState = WindowState.Normal;
+            this.Visibility = Visibility.Visible;
             ShowInTaskbar = true;
+            Hooks.Mouse.MouseHook.MouseMove += OnCursorPositonChanged;
+        }
+
+        private void OnCursorPositonChanged(object sender, System.Windows.Forms.MouseEventArgs e)
+        {
+            CursorPosition.Content = "Позиция курсора " + System.Windows.Forms.Cursor.Position;
         }
 
         private void Window_Closed(object sender, EventArgs e)
