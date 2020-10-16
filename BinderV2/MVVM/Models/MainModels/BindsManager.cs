@@ -1,4 +1,5 @@
 ﻿using BinderV2.MVVM.ViewModels;
+using BinderV2.MVVM.Views;
 using BinderV2.Settings;
 using BindModel;
 using InterpreterScripts;
@@ -13,8 +14,10 @@ using System.IO;
 using System.Linq;
 using System.Security.AccessControl;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
+using Trigger.Types;
 using Utilities;
 
 namespace BinderV2.MVVM.Models.MainModels
@@ -136,9 +139,17 @@ namespace BinderV2.MVVM.Models.MainModels
             LastPath = path;
             ClearBinds();
             Bind[] binds = JsonUtilities.Deserialize<Bind[]>(File.ReadAllText(LastPath));
-            foreach (Bind b in binds)
-                Binds.Add(new BindViewModel(b));
-            OnPropertyChanged("Binds");
+            Task.Run(()=> {
+                int count = 0;
+                foreach (Bind b in binds)
+                {
+                    var bindVM = new BindViewModel(b);
+                    App.Current.Dispatcher.Invoke(() => { Binds.Add(bindVM); OnPropertyChanged("Binds"); });
+                    count++;
+                    if (count % 5 == 0)
+                        Thread.Sleep(2);
+                }
+            });
         }
 
         private bool GetSavePathFromUser()

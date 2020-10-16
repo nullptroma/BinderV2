@@ -6,7 +6,7 @@
         xmlns:mainNS="clr-namespace:Trigger.Types"
         mc:Ignorable="d"
         Title="Выберите тип:" Width="300" Height="170"
-        Icon="/BinderV2;component/Images/Select.png"
+        Icon="/BinderV2;component/Images/Icons/Select.png"
         Style="{DynamicResource CurstomWindowStyle}" MinWidth="300" MinHeight="170" WindowStartupLocation="CenterOwner">
     <Border BorderThickness="2" Margin="2">
         <StackPanel>

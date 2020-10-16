@@ -1,6 +1,7 @@
 ﻿using InterpreterScripts;
 using System;
 using System.Threading.Tasks;
+using System.Windows;
 using Trigger.Events;
 
 namespace Trigger.Types

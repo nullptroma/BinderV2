@@ -8,7 +8,7 @@
         xmlns:tb="http://www.hardcodet.net/taskbar"
         xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
         mc:Ignorable="d"
-        Title="Binder" Height="410.45" Width="792.215" MinWidth="690" MinHeight="180" Style="{DynamicResource CurstomWindowStyle}" Icon="/BinderV2;component/Images/upload (1).png" Closing="Window_Closing" Closed="Window_Closed" Loaded="Window_Loaded">
+        Title="Binder" Height="410.45" Width="792.215" MinWidth="690" MinHeight="180" Style="{DynamicResource CurstomWindowStyle}" Icon="/BinderV2;component/Images/upload (1).png" Closing="Window_Closing" Closed="Window_Closed">
 
     <Grid>
         <Grid.RowDefinitions>
@@ -57,8 +57,13 @@
                         </Button>
                     </DockPanel>
                 </Border>
-                <ScrollViewer x:Name="BindsScrollViewer" DockPanel.Dock="Top"  Margin="0,2,0,0" Style="{DynamicResource AutoScrollViewer}" >
-                    <ItemsControl ItemsSource="{Binding Binds}" >
+                <ScrollViewer x:Name="BindsScrollViewer" DockPanel.Dock="Top" Margin="0,2,0,0" Style="{DynamicResource AutoScrollViewer}" >
+                    <ItemsControl ItemsSource="{Binding Binds, Mode=OneWay}" 
+                                  VirtualizingPanel.IsVirtualizing="True"
+                                  VirtualizingPanel.IsContainerVirtualizable="True"
+                                  VirtualizingPanel.VirtualizationMode="Recycling"
+                                  VirtualizingPanel.CacheLength="20"
+                                  VirtualizingPanel.CacheLengthUnit="Item" Loaded="ItemsControl_Loaded">
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
                                 <bind:BindControl/>

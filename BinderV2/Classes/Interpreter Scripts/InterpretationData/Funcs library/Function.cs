@@ -42,8 +42,11 @@ namespace InterpreterScripts.InterpretationScriptData.StandartFunctions
                 GroupName = "None";
         }
 
-        public Function(Delegate func, FuncType returnType) : this(func.Method, func.Target, returnType)
-        {  }
+        public Function(Delegate func, FuncType returnType, string Name="") : this(func.Method, func.Target, returnType)
+        {
+            if (Name.Length > 0)
+                this.Name = Name;
+        }
 
 
         public Task<object> GetResult(params object[] parameters)

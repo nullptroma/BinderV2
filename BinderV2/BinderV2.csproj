@@ -325,16 +325,16 @@
     <Resource Include="Images\Plus.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\Edit.png" />
+    <Resource Include="Images\Icons\Edit.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\Select.png" />
+    <Resource Include="Images\Icons\Select.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\upload %281%29.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\Settings.png" />
+    <Resource Include="Images\Icons\Settings.png" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">

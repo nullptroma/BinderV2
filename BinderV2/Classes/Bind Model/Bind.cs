@@ -55,15 +55,19 @@ namespace BindModel
                 return;
 
             InterpretationData data = new InterpretationData();
-            data.AdditionalFunctions.Add(new Function(new Func<object[], object>(StartBind), FuncType.Parameters));
+            data.Vars["TriggerName"] = e.TriggerName;
+
+            object StartBind(params object[] ps)
+            {
+                Interpreter.ExecuteScript(Script, data);
+                return ps;
+            }
+
+            data.AdditionalFunctions.Add(new Function(new Func<object[], object>(StartBind), FuncType.Parameters, "StartBind"));
             Interpreter.ExecuteScript(e.TriggerScript, data);
         }
 
-        private object StartBind(params object[] ps)
-        {
-            Interpreter.ExecuteScript(Script);
-            return ps;
-        }
+        
 
         private void TriggersChanged(object sender, NotifyCollectionChangedEventArgs e)
         {

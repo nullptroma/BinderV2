@@ -16,6 +16,7 @@ using BinderV2.Classes;
 using BinderV2.MVVM.ViewModels;
 using CustomScrollViewerLogic;
 using System.Runtime.Remoting.Channels;
+using System.Threading;
 
 namespace BinderV2.MVVM.Views
 {
@@ -51,8 +52,9 @@ namespace BinderV2.MVVM.Views
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            e.Cancel = true;
-            HideWindow();
+            
+            //e.Cancel = true;
+            //HideWindow();
         }
 
         private void TaskBarIcon_TrayMouseDoubleClick(object sender, RoutedEventArgs e)
@@ -71,7 +73,7 @@ namespace BinderV2.MVVM.Views
             Hooks.Mouse.MouseHook.MouseMove -= OnCursorPositonChanged;
         }
 
-        private void ShowWindow()
+        private void ShowWindow()//вот это вызывается сразу при запуске программы
         {
             WindowState = WindowState.Normal;
             this.Visibility = Visibility.Visible;
@@ -86,6 +88,7 @@ namespace BinderV2.MVVM.Views
 
         private void Window_Closed(object sender, EventArgs e)
         {
+            Hooks.Mouse.MouseHook.UnInstallHook();
             ProgramSettings.RuntimeSettings.MainWindowSize = new Size(Width, Height);
         }
 
@@ -94,7 +97,7 @@ namespace BinderV2.MVVM.Views
             Test.RunTest();
         }
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
+        private void ItemsControl_Loaded(object sender, RoutedEventArgs e)
         {
             BindsScrollViewer.Tag = true;
         }

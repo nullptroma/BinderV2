@@ -20,11 +20,6 @@ namespace BinderV2.MVVM.Views
     /// </summary>
     public partial class BindControl : UserControl
     {
-        public BindControl(Bind b) : this()
-        {
-            DataContext = new BindViewModel(b);
-        }
-
         public BindControl()
         {
             InitializeComponent();
