@@ -22,28 +22,27 @@ C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\WPF Resources\Interface 
 C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\WPF Resources\Styles\Button\Button Style.baml
 C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\WPF Resources\Styles\TabControl\TabControlStyle.baml
 C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\WPF Resources\Styles\TextBox\TextBox Style.baml
-C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\MVVM\Views\HelpWindow.g.cs
-C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\MVVM\Views\RecordWindow.g.cs
-C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\MVVM\Views\SettingsWindow.g.cs
-C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\MVVM\Views\MainWindow.g.cs
-C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\MVVM\Views\ChooseTriggerTypeWindow.g.cs
-C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\MVVM\Views\TriggersEditWindow.g.cs
-C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\MVVM\Views\HelpWindow.baml
-C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\MVVM\Views\RecordWindow.baml
-C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\MVVM\Views\SettingsWindow.baml
-C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\MVVM\Views\MainWindow.baml
-C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\MVVM\Views\ChooseTriggerTypeWindow.baml
-C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\MVVM\Views\TriggersEditWindow.baml
 C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\GeneratedInternalTypeHelper.g.cs
-C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\MVVM\Views\Bind\BindControl.g.cs
-C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\MVVM\Views\Bind\BindControl.baml
-C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\BinderV2.csprojAssemblyReference.cache
-C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\MVVM\Views\Triggers\KeysDownTriggerControl.g.cs
-C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\MVVM\Views\Triggers\OnAddCallbackTriggerControl.g.cs
-C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\MVVM\Views\Triggers\KeysDownTriggerControl.baml
-C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\MVVM\Views\Triggers\OnAddCallbackTriggerControl.baml
 C:\Users\Roman\source\repos\BinderV2\BinderV2\bin\Debug\Hardcodet.Wpf.TaskbarNotification.dll
 C:\Users\Roman\source\repos\BinderV2\BinderV2\bin\Debug\Hardcodet.Wpf.TaskbarNotification.pdb
 C:\Users\Roman\source\repos\BinderV2\BinderV2\bin\Debug\Hardcodet.Wpf.TaskbarNotification.xml
 C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\BinderV2.csproj.CopyComplete
 C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\WPF Resources\Styles\Scroll Viewer\ScrollStyle.g.cs
+C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\MVVM\Help\HelpWindow.baml
+C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\MVVM\Record\RecordWindow.baml
+C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\MVVM\Help\HelpWindow.g.cs
+C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\MVVM\Record\RecordWindow.g.cs
+C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\MVVM\Settings\SettingsWindow.g.cs
+C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\MVVM\Triggers\KeysDown\KeysDownTriggerControl.g.cs
+C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\MVVM\Triggers\OnAddCallback\OnAddCallbackTriggerControl.g.cs
+C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\MVVM\Main\MainWindow.g.cs
+C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\MVVM\TriggerEdit\ChooseTriggerTypeWindow.g.cs
+C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\MVVM\TriggerEdit\TriggersEditWindow.g.cs
+C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\MVVM\Bind\BindControl.g.cs
+C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\MVVM\Settings\SettingsWindow.baml
+C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\MVVM\Triggers\KeysDown\KeysDownTriggerControl.baml
+C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\MVVM\Triggers\OnAddCallback\OnAddCallbackTriggerControl.baml
+C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\MVVM\Main\MainWindow.baml
+C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\MVVM\TriggerEdit\ChooseTriggerTypeWindow.baml
+C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\MVVM\TriggerEdit\TriggersEditWindow.baml
+C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\MVVM\Bind\BindControl.baml

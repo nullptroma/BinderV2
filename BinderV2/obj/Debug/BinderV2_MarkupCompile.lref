@@ -1,11 +1,11 @@
 ﻿
 FC:\Users\Roman\source\repos\BinderV2\BinderV2\App.xaml;;
-FC:\Users\Roman\source\repos\BinderV2\BinderV2\MVVM\Views\SettingsWindow.xaml;;
-FC:\Users\Roman\source\repos\BinderV2\BinderV2\MVVM\Views\Triggers\KeysDownTriggerControl.xaml;;
-FC:\Users\Roman\source\repos\BinderV2\BinderV2\MVVM\Views\Triggers\OnAddCallbackTriggerControl.xaml;;
-FC:\Users\Roman\source\repos\BinderV2\BinderV2\MVVM\Views\MainWindow.xaml;;
-FC:\Users\Roman\source\repos\BinderV2\BinderV2\MVVM\Views\ChooseTriggerTypeWindow.xaml;;
-FC:\Users\Roman\source\repos\BinderV2\BinderV2\MVVM\Views\TriggersEditWindow.xaml;;
-FC:\Users\Roman\source\repos\BinderV2\BinderV2\MVVM\Views\Bind\BindControl.xaml;;
+FC:\Users\Roman\source\repos\BinderV2\BinderV2\MVVM\Settings\SettingsWindow.xaml;;
+FC:\Users\Roman\source\repos\BinderV2\BinderV2\MVVM\Triggers\KeysDown\KeysDownTriggerControl.xaml;;
+FC:\Users\Roman\source\repos\BinderV2\BinderV2\MVVM\Triggers\OnAddCallback\OnAddCallbackTriggerControl.xaml;;
+FC:\Users\Roman\source\repos\BinderV2\BinderV2\MVVM\Main\MainWindow.xaml;;
+FC:\Users\Roman\source\repos\BinderV2\BinderV2\MVVM\TriggerEdit\ChooseTriggerTypeWindow.xaml;;
+FC:\Users\Roman\source\repos\BinderV2\BinderV2\MVVM\TriggerEdit\TriggersEditWindow.xaml;;
+FC:\Users\Roman\source\repos\BinderV2\BinderV2\MVVM\Bind\BindControl.xaml;;
 FC:\Users\Roman\source\repos\BinderV2\BinderV2\WPF Resources\Styles\TextBox\TextBox Style.xaml;;
 

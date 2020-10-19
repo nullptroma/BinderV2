@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\Roman\source\repos\BinderV2\BinderV2\App.xaml
-19-763270483
+19-1772362019
 
-962059514126
+931843153978
 7178674915
-MVVM\Views\HelpWindow.xaml;MVVM\Views\RecordWindow.xaml;MVVM\Views\SettingsWindow.xaml;MVVM\Views\Triggers\KeysDownTriggerControl.xaml;MVVM\Views\Triggers\OnAddCallbackTriggerControl.xaml;WPF Resources\Interface Resources\InterfaceResources.xaml;WPF Resources\Styles\Button\Button Style.xaml;WPF Resources\Styles\ComboBox\ComboBox.xaml;WPF Resources\Styles\Context Menu\ContextMenu.xaml;WPF Resources\Styles\Controls Styles\ControlsStyles.xaml;WPF Resources\Styles\CustomizedWindow\CurstomWindowStyle.xaml;MVVM\Views\MainWindow.xaml;MVVM\Views\ChooseTriggerTypeWindow.xaml;MVVM\Views\TriggersEditWindow.xaml;MVVM\Views\Bind\BindControl.xaml;WPF Resources\Styles\Menu Item\MenuItem.xaml;WPF Resources\Styles\Scroll Viewer\ScrollStyle.xaml;WPF Resources\Styles\TabControl\TabControlStyle.xaml;WPF Resources\Styles\TextBox\TextBox Style.xaml;
+MVVM\Help\HelpWindow.xaml;MVVM\Record\RecordWindow.xaml;MVVM\Settings\SettingsWindow.xaml;MVVM\Triggers\KeysDown\KeysDownTriggerControl.xaml;MVVM\Triggers\OnAddCallback\OnAddCallbackTriggerControl.xaml;WPF Resources\Interface Resources\InterfaceResources.xaml;WPF Resources\Styles\Button\Button Style.xaml;WPF Resources\Styles\ComboBox\ComboBox.xaml;WPF Resources\Styles\Context Menu\ContextMenu.xaml;WPF Resources\Styles\Controls Styles\ControlsStyles.xaml;WPF Resources\Styles\CustomizedWindow\CurstomWindowStyle.xaml;MVVM\Main\MainWindow.xaml;MVVM\TriggerEdit\ChooseTriggerTypeWindow.xaml;MVVM\TriggerEdit\TriggersEditWindow.xaml;MVVM\Bind\BindControl.xaml;WPF Resources\Styles\Menu Item\MenuItem.xaml;WPF Resources\Styles\Scroll Viewer\ScrollStyle.xaml;WPF Resources\Styles\TabControl\TabControlStyle.xaml;WPF Resources\Styles\TextBox\TextBox Style.xaml;
 
 False
 

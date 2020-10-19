@@ -1,5 +1,10 @@
 ﻿
 
-FC:\Users\Roman\source\repos\BinderV2\BinderV2\MVVM\Views\MainWindow.xaml;;
-FC:\Users\Roman\source\repos\BinderV2\BinderV2\MVVM\Views\TriggersEditWindow.xaml;;
+FC:\Users\Roman\source\repos\BinderV2\BinderV2\MVVM\Settings\SettingsWindow.xaml;;
+FC:\Users\Roman\source\repos\BinderV2\BinderV2\MVVM\Triggers\KeysDown\KeysDownTriggerControl.xaml;;
+FC:\Users\Roman\source\repos\BinderV2\BinderV2\MVVM\Triggers\OnAddCallback\OnAddCallbackTriggerControl.xaml;;
+FC:\Users\Roman\source\repos\BinderV2\BinderV2\MVVM\Main\MainWindow.xaml;;
+FC:\Users\Roman\source\repos\BinderV2\BinderV2\MVVM\TriggerEdit\ChooseTriggerTypeWindow.xaml;;
+FC:\Users\Roman\source\repos\BinderV2\BinderV2\MVVM\TriggerEdit\TriggersEditWindow.xaml;;
+FC:\Users\Roman\source\repos\BinderV2\BinderV2\MVVM\Bind\BindControl.xaml;;
 
