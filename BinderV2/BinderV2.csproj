@@ -160,26 +160,26 @@
     <Compile Include="Utilities\JsonUtilities.cs" />
     <Compile Include="Utilities\Operators.cs" />
     <Compile Include="Dependencies\Resolver.cs" />
-    <Compile Include="MVVM\Help\HelpModel.cs" />
-    <Compile Include="MVVM\Main\MainModels\BindsManager.cs" />
-    <Compile Include="MVVM\Main\MainModels\WindowsManager.cs" />
-    <Compile Include="MVVM\Record\RecordModel.cs" />
-    <Compile Include="MVVM\Settings\SettingsModel.cs" />
-    <Compile Include="MVVM\TriggerEdit\TriggersManager.cs" />
+    <Compile Include="MVVM\Windows\Help\HelpModel.cs" />
+    <Compile Include="MVVM\Windows\Main\MainModels\BindsManager.cs" />
+    <Compile Include="MVVM\Windows\Main\MainModels\WindowsManager.cs" />
+    <Compile Include="MVVM\Windows\Record\RecordModel.cs" />
+    <Compile Include="MVVM\Windows\Settings\SettingsModel.cs" />
+    <Compile Include="MVVM\Windows\TriggerEdit\TriggersManager.cs" />
     <Compile Include="MVVM\BaseViewModel.cs" />
     <Compile Include="MVVM\Bind\BindViewModel.cs" />
-    <Compile Include="MVVM\Help\HelpViewModel.cs" />
+    <Compile Include="MVVM\Windows\Help\HelpViewModel.cs" />
     <Compile Include="MVVM\Triggers\BaseTriggerViewModel.cs" />
     <Compile Include="MVVM\Triggers\KeysDown\KeysDownTriggerViewModel.cs" />
-    <Compile Include="MVVM\Help\HelpWindow.xaml.cs">
+    <Compile Include="MVVM\Windows\Help\HelpWindow.xaml.cs">
       <DependentUpon>HelpWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MVVM\Record\RecordViewModel.cs" />
-    <Compile Include="MVVM\Record\RecordWindow.xaml.cs">
+    <Compile Include="MVVM\Windows\Record\RecordViewModel.cs" />
+    <Compile Include="MVVM\Windows\Record\RecordWindow.xaml.cs">
       <DependentUpon>RecordWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MVVM\Settings\SettingsViewModel.cs" />
-    <Compile Include="MVVM\Settings\SettingsWindow.xaml.cs">
+    <Compile Include="MVVM\Windows\Settings\SettingsViewModel.cs" />
+    <Compile Include="MVVM\Windows\Settings\SettingsWindow.xaml.cs">
       <DependentUpon>SettingsWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="MVVM\Triggers\KeysDown\KeysDownTriggerControl.xaml.cs">
@@ -190,28 +190,28 @@
     </Compile>
     <Compile Include="WPF Resources\Styles\CustomizedWindow\WindowStyle.cs" />
     <Compile Include="Utilities\AutoRun.cs" />
-    <Compile Include="MVVM\Main\MainViewModel.cs" />
-    <Compile Include="MVVM\TriggerEdit\ChooseTriggerTypeWindow.xaml.cs">
+    <Compile Include="MVVM\Windows\Main\MainViewModel.cs" />
+    <Compile Include="MVVM\Windows\TriggerEdit\ChooseTriggerTypeWindow.xaml.cs">
       <DependentUpon>ChooseTriggerTypeWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="MVVM\Triggers\TriggersModel\Types\TriggerTypes.cs" />
-    <Compile Include="MVVM\TriggerEdit\TriggerEditViewModel.cs" />
-    <Compile Include="MVVM\TriggerEdit\TriggersEditWindow.xaml.cs">
+    <Compile Include="MVVM\Windows\TriggerEdit\TriggerEditViewModel.cs" />
+    <Compile Include="MVVM\Windows\TriggerEdit\TriggersEditWindow.xaml.cs">
       <DependentUpon>TriggersEditWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="MVVM\Bind\BindControl.xaml.cs">
       <DependentUpon>BindControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="WPF Resources\Styles\Scroll Viewer\CustomScrollViewer.cs" />
-    <Page Include="MVVM\Help\HelpWindow.xaml">
+    <Page Include="MVVM\Windows\Help\HelpWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MVVM\Record\RecordWindow.xaml">
+    <Page Include="MVVM\Windows\Record\RecordWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MVVM\Settings\SettingsWindow.xaml">
+    <Page Include="MVVM\Windows\Settings\SettingsWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -247,7 +247,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="MVVM\Main\MainWindow.xaml">
+    <Page Include="MVVM\Windows\Main\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -255,15 +255,15 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="MVVM\Main\MainWindow.xaml.cs">
+    <Compile Include="MVVM\Windows\Main\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="MVVM\TriggerEdit\ChooseTriggerTypeWindow.xaml">
+    <Page Include="MVVM\Windows\TriggerEdit\ChooseTriggerTypeWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MVVM\TriggerEdit\TriggersEditWindow.xaml">
+    <Page Include="MVVM\Windows\TriggerEdit\TriggersEditWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
