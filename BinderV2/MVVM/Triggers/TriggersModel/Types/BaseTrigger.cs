@@ -10,6 +10,7 @@ namespace Trigger.Types
     {
         public static bool EnableAllTriggers { get; set; }
         public string Name { get; set; }
+        public abstract string TypeDescription { get; }
         public string Script { get; set; }//каждый триггер может выполнять свои действия, перед действиями бинда
         public event EnableTriggerChangedEventHandler EnableChanged;
         private event TriggeredEventHandler Triggered;
@@ -33,12 +34,12 @@ namespace Trigger.Types
             Script = "StartBind();";
         }
 
-        protected Task Invoke()
+        protected Task Invoke(TriggeredEventArgs e)
         {
             return Task.Run(() =>
             {
                 if (EnableTrigger && EnableAllTriggers)
-                    Triggered?.Invoke(this, new TriggeredEventArgs(Name, Script));
+                    Triggered?.Invoke(this, e);
             });
         }
 

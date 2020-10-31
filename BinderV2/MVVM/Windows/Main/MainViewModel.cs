@@ -1,28 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Collections.ObjectModel;
-using System.Windows.Controls;
+﻿using System.Collections.ObjectModel;
 using System.Windows;
 using System.ComponentModel;
-using Trigger.Types;
-using Trigger;
-using BindModel;
 using BinderV2.Commands;
-using System.IO;
-using System.Xml.Serialization;
-using Newtonsoft.Json;
-using BinderV2.MVVM.Views;
-using Microsoft.Win32;
-using System.Net.Mail;
-using BinderV2.Settings;
-using Utilities;
-using InterpreterScripts;
-using InterpreterScripts.InterpretationScriptData.StandartFunctions;
-using InterpreterScripts.FuncAttributes;
 using BinderV2.MVVM.Models.MainModels;
-using System.Windows.Forms;
 
 namespace BinderV2.MVVM.ViewModels
 {
@@ -32,11 +12,7 @@ namespace BinderV2.MVVM.ViewModels
         private readonly BindsManager bindsManager = new BindsManager();
         public ObservableCollection<BindViewModel> Binds { get { return bindsManager.Binds; } }
 
-        public string SelectedBindScript
-        {
-            get { return bindsManager.SelectedBindScript; }
-        }
-
+        public string SelectedBindScript { get; private set; }
         private RelayCommand saveBindsInNewPathCommand;
         public RelayCommand SaveBindsInNewPathCommand
         {
@@ -144,9 +120,40 @@ namespace BinderV2.MVVM.ViewModels
                   }));
             }
         }
+        
+
+        private RelayCommand clearScriptTextBox;
+        public RelayCommand ClearScriptTextBox
+        {
+            get
+            {
+                return clearScriptTextBox ??
+                  (clearScriptTextBox = new RelayCommand(obj =>
+                  {
+                      SelectedBindScript = "";
+                      OnPropertyChanged("SelectedBindScript");
+                  }));
+            }
+        }
+
+        private RelayCommand pasteToScriptTextBox;
+        public RelayCommand PasteToScriptTextBox
+        {
+            get
+            {
+                return pasteToScriptTextBox ??
+                  (pasteToScriptTextBox = new RelayCommand(obj =>
+                  {
+                      SelectedBindScript = Clipboard.GetText();
+                      OnPropertyChanged("SelectedBindScript");
+                  }));
+            }
+        }
 
         private void OnBindsManagerPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
+            if (e.PropertyName == "SelectedBindScript")
+                SelectedBindScript = bindsManager.SelectedBindScript;
             OnPropertyChanged(e.PropertyName);
         }
         #endregion

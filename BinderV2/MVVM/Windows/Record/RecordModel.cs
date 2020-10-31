@@ -9,9 +9,8 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Forms;
 using System.Windows.Input;
+using System.Drawing;
 using Trigger.Types;
 
 namespace BinderV2.MVVM.Models
@@ -110,7 +109,8 @@ namespace BinderV2.MVVM.Models
             }
 
             Commands.Clear();
-            SetMouseImitationCommand();
+            lastCursorRecordedPosition = System.Windows.Forms.Cursor.Position;
+            AddCommand($"SetCursorPos({lastCursorRecordedPosition.X}, {lastCursorRecordedPosition.Y})");
         }
 
         private void StopRecording()
@@ -127,25 +127,30 @@ namespace BinderV2.MVVM.Models
             OnPropertyChanged("RecordedScript");
         }
 
-        #region RecordCommands
         int mouseMoveCount = 0;
-        string mouseMoveCmd = "";
-
-        private void SetMouseImitationCommand()
+        Point lastCursorRecordedPosition;
+        private void AddMouseMoveCommand(int absX, int absY)
         {
             switch (SelectedMouseMoveImitationIndex)
             {
                 case 0://SetCursorPos
                     {
-                        mouseMoveCmd = @"SetCursorPos({0}, {1})";
+                        AddCommand($"SetCursorPos({absX}, {absY})");
                         break;
                     }
-                case 1://MouseMove
+                case 1://MoveCursor
                     {
-                        mouseMoveCmd = @"MouseMove({0}, {1}, 0)";
+                        AddCommand($"MoveCursor({absX}, {absY}, 0)");
                         break;
                     }
+                case 2://MoveCursorBy
+                    {
+                        AddCommand($"MoveCursorBy({absX-lastCursorRecordedPosition.X}, {absY-lastCursorRecordedPosition.Y})");
+                        break;
+                    }
+
             }
+            lastCursorRecordedPosition = new Point(absX, absY);
         }
 
         private Task AddCommand(string cmd)
@@ -157,13 +162,13 @@ namespace BinderV2.MVVM.Models
                 long mcs = stopwatch.ElapsedMilliseconds;
                 if (mcs >= 1)
                     Commands.Enqueue($"Delay({mcs});" + Environment.NewLine);
-                Commands.Enqueue(cmd + ";" + Environment.NewLine) ;
+                Commands.Enqueue(cmd + ";" + Environment.NewLine);
 
                 stopwatch.Reset();
                 stopwatch.Start();
             });
         }
-        #endregion
+
         #region Hooks
         private void SetHooks()
         {
@@ -204,13 +209,13 @@ namespace BinderV2.MVVM.Models
 
         private void MouseDown(object sender, System.Windows.Forms.MouseEventArgs e)
         {
-            AddCommand(string.Format(mouseMoveCmd, e.Location.X, e.Location.Y));
+            AddMouseMoveCommand(e.X, e.Y);
             AddCommand($"MouseEvent(\"{e.Button.ToString().ToUpper() + "DOWN"}\")");
         }
 
         private void MouseUp(object sender, System.Windows.Forms.MouseEventArgs e)
         {
-            AddCommand(string.Format(mouseMoveCmd, e.Location.X, e.Location.Y));
+            AddMouseMoveCommand(e.X, e.Y);
             AddCommand($"MouseEvent(\"{e.Button.ToString().ToUpper() + "UP"}\")");
         }
 
@@ -219,7 +224,7 @@ namespace BinderV2.MVVM.Models
             if (stopwatch.ElapsedMilliseconds < 1)
                 return;
             if (mouseMoveCount < percentMouseMoveToRecord)
-                AddCommand(string.Format(mouseMoveCmd, e.Location.X, e.Location.Y));
+                AddMouseMoveCommand(e.X, e.Y);
             mouseMoveCount++;
             if (mouseMoveCount >= 100)
                 mouseMoveCount = 0;

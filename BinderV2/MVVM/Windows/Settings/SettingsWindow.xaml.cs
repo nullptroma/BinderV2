@@ -25,6 +25,7 @@ namespace BinderV2.MVVM.Views
         public SettingsWindow()
         {
             InitializeComponent();
+            StateChanged += CustomizedWindow.WindowStyle.Window_StateChanged;
             DataContext = new SettingsViewModel();
         }
 

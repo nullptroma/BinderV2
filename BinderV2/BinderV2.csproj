@@ -102,8 +102,25 @@
     <Compile Include="MVVM\Bind\Bind Model\Bind.cs" />
     <Compile Include="MVVM\Bind\Bind Model\Events.cs" />
     <Compile Include="MVVM\Bind\Bind Model\Exeptions.cs" />
+    <Compile Include="MVVM\Triggers\Other\AnyKeyUpViewModel.cs" />
+    <Compile Include="MVVM\Triggers\Other\AnyKeyDownViewModel.cs" />
+    <Compile Include="MVVM\Triggers\Other\OnAddCallbackTriggerViewModel.cs" />
+    <Compile Include="MVVM\Triggers\Other\OnExitTriggerViewModel.cs" />
+    <Compile Include="MVVM\Triggers\Timer\TimerTriggerControl.xaml.cs">
+      <DependentUpon>TimerTriggerControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\Triggers\Timer\TimerTriggerViewModel.cs" />
     <Compile Include="MVVM\Triggers\TriggersModel\EnableDisableTriggers.cs" />
     <Compile Include="Interpreter Scripts\Syntactic Constructs\Constructs\Operators\Math\Operator.cs" />
+    <Compile Include="MVVM\Triggers\TriggersModel\Types\Triggers\Keys\AnyKeyDown.cs" />
+    <Compile Include="MVVM\Triggers\TriggersModel\Types\Triggers\Keys\AnyKeyUp.cs" />
+    <Compile Include="MVVM\Triggers\TriggersModel\Types\Triggers\Keys\BaseKeysTrigger.cs" />
+    <Compile Include="MVVM\Triggers\TriggersModel\Types\Triggers\Keys\Engine\KeysTriggersEngine.cs" />
+    <Compile Include="MVVM\Triggers\TriggersModel\Types\Triggers\Keys\KeysHolding.cs" />
+    <Compile Include="MVVM\Triggers\TriggersModel\Types\Triggers\Keys\KeysHoldingOnce.cs" />
+    <Compile Include="MVVM\Triggers\TriggersModel\Types\Triggers\Keys\KeysUpTrigger.cs" />
+    <Compile Include="MVVM\Triggers\TriggersModel\Types\Triggers\OnExitTrigger.cs" />
+    <Compile Include="MVVM\Triggers\TriggersModel\Types\Triggers\TimerTrigger.cs" />
     <Compile Include="Utilities\KeyCodeToUnicode.cs" />
     <Compile Include="Interpreter Scripts\Converter\Converter.cs" />
     <Compile Include="Interpreter Scripts\Syntactic Constructs\Constructs\Delay.cs" />
@@ -150,11 +167,10 @@
     <Compile Include="Settings\Settings.cs" />
     <Compile Include="Test\Test.cs" />
     <Compile Include="MVVM\Triggers\TriggersModel\Exeptions.cs" />
-    <Compile Include="MVVM\Triggers\TriggersModel\Types\Triggers\KeysDownTrigger.cs" />
+    <Compile Include="MVVM\Triggers\TriggersModel\Types\Triggers\Keys\KeysDownTrigger.cs" />
     <Compile Include="MVVM\RelayCommand.cs" />
     <Compile Include="MVVM\Triggers\TriggersModel\Types\BaseTrigger.cs" />
     <Compile Include="MVVM\Triggers\TriggersModel\TriggerEvents.cs" />
-    <Compile Include="MVVM\Triggers\TriggersModel\TriggerUtility.cs" />
     <Compile Include="MVVM\Triggers\TriggersModel\Types\Triggers\OnAddCallbackTrigger.cs" />
     <Compile Include="Utilities\ICollectionExtensionMethods.cs" />
     <Compile Include="Utilities\JsonUtilities.cs" />
@@ -170,7 +186,7 @@
     <Compile Include="MVVM\Bind\BindViewModel.cs" />
     <Compile Include="MVVM\Windows\Help\HelpViewModel.cs" />
     <Compile Include="MVVM\Triggers\BaseTriggerViewModel.cs" />
-    <Compile Include="MVVM\Triggers\KeysDown\KeysDownTriggerViewModel.cs" />
+    <Compile Include="MVVM\Triggers\Keys\KeysTriggerViewModel.cs" />
     <Compile Include="MVVM\Windows\Help\HelpWindow.xaml.cs">
       <DependentUpon>HelpWindow.xaml</DependentUpon>
     </Compile>
@@ -182,11 +198,11 @@
     <Compile Include="MVVM\Windows\Settings\SettingsWindow.xaml.cs">
       <DependentUpon>SettingsWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MVVM\Triggers\KeysDown\KeysDownTriggerControl.xaml.cs">
-      <DependentUpon>KeysDownTriggerControl.xaml</DependentUpon>
+    <Compile Include="MVVM\Triggers\Keys\KeysTriggerControl.xaml.cs">
+      <DependentUpon>KeysTriggerControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MVVM\Triggers\OnAddCallback\OnAddCallbackTriggerControl.xaml.cs">
-      <DependentUpon>OnAddCallbackTriggerControl.xaml</DependentUpon>
+    <Compile Include="MVVM\Triggers\EmpryTriggerControl.xaml.cs">
+      <DependentUpon>EmpryTriggerControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="WPF Resources\Styles\CustomizedWindow\WindowStyle.cs" />
     <Compile Include="Utilities\AutoRun.cs" />
@@ -203,6 +219,10 @@
       <DependentUpon>BindControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="WPF Resources\Styles\Scroll Viewer\CustomScrollViewer.cs" />
+    <Page Include="MVVM\Triggers\Timer\TimerTriggerControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MVVM\Windows\Help\HelpWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -215,11 +235,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MVVM\Triggers\KeysDown\KeysDownTriggerControl.xaml">
+    <Page Include="MVVM\Triggers\Keys\KeysTriggerControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MVVM\Triggers\OnAddCallback\OnAddCallbackTriggerControl.xaml">
+    <Page Include="MVVM\Triggers\EmpryTriggerControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -353,6 +373,9 @@
     <EmbeddedResource Include="Dependencies\Microsoft.Xaml.Behaviors.dll" />
     <EmbeddedResource Include="Dependencies\Newtonsoft.Json.dll" />
     <EmbeddedResource Include="Dependencies\System.ValueTuple.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="WPF Resources\Images\Icons\BinderIcon.png" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -67,7 +67,6 @@ namespace InterpreterScripts.InterpretationScriptData.StandartFunctions.Library
                 }
             }
 
-            MessageBox.Show("Нельзя сравнить значения типов " + lname + " и " + rname);
             throw new Exception("Нельзя сравнить значения типов " + lname + " и " + rname);
         }
 
@@ -89,7 +88,7 @@ namespace InterpreterScripts.InterpretationScriptData.StandartFunctions.Library
         public static extern UInt32 GetWindowThreadProcessId(IntPtr hwnd, ref Int32 pid);
 
         [DllImport("user32.dll", SetLastError = true)]
-        public static extern void mouse_event(uint dwFlags, uint dx, uint dy, uint dwData, int dwExtraInfo);
+        public static extern void mouse_event(uint dwFlags, int dx, int dy, uint dwData, int dwExtraInfo);
 
 
         [DllImport("user32.dll")]

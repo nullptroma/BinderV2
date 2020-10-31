@@ -208,6 +208,19 @@ namespace InterpreterScripts.InterpretationScriptData.StandartFunctions.Library
             return ps;
         }
 
+        [Description("MoveCursorBy(int x, int y) - изменяет позицию курсора на x и y.")]
+        public static object[] MoveCursorBy(params object[] ps)
+        {
+            try
+            {
+                int X = (int)ps[0];
+                int Y = (int)ps[1];
+                Meths.mouse_event(0x00000001, X, Y, 0, 0);
+            }
+            catch (Exception e) { MessageBox.Show(e.ToString()); return ps; }
+            return ps;
+        }
+
         [Description("MouseEvent(string event) - имитарует событие мыши. Для получения доступных событий использовать GetMouseEventsHelp().")]
         public static object[] MouseEvent(params object[] ps)
         {

@@ -54,6 +54,7 @@ namespace InterpreterScripts.SyntacticConstructions.Constructions
                     case "||":
                         return (bool)rightValue || (bool)leftValue;
                     case "&&":
+                        
                         return (bool)rightValue && (bool)leftValue;
                     case "!":
                         return !((bool)rightValue);
@@ -91,8 +92,8 @@ namespace InterpreterScripts.SyntacticConstructions.Constructions
                     {
                         if (resultOperator.ChangeToLessPriorityOperator(expression[i-1].ToString() + expression[i].ToString()))
                         {
-                            operatorIndex = i;
                             i--;
+                            operatorIndex = i;
                             continue;
                         }
                     }

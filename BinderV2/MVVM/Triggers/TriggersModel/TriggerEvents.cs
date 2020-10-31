@@ -1,16 +1,19 @@
-﻿using System;
+﻿using InterpreterScripts.InterpretationScriptData;
+using System;
 
 namespace Trigger.Events
 {
     public class TriggeredEventArgs : EventArgs
     {
-        public string TriggerName { get; set; }
-        public string TriggerScript { get; set; }
+        public string TriggerName { get; private set; }
+        public string TriggerScript { get; private set; }
+        public InterpretationData triggerData { get; private set; }
 
-        public TriggeredEventArgs(string name, string script)
+        public TriggeredEventArgs(string name, string script, InterpretationData _data = null)
         {
             TriggerName = name;
             TriggerScript = script;
+            triggerData = _data != null ? _data : new InterpretationData();
         }
     }
     public delegate void TriggeredEventHandler(object sendet, TriggeredEventArgs e);

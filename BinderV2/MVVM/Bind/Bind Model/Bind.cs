@@ -53,18 +53,16 @@ namespace BindModel
         {
             if (!Enable)//если выключено - выходим
                 return;
-
-            InterpretationData data = new InterpretationData();
-            data.Vars["TriggerName"] = e.TriggerName;
+            e.triggerData.Vars["TriggerName"] = e.TriggerName;
 
             object StartBind(params object[] ps)
             {
-                Interpreter.ExecuteScript(Script, data);
+                Interpreter.ExecuteScript(Script, e.triggerData);
                 return ps;
             }
 
-            data.AdditionalFunctions.Add(new Function(new Func<object[], object>(StartBind), FuncType.Parameters, "StartBind"));
-            Interpreter.ExecuteScript(e.TriggerScript, data);
+            e.triggerData.AdditionalFunctions.Add(new Function(new Func<object[], object>(StartBind), FuncType.Parameters, "StartBind"));
+            Interpreter.ExecuteScript(e.TriggerScript, e.triggerData);
         }
 
         

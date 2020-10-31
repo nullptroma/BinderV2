@@ -56,9 +56,8 @@ namespace InterpreterScripts
 
         public static object ExecuteCommand(string cmdString, InterpretationData data)
         {
-            CommandModel cmd = new CommandModel(cmdString);
+            CommandModel cmd = new CommandModel(cmdString.Trim());
             Task<object> commandTask = null;
-
 
             if (Converter.CanConvertToSimpleType(cmd.Command))//берём простой тип
             {

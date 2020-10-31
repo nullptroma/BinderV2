@@ -8,6 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("dependencies/system.valuetuple.dll")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("wpf%20resources/images/icons/bindericon.png")]
 
 

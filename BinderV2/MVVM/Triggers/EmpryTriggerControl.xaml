@@ -1,0 +1,78 @@
+﻿<UserControl x:Name="TriggerView" x:Class="BinderV2.MVVM.Views.Triggers.EmptyTriggerControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:BinderV2.MVVM.Views.Triggers"
+             xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+             mc:Ignorable="d" 
+             d:DesignHeight="90" Margin="5" MinHeight="70">
+
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="MouseDown">
+            <i:InvokeCommandAction Command="{Binding DataContext.SelectTriggerCommand, RelativeSource={RelativeSource AncestorType=Window}}" CommandParameter="{Binding ElementName=TriggerView, Path=DataContext}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <Border x:Name="border" BorderThickness="4">
+        <Border.Style>
+            <Style TargetType="Border">
+                <Setter Property="Background" Value="{DynamicResource BindTriggerBackgroundUnSelected}"/>
+                <Setter Property="BorderBrush" Value="{DynamicResource BindTriggerBorderUnSelected}"/>
+                <Style.Triggers>
+                    <DataTrigger Binding="{Binding IsSelected}" Value="True">
+                        <Setter Property="Background" Value="{DynamicResource BindTriggerBackgroundSelected}"/>
+                        <Setter Property="BorderBrush" Value="{DynamicResource BindTriggerBorderSelected}"/>
+                    </DataTrigger>
+                </Style.Triggers>
+            </Style>
+        </Border.Style>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <Grid  Grid.RowSpan="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0" Orientation="Horizontal" Height="35" VerticalAlignment="Top" HorizontalAlignment="Left">
+                    <Label x:Name="labelName" Content="{Binding Name}" Margin="4" Height="25"/>
+                    <TextBox x:Name="textBoxName" TextWrapping="Wrap" Text="{Binding Name}" Margin="4" Height="25" Visibility="Collapsed" KeyDown="textBoxName_KeyDown">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="GotFocus">
+                                <i:InvokeCommandAction Command="{Binding DisableTriggersCommand}"/>
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="LostFocus">
+                                <i:InvokeCommandAction Command="{Binding EnableTriggersCommand}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </TextBox>
+                    <Button x:Name="EditNameButton" Content="Ред." Width="35" Margin="4" Height="27" Click="EditNameButton_Click"/>
+                </StackPanel>
+                <StackPanel Grid.Column="1" Orientation="Horizontal" Margin="5" HorizontalAlignment="Right">
+                    <Button  x:Name="EnableButton"  Height="27" Width="71" VerticalAlignment="Top" HorizontalAlignment="Right"  Margin="0,0,5,0" Command="{Binding ChangeEnableCommand}">
+                        <Button.Style>
+                            <Style TargetType="Button" BasedOn="{StaticResource CustomButton}">
+                                <Setter Property="Background" Value="{DynamicResource EnableButtonOff}"/>
+                                <Setter Property="Content" Value="Неактивен"/>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding IsEnabled}" Value="True">
+                                        <Setter Property="Background" Value="{DynamicResource EnableButtonOn}"/>
+                                        <Setter Property="Content" Value="Активен"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+                    <Button  x:Name="DeleteTriggerButton"  Height="20" Width="20" VerticalAlignment="Top" HorizontalAlignment="Right" Command="{Binding DataContext.RemoveTriggerCommand, RelativeSource={RelativeSource AncestorType=Window}}" CommandParameter="{Binding ElementName=TriggerView, Path=DataContext}">
+                        <Image Source="/BinderV2;component/WPF Resources/Images/Cross.png" />
+                    </Button>
+                </StackPanel>
+            </Grid>
+            
+            <Label Content="{Binding TypeDescription}" FontSize="14" Grid.Row="1" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,4,4"/>
+        </Grid>
+    </Border>
+</UserControl>

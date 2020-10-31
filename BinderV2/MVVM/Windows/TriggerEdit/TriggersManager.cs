@@ -9,8 +9,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Trigger.Types;
-using Trigger.Tools;
 using System.Security.Permissions;
+using InterpreterScripts.Script;
+using System.Windows;
 
 namespace BinderV2.MVVM.Models
 {
@@ -41,11 +42,11 @@ namespace BinderV2.MVVM.Models
 
         public string SelectedTriggerScript 
         { 
-            get { return SelectedTrigger != null ? SelectedTrigger.Trigger.Script : ""; } 
+            get { return ScriptTools.FormateScript(SelectedTrigger != null ? SelectedTrigger.Trigger.Script : ""); } 
             set 
             {
                 if (SelectedTrigger != null)
-                    SelectedTrigger.Trigger.Script = value;
+                    SelectedTrigger.Trigger.Script = ScriptTools.FormateScript(value);
                 OnPropertyChanged("SelectedTriggerScript");
             }
         }
@@ -67,12 +68,11 @@ namespace BinderV2.MVVM.Models
         {
             ChooseTriggerTypeWindow ctw = new ChooseTriggerTypeWindow();
             ctw.ShowDialog();
-            if (ctw.SelectedType == TriggerType.None)
+            if (ctw.ResultBaseViewModel == null)
                 return;
-            BaseTrigger newTrigger = TriggerUtility.GetTriggerFromTriggerType("Новый триггер", ctw.SelectedType);
 
-            Bind.Triggers.Add(newTrigger);
-            Triggers.Add(TriggerUtility.GetViewModelForTrigger(newTrigger));
+            Triggers.Add(ctw.ResultBaseViewModel);
+            Bind.Triggers.Add(ctw.ResultBaseViewModel.Trigger);
             OnPropertyChanged("Triggers");
         }
         public bool RemoveTrigger(BaseTriggerViewModel toRemove)
@@ -95,9 +95,11 @@ namespace BinderV2.MVVM.Models
         {
             Triggers.Clear();
             foreach (BaseTrigger trigger in Bind.Triggers)
-                Triggers.Add(TriggerUtility.GetViewModelForTrigger(trigger));
+                Triggers.Add(TriggersUtilities.GetViewModelForTrigger(trigger));
             OnPropertyChanged("Triggers");
         }
+
+        
 
         public event PropertyChangedEventHandler PropertyChanged;
         public void OnPropertyChanged(string prop)

@@ -61,6 +61,14 @@ namespace CustomizedWindow
             sender.ForWindowFromTemplate(w => w.WindowState = (w.WindowState == WindowState.Maximized) ? WindowState.Normal : WindowState.Maximized);
         }
 
+        public static void Window_StateChanged(object sender, EventArgs e)
+        {
+            Window w = (Window)sender;
+            if (w.WindowState == WindowState.Maximized)
+                w.BorderThickness = new Thickness(w.BorderThickness.Left + 7, w.BorderThickness.Top + 7, w.BorderThickness.Right + 7, w.BorderThickness.Bottom + 7);
+            else
+                w.SetResourceReference(Window.BorderThicknessProperty, "WindowBorderThickness");
+        }
 
         #endregion
 

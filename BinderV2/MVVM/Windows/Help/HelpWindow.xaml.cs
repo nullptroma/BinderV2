@@ -24,6 +24,7 @@ namespace BinderV2.MVVM.Views
         public HelpWindow()
         {
             InitializeComponent();
+            StateChanged += CustomizedWindow.WindowStyle.Window_StateChanged;
             DataContext = new HelpViewModel();
         }
 

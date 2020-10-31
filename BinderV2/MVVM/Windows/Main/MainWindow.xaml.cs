@@ -2,7 +2,7 @@
 using System.Windows;
 using BinderV2.Settings;
 using BinderV2.MVVM.ViewModels;
-using System.Windows.Forms;
+using System.Windows.Threading;
 
 namespace BinderV2.MVVM.Views
 {
@@ -11,11 +11,12 @@ namespace BinderV2.MVVM.Views
     /// </summary>
     public partial class MainWindow : Window
     {
-        Timer updateCursorTimer;
+        DispatcherTimer updateCursorTimer;
 
         public MainWindow()
         {
             InitializeComponent();
+            StateChanged += CustomizedWindow.WindowStyle.Window_StateChanged;
             DataContext = new MainViewModel();
             if (ProgramSettings.RuntimeSettings.HideOnStart)
                 HideWindow();
@@ -24,7 +25,7 @@ namespace BinderV2.MVVM.Views
                 System.Windows.Application.Current.MainWindow.Width = ProgramSettings.RuntimeSettings.MainWindowSize.Width;
                 System.Windows.Application.Current.MainWindow.Height = ProgramSettings.RuntimeSettings.MainWindowSize.Height;
             }
-            updateCursorTimer = new Timer() { Interval = 20 };
+            updateCursorTimer = new DispatcherTimer() { Interval = new TimeSpan(0,0,0,0,20) };
             updateCursorTimer.Tick += (sender, e) => { CursorPosition.Content = "Позиция курсора " + System.Windows.Forms.Cursor.Position; };
             updateCursorTimer.Start();
         }
@@ -60,7 +61,7 @@ namespace BinderV2.MVVM.Views
             WindowState = WindowState.Minimized;
             this.Visibility = Visibility.Collapsed;
             ShowInTaskbar = false;
-            updateCursorTimer.Start();
+            updateCursorTimer.Stop();
         }
 
         private void ShowWindow()
@@ -68,7 +69,7 @@ namespace BinderV2.MVVM.Views
             WindowState = WindowState.Normal;
             this.Visibility = Visibility.Visible;
             ShowInTaskbar = true;
-            updateCursorTimer.Stop();
+            updateCursorTimer.Start();
         }
 
         private void Window_Closed(object sender, EventArgs e)

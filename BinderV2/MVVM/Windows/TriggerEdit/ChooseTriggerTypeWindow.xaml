@@ -5,13 +5,22 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:mainNS="clr-namespace:Trigger.Types"
         mc:Ignorable="d"
-        Title="Выберите тип:" Width="300" Height="170"
+        Title="Выберите тип:" Width="300" Height="312.833"
         Icon="/BinderV2;component/WPF Resources/Images/Icons/Select.png"
         Style="{DynamicResource CurstomWindowStyle}" MinWidth="300" MinHeight="170" WindowStartupLocation="CenterOwner">
     <Border BorderThickness="2" Margin="2">
-        <StackPanel>
-            <Button Margin="4,4,4,8" Height="40" Command="{Binding TriggerTypeSelectCommand}" CommandParameter="{x:Static mainNS:TriggerType.KeysDown}" Content="KeysDown"/>
-            <Button Margin="4,4,4,8" Height="40" Command="{Binding TriggerTypeSelectCommand}" CommandParameter="{x:Static mainNS:TriggerType.OnAddCallback}" Content="OnAddCallback"/>
-        </StackPanel>
+        <ScrollViewer>
+            <StackPanel>
+                <Button Margin="4,4,4,8" Height="40" Command="{Binding TriggerTypeSelectCommand}" CommandParameter="{x:Static mainNS:TriggersUtilities.NewKeysDownTrigger}" Content="KeysDown"/>
+                <Button Margin="4,4,4,8" Height="40" Command="{Binding TriggerTypeSelectCommand}" CommandParameter="{x:Static mainNS:TriggersUtilities.NewKeysUpTrigger}" Content="KeysUp"/>
+                <Button Margin="4,4,4,8" Height="40" Command="{Binding TriggerTypeSelectCommand}" CommandParameter="{x:Static mainNS:TriggersUtilities.NewKeysHoldingOnce}" Content="KeysHoldingOnce"/>
+                <Button Margin="4,4,4,8" Height="40" Command="{Binding TriggerTypeSelectCommand}" CommandParameter="{x:Static mainNS:TriggersUtilities.NewKeysHolding}" Content="KeysHolding"/>
+                <Button Margin="4,4,4,8" Height="40" Command="{Binding TriggerTypeSelectCommand}" CommandParameter="{x:Static mainNS:TriggersUtilities.NewOnAddCallback}" Content="OnAddCallback"/>
+                <Button Margin="4,4,4,8" Height="40" Command="{Binding TriggerTypeSelectCommand}" CommandParameter="{x:Static mainNS:TriggersUtilities.NewTimerTrigger}" Content="TimerTrigger"/>
+                <Button Margin="4,4,4,8" Height="40" Command="{Binding TriggerTypeSelectCommand}" CommandParameter="{x:Static mainNS:TriggersUtilities.NewAnyKeyDown}" Content="AnyKeyDown"/>
+                <Button Margin="4,4,4,8" Height="40" Command="{Binding TriggerTypeSelectCommand}" CommandParameter="{x:Static mainNS:TriggersUtilities.NewAnyKeyUp}" Content="AnyKeyUp"/>
+                <Button Margin="4,4,4,8" Height="40" Command="{Binding TriggerTypeSelectCommand}" CommandParameter="{x:Static mainNS:TriggersUtilities.NewOnExitTrigger}" Content="OnExitTrigger"/>
+            </StackPanel>
+        </ScrollViewer>
     </Border>
 </Window>

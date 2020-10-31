@@ -33,14 +33,14 @@ namespace InterpreterScripts.SyntacticConstructions
 
                 new FunctionDefinition(),
 
-                new MathOperators(), 
-
                 new GetVar(),
                 new GetVarNamespaced(),
                 new SetVar(),
                 new SetVarNamespaced(),
                 new CheckVar(),
                 new CheckVarNamespaced(),
+
+                new MathOperators(), 
             };
         }
 

@@ -9,7 +9,6 @@ using System.Runtime.CompilerServices;
 using System.Collections.ObjectModel;
 using System.Windows.Controls;
 using Trigger.Types;
-using Trigger.Tools;
 using BindModel;
 using BinderV2.Commands;
 using BinderV2.MVVM.Views;

@@ -28,22 +28,21 @@ C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Release\App.baml
 C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Release\WPF Resources\Styles\TextBox\TextBox Style.baml
 C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Release\GeneratedInternalTypeHelper.g.cs
 C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Release\WPF Resources\Styles\Scroll Viewer\ScrollStyle.g.cs
-C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Release\BinderV2.csprojAssemblyReference.cache
-C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Release\MVVM\Help\HelpWindow.baml
-C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Release\MVVM\Record\RecordWindow.baml
-C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Release\MVVM\Help\HelpWindow.g.cs
-C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Release\MVVM\Record\RecordWindow.g.cs
-C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Release\MVVM\Settings\SettingsWindow.g.cs
 C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Release\MVVM\Triggers\KeysDown\KeysDownTriggerControl.g.cs
 C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Release\MVVM\Triggers\OnAddCallback\OnAddCallbackTriggerControl.g.cs
-C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Release\MVVM\Main\MainWindow.g.cs
-C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Release\MVVM\TriggerEdit\ChooseTriggerTypeWindow.g.cs
-C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Release\MVVM\TriggerEdit\TriggersEditWindow.g.cs
 C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Release\MVVM\Bind\BindControl.g.cs
-C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Release\MVVM\Settings\SettingsWindow.baml
 C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Release\MVVM\Triggers\KeysDown\KeysDownTriggerControl.baml
 C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Release\MVVM\Triggers\OnAddCallback\OnAddCallbackTriggerControl.baml
-C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Release\MVVM\Main\MainWindow.baml
-C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Release\MVVM\TriggerEdit\ChooseTriggerTypeWindow.baml
-C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Release\MVVM\TriggerEdit\TriggersEditWindow.baml
 C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Release\MVVM\Bind\BindControl.baml
+C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Release\MVVM\Windows\Help\HelpWindow.baml
+C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Release\MVVM\Windows\Record\RecordWindow.baml
+C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Release\MVVM\Windows\Help\HelpWindow.g.cs
+C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Release\MVVM\Windows\Record\RecordWindow.g.cs
+C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Release\MVVM\Windows\Settings\SettingsWindow.g.cs
+C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Release\MVVM\Windows\Main\MainWindow.g.cs
+C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Release\MVVM\Windows\TriggerEdit\ChooseTriggerTypeWindow.g.cs
+C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Release\MVVM\Windows\TriggerEdit\TriggersEditWindow.g.cs
+C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Release\MVVM\Windows\Settings\SettingsWindow.baml
+C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Release\MVVM\Windows\Main\MainWindow.baml
+C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Release\MVVM\Windows\TriggerEdit\ChooseTriggerTypeWindow.baml
+C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Release\MVVM\Windows\TriggerEdit\TriggersEditWindow.baml

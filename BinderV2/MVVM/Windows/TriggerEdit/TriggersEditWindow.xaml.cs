@@ -15,6 +15,7 @@ namespace BinderV2.MVVM.Views
         public TriggersEditWindow(Bind bind)
         {
             InitializeComponent();
+            StateChanged += CustomizedWindow.WindowStyle.Window_StateChanged;
             DataContext = new TriggerEditViewModel(bind);//В TriggerEditViewModel мне нужны и bind, и его закрытое поле triggers
             Title = "Редактирование " + bind.Name;
         }

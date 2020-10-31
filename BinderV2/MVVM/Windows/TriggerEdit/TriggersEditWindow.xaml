@@ -37,11 +37,23 @@
                     <ScrollViewer x:Name="TriggerScrollViewer" Style="{DynamicResource AutoScrollViewer}">
                         <ItemsControl ItemsSource="{Binding Triggers}">
                             <ItemsControl.Resources>
-                                <DataTemplate DataType="{x:Type triggersViewModels:KeysDownTriggerViewModel}">
-                                    <triggers:KeysDownTriggerControl/>
+                                <DataTemplate DataType="{x:Type triggersViewModels:KeysTriggerViewModel}">
+                                    <triggers:KeysTriggerControl/>
                                 </DataTemplate>
-                                <DataTemplate DataType="{x:Type triggersViewModels:BaseTriggerViewModel}">
-                                    <triggers:OnAddCallbackTriggerControl/>
+                                <DataTemplate DataType="{x:Type triggersViewModels:OnAddCallbackTriggerViewModel}">
+                                    <triggers:EmptyTriggerControl/>
+                                </DataTemplate>
+                                <DataTemplate DataType="{x:Type triggersViewModels:TimerTriggerViewModel}">
+                                    <triggers:TimerTriggerControl/>
+                                </DataTemplate>
+                                <DataTemplate DataType="{x:Type triggersViewModels:AnyKeyDownViewModel}">
+                                    <triggers:EmptyTriggerControl/>
+                                </DataTemplate>
+                                <DataTemplate DataType="{x:Type triggersViewModels:AnyKeyUpViewModel}">
+                                    <triggers:EmptyTriggerControl/>
+                                </DataTemplate>
+                                <DataTemplate DataType="{x:Type triggersViewModels:OnExitTriggerViewModel}">
+                                    <triggers:EmptyTriggerControl/>
                                 </DataTemplate>
                             </ItemsControl.Resources>
                         </ItemsControl>

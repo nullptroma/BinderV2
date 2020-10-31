@@ -189,5 +189,33 @@ namespace InterpreterScripts.Script
             }
             return -1;
         }
+
+        public static string FormateScript(string sc)
+        {
+            int count = 0;
+            var strs = sc.Split('\n');
+            for (int i = 0; i < strs.Length; i++)
+            {
+                if (strs[i].Length == 0)
+                    continue;
+                strs[i] = strs[i].Trim(' ');
+                if (strs[i][0] == '{')
+                {
+                    if (count > 0)
+                        strs[i] = string.Join("", Enumerable.Repeat("    ", count)) + strs[i];
+                    count++;
+                    continue;
+                }
+                else if (strs[i][0] == '}')
+                {
+                    count--;
+                }
+                if (count > 0)
+                {
+                    strs[i] = string.Join("", Enumerable.Repeat("    ", count)) + strs[i];
+                }
+            }
+            return string.Join("\n", strs);
+        }
     }
 }

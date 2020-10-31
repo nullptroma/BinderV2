@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using Trigger.Types;
 using BinderV2.Commands;
+using BinderV2.MVVM.ViewModels.Triggers;
 
 namespace BinderV2.MVVM.Views
 {
@@ -14,7 +15,7 @@ namespace BinderV2.MVVM.Views
     /// </summary>
     public partial class ChooseTriggerTypeWindow : Window
     {
-        public TriggerType SelectedType { get; private set; }
+        public BaseTriggerViewModel ResultBaseViewModel { get; private set; }
 
         public RelayCommand TriggerTypeSelectCommand
         {
@@ -22,7 +23,7 @@ namespace BinderV2.MVVM.Views
             {
                 return new RelayCommand(obj =>
                 {
-                    SelectedType = (TriggerType)obj;
+                    ResultBaseViewModel = (BaseTriggerViewModel)obj;
                     this.Close();
                 });
             }
@@ -31,7 +32,7 @@ namespace BinderV2.MVVM.Views
         public ChooseTriggerTypeWindow()
         {
             InitializeComponent();
-            SelectedType = TriggerType.None;
+            StateChanged += CustomizedWindow.WindowStyle.Window_StateChanged;
             DataContext = this;
         }
     }

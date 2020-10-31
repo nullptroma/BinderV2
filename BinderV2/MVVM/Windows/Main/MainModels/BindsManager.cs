@@ -5,6 +5,7 @@ using BindModel;
 using InterpreterScripts;
 using InterpreterScripts.FuncAttributes;
 using InterpreterScripts.InterpretationScriptData.StandartFunctions;
+using InterpreterScripts.Script;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
@@ -43,41 +44,14 @@ namespace BinderV2.MVVM.Models.MainModels
 
         public string SelectedBindScript
         {
-            get { return FormateScript(selectedBind != null ? selectedBind.Bind.Script : ""); }
+            get { return ScriptTools.FormateScript(selectedBind != null ? selectedBind.Bind.Script : ""); }
             private set 
             {
                 if (selectedBind == null)
                     throw new NullReferenceException();
-                selectedBind.Bind.Script = FormateScript(value);
+                selectedBind.Bind.Script = ScriptTools.FormateScript(value);
                 OnPropertyChanged("SelectedBindScript");
             }
-        }
-        private string FormateScript(string sc)
-        {
-            int count = 0;
-            var strs = sc.Split('\n');
-            for (int i = 0; i < strs.Length; i++)
-            {
-                if (strs[i].Length == 0)
-                    continue;
-                strs[i] = strs[i].Trim(' ');
-                if (strs[i][0] == '{')
-                {
-                    if (count > 0)
-                        strs[i] = string.Join("", Enumerable.Repeat("    ", count)) + strs[i];
-                    count++;
-                    continue;
-                }
-                else if (strs[i][0] == '}')
-                {
-                    count--;
-                }
-                if (count > 0)
-                {
-                    strs[i] = string.Join("", Enumerable.Repeat("    ", count)) + strs[i];
-                }
-            }
-            return string.Join("\n", strs);
         }
 
         private string LastPath = "";

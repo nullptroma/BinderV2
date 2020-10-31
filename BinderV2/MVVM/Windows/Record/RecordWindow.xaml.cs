@@ -24,6 +24,7 @@ namespace BinderV2.MVVM.Views
         public RecordWindow()
         {
             InitializeComponent();
+            StateChanged += CustomizedWindow.WindowStyle.Window_StateChanged;
             DataContext = rvm;
         }
 

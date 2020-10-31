@@ -62,6 +62,7 @@
                     <ComboBox Grid.Column="1" Margin="5" MaxWidth="140" SelectedIndex="{Binding SelectedMouseMoveImitationIndex}">
                         <ComboBoxItem Content="SetCursorPos"/>
                         <ComboBoxItem Content="MoveCursor"/>
+                        <ComboBoxItem Content="MoveCursorBy"/>
                     </ComboBox>
                 </Grid>
             </StackPanel>

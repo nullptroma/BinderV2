@@ -30,6 +30,7 @@
     </Style>
 
     <Style x:Key="CurstomWindowStyle" TargetType="{x:Type Window}">
+        <Setter Property="BorderThickness" Value="{DynamicResource WindowBorderThickness}" />
         <Setter Property="AllowsTransparency" Value="true" />
         <Setter Property="WindowStyle" Value="None" />
         <Setter Property="Background" Value="Transparent" />
@@ -42,18 +43,11 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Window}">
-                    <!--
-                    7 is a magic number. By default Windows fits a maximized window with Margin
-                    7 7 7 7 to fill entire screen (WPF .Net 4.5). Larger numbers produce a gap
-                    between maximized window and screen edges; smaller numbers show parts of
-                    the window outside of the current monitor on multi-display computers.
-                    -->
-                    
                     <Grid
                         Margin="7"
                         TextOptions.TextRenderingMode="ClearType"
                         TextOptions.TextFormattingMode="Display">
-                        <Border x:Name="Border" BorderThickness="{DynamicResource WindowBorderThickness}" BorderBrush="{DynamicResource WindowBorderBrushInactive}">
+                        <Border x:Name="Border" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{DynamicResource WindowBorderBrushInactive}">
                             <DockPanel   
                                 HorizontalAlignment="Stretch"
                                 Background="Transparent"

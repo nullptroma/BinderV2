@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\Roman\source\repos\BinderV2\BinderV2\App.xaml
-19-1772362019
+20764010667
 
-931843153978
+107-679798082
 7178674915
-MVVM\Help\HelpWindow.xaml;MVVM\Record\RecordWindow.xaml;MVVM\Settings\SettingsWindow.xaml;MVVM\Triggers\KeysDown\KeysDownTriggerControl.xaml;MVVM\Triggers\OnAddCallback\OnAddCallbackTriggerControl.xaml;WPF Resources\Interface Resources\InterfaceResources.xaml;WPF Resources\Styles\Button\Button Style.xaml;WPF Resources\Styles\ComboBox\ComboBox.xaml;WPF Resources\Styles\Context Menu\ContextMenu.xaml;WPF Resources\Styles\Controls Styles\ControlsStyles.xaml;WPF Resources\Styles\CustomizedWindow\CurstomWindowStyle.xaml;MVVM\Main\MainWindow.xaml;MVVM\TriggerEdit\ChooseTriggerTypeWindow.xaml;MVVM\TriggerEdit\TriggersEditWindow.xaml;MVVM\Bind\BindControl.xaml;WPF Resources\Styles\Menu Item\MenuItem.xaml;WPF Resources\Styles\Scroll Viewer\ScrollStyle.xaml;WPF Resources\Styles\TabControl\TabControlStyle.xaml;WPF Resources\Styles\TextBox\TextBox Style.xaml;
+MVVM\Triggers\Timer\TimerTriggerControl.xaml;MVVM\Windows\Help\HelpWindow.xaml;MVVM\Windows\Record\RecordWindow.xaml;MVVM\Windows\Settings\SettingsWindow.xaml;MVVM\Triggers\Keys\KeysTriggerControl.xaml;MVVM\Triggers\EmpryTriggerControl.xaml;WPF Resources\Interface Resources\InterfaceResources.xaml;WPF Resources\Styles\Button\Button Style.xaml;WPF Resources\Styles\ComboBox\ComboBox.xaml;WPF Resources\Styles\Context Menu\ContextMenu.xaml;WPF Resources\Styles\Controls Styles\ControlsStyles.xaml;WPF Resources\Styles\CustomizedWindow\CurstomWindowStyle.xaml;MVVM\Windows\Main\MainWindow.xaml;MVVM\Windows\TriggerEdit\ChooseTriggerTypeWindow.xaml;MVVM\Windows\TriggerEdit\TriggersEditWindow.xaml;MVVM\Bind\BindControl.xaml;WPF Resources\Styles\Menu Item\MenuItem.xaml;WPF Resources\Styles\Scroll Viewer\ScrollStyle.xaml;WPF Resources\Styles\TabControl\TabControlStyle.xaml;WPF Resources\Styles\TextBox\TextBox Style.xaml;
 
 False
 
