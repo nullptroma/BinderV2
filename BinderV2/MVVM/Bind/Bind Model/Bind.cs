@@ -4,8 +4,8 @@ using Trigger.Events;
 using Trigger.Types;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
-using BindModel.Events;
-using BindModel.Exeptions;
+using BinderV2.MVVM.Models.BindModel.Events;
+using BinderV2.MVVM.Models.BindModel.Exeptions;
 using InterpreterScripts;
 using InterpreterScripts.InterpretationScriptData;
 using InterpreterScripts.InterpretationScriptData.StandartFunctions;
@@ -13,7 +13,7 @@ using System.Reflection;
 using System.Windows;
 using System.Threading.Tasks;
 
-namespace BindModel
+namespace BinderV2.MVVM.Models
 {
     public sealed class Bind : IDisposable
     {
@@ -44,8 +44,14 @@ namespace BindModel
 
         public void Dispose()
         {
+            Enable = false;
             foreach (BaseTrigger bt in Triggers)
+            {
+                bt.EnableTrigger = false;
+                bt.RemoveCallback(Invoked);
                 bt.Dispose();
+            }
+            Triggers.Clear();
             GC.SuppressFinalize(this);
         }
 
@@ -53,15 +59,11 @@ namespace BindModel
         {
             if (!Enable)//если выключено - выходим
                 return;
-            e.triggerData.Vars["TriggerName"] = e.TriggerName;
 
-            object StartBind(params object[] ps)
-            {
+            e.triggerData.AdditionalFunctions.Add(new Function(new Func<object[], object>((ps)=> {
                 Interpreter.ExecuteScript(Script, e.triggerData);
                 return ps;
-            }
-
-            e.triggerData.AdditionalFunctions.Add(new Function(new Func<object[], object>(StartBind), FuncType.Parameters, "StartBind"));
+            }), FuncType.Parameters, "StartBind"));
             Interpreter.ExecuteScript(e.TriggerScript, e.triggerData);
         }
 

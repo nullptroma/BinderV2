@@ -46,5 +46,6 @@ C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\MVVM\Triggers\Keys\KeysT
 C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\MVVM\Triggers\Keys\KeysTriggerControl.baml
 C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\MVVM\Triggers\Timer\TimerTriggerControl.g.cs
 C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\MVVM\Triggers\Timer\TimerTriggerControl.baml
-C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\MVVM\Triggers\EmpryTriggerControl.g.cs
-C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\MVVM\Triggers\EmpryTriggerControl.baml
+C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\MVVM\Triggers\Other\EmpryTriggerControl.g.cs
+C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\MVVM\Triggers\Other\EmpryTriggerControl.baml
+C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Debug\BinderV2.csprojAssemblyReference.cache

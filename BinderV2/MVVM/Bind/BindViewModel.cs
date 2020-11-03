@@ -9,7 +9,7 @@ using System.Windows;
 using System.Windows.Media;
 using BinderV2.Commands;
 using BinderV2.MVVM.Views;
-using BindModel;
+using BinderV2.MVVM.Models;
 
 namespace BinderV2.MVVM.ViewModels
 {

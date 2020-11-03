@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using BindModel;
+using BinderV2.MVVM.Models;
 using BinderV2.MVVM.ViewModels;
 
 namespace BinderV2.MVVM.Views

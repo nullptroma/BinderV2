@@ -9,11 +9,9 @@ using System.Runtime.CompilerServices;
 using System.Collections.ObjectModel;
 using System.Windows.Controls;
 using Trigger.Types;
-using BindModel;
-using BinderV2.Commands;
-using BinderV2.MVVM.Views;
-using BinderV2.MVVM.ViewModels.Triggers;
 using BinderV2.MVVM.Models;
+using BinderV2.Commands;
+using BinderV2.MVVM.ViewModels.Triggers;
 
 namespace BinderV2.MVVM.ViewModels
 {

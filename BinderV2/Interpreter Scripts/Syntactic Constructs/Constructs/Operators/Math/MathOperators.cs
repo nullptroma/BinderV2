@@ -20,7 +20,7 @@ namespace InterpreterScripts.SyntacticConstructions.Constructions
         {
             return Task.Run(new Func<object>(() =>
             {
-                string expression = cmd.Command.Replace(" ", "");
+                string expression = cmd.Command;
                 Operator generalOperator = GetGeneralOperator(expression);
                 object leftValue = Interpreter.ExecuteCommand(generalOperator.StringLeft, data);
                 object rightValue = Interpreter.ExecuteCommand(generalOperator.StringRight, data);
@@ -67,7 +67,7 @@ namespace InterpreterScripts.SyntacticConstructions.Constructions
 
         public bool IsValidConstruction(CommandModel cmd, InterpretationData data)
         {
-            string expression = cmd.Command.Replace(" ", "");
+            string expression = cmd.Command;
             return GetGeneralOperator(expression).PriorityLevel < 7;
         }
 
@@ -86,7 +86,7 @@ namespace InterpreterScripts.SyntacticConstructions.Constructions
                 else if (expression[i] == '\"')
                     countMarks++;
 
-                if (countBrackets == 0)//если мы не в скобках и не в кавычках
+                if (countBrackets == 0 && countMarks%2==0)//если мы не в скобках и не в кавычках
                 {
                     if (i>0)
                     {

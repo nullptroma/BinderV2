@@ -40,7 +40,14 @@ namespace InterpreterScripts.SyntacticConstructions.Constructions
 
         public bool IsValidConstruction(CommandModel cmd, InterpretationData data)
         {
-            return ScriptTools.GetCharIndexOutsideBrackets(cmd.Command, '=') != -1 && ScriptTools.GetCharIndexOutsideBrackets(cmd.Command, '.') != -1;
+            int index = ScriptTools.GetCharIndexOutsideBrackets(cmd.Command, '=');
+            try 
+            {
+                if (cmd.Command[index - 1] == '=' || cmd.Command[index + 1] == '=')
+                    return false;
+            }
+            catch { return false; }
+            return index != -1 && ScriptTools.GetCharIndexOutsideBrackets(cmd.Command, '.') != -1;
         }
     }
 }

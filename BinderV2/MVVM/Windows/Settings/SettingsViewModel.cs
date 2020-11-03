@@ -1,25 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Collections.ObjectModel;
-using System.Windows.Controls;
-using System.Windows;
+﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
-using Trigger.Types;
-using Trigger;
-using BindModel;
 using BinderV2.Commands;
-using System.IO;
-using System.Xml.Serialization;
-using Newtonsoft.Json;
-using System.Windows.Media;
-using BinderV2.Settings;
-using BinderV2.Settings.Visuals;
-using System.Reflection;
-using System.CodeDom.Compiler;
-using Microsoft.CSharp;
-using Microsoft.Win32;
 using BinderV2.MVVM.Models;
 
 namespace BinderV2.MVVM.ViewModels

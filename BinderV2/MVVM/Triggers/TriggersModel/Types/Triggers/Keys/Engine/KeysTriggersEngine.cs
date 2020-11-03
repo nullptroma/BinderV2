@@ -6,8 +6,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
+using Trigger.Types;
 
-namespace Trigger.Types.KeysEngine
+namespace Triggers.Types.KeysEngine
 {
     static class KeysTriggersEngine
     {

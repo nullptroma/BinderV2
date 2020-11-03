@@ -15,33 +15,41 @@ namespace Trigger.Types
 
     public static class TriggersUtilities
     {
-        
         public static KeysTriggerViewModel NewKeysDownTrigger
         { get { return new KeysTriggerViewModel(new KeysDownTrigger()); } }
 
         public static KeysTriggerViewModel NewKeysUpTrigger
-        { get { return new KeysTriggerViewModel(new KeysUpTrigger()); } }
+        { get { return new KeysTriggerViewModel(new KeysUpTriggerTrigger()); } }
 
-        public static KeysTriggerViewModel NewKeysHoldingOnce
+        public static KeysTriggerViewModel NewKeysHoldingOnceTrigger
         { get { return new KeysTriggerViewModel(new KeysHoldingOnce()); } }
 
-        public static KeysTriggerViewModel NewKeysHolding
-        { get { return new KeysTriggerViewModel(new KeysHolding()); } }
+        public static KeysTriggerViewModel NewKeysHoldingTrigger
+        { get { return new KeysTriggerViewModel(new KeysHoldingTrigger()); } }
         
-        public static BaseTriggerViewModel NewOnAddCallback
+        public static OnAddCallbackTriggerViewModel NewOnAddCallbackTrigger
         { get { return new OnAddCallbackTriggerViewModel(new OnAddCallbackTrigger()); } }
 
-        public static BaseTriggerViewModel NewTimerTrigger
+        public static TimerTriggerViewModel NewTimerTrigger
         { get { return new TimerTriggerViewModel(new TimerTrigger()); } }
         
-        public static BaseTriggerViewModel NewAnyKeyDown
-        { get { return new AnyKeyDownViewModel(new AnyKeyDown()); } }
+        public static AnyKeyDownViewModel NewAnyKeyDownTrigger
+        { get { return new AnyKeyDownViewModel(new AnyKeyDownTrigger()); } }
         
-        public static BaseTriggerViewModel NewAnyKeyUp
-        { get { return new AnyKeyUpViewModel(new AnyKeyUp()); } }
+        public static AnyKeyUpViewModel NewAnyKeyUpTrigger
+        { get { return new AnyKeyUpViewModel(new AnyKeyUpTrigger()); } }
         
-        public static BaseTriggerViewModel NewOnExitTrigger
+        public static OnExitTriggerViewModel NewOnExitTrigger
         { get { return new OnExitTriggerViewModel(new OnExitTrigger()); } }
+
+        public static MouseMoveTriggerViewModel NewMouseMoveTrigger
+        { get { return new MouseMoveTriggerViewModel(new MouseMoveTrigger()); } }
+
+        public static MouseDownTriggerViewModel NewMouseDownTrigger
+        { get { return new MouseDownTriggerViewModel(new MouseDownTrigger()); } }
+
+        public static MouseUpTriggerViewModel NewMouseUpTrigger
+        { get { return new MouseUpTriggerViewModel(new MouseUpTrigger()); } }
 
         public static BaseTriggerViewModel GetViewModelForTrigger(BaseTrigger trigger)
         {
@@ -55,7 +63,7 @@ namespace Trigger.Types
                     }
                 case "KeysUpTrigger":
                     {
-                        vm = new KeysTriggerViewModel((KeysUpTrigger)trigger);
+                        vm = new KeysTriggerViewModel((KeysUpTriggerTrigger)trigger);
                         break;
                     }
                 case "KeysHoldingOnce":
@@ -65,7 +73,7 @@ namespace Trigger.Types
                     }
                 case "KeysHolding":
                     {
-                        vm = new KeysTriggerViewModel((KeysHolding)trigger);
+                        vm = new KeysTriggerViewModel((KeysHoldingTrigger)trigger);
                         break;
                     }
                 case "OnAddCallbackTrigger":
@@ -80,17 +88,32 @@ namespace Trigger.Types
                     }
                 case "AnyKeyDown":
                     {
-                        vm = new AnyKeyDownViewModel((AnyKeyDown)trigger);
+                        vm = new AnyKeyDownViewModel((AnyKeyDownTrigger)trigger);
                         break;
                     }
                 case "AnyKeyUp":
                     {
-                        vm = new AnyKeyUpViewModel((AnyKeyUp)trigger);
+                        vm = new AnyKeyUpViewModel((AnyKeyUpTrigger)trigger);
                         break;
                     }
                 case "OnExitTrigger":
                     {
                         vm = new OnExitTriggerViewModel((OnExitTrigger)trigger);
+                        break;
+                    }
+                case "MouseMoveTrigger":
+                    {
+                        vm = new MouseMoveTriggerViewModel((MouseMoveTrigger)trigger);
+                        break;
+                    }
+                case "MouseDownTrigger":
+                    {
+                        vm = new MouseDownTriggerViewModel((MouseDownTrigger)trigger);
+                        break;
+                    }
+                case "MouseUpTrigger":
+                    {
+                        vm = new MouseUpTriggerViewModel((MouseUpTrigger)trigger);
                         break;
                     }
                 default:

@@ -4,15 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using Trigger.Types.KeysEngine;
+using Triggers.Types.KeysEngine;
 
 namespace Trigger.Types
 {
-    class KeysHolding : BaseKeysTrigger
+    class KeysHoldingTrigger : BaseKeysTrigger
     {
-        public override string TypeDescription { get { return "Кнопки задержаны"; } }
+        public override string TypeName { get { return "Кнопки задержаны"; } }
 
-        public KeysHolding(string name, ICollection<Key> keys) : base(name)
+        public KeysHoldingTrigger(string name, ICollection<Key> keys) : base(name)
         {
             Keys = new HashSet<Key>();
             if (keys == null)
@@ -23,18 +23,18 @@ namespace Trigger.Types
             {
                 if (Keys.Count == 0)//если у нас не настроены кнопки, чтобы не срабатывало
                     return;
-                InvokeIfHaveNeedKeys(e.PressedKeys);
+                InvokeIfHaveNeedKeys(e.PressedKeys, e.Key);
             };
         }
 
-        public KeysHolding() : this("Новый триггер", new HashSet<Key>())
+        public KeysHoldingTrigger() : this("Новый триггер", new HashSet<Key>())
         { }
 
 
-        private void InvokeIfHaveNeedKeys(HashSet<Key> pressedKeys)
+        private void InvokeIfHaveNeedKeys(HashSet<Key> pressedKeys, Key lastKey)
         {
             if (HaveNeedKeys(pressedKeys))
-                Invoke(new Events.TriggeredEventArgs(Name, Script));
+                Invoke(lastKey);
         }
 
         private bool HaveNeedKeys(HashSet<Key> pressedKeys)

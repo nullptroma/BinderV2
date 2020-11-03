@@ -10,9 +10,9 @@ using System.Threading;
 
 namespace Triggers.Types
 {
-    class OnExitTrigger : BaseTrigger
+    public class OnExitTrigger : BaseTrigger
     {
-        public override string TypeDescription { get { return "При выходе"; } }
+        public override string TypeName { get { return "При выходе"; } }
         public OnExitTrigger(string name) : base(name)
         {
             App.Current.MainWindow.Closing += (sender, e) =>

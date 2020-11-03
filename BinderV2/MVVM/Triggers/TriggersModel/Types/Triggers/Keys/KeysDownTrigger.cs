@@ -5,14 +5,15 @@ using System.Windows.Input;
 using Hooks.Keyboard;
 using System.Threading;
 using System.Windows.Forms;
-using Trigger.Types.KeysEngine;
 using System.Threading.Tasks;
+using Trigger.Events;
+using Triggers.Types.KeysEngine;
 
 namespace Trigger.Types
 {
     public class KeysDownTrigger : BaseKeysTrigger
     {
-        public override string TypeDescription { get { return "Кнопки нажаты"; } }
+        public override string TypeName { get { return "Кнопки нажаты"; } }
         private bool NeedKeysWasUp = true;
 
         public KeysDownTrigger(string name, ICollection<Key> keys) : base(name)
@@ -29,7 +30,7 @@ namespace Trigger.Types
                 if (Keys.Count == 0)//если у нас не настроены кнопки, чтобы не срабатывало
                     return;
                 if(NeedKeysWasUp)
-                    InvokeIfHaveNeedKeys(e.PressedKeys);
+                    InvokeIfHaveNeedKeys(e.PressedKeys, e.Key);
             };
             KeysTriggersEngine.KeyUp += (sender, e) => CheckUpKeys(e.PressedKeys);
         }
@@ -44,12 +45,12 @@ namespace Trigger.Types
                 NeedKeysWasUp = false;
         }
 
-        private void InvokeIfHaveNeedKeys(HashSet<Key> pressedKeys)
+        private void InvokeIfHaveNeedKeys(HashSet<Key> pressedKeys, Key lastKey)
         {
             if (HaveNeedKeys(pressedKeys))
             {
                 NeedKeysWasUp = false;
-                Invoke(new Events.TriggeredEventArgs(Name, Script));
+                Invoke(lastKey);
             }
         }
 

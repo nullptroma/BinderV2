@@ -104,6 +104,9 @@
     <Compile Include="MVVM\Bind\Bind Model\Exeptions.cs" />
     <Compile Include="MVVM\Triggers\Other\AnyKeyUpViewModel.cs" />
     <Compile Include="MVVM\Triggers\Other\AnyKeyDownViewModel.cs" />
+    <Compile Include="MVVM\Triggers\Other\Mouse\MouseDownTriggerViewModel.cs" />
+    <Compile Include="MVVM\Triggers\Other\Mouse\MouseMoveTriggerViewModel.cs" />
+    <Compile Include="MVVM\Triggers\Other\Mouse\MouseUpTriggerViewModel.cs" />
     <Compile Include="MVVM\Triggers\Other\OnAddCallbackTriggerViewModel.cs" />
     <Compile Include="MVVM\Triggers\Other\OnExitTriggerViewModel.cs" />
     <Compile Include="MVVM\Triggers\Timer\TimerTriggerControl.xaml.cs">
@@ -112,13 +115,18 @@
     <Compile Include="MVVM\Triggers\Timer\TimerTriggerViewModel.cs" />
     <Compile Include="MVVM\Triggers\TriggersModel\EnableDisableTriggers.cs" />
     <Compile Include="Interpreter Scripts\Syntactic Constructs\Constructs\Operators\Math\Operator.cs" />
-    <Compile Include="MVVM\Triggers\TriggersModel\Types\Triggers\Keys\AnyKeyDown.cs" />
-    <Compile Include="MVVM\Triggers\TriggersModel\Types\Triggers\Keys\AnyKeyUp.cs" />
+    <Compile Include="MVVM\Triggers\TriggersModel\Types\Triggers\Keys\AnyKeyDownTrigger.cs" />
+    <Compile Include="MVVM\Triggers\TriggersModel\Types\Triggers\Keys\AnyKeyUpTrigger.cs" />
     <Compile Include="MVVM\Triggers\TriggersModel\Types\Triggers\Keys\BaseKeysTrigger.cs" />
     <Compile Include="MVVM\Triggers\TriggersModel\Types\Triggers\Keys\Engine\KeysTriggersEngine.cs" />
-    <Compile Include="MVVM\Triggers\TriggersModel\Types\Triggers\Keys\KeysHolding.cs" />
+    <Compile Include="MVVM\Triggers\TriggersModel\Types\Triggers\Keys\KeysHoldingTrigger.cs" />
     <Compile Include="MVVM\Triggers\TriggersModel\Types\Triggers\Keys\KeysHoldingOnce.cs" />
-    <Compile Include="MVVM\Triggers\TriggersModel\Types\Triggers\Keys\KeysUpTrigger.cs" />
+    <Compile Include="MVVM\Triggers\TriggersModel\Types\Triggers\Keys\KeysUpTriggerTrigger.cs" />
+    <Compile Include="MVVM\Triggers\TriggersModel\Types\Triggers\Mouse\BaseMouseTrigger.cs" />
+    <Compile Include="MVVM\Triggers\TriggersModel\Types\Triggers\Mouse\Engine\MouseTriggersEngine.cs" />
+    <Compile Include="MVVM\Triggers\TriggersModel\Types\Triggers\Mouse\MouseDownTrigger.cs" />
+    <Compile Include="MVVM\Triggers\TriggersModel\Types\Triggers\Mouse\MouseMoveTrigger.cs" />
+    <Compile Include="MVVM\Triggers\TriggersModel\Types\Triggers\Mouse\MouseUpTrigger.cs" />
     <Compile Include="MVVM\Triggers\TriggersModel\Types\Triggers\OnExitTrigger.cs" />
     <Compile Include="MVVM\Triggers\TriggersModel\Types\Triggers\TimerTrigger.cs" />
     <Compile Include="Utilities\KeyCodeToUnicode.cs" />
@@ -201,7 +209,7 @@
     <Compile Include="MVVM\Triggers\Keys\KeysTriggerControl.xaml.cs">
       <DependentUpon>KeysTriggerControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MVVM\Triggers\EmpryTriggerControl.xaml.cs">
+    <Compile Include="MVVM\Triggers\Other\EmpryTriggerControl.xaml.cs">
       <DependentUpon>EmpryTriggerControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="WPF Resources\Styles\CustomizedWindow\WindowStyle.cs" />
@@ -239,7 +247,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MVVM\Triggers\EmpryTriggerControl.xaml">
+    <Page Include="MVVM\Triggers\Other\EmpryTriggerControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

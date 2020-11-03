@@ -3,19 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Input;
 using Hooks.Keyboard;
-
 using System.Threading;
 using System.Windows.Forms;
-using Trigger.Types.KeysEngine;
+using Triggers.Types.KeysEngine;
 
 namespace Trigger.Types
 {
-    public class KeysUpTrigger : BaseKeysTrigger
+    public class KeysUpTriggerTrigger : BaseKeysTrigger
     {
-        public override string TypeDescription { get { return "Кнопки подняты"; } }
+        public override string TypeName { get { return "Кнопки подняты"; } }
         private bool NeedKeysWasDown = false;
 
-        public KeysUpTrigger(string name, ICollection<Key> keys) : base(name)
+        public KeysUpTriggerTrigger(string name, ICollection<Key> keys) : base(name)
         {
             Keys = new HashSet<Key>();
             if (keys == null)
@@ -30,12 +29,12 @@ namespace Trigger.Types
                     return;
                 if (NeedKeysWasDown)
                     if (NeedKeysAreUp(e.PressedKeys))
-                        Invoke(new Events.TriggeredEventArgs(Name, Script));
+                        Invoke(e.Key);
             };
             KeysTriggersEngine.KeyDown+=(sender, e)=> CheckPressedKeys(e.PressedKeys);
         }
 
-        public KeysUpTrigger() : this("Новый триггер", new HashSet<Key>())
+        public KeysUpTriggerTrigger() : this("Новый триггер", new HashSet<Key>())
         { }
 
         private void CheckPressedKeys(HashSet<Key> pressedKeys)

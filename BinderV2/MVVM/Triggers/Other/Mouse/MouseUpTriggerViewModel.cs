@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Trigger.Types;
 using Triggers.Types;
 
 namespace BinderV2.MVVM.ViewModels.Triggers
 {
-    public class OnAddCallbackTriggerViewModel : BaseTriggerViewModel
+    public class MouseUpTriggerViewModel : BaseTriggerViewModel
     {
-        public OnAddCallbackTriggerViewModel(OnAddCallbackTrigger trigger) : base(trigger)
+        public MouseUpTriggerViewModel(MouseUpTrigger trigger) : base(trigger)
         { }
     }
 }

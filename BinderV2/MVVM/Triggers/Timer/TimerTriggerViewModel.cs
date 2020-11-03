@@ -8,14 +8,14 @@ using Triggers.Types;
 
 namespace BinderV2.MVVM.ViewModels.Triggers
 {
-    class TimerTriggerViewModel : BaseTriggerViewModel
+    public class TimerTriggerViewModel : BaseTriggerViewModel
     {
         private TimerTrigger trigger;
         public string TimerMilliseconds 
         {
             get { return trigger.Milliseconds.ToString(); }
             set { 
-                if (long.TryParse(value, out long res))
+                if (int.TryParse(value, out int res))
                     trigger.Milliseconds = res;
                 OnPropertyChanged("TimerMilliseconds");
             } 

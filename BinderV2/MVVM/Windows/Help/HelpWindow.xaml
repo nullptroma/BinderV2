@@ -35,6 +35,9 @@
         <TabItem Header="Constructions">
             <TextBox Text="{Binding ConstructionsHelp, Mode=OneWay}"/>
         </TabItem>
+        <TabItem Header="Triggers">
+            <TextBox Text="{Binding TriggersHelp, Mode=OneWay}"/>
+        </TabItem>
     </TabControl>
 
 </Window>

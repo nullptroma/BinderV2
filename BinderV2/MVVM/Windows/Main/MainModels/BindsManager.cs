@@ -1,7 +1,7 @@
 ﻿using BinderV2.MVVM.ViewModels;
 using BinderV2.MVVM.Views;
 using BinderV2.Settings;
-using BindModel;
+using BinderV2.MVVM.Models;
 using InterpreterScripts;
 using InterpreterScripts.FuncAttributes;
 using InterpreterScripts.InterpretationScriptData.StandartFunctions;

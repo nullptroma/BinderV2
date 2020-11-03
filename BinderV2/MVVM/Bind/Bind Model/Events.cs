@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace BindModel.Events
+namespace BinderV2.MVVM.Models.BindModel.Events
 {
     public class EnableBindChangedEventArgs : EventArgs
     {

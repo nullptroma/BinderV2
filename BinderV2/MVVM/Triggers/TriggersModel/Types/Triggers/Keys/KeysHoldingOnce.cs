@@ -4,13 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using Trigger.Types.KeysEngine;
+using Triggers.Types.KeysEngine;
 
 namespace Trigger.Types
 {
     class KeysHoldingOnce : BaseKeysTrigger
     {
-        public override string TypeDescription { get { return "Кнопки задержаны (один раз)"; } }
+        public override string TypeName { get { return "Кнопки задержаны (один раз)"; } }
         private bool NeedKeysWasUp = true;
 
         public KeysHoldingOnce(string name, ICollection<Key> keys) : base(name)
@@ -25,7 +25,7 @@ namespace Trigger.Types
                 if (Keys.Count == 0)//если у нас не настроены кнопки, чтобы не срабатывало
                     return;
                 if (NeedKeysWasUp)
-                    InvokeIfHaveNeedKeys(e.PressedKeys);
+                    InvokeIfHaveNeedKeys(e.PressedKeys, e.Key);
             };
             KeysTriggersEngine.KeyUp += (sender, e) => CheckUpKeys(e.PressedKeys);
         }
@@ -40,12 +40,12 @@ namespace Trigger.Types
                 NeedKeysWasUp = false;
         }
 
-        private void InvokeIfHaveNeedKeys(HashSet<Key> pressedKeys)
+        private void InvokeIfHaveNeedKeys(HashSet<Key> pressedKeys, Key lastKey)
         {
             if (HaveNeedKeys(pressedKeys))
             {
                 NeedKeysWasUp = false;
-                Invoke(new Events.TriggeredEventArgs(Name, Script));
+                Invoke(lastKey);
             }
         }
 

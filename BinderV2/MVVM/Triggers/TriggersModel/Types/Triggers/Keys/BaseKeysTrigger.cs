@@ -1,9 +1,13 @@
-﻿using System;
+﻿using InterpreterScripts.InterpretationScriptData;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
+using Trigger.Events;
 
 namespace Trigger.Types
 {
@@ -19,6 +23,13 @@ namespace Trigger.Types
                     throw new ArgumentNullException(nameof(value));
                 keys = value;
             }
+        }
+
+        public void Invoke(Key key)
+        {
+            var data = new InterpretationData();
+            data.Vars["Key"] = key.ToString();
+            base.Invoke(new TriggeredEventArgs(Name, Script, data));
         }
 
         public BaseKeysTrigger(string name) : base(name)

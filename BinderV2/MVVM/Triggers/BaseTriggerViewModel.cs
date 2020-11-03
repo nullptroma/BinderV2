@@ -15,7 +15,7 @@ namespace BinderV2.MVVM.ViewModels.Triggers
         public bool IsSelected { get { return isSelected; } set { isSelected = value; OnPropertyChanged("IsSelected"); } }
         public bool IsEnabled { get { return Trigger.EnableTrigger; } set { Trigger.EnableTrigger = value; OnPropertyChanged("IsEnabled"); } }
         public string Name { get { return Trigger.Name; } set { Trigger.Name = value; OnPropertyChanged("Name"); } }
-        public string TypeDescription { get { return Trigger.TypeDescription; } }
+        public string TypeDescription { get { return Trigger.TypeName; } }
         public BaseTrigger Trigger { get; private set; }
 
         private RelayCommand changeEnableCommand;

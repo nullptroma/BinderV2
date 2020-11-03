@@ -25,6 +25,7 @@ namespace BinderV2.MVVM.ViewModels
         public string OtherFuncsHelp { get { return help.OtherFuncsHelp.AllText; } }
         public string FuncsHelpByGroups { get { return help.FuncsHelpByGroups.AllText; } }
         public string ConstructionsHelp { get { return help.ConstructionsHelp.AllText; } }
+        public string TriggersHelp { get { return help.TriggersHelp.AllText; } }
 
         public override event PropertyChangedEventHandler PropertyChanged;
         public override void OnPropertyChanged(string prop)

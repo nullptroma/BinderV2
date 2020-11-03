@@ -27,7 +27,7 @@ namespace InterpreterScripts.SyntacticConstructions.Constructions
                         break;
                     }
 
-                    object value = Interpreter.ExecuteCommand(ca.Condition);
+                    object value = Interpreter.ExecuteCommand(ca.Condition, data);
                     if (value is bool)
                     {
                         if ((bool)value)

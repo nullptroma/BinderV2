@@ -4,6 +4,7 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace InterpreterScripts.TypeConverter
@@ -32,7 +33,7 @@ namespace InterpreterScripts.TypeConverter
         {
             if (value.Length < 2)
                 return null;
-            if (value[0] == '\"' && value[value.Length-1] == '\"')
+            if (value[0] == '\"' && value[value.Length-1] == '\"' && value.Replace("\\\"", "").Count(ch=>ch=='\"')==2)
                 return value.Substring(1, Math.Max(1, value.Length - 2));
             return null;
         }

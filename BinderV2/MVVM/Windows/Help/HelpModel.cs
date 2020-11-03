@@ -39,11 +39,12 @@ namespace BinderV2.MVVM.Models
             }
         }
         public HelpProperty ConstructionsHelp { get; private set; }
+        public HelpProperty TriggersHelp { get; private set; }
+        
 
         public HelpModel()
         {
             SetHelpTexts();
-            ParametersFuncsHelp = GetFuncTypeHelp(FuncType.Parameters);
         }
 
         private HelpProperty GetFuncTypeHelp(FuncType type)
@@ -65,6 +66,7 @@ namespace BinderV2.MVVM.Models
             foreach (Function f in Interpreter.GetAllLibrary())
                 AddToGroups(f);
             ConstructionsHelp = GetConstructionsHelp();
+            TriggersHelp = GetTriggersHelp();
         }
 
         private void AddToGroups(Function f)
@@ -85,6 +87,20 @@ namespace BinderV2.MVVM.Models
             return answer;
         }
 
+        private HelpProperty GetTriggersHelp()
+        {
+            HelpProperty answer = new HelpProperty("Триггеры при выполнении сохраняют в своих данных некоторые переменные.\nВсе триггеры передают свои данные (переменные и функции) биндам.\nУ каждого триггера есть следующие переменные по умолчанию:\n", "{count}");
+            answer.Add("TriggerName - имя триггера, начавшего выполнение.");
+            answer.Add("TriggerScript - скрипт триггера, начавшего выполнение.");
+            answer.AllText += "Некоторые типы триггеров имеют дополнительные переменные:\n";
+            answer.AllText += Environment.NewLine;
+
+            HelpProperty KeysTriggers = new HelpProperty("Триггеры Keys имеют:\n", "{count}");
+            KeysTriggers.Add("Key - название кнопки, начавшей выполнение.");
+            answer.AllText += KeysTriggers.AllText;
+            
+            return answer;
+        }
     }
 
     struct HelpProperty

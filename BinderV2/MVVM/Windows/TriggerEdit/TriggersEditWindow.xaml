@@ -55,6 +55,15 @@
                                 <DataTemplate DataType="{x:Type triggersViewModels:OnExitTriggerViewModel}">
                                     <triggers:EmptyTriggerControl/>
                                 </DataTemplate>
+                                <DataTemplate DataType="{x:Type triggersViewModels:MouseMoveTriggerViewModel}">
+                                    <triggers:EmptyTriggerControl/>
+                                </DataTemplate>
+                                <DataTemplate DataType="{x:Type triggersViewModels:MouseDownTriggerViewModel}">
+                                    <triggers:EmptyTriggerControl/>
+                                </DataTemplate>
+                                <DataTemplate DataType="{x:Type triggersViewModels:MouseUpTriggerViewModel}">
+                                    <triggers:EmptyTriggerControl/>
+                                </DataTemplate>
                             </ItemsControl.Resources>
                         </ItemsControl>
                     </ScrollViewer>

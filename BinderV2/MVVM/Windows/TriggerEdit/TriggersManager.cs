@@ -1,6 +1,6 @@
 ﻿using BinderV2.MVVM.ViewModels.Triggers;
 using BinderV2.MVVM.Views;
-using BindModel;
+using BinderV2.MVVM.Models;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;

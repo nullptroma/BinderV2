@@ -8,9 +8,9 @@ using Triggers.Types;
 
 namespace BinderV2.MVVM.ViewModels.Triggers
 {
-    class AnyKeyDownViewModel : BaseTriggerViewModel
+    public class AnyKeyDownViewModel : BaseTriggerViewModel
     {
-        public AnyKeyDownViewModel(AnyKeyDown trigger) : base(trigger)
+        public AnyKeyDownViewModel(AnyKeyDownTrigger trigger) : base(trigger)
         { }
     }
 }

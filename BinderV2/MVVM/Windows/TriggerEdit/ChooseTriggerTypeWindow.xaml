@@ -13,13 +13,16 @@
             <StackPanel>
                 <Button Margin="4,4,4,8" Height="40" Command="{Binding TriggerTypeSelectCommand}" CommandParameter="{x:Static mainNS:TriggersUtilities.NewKeysDownTrigger}" Content="KeysDown"/>
                 <Button Margin="4,4,4,8" Height="40" Command="{Binding TriggerTypeSelectCommand}" CommandParameter="{x:Static mainNS:TriggersUtilities.NewKeysUpTrigger}" Content="KeysUp"/>
-                <Button Margin="4,4,4,8" Height="40" Command="{Binding TriggerTypeSelectCommand}" CommandParameter="{x:Static mainNS:TriggersUtilities.NewKeysHoldingOnce}" Content="KeysHoldingOnce"/>
-                <Button Margin="4,4,4,8" Height="40" Command="{Binding TriggerTypeSelectCommand}" CommandParameter="{x:Static mainNS:TriggersUtilities.NewKeysHolding}" Content="KeysHolding"/>
-                <Button Margin="4,4,4,8" Height="40" Command="{Binding TriggerTypeSelectCommand}" CommandParameter="{x:Static mainNS:TriggersUtilities.NewOnAddCallback}" Content="OnAddCallback"/>
-                <Button Margin="4,4,4,8" Height="40" Command="{Binding TriggerTypeSelectCommand}" CommandParameter="{x:Static mainNS:TriggersUtilities.NewTimerTrigger}" Content="TimerTrigger"/>
-                <Button Margin="4,4,4,8" Height="40" Command="{Binding TriggerTypeSelectCommand}" CommandParameter="{x:Static mainNS:TriggersUtilities.NewAnyKeyDown}" Content="AnyKeyDown"/>
-                <Button Margin="4,4,4,8" Height="40" Command="{Binding TriggerTypeSelectCommand}" CommandParameter="{x:Static mainNS:TriggersUtilities.NewAnyKeyUp}" Content="AnyKeyUp"/>
-                <Button Margin="4,4,4,8" Height="40" Command="{Binding TriggerTypeSelectCommand}" CommandParameter="{x:Static mainNS:TriggersUtilities.NewOnExitTrigger}" Content="OnExitTrigger"/>
+                <Button Margin="4,4,4,8" Height="40" Command="{Binding TriggerTypeSelectCommand}" CommandParameter="{x:Static mainNS:TriggersUtilities.NewKeysHoldingOnceTrigger}" Content="KeysHoldingOnce"/>
+                <Button Margin="4,4,4,8" Height="40" Command="{Binding TriggerTypeSelectCommand}" CommandParameter="{x:Static mainNS:TriggersUtilities.NewKeysHoldingTrigger}" Content="KeysHolding"/>
+                <Button Margin="4,4,4,8" Height="40" Command="{Binding TriggerTypeSelectCommand}" CommandParameter="{x:Static mainNS:TriggersUtilities.NewOnAddCallbackTrigger}" Content="OnAddCallback"/>
+                <Button Margin="4,4,4,8" Height="40" Command="{Binding TriggerTypeSelectCommand}" CommandParameter="{x:Static mainNS:TriggersUtilities.NewTimerTrigger}" Content="Timer"/>
+                <Button Margin="4,4,4,8" Height="40" Command="{Binding TriggerTypeSelectCommand}" CommandParameter="{x:Static mainNS:TriggersUtilities.NewAnyKeyDownTrigger}" Content="AnyKeyDown"/>
+                <Button Margin="4,4,4,8" Height="40" Command="{Binding TriggerTypeSelectCommand}" CommandParameter="{x:Static mainNS:TriggersUtilities.NewAnyKeyUpTrigger}" Content="AnyKeyUp"/>
+                <Button Margin="4,4,4,8" Height="40" Command="{Binding TriggerTypeSelectCommand}" CommandParameter="{x:Static mainNS:TriggersUtilities.NewOnExitTrigger}" Content="OnExit"/>
+                <Button Margin="4,4,4,8" Height="40" Command="{Binding TriggerTypeSelectCommand}" CommandParameter="{x:Static mainNS:TriggersUtilities.NewMouseMoveTrigger}" Content="MouseMove"/>
+                <Button Margin="4,4,4,8" Height="40" Command="{Binding TriggerTypeSelectCommand}" CommandParameter="{x:Static mainNS:TriggersUtilities.NewMouseDownTrigger}" Content="MouseDown"/>
+                <Button Margin="4,4,4,8" Height="40" Command="{Binding TriggerTypeSelectCommand}" CommandParameter="{x:Static mainNS:TriggersUtilities.NewMouseUpTrigger}" Content="MouseUp"/>
             </StackPanel>
         </ScrollViewer>
     </Border>

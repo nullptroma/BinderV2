@@ -8,9 +8,9 @@ using Trigger.Events;
 
 namespace Triggers.Types
 {
-    class OnAddCallbackTrigger : BaseTrigger
+    public class OnAddCallbackTrigger : BaseTrigger
     {
-        public override string TypeDescription { get { return "При запуске"; } }
+        public override string TypeName { get { return "При запуске"; } }
         public OnAddCallbackTrigger(string name) : base(name) 
         {
             CallbackAdded += (sender, e) => { e.meth.Invoke(this, new TriggeredEventArgs(Name, Script)); };

@@ -7,7 +7,7 @@ using Triggers.Types;
 
 namespace BinderV2.MVVM.ViewModels.Triggers
 {
-    class OnExitTriggerViewModel : BaseTriggerViewModel
+    public class OnExitTriggerViewModel : BaseTriggerViewModel
     {
         public OnExitTriggerViewModel(OnExitTrigger trigger) : base(trigger)
         { }
