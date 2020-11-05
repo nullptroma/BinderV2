@@ -7,6 +7,7 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Diagnostics;
 
 namespace BinderV2
 {
@@ -18,7 +19,8 @@ namespace BinderV2
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
-            
+            if (Process.GetProcessesByName("BinderV2").Length > 1)
+                Environment.Exit(0);
             DependencyResolver.Resolver.RegisterDependencyResolver();//прежде всего подключаем все зависимости
             Interpreter.ExecuteCommand("Delay(1)");//Прогоняем команду в интерпретаторе
             Settings.ProgramSettings.RuntimeSettings.ToString();//обращаемся к настройкам, чтобы они подгрузились

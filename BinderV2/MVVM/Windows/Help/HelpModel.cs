@@ -98,7 +98,12 @@ namespace BinderV2.MVVM.Models
             HelpProperty KeysTriggers = new HelpProperty("Триггеры Keys имеют:\n", "{count}");
             KeysTriggers.Add("Key - название кнопки, начавшей выполнение.");
             answer.AllText += KeysTriggers.AllText;
-            
+
+            HelpProperty MouseTriggers = new HelpProperty("Триггеры Mouse имеют:\n", "{count}");
+            MouseTriggers.Add("X, Y - координаты курсора.");
+            MouseTriggers.Add("Button - последняя кнопка мыши.");
+            answer.AllText += KeysTriggers.AllText;
+
             return answer;
         }
     }

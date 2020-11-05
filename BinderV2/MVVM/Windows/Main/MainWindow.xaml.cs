@@ -18,16 +18,19 @@ namespace BinderV2.MVVM.Views
             InitializeComponent();
             StateChanged += CustomizedWindow.WindowStyle.Window_StateChanged;
             DataContext = new MainViewModel();
-            if (ProgramSettings.RuntimeSettings.HideOnStart)
-                HideWindow();
+            
             if (ProgramSettings.RuntimeSettings.SaveMainWindowSize)
             {
                 System.Windows.Application.Current.MainWindow.Width = ProgramSettings.RuntimeSettings.MainWindowSize.Width;
                 System.Windows.Application.Current.MainWindow.Height = ProgramSettings.RuntimeSettings.MainWindowSize.Height;
             }
+
             updateCursorTimer = new DispatcherTimer() { Interval = new TimeSpan(0,0,0,0,20) };
             updateCursorTimer.Tick += (sender, e) => { CursorPosition.Content = "Позиция курсора " + System.Windows.Forms.Cursor.Position; };
             updateCursorTimer.Start();
+
+            if (ProgramSettings.RuntimeSettings.HideOnStart)
+                HideWindow();
         }
 
         private void ShowWindowButton_Click(object sender, RoutedEventArgs e)
@@ -43,9 +46,9 @@ namespace BinderV2.MVVM.Views
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            
-            //e.Cancel = true;
-            //HideWindow();
+
+            e.Cancel = true;
+            HideWindow();
         }
 
         private void TaskBarIcon_TrayMouseDoubleClick(object sender, RoutedEventArgs e)
