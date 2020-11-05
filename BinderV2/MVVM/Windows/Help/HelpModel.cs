@@ -50,7 +50,7 @@ namespace BinderV2.MVVM.Models
         private HelpProperty GetFuncTypeHelp(FuncType type)
         {
             HelpProperty answer = new HelpProperty(_prefix:"{count}");
-            foreach (Function f in Interpreter.GetAllLibrary().Where(func => func.ReturnType == type))
+            foreach (Function f in Interpreter.GetFullLibrary().Where(func => func.ReturnType == type))
                 answer.Add(f.Description);
             return answer;
         }
@@ -63,7 +63,7 @@ namespace BinderV2.MVVM.Models
             IntFuncsHelp = GetFuncTypeHelp(FuncType.Int);
             StringFuncsHelp = GetFuncTypeHelp(FuncType.String);
             OtherFuncsHelp = GetFuncTypeHelp(FuncType.Other);
-            foreach (Function f in Interpreter.GetAllLibrary())
+            foreach (Function f in Interpreter.GetFullLibrary())
                 AddToGroups(f);
             ConstructionsHelp = GetConstructionsHelp();
             TriggersHelp = GetTriggersHelp();

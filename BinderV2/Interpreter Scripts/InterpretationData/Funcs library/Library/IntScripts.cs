@@ -58,12 +58,14 @@ namespace InterpreterScripts.InterpretationScriptData.StandartFunctions.Library
             return id;
         }
 
+        [FuncGroup("Cursor")]
         [Description("GetCursorPosX() - возвращает позицию курсора по координате X.")]
         public static object GetCursorPosX(params object[] ps)
         {
             return Cursor.Position.X;
         }
 
+        [FuncGroup("Cursor")]
         [Description("GetCursorPosY() - возвращает позицию курсора по координате Y.")]
         public static object GetCursorPosY(params object[] ps)
         {

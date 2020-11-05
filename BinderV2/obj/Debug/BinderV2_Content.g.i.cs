@@ -8,6 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("wpf%20resources/images/icons/bindericon.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("dependencies/autohotkey.dll")]
 
 

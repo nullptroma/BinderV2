@@ -57,7 +57,6 @@ namespace Hooks.Mouse
         static IntPtr hHook = IntPtr.Zero;
         static IntPtr hModule = IntPtr.Zero;
         static bool hookInstall = false;
-        static bool localHook = false;
         static API.HookProc hookDel;
         #endregion
 
@@ -72,13 +71,7 @@ namespace Hooks.Mouse
             hModule = Marshal.GetHINSTANCE(AppDomain.CurrentDomain.GetAssemblies()[0].GetModules()[0]);
             hookDel = new API.HookProc(HookProcFunction);
 
-            if (localHook)
-                hHook = API.SetWindowsHookEx(API.HookType.WH_MOUSE,
-#pragma warning disable CS0618 // Тип или член устарел
-                    hookDel, IntPtr.Zero, AppDomain.GetCurrentThreadId()); // Если подчеркивает необращай внимание, так надо.
-#pragma warning restore CS0618 // Тип или член устарел
-            else
-                hHook = API.SetWindowsHookEx(API.HookType.WH_MOUSE_LL,
+            hHook = API.SetWindowsHookEx(API.HookType.WH_MOUSE_LL,
                     hookDel, hModule, 0);
 
             if (hHook != IntPtr.Zero)
@@ -130,152 +123,79 @@ namespace Hooks.Mouse
         {
             if (nCode == 0)
             {
-                if (localHook)
-                {
-                    MOUSEHOOKSTRUCT mhs = (MOUSEHOOKSTRUCT)Marshal.PtrToStructure(lParam, typeof(MOUSEHOOKSTRUCT));
-                    #region switch
-                    switch (wParam.ToInt32())
-                    {
-                        case WM_LBUTTONDOWN:
-                                MouseDown?.Invoke(null,
-                                    new MouseEventArgs(MouseButtons.Left,
-                                        1,
-                                        mhs.pt.X,
-                                        mhs.pt.Y,
-                                        0));
-                            break;
-                        case WM_LBUTTONUP:
-                                MouseUp?.Invoke(null,
-                                    new MouseEventArgs(MouseButtons.Left,
-                                        1,
-                                        mhs.pt.X,
-                                        mhs.pt.Y,
-                                        0));
-                            break;
-                        case WM_MBUTTONDOWN:
-                                MouseDown?.Invoke(null,
-                                    new MouseEventArgs(MouseButtons.Middle,
-                                        1,
-                                        mhs.pt.X,
-                                        mhs.pt.Y,
-                                        0));
-                            break;
-                        case WM_MBUTTONUP:
-                                MouseUp?.Invoke(null,
-                                    new MouseEventArgs(MouseButtons.Middle,
-                                        1,
-                                        mhs.pt.X,
-                                        mhs.pt.Y,
-                                        0));
-                            break;
-                        case WM_MOUSEMOVE:
-                                MouseMove?.Invoke(null,
-                                    new MouseEventArgs(MouseButtons.None,
-                                        1,
-                                        mhs.pt.X,
-                                        mhs.pt.Y,
-                                        0));
-                            break;
-                        case WM_MOUSEWHEEL:
-                            // Данный хук не позволяет узнать куда вращается колесо мыши.
-                            break;
-                        case WM_RBUTTONDOWN:
-                                MouseDown?.Invoke(null,
-                                    new MouseEventArgs(MouseButtons.Right,
-                                        1,
-                                        mhs.pt.X,
-                                        mhs.pt.Y,
-                                        0));
-                            break;
-                        case WM_RBUTTONUP:
-                                MouseUp?.Invoke(null,
-                                    new MouseEventArgs(MouseButtons.Right,
-                                        1,
-                                        mhs.pt.X,
-                                        mhs.pt.Y,
-                                        0));
-                            break;
-                        default:
-                            break;
-                    }
-                    #endregion
-                }
-                else
-                {
-                    MSLLHOOKSTRUCT mhs = (MSLLHOOKSTRUCT)Marshal.PtrToStructure(lParam, typeof(MSLLHOOKSTRUCT));
+                MSLLHOOKSTRUCT mhs = (MSLLHOOKSTRUCT)Marshal.PtrToStructure(lParam, typeof(MSLLHOOKSTRUCT));
 
-                    #region switch
-                    switch (wParam.ToInt32())
-                    {
-                        case WM_LBUTTONDOWN:
-                                MouseDown?.Invoke(null,
-                                    new MouseEventArgs(MouseButtons.Left,
-                                        1,
-                                        mhs.pt.X,
-                                        mhs.pt.Y,
-                                        0));
-                            break;
-                        case WM_LBUTTONUP:
-                                MouseUp?.Invoke(null,
-                                    new MouseEventArgs(MouseButtons.Left,
-                                        1,
-                                        mhs.pt.X,
-                                        mhs.pt.Y,
-                                        0));
-                            break;
-                        case WM_MBUTTONDOWN:
-                                MouseDown?.Invoke(null,
-                                    new MouseEventArgs(MouseButtons.Middle,
-                                        1,
-                                        mhs.pt.X,
-                                        mhs.pt.Y,
-                                        0));
-                            break;
-                        case WM_MBUTTONUP:
-                                MouseUp?.Invoke(null,
-                                    new MouseEventArgs(MouseButtons.Middle,
-                                        1,
-                                        mhs.pt.X,
-                                        mhs.pt.Y,
-                                        0));
-                            break;
-                        case WM_MOUSEMOVE:
-                                MouseMove?.Invoke(null,
-                                    new MouseEventArgs(MouseButtons.None,
-                                        1,
-                                        mhs.pt.X,
-                                        mhs.pt.Y,
-                                        0));
-                            break;
-                        case WM_MOUSEWHEEL:
-                                MouseMove?.Invoke(null,
-                                    new MouseEventArgs(MouseButtons.None, mhs.time,
-                                        mhs.pt.X, mhs.pt.Y, mhs.mouseData >> 16));
-                            //Debug.WriteLine(string.Format("X:{0}; Y:{1}; MD:{2}; Time:{3}; EI:{4}; wParam:{5}; lParam:{6}",
-                            //            mhs.pt.X, mhs.pt.Y, mhs.mouseData, mhs.time, mhs.dwExtraInfo, wParam.ToString(), lParam.ToString()));
-                            break;
-                        case WM_RBUTTONDOWN:
-                                MouseDown?.Invoke(null,
-                                    new MouseEventArgs(MouseButtons.Right,
-                                        1,
-                                        mhs.pt.X,
-                                        mhs.pt.Y,
-                                        0));
-                            break;
-                        case WM_RBUTTONUP:
-                                MouseUp?.Invoke(null,
-                                    new MouseEventArgs(MouseButtons.Right,
-                                        1,
-                                        mhs.pt.X,
-                                        mhs.pt.Y,
-                                        0));
-                            break;
-                        default:
+                #region switch
+                switch (wParam.ToInt32())
+                {
+                    case WM_LBUTTONDOWN:
+                        MouseDown?.Invoke(null,
+                            new MouseEventArgs(MouseButtons.Left,
+                                1,
+                                mhs.pt.X,
+                                mhs.pt.Y,
+                                0));
+                        break;
+                    case WM_LBUTTONUP:
+                        MouseUp?.Invoke(null,
+                            new MouseEventArgs(MouseButtons.Left,
+                                1,
+                                mhs.pt.X,
+                                mhs.pt.Y,
+                                0));
+                        break;
+                    case WM_MBUTTONDOWN:
+                        MouseDown?.Invoke(null,
+                            new MouseEventArgs(MouseButtons.Middle,
+                                1,
+                                mhs.pt.X,
+                                mhs.pt.Y,
+                                0));
+                        break;
+                    case WM_MBUTTONUP:
+                        MouseUp?.Invoke(null,
+                            new MouseEventArgs(MouseButtons.Middle,
+                                1,
+                                mhs.pt.X,
+                                mhs.pt.Y,
+                                0));
+                        break;
+                    case WM_MOUSEMOVE:
+                        MouseMove?.Invoke(null,
+                            new MouseEventArgs(MouseButtons.None,
+                                1,
+                                mhs.pt.X,
+                                mhs.pt.Y,
+                                0));
+                        break;
+                    case WM_MOUSEWHEEL:
+                        MouseMove?.Invoke(null,
+                            new MouseEventArgs(MouseButtons.None, mhs.time,
+                                mhs.pt.X, mhs.pt.Y, mhs.mouseData >> 16));
+                        //Debug.WriteLine(string.Format("X:{0}; Y:{1}; MD:{2}; Time:{3}; EI:{4}; wParam:{5}; lParam:{6}",
+                        //            mhs.pt.X, mhs.pt.Y, mhs.mouseData, mhs.time, mhs.dwExtraInfo, wParam.ToString(), lParam.ToString()));
+                        break;
+                    case WM_RBUTTONDOWN:
+                        MouseDown?.Invoke(null,
+                            new MouseEventArgs(MouseButtons.Right,
+                                1,
+                                mhs.pt.X,
+                                mhs.pt.Y,
+                                0));
+                        break;
+                    case WM_RBUTTONUP:
+                        MouseUp?.Invoke(null,
+                            new MouseEventArgs(MouseButtons.Right,
+                                1,
+                                mhs.pt.X,
+                                mhs.pt.Y,
+                                0));
+                        break;
+                    default:
 
-                            break;
-                    }
-                    #endregion
+                        break;
                 }
+                #endregion
             }
 
             return API.CallNextHookEx(hHook, nCode, wParam, lParam);

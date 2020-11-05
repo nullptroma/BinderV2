@@ -23,7 +23,7 @@ namespace InterpreterScripts
 {
     public static class Interpreter
     {
-        private static Function[] Library = FuncsLibManager.GetLibrary();
+        private static Function[] MainLibrary = FuncsLibManager.GetLibrary();
         private static HashSet<Function> AdditionalLibrary = new HashSet<Function>();
 
         public static void ExecuteScript(string script)
@@ -81,10 +81,10 @@ namespace InterpreterScripts
                 object[] parameters = GetParametersFromStringArray(cmd.GetParameters(), data);
                 commandTask = AdditionalLibrary.Find(Func => Func.Name == cmd.KeyWord).GetResult(parameters);
             }
-            else if (Library.Find(Func => Func.Name == cmd.KeyWord) != null)//ищем встроенную функцию
+            else if (MainLibrary.Find(Func => Func.Name == cmd.KeyWord) != null)//ищем встроенную функцию
             {
                 object[] parameters =  GetParametersFromStringArray(cmd.GetParameters(), data);
-                commandTask = Library.Find(Func => Func.Name == cmd.KeyWord).GetResult(parameters);
+                commandTask = MainLibrary.Find(Func => Func.Name == cmd.KeyWord).GetResult(parameters);
             }
             else//если ничего не удалось, возвращаем входную команду, как строку
                 commandTask = Task.FromResult<object>(cmdString);
@@ -114,14 +114,14 @@ namespace InterpreterScripts
             AdditionalLibrary.Add(f);
         }
 
-        public static void RemoveFromLibrary(Function f)
+        public static bool RemoveFromLibrary(Function f)
         {
-            AdditionalLibrary.Remove(f);
+            return AdditionalLibrary.Remove(f);
         }
 
-        public static Function[] GetAllLibrary()
+        public static Function[] GetFullLibrary()
         {
-            return Enumerable.Concat(Library, AdditionalLibrary).ToArray();
+            return Enumerable.Concat(MainLibrary, AdditionalLibrary).ToArray();
         }
     }
 }

@@ -50,7 +50,7 @@ namespace InterpreterScripts.InterpretationScriptData.StandartFunctions.Library
             return Environment.UserName;
         }
 
-
+        [FuncGroup("Keys")]
         [Description("GetKeysHelp() - возвращает помощь по кнопкам.")]
         public static object GetKeysHelp(params object[] ps)
         {
@@ -62,13 +62,14 @@ namespace InterpreterScripts.InterpretationScriptData.StandartFunctions.Library
             return ans;
         }
 
+        [FuncGroup("Keys")]
         [Description("GetSendKeysHelp() - возвращает помощь для скрипта SendKeysWait.")]
         public static object GetSendKeysHelp(params object[] ps)
         {
             return "SendKeysWait() посылает активному окну последовательность клавиш. Чтобы отправить обычный текст просто запишите его так: SendKeysWait(\"Hello\"). Чтобы имитировать нажатие например CTRL+C: SendKeysWait(^{C}).";
         }
 
-        
+        [FuncGroup("Mouse")]
         [Description("GetMouseEventsHelp() - возвращает помощь для скрипта MouseEvent.")]
         public static object GetMouseEventsHelp(params object[] ps)
         {
@@ -80,6 +81,7 @@ namespace InterpreterScripts.InterpretationScriptData.StandartFunctions.Library
             return ans;
         }
 
+        [FuncGroup("Clipboard")]
         [Description("GetClipboardText() - возвращает текст из буфера обмена Windows.")]
         public static object GetClipboardText(params object[] ps)
         {

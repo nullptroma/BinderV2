@@ -25,21 +25,7 @@ namespace BinderV2
     {
         public static void RunTest()
         {
-            Task.Run(()=> 
-            {
-                Interpreter.ExecuteCommand("Delay(1)");
-                string script = File.ReadAllText(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"\tesst.txt");
-                Stopwatch sw = new Stopwatch();
-                int count = 0;
-                sw.Start();
-                while(sw.ElapsedMilliseconds <= 1000)
-                {
-                    Interpreter.ExecuteScript(script);
-                    count++;
-                }
-                sw.Stop();
-                MessageBox.Show("count = " + count, "Тесты пройдены.");
-            });
+            
         }
 
     }

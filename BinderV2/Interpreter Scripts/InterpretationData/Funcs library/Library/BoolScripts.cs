@@ -18,6 +18,7 @@ namespace InterpreterScripts.InterpretationScriptData.StandartFunctions.Library
 {
     static public class BoolScripts
     {
+        [FuncGroup("Desktop")]
         [Description("HideDesktopBackground() - скрывает фон рабочего стола. Возвращает результат операции.")]
         public static object HideDesktopBackground(params object[] ps)
         {
@@ -29,6 +30,7 @@ namespace InterpreterScripts.InterpretationScriptData.StandartFunctions.Library
             return false;
         }
 
+        [FuncGroup("Desktop")]
         [Description("ShowDesktopBackground() - показывает фон рабочего стола. Возвращает результат операции.")]
         public static object ShowDesktopBackground(params object[] ps)
         {

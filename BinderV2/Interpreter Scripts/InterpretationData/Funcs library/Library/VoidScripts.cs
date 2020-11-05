@@ -33,6 +33,7 @@ namespace InterpreterScripts.InterpretationScriptData.StandartFunctions.Library
             return ps;
         }
 
+        [FuncGroup("Keys")]
         [Description("KeyDown(string key) - нажимает кнопку.")]
         public static object[] KeyDown(params object[] ps)
         {
@@ -47,6 +48,7 @@ namespace InterpreterScripts.InterpretationScriptData.StandartFunctions.Library
             catch { MessageBox.Show("В KeyDown первый аргумент типа, несоотвествующего string"); return ps; }
         }
 
+        [FuncGroup("Keys")]
         [Description("KeyUp(string key) - поднимает кнопку.")]
         public static object[] KeyUp(params object[] ps)
         {
@@ -61,6 +63,7 @@ namespace InterpreterScripts.InterpretationScriptData.StandartFunctions.Library
             catch { MessageBox.Show("В KeyDown первый аргумент типа, несоотвествующего string"); return ps; }
         }
 
+        [FuncGroup("Desktop")]
         [Description("ShowHideDesktopIcons(bool show) - показывает/скрывает значки рабочего стола.")]
         public static object[] ShowHideDesktopIcons(params object[] ps)
         {
@@ -138,7 +141,7 @@ namespace InterpreterScripts.InterpretationScriptData.StandartFunctions.Library
             return ps;
         }
 
-
+        [FuncGroup("Keys")]
         [Description("SendKeysWait(string Key) - отправляет активному окну кнопку/текст и ждёт окончания обработки.")]
         public static object[] SendKeysWait(params object[] ps)
         {
@@ -150,6 +153,7 @@ namespace InterpreterScripts.InterpretationScriptData.StandartFunctions.Library
             return ps;
         }
 
+        [FuncGroup("Keys")]
         [Description("WriteText(string text, int delay) - пишет текст посимвольно.")]
         public static object WriteText(params object[] ps)
         {
@@ -167,6 +171,7 @@ namespace InterpreterScripts.InterpretationScriptData.StandartFunctions.Library
             return ps;
         }
 
+        [FuncGroup("Cursor")]
         [Description("SetCursorPos(int x, int y) - перемещает курсор на заданные координаты.")]
         public static object[] SetCursorPos(params object[] ps)
         {
@@ -178,6 +183,7 @@ namespace InterpreterScripts.InterpretationScriptData.StandartFunctions.Library
             return ps;
         }
 
+        [FuncGroup("Cursor")]
         [Description("MoveCursor(int x, int y, int delay) - перемещает курсор на заданные координаты с промежутком между перемещениями delay.")]
         public static object[] MoveCursor(params object[] ps)
         {
@@ -208,6 +214,7 @@ namespace InterpreterScripts.InterpretationScriptData.StandartFunctions.Library
             return ps;
         }
 
+        [FuncGroup("Cursor")]
         [Description("MoveCursorBy(int x, int y) - изменяет позицию курсора на x и y.")]
         public static object[] MoveCursorBy(params object[] ps)
         {
@@ -221,6 +228,7 @@ namespace InterpreterScripts.InterpretationScriptData.StandartFunctions.Library
             return ps;
         }
 
+        [FuncGroup("Mouse")]
         [Description("MouseEvent(string event) - имитарует событие мыши. Для получения доступных событий использовать GetMouseEventsHelp().")]
         public static object[] MouseEvent(params object[] ps)
         {
@@ -234,6 +242,7 @@ namespace InterpreterScripts.InterpretationScriptData.StandartFunctions.Library
             return ps;
         }
 
+        [FuncGroup("Clipboard")]
         [Description("SetClipboardText(string text) - вставляет строку text в буфер обмена Windows.")]
         public static object[] SetClipboardText(params object[] ps)
         {
