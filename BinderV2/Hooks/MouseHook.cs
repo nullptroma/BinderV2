@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
@@ -68,7 +69,7 @@ namespace Hooks.Mouse
             if (IsHookInstalled)
                 return;
 
-            hModule = Marshal.GetHINSTANCE(AppDomain.CurrentDomain.GetAssemblies()[0].GetModules()[0]);
+            hModule = Marshal.GetHINSTANCE(Assembly.GetEntryAssembly().ManifestModule);
             hookDel = new API.HookProc(HookProcFunction);
 
             hHook = API.SetWindowsHookEx(API.HookType.WH_MOUSE_LL,
@@ -111,7 +112,6 @@ namespace Hooks.Mouse
 
         static MouseHook()
         {
-            
             InstallHook();
         }
 

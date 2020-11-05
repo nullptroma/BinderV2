@@ -18,7 +18,7 @@ namespace BinderV2
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
-
+            
             DependencyResolver.Resolver.RegisterDependencyResolver();//прежде всего подключаем все зависимости
             Interpreter.ExecuteCommand("Delay(1)");//Прогоняем команду в интерпретаторе
             Settings.ProgramSettings.RuntimeSettings.ToString();//обращаемся к настройкам, чтобы они подгрузились

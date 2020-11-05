@@ -185,7 +185,7 @@ namespace BinderV2.MVVM.Models
             switch (SelectedKeyboardImitationIndex)
             {
                 case 0://Если AHK
-                    AddCommand(string.Format(@"AHKExecRaw(""Send {{{0} down}}"")", Utilities.KeyCodeToUnicode.VKCodeToUnicode((uint)KeyInterop.VirtualKeyFromKey(e.Key))));
+                    AddCommand($"AHKKeyDown(\"{Utilities.KeyCodeToUnicode.VKCodeToUnicode((uint)KeyInterop.VirtualKeyFromKey(e.Key))}\")");
                     break;
                 case 1:
                     AddCommand(string.Format(@"KeyDown(""{0}"")", e.Key));
@@ -199,7 +199,7 @@ namespace BinderV2.MVVM.Models
             switch (SelectedKeyboardImitationIndex)
             {
                 case 0://Если AHK
-                    AddCommand(string.Format(@"AHKExecRaw(""Send {{{0} up}}"")", Utilities.KeyCodeToUnicode.VKCodeToUnicode((uint)KeyInterop.VirtualKeyFromKey(e.Key))));
+                    AddCommand($"AHKKeyUp(\"{Utilities.KeyCodeToUnicode.VKCodeToUnicode((uint)KeyInterop.VirtualKeyFromKey(e.Key))}\")");
                     break;
                 case 1:
                     AddCommand(string.Format(@"KeyUp(""{0}"")", e.Key));

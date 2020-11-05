@@ -18,6 +18,7 @@ using System.Net.Http.Headers;
 using InterpreterScripts.InterpretationScriptData;
 using System.Reflection;
 using Utilities;
+using System.Windows.Input;
 
 namespace BinderV2
 {
@@ -25,7 +26,7 @@ namespace BinderV2
     {
         public static void RunTest()
         {
-            
+            MessageBox.Show(KeyCodeToUnicode.VKCodeToUnicode((uint)KeyInterop.VirtualKeyFromKey(Key.A)));
         }
 
     }

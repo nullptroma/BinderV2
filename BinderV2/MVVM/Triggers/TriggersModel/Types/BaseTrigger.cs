@@ -15,7 +15,7 @@ namespace Trigger.Types
         public event EnableTriggerChangedEventHandler EnableChanged;
         private event TriggeredEventHandler Triggered;
         protected event CallbackEditEventHandler CallbackAdded;
-        private bool enableTrigger = true;
+        private bool enableTrigger = false;
 
         public bool EnableTrigger
         {

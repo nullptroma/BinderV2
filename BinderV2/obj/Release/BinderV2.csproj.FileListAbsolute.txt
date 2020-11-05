@@ -49,10 +49,6 @@ C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Release\MVVM\Windows\TriggerEd
 C:\Users\Professional\source\repos\BinderV2\BinderV2\bin\Release\BinderV2.exe.config
 C:\Users\Professional\source\repos\BinderV2\BinderV2\bin\Release\BinderV2.exe
 C:\Users\Professional\source\repos\BinderV2\BinderV2\bin\Release\BinderV2.pdb
-C:\Users\Professional\source\repos\BinderV2\BinderV2\bin\Release\AutoHotkey.Interop.dll
-C:\Users\Professional\source\repos\BinderV2\BinderV2\bin\Release\Hardcodet.Wpf.TaskbarNotification.dll
-C:\Users\Professional\source\repos\BinderV2\BinderV2\bin\Release\Hardcodet.Wpf.TaskbarNotification.pdb
-C:\Users\Professional\source\repos\BinderV2\BinderV2\bin\Release\Hardcodet.Wpf.TaskbarNotification.xml
 C:\Users\Professional\source\repos\BinderV2\BinderV2\obj\Release\BinderV2.csprojAssemblyReference.cache
 C:\Users\Professional\source\repos\BinderV2\BinderV2\obj\Release\MVVM\Windows\Help\HelpWindow.baml
 C:\Users\Professional\source\repos\BinderV2\BinderV2\obj\Release\MVVM\Windows\Record\RecordWindow.baml
@@ -95,6 +91,5 @@ C:\Users\Professional\source\repos\BinderV2\BinderV2\obj\Release\BinderV2.g.reso
 C:\Users\Professional\source\repos\BinderV2\BinderV2\obj\Release\BinderV2.Properties.Resources.resources
 C:\Users\Professional\source\repos\BinderV2\BinderV2\obj\Release\BinderV2.csproj.GenerateResource.cache
 C:\Users\Professional\source\repos\BinderV2\BinderV2\obj\Release\BinderV2.csproj.CoreCompileInputs.cache
-C:\Users\Professional\source\repos\BinderV2\BinderV2\obj\Release\BinderV2.csproj.CopyComplete
 C:\Users\Professional\source\repos\BinderV2\BinderV2\obj\Release\BinderV2.exe
 C:\Users\Professional\source\repos\BinderV2\BinderV2\obj\Release\BinderV2.pdb

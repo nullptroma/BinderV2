@@ -21,6 +21,7 @@ namespace InterpreterScripts.InterpretationScriptData.StandartFunctions
             GetFuncsFromType(typeof(StringScripts), FuncType.String);
             GetFuncsFromType(typeof(BoolScripts), FuncType.Boolean);
             GetFuncsFromType(typeof(VoidScripts), FuncType.Parameters);
+            GetFuncsFromType(typeof(AHKScripts), FuncType.Parameters);
             GetFuncsFromType(typeof(IntScripts), FuncType.Int);
         }
 

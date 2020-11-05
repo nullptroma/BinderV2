@@ -24,7 +24,7 @@ namespace Utilities
             [Out, MarshalAs(UnmanagedType.LPWStr)] StringBuilder pwszBuff,
             int cchBuff,
             uint wFlags,
-            IntPtr dwhkl);
+            ushort dwhkl);
 
 
         [DllImport("user32.dll")]
@@ -32,12 +32,19 @@ namespace Utilities
             uint uCode,
             uint uMapType);
 
-        [DllImport("user32.dll")]
-        private static extern IntPtr GetKeyboardLayout(uint idThread);
+        [DllImport("user32.dll", SetLastError = true)]
+        static extern int GetWindowThreadProcessId(
+            [In] IntPtr hWnd,
+            [Out, Optional] IntPtr lpdwProcessId
+            );
 
-        [DllImport("user32.dll")]
-        private static extern uint GetWindowThreadProcessId(IntPtr hWnd, IntPtr ProcessId);
+        [DllImport("user32.dll", SetLastError = true)]
+        static extern IntPtr GetForegroundWindow();
 
+        [DllImport("user32.dll", SetLastError = true)]
+        static extern ushort GetKeyboardLayout(
+            [In] int idThread
+            );
 
         public static string VKCodeToUnicode(uint vkCode)
         {
@@ -65,7 +72,7 @@ namespace Utilities
             }
 
             ToUnicodeEx(vkCode, MapVirtualKey(vkCode, 0), keyboardState, buf, 5, 0,
-                GetKeyboardLayout(GetWindowThreadProcessId(IntPtr.Zero, IntPtr.Zero)));
+                GetKeyboardLayout(GetWindowThreadProcessId(GetForegroundWindow(), IntPtr.Zero)));
             return buf.ToString().Trim() != "" ? buf.ToString() : ((Keys)vkCode).ToString();
         }
 

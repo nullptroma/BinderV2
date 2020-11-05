@@ -153,24 +153,6 @@ namespace InterpreterScripts.InterpretationScriptData.StandartFunctions.Library
             return ps;
         }
 
-        [FuncGroup("Keys")]
-        [Description("WriteText(string text, int delay) - пишет текст посимвольно.")]
-        public static object WriteText(params object[] ps)
-        {
-            try
-            {
-                int delay = (int)ps[1];
-                foreach (var sim in ps[0].ToString())
-                {
-                    //TODO сделать на AHK
-                    Interpreter.ExecuteCommand($"Delay({delay})");
-                }
-            }
-            catch (IndexOutOfRangeException) { MessageBox.Show("В WriteText не передан текст."); }
-            catch (InvalidCastException) { MessageBox.Show("В WriteText передана неподходящая задержка."); }
-            return ps;
-        }
-
         [FuncGroup("Cursor")]
         [Description("SetCursorPos(int x, int y) - перемещает курсор на заданные координаты.")]
         public static object[] SetCursorPos(params object[] ps)

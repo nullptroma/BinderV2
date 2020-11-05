@@ -13,6 +13,7 @@ using System.Runtime.InteropServices;
 using Microsoft.SqlServer.Server;
 using InterpreterScripts.FuncAttributes;
 using System.ComponentModel;
+using Utilities;
 
 namespace InterpreterScripts.InterpretationScriptData.StandartFunctions.Library
 {
@@ -86,6 +87,14 @@ namespace InterpreterScripts.InterpretationScriptData.StandartFunctions.Library
         public static object GetClipboardText(params object[] ps)
         {
             return Clipboard.GetText();
+        }
+        
+        
+        [FuncGroup("Keys")]
+        [Description("VKCodeToUnicode(uint vcKey) - представляет кнопку vkCode в виде строки с учётом языка.")]
+        public static object VKCodeToUnicode(params object[] ps)
+        {
+            return KeyCodeToUnicode.VKCodeToUnicode((uint)(Keys)Enum.Parse(typeof(Keys), ps[0].ToString()));
         }
 
 
