@@ -28,9 +28,6 @@ namespace BinderV2.MVVM.Views
             updateCursorTimer = new DispatcherTimer() { Interval = new TimeSpan(0,0,0,0,20) };
             updateCursorTimer.Tick += (sender, e) => { CursorPosition.Content = "Позиция курсора " + System.Windows.Forms.Cursor.Position; };
             updateCursorTimer.Start();
-
-            if (ProgramSettings.RuntimeSettings.HideOnStart)
-                HideWindow();
         }
 
         private void ShowWindowButton_Click(object sender, RoutedEventArgs e)
@@ -89,6 +86,12 @@ namespace BinderV2.MVVM.Views
         private void ItemsControl_Loaded(object sender, RoutedEventArgs e)
         {
             BindsScrollViewer.Tag = true;
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (ProgramSettings.RuntimeSettings.HideOnStart)
+                HideWindow();
         }
     }
 }

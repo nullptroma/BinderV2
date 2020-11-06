@@ -14,7 +14,7 @@ using System.CodeDom;
 
 namespace InterpreterScripts.InterpretationScriptData.StandartFunctions
 {
-    public class Function
+    public class Function : IInterpreterFunction
     {
         public string Name { get; private set; }
         public string Description { get; private set; }
@@ -49,12 +49,20 @@ namespace InterpreterScripts.InterpretationScriptData.StandartFunctions
         }
 
 
-        public Task<object> GetResult(params object[] parameters)
+        public Task<object> GetResult(string[] parameters, InterpretationData data)
         {
             return Task.Run(() =>
             {
-                return meth.Invoke(ScriptTools.GetParametersFromArray(parameters));
+                return meth.Invoke(ScriptTools.GetParametersFromArray(GetParametersFromStringArray(parameters, data)));
             });
+        }
+
+        private static object[] GetParametersFromStringArray(string[] parametersString, InterpretationData data)
+        {
+            object[] parameters = new object[parametersString.Length];
+            for (int i = 0; i < parameters.Length; i++)
+                parameters[i] = Interpreter.ExecuteCommand(parametersString[i], data);
+            return parameters;
         }
 
         public override bool Equals(object obj)

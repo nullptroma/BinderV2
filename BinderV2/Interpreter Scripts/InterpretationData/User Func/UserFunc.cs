@@ -13,7 +13,7 @@ using InterpreterScripts.SyntacticConstructions.Constructions.Exceptions;
 
 namespace InterpreterScripts.InterpretationScriptData.CustomFunctions
 {
-    public class UserFunc
+    public class UserFunc : IInterpreterFunction
     {
         public string Name { get; private set; }
         private string Script { get; set; }

@@ -28,7 +28,8 @@ namespace InterpreterScripts.SyntacticConstructions.Constructions
                 int bracerIndex = script.IndexOf('{');
                 script = script.Substring(bracerIndex + 1, (script.Length-1 ) - bracerIndex - 1).Trim();
                 var buf = new UserFunc(name, newModel.GetParameters(), script);
-                data.CustomFunctions.Add(buf);
+                data.InterpretationFuncs.RemoveAll(func=>func.Name == buf.Name);
+                data.InterpretationFuncs.Add(buf);
                 return null;
             }), TaskCreationOptions.AttachedToParent);
         }

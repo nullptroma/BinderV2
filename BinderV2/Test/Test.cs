@@ -26,7 +26,16 @@ namespace BinderV2
     {
         public static void RunTest()
         {
-            MessageBox.Show(KeyCodeToUnicode.VKCodeToUnicode((uint)KeyInterop.VirtualKeyFromKey(Key.A)));
+
+            Task.Run(()=> 
+            {
+                Stopwatch sw = new Stopwatch();
+                string script = File.ReadAllText(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"\Новый текстовый документ.txt");
+                sw.Start();
+                Interpreter.ExecuteScript(script);
+                sw.Stop();
+                MessageBox.Show("Время в мс: " + sw.ElapsedMilliseconds, "Тест пройден ");
+            });
         }
 
     }

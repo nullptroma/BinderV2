@@ -60,6 +60,9 @@
   <PropertyGroup>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>BinderIcon.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="AutoHotkey.Interop, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -106,6 +109,8 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Interpreter Scripts\InterpretationData\Funcs library\Library\AHKScripts.cs" />
+    <Compile Include="Interpreter Scripts\IInterpreterFunction.cs" />
+    <Compile Include="Interpreter Scripts\InterpreterExceprions.cs" />
     <Compile Include="MVVM\Bind\Bind Model\Bind.cs" />
     <Compile Include="MVVM\Bind\Bind Model\Events.cs" />
     <Compile Include="MVVM\Bind\Bind Model\Exeptions.cs" />
@@ -363,9 +368,6 @@
     <Resource Include="WPF Resources\Images\Icons\Select.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="WPF Resources\Images\upload %281%29.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="WPF Resources\Images\Icons\Settings.png" />
   </ItemGroup>
   <ItemGroup>
@@ -381,9 +383,6 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="WPF Resources\Images\Биндер.ico" />
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Dependencies\Hardcodet.Wpf.TaskbarNotification.dll" />
     <EmbeddedResource Include="Dependencies\Microsoft.Xaml.Behaviors.dll" />
     <EmbeddedResource Include="Dependencies\Newtonsoft.Json.dll" />
@@ -394,6 +393,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Dependencies\AutoHotkey.Interop.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="WPF Resources\Images\BinderIcon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="BinderIcon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

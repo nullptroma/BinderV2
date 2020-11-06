@@ -8,6 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("dependencies/autohotkey.interop.dll")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("bindericon.ico")]
 
 

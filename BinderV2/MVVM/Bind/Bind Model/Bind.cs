@@ -18,10 +18,9 @@ namespace BinderV2.MVVM.Models
     public sealed class Bind : IDisposable
     {
         public event EnableBindChangedEventHandler EnableChanged;
-        private bool enable = true;
         public string Name { get; set; }
         public string Script { get; set; }
-        public ObservableCollection<BaseTrigger> Triggers { get; private set; }
+        private bool enable = true;
         public bool Enable
         {
             get { return enable; }
@@ -31,6 +30,8 @@ namespace BinderV2.MVVM.Models
                 EnableChanged?.Invoke(this, new EnableBindChangedEventArgs(enable));
             }
         }
+        public ObservableCollection<BaseTrigger> Triggers { get; private set; }
+        
         
 
         public Bind()
@@ -60,7 +61,7 @@ namespace BinderV2.MVVM.Models
             if (!Enable)//если выключено - выходим
                 return;
 
-            e.triggerData.AdditionalFunctions.Add(new Function(new Func<object[], object>((ps)=> {
+            e.triggerData.InterpretationFuncs.Add(new Function(new Func<object[], object>((ps)=> {
                 Interpreter.ExecuteScript(Script, e.triggerData);
                 return ps;
             }), FuncType.Parameters, "StartBind"));

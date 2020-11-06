@@ -93,6 +93,7 @@ namespace BinderV2.MVVM.Models.MainModels
             for (int i = 0; i < binds.Length; i++)
                 binds[i] = Binds[i].Bind;
             JsonUtilities.SerializeToFile(binds, LastPath);
+            MessageBox.Show("Сохранено в " + LastPath, "Успех!");
         }
         public void SaveBindsInNewPath()
         {

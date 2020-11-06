@@ -9,7 +9,7 @@
         xmlns:tb="http://www.hardcodet.net/taskbar"
         xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
         mc:Ignorable="d"
-        Title="Binder" Height="410.45" Width="792.215" MinWidth="780" MinHeight="180" Style="{DynamicResource CurstomWindowStyle}" Icon="/BinderV2;component/WPF Resources/Images/Icons/BinderIcon.png" Closing="Window_Closing" Closed="Window_Closed" >
+        Title="Binder" Height="410.45" Width="792.215" MinWidth="780" MinHeight="180" Style="{DynamicResource CurstomWindowStyle}" Icon="/BinderV2;component/WPF Resources/Images/Icons/BinderIcon.png" Closing="Window_Closing" Closed="Window_Closed" Loaded="Window_Loaded" >
 
     <Grid>
         <Grid.RowDefinitions>
@@ -22,7 +22,7 @@
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
         
-        <tb:TaskbarIcon x:Name="TaskBarIcon" IconSource="/BinderV2;component/WPF Resources/Images/Биндер.ico"
+        <tb:TaskbarIcon x:Name="TaskBarIcon" IconSource="/BinderV2;component/WPF Resources/Images/BinderIcon.ico"
                         ToolTipText="Binder"
                         TrayMouseDoubleClick="TaskBarIcon_TrayMouseDoubleClick">
             <tb:TaskbarIcon.ContextMenu>

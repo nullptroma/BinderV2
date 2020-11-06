@@ -12,27 +12,14 @@ namespace InterpreterScripts.InterpretationScriptData
 {
     public class InterpretationData
     {
-        private HashSet<Function> additionalFunctions = new HashSet<Function>();
-        public HashSet<Function> AdditionalFunctions
+        private List<IInterpreterFunction> interpretationFuncs = new List<IInterpreterFunction>();
+        public List<IInterpreterFunction> InterpretationFuncs
         {
-            get { return additionalFunctions; }
-            set 
-            { 
-                if (value != null)
-                    additionalFunctions = value;
-                else
-                    throw new NullReferenceException();
-            }
-        }
-
-        private HashSet<UserFunc> customFunctions = new HashSet<UserFunc>();
-        public HashSet<UserFunc> CustomFunctions
-        {
-            get { return customFunctions; }
+            get { return interpretationFuncs; }
             set
             {
                 if (value != null)
-                    customFunctions = value;
+                    interpretationFuncs = value;
                 else
                     throw new NullReferenceException();
             }

@@ -41,13 +41,11 @@ namespace InterpreterScripts.SyntacticConstructions.Constructions
         public bool IsValidConstruction(CommandModel cmd, InterpretationData data)
         {
             int index = ScriptTools.GetCharIndexOutsideBrackets(cmd.Command, '=');
-            try 
-            {
-                if (cmd.Command[index - 1] == '=' || cmd.Command[index + 1] == '=')
-                    return false;
-            }
-            catch { return false; }
-            return index != -1 && ScriptTools.GetCharIndexOutsideBrackets(cmd.Command, '.') != -1;
+            if (index == 0 || index == cmd.Command.Length - 1 || index == -1)
+                return false;
+            if (cmd.Command[index - 1] == '=' || cmd.Command[index + 1] == '=' || cmd.Command[index - 1] == '!')
+                return false;
+            return ScriptTools.GetCharIndexOutsideBrackets(cmd.Command, '.') != -1;
         }
     }
 }
