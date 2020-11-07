@@ -40,8 +40,6 @@ namespace Trigger.Types
             {
                 if (EnableTrigger && EnableAllTriggers)
                 {
-                    e.triggerData.Vars["TriggerName"] = Name;
-                    e.triggerData.Vars["TriggerScript"] = Script;
                     Triggered?.Invoke(this, e);
                 }
             });

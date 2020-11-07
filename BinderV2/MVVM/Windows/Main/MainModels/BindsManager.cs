@@ -179,6 +179,7 @@ namespace BinderV2.MVVM.Models.MainModels
         {
             Interpreter.AddToLibrary(new Function(new Func<object[], object>(EnableBindsByNames), FuncType.Parameters));
             Interpreter.AddToLibrary(new Function(new Func<object[], object>(DisableBindsByNames), FuncType.Parameters));
+            Interpreter.AddToLibrary(new Function(new Func<object[], object>(StartBindsByNames), FuncType.Other));
         }
 
         [Description("EnableBindsByNames(string name1, string name2...) - включает бинды с переданными именами.")]
@@ -202,6 +203,19 @@ namespace BinderV2.MVVM.Models.MainModels
             {
                 foreach (BindViewModel bvm in Binds.Where(BindVM => BindVM.Name == currentName.ToString()))
                     bvm.IsEnabled = false;
+            }
+
+            return ps;
+        }
+
+        [Description("StartBindsByNames(string name1, string name2...) - начинает выполнение скриптов биндов по именам.")]
+        [FuncGroup("ScriptRuntimeControl")]
+        public object[] StartBindsByNames(params object[] ps)
+        {
+            foreach (var currentName in ps)
+            {
+                foreach (BindViewModel bvm in Binds.Where(BindVM => BindVM.Name == currentName.ToString()))
+                    bvm.Bind.Invoke(null, new Trigger.Events.TriggeredEventArgs("StartBindsByNames", "StartBind();"));
             }
 
             return ps;

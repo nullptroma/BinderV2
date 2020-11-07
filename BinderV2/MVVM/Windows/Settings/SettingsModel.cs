@@ -19,22 +19,12 @@ namespace BinderV2.MVVM.Models
     {
         private ProgramSettings editSettings = ProgramSettings.RuntimeSettings;
 
-        public bool StartWithWindows 
-        { 
-            get { return editSettings.StartWithWindows; }
-            set 
-            { 
-                editSettings.StartWithWindows = value;
-                if (value)
-                    Utilities.AutoRun.RegisterAutoRun();
-                else
-                    Utilities.AutoRun.UnRegisterAutoRun();
-            }
-        }
+        public bool StartWithWindows { get { return editSettings.StartWithWindows; } set { editSettings.StartWithWindows = value; } }
         public bool HideOnStart { get { return editSettings.HideOnStart; } set { editSettings.HideOnStart = value; } }
         public bool AutoLoadBinds { get { return editSettings.AutoLoadBinds; } set { editSettings.AutoLoadBinds = value; } }
         public string AutoLoadBindsPath { get { return editSettings.AutoLoadBindsPath; } private set { editSettings.AutoLoadBindsPath = value;  OnPropertyChanged("AutoLoadBindsPath"); } }
         public bool SaveMainWindowSize { get { return editSettings.SaveMainWindowSize; } set { editSettings.SaveMainWindowSize = value;  OnPropertyChanged("AutoLoadBindsPath"); } }
+        public bool CloseEqualsHide { get { return editSettings.CloseEqualsHide; } set { editSettings.CloseEqualsHide = value;  OnPropertyChanged("CloseEqualsHide"); } }
 
         public void GetAutoLoadBindsPathFromUser()
         {

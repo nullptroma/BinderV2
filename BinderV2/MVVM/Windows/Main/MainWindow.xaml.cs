@@ -21,8 +21,8 @@ namespace BinderV2.MVVM.Views
             
             if (ProgramSettings.RuntimeSettings.SaveMainWindowSize)
             {
-                System.Windows.Application.Current.MainWindow.Width = ProgramSettings.RuntimeSettings.MainWindowSize.Width;
-                System.Windows.Application.Current.MainWindow.Height = ProgramSettings.RuntimeSettings.MainWindowSize.Height;
+                Width = ProgramSettings.RuntimeSettings.MainWindowSize.Width;
+                Height = ProgramSettings.RuntimeSettings.MainWindowSize.Height;
             }
 
             updateCursorTimer = new DispatcherTimer() { Interval = new TimeSpan(0,0,0,0,20) };
@@ -43,33 +43,35 @@ namespace BinderV2.MVVM.Views
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-
-            e.Cancel = true;
-            HideWindow();
+            if (ProgramSettings.RuntimeSettings.CloseEqualsHide)
+            {
+                e.Cancel = true;
+                HideWindow();
+            }
+            else
+            {
+                App.Current.Shutdown();
+            }
         }
 
         private void TaskBarIcon_TrayMouseDoubleClick(object sender, RoutedEventArgs e)
         {
-            if (WindowState == WindowState.Minimized)
-                ShowWindow();
-            else
+            if (this.Visibility == Visibility.Visible)
                 HideWindow();
+            else
+                ShowWindow();
         }
 
         private void HideWindow()
         {
-            WindowState = WindowState.Minimized;
-            this.Visibility = Visibility.Collapsed;
-            ShowInTaskbar = false;
             updateCursorTimer.Stop();
+            this.Hide();
         }
 
         private void ShowWindow()
         {
-            WindowState = WindowState.Normal;
-            this.Visibility = Visibility.Visible;
-            ShowInTaskbar = true;
             updateCursorTimer.Start();
+            this.Show();
         }
 
         private void Window_Closed(object sender, EventArgs e)

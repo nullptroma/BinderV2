@@ -133,7 +133,7 @@
     <Compile Include="MVVM\Triggers\TriggersModel\Types\Triggers\Keys\Engine\KeysTriggersEngine.cs" />
     <Compile Include="MVVM\Triggers\TriggersModel\Types\Triggers\Keys\KeysHoldingTrigger.cs" />
     <Compile Include="MVVM\Triggers\TriggersModel\Types\Triggers\Keys\KeysHoldingOnce.cs" />
-    <Compile Include="MVVM\Triggers\TriggersModel\Types\Triggers\Keys\KeysUpTriggerTrigger.cs" />
+    <Compile Include="MVVM\Triggers\TriggersModel\Types\Triggers\Keys\KeysUpTrigger.cs" />
     <Compile Include="MVVM\Triggers\TriggersModel\Types\Triggers\Mouse\BaseMouseTrigger.cs" />
     <Compile Include="MVVM\Triggers\TriggersModel\Types\Triggers\Mouse\Engine\MouseTriggersEngine.cs" />
     <Compile Include="MVVM\Triggers\TriggersModel\Types\Triggers\Mouse\MouseDownTrigger.cs" />

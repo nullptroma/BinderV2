@@ -7,11 +7,18 @@ using InterpreterScripts.InterpretationScriptData.StandartFunctions;
 using InterpreterScripts.InterpretationScriptData.CustomFunctions;
 using InterpreterScripts.InterpretationScriptData.Vars;
 using System.Net.Http.Headers;
+using System.Windows;
 
 namespace InterpreterScripts.InterpretationScriptData
 {
     public class InterpretationData
     {
+        public bool IsStopped { get; private set; }
+        public void Stop()
+        {
+            IsStopped = true;
+        }
+
         private List<IInterpreterFunction> interpretationFuncs = new List<IInterpreterFunction>();
         public List<IInterpreterFunction> InterpretationFuncs
         {

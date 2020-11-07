@@ -71,7 +71,7 @@ namespace InterpreterScripts.ScriptCommand
             int marksCount = 0;
             for (; lastParsIndex < cmd.Length; lastParsIndex++)
             {
-                if (cmd[lastParsIndex] == '\"')
+                if (cmd[lastParsIndex] == '\"' && cmd[lastParsIndex-1] != '\\')
                     marksCount++;
                 if (marksCount % 2 == 0)
                 {

@@ -19,6 +19,7 @@ namespace BinderV2.Settings
         public bool AutoLoadBinds { get; set; }
         public string AutoLoadBindsPath { get; set; }
         public bool SaveMainWindowSize { get; set; }
+        public bool CloseEqualsHide { get; set; }
         public Size MainWindowSize { get; set; }
         public bool StartWithWindows
         {
@@ -68,6 +69,7 @@ namespace BinderV2.Settings
         public static void Reset()
         {
             RuntimeSettings = new ProgramSettings();
+            RuntimeSettings.CloseEqualsHide = true;
             VisualsSettings.ApplyVisuals(RuntimeSettings.VisualSettings);
             SaveSettings();
         }

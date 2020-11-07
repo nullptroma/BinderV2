@@ -14,6 +14,7 @@ namespace BinderV2.MVVM.ViewModels
         public bool AutoLoadBinds { get { return model.AutoLoadBinds; } set { model.AutoLoadBinds = value; } }
         public string AutoLoadBindsPath { get { return model.AutoLoadBindsPath; } }
         public bool SaveMainWindowSize { get { return model.SaveMainWindowSize; } set { model.SaveMainWindowSize = value; } }
+        public bool CloseEqualsHide { get { return model.CloseEqualsHide; } set { model.CloseEqualsHide = value; } }
 
         public ObservableCollection<string> TextParameters { get { return model.TextParameters; } }
         public string SelectedTextParameter { get { return model.SelectedTextParameter; } set { model.SelectedTextParameter = value; } }

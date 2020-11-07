@@ -47,14 +47,6 @@ namespace BinderV2.MVVM.Models
             SetHelpTexts();
         }
 
-        private HelpProperty GetFuncTypeHelp(FuncType type)
-        {
-            HelpProperty answer = new HelpProperty(_prefix:"{count}");
-            foreach (Function f in Interpreter.GetFullLibrary().Where(func => func.ReturnType == type))
-                answer.Add(f.Description);
-            return answer;
-        }
-
         private void SetHelpTexts()
         {
             ParametersFuncsHelp = GetFuncTypeHelp(FuncType.Parameters);
@@ -62,19 +54,55 @@ namespace BinderV2.MVVM.Models
             DoubleFuncsHelp = GetFuncTypeHelp(FuncType.Double);
             IntFuncsHelp = GetFuncTypeHelp(FuncType.Int);
             StringFuncsHelp = GetFuncTypeHelp(FuncType.String);
-            OtherFuncsHelp = GetFuncTypeHelp(FuncType.Other);
             foreach (Function f in Interpreter.GetFullLibrary())
                 AddToGroups(f);
+            OtherFuncsHelp = GetOtherFuncsHelp();
             ConstructionsHelp = GetConstructionsHelp();
             TriggersHelp = GetTriggersHelp();
         }
 
+        private HelpProperty GetFuncTypeHelp(FuncType type)
+        {
+            HelpProperty answer = new HelpProperty(_prefix:"{count}");
+            foreach (Function f in Interpreter.GetFullLibrary().Where(func => func.ReturnType == type))
+                answer.Add(f.Description);
+
+            return answer;
+        }
+
+        private HelpProperty GetOtherFuncsHelp()
+        {
+            HelpProperty answer = GetFuncTypeHelp(FuncType.Other);
+
+            string StartBind = "StartBind() - запускает выполнение скрипта бинда.";
+            answer.Add(StartBind); 
+            AddToGroups("ScriptRuntimeControl", StartBind);
+
+            string Stop = "Stop() - останавливает текущую интерпретацию.";
+            answer.Add(Stop);
+            AddToGroups("ScriptRuntimeControl", Stop);
+
+            string StopThisBind = "StopThisBind() - останавливает все интерпретации на этом бинде.";
+            answer.Add(StopThisBind);
+            AddToGroups("ScriptRuntimeControl", StopThisBind);
+
+            string StopAnotherRunsOfThisBind = "StopAnotherRunsOfThisBind() - останавливает все интерпретации на этом бинде, кроме текущей.";
+            answer.Add(StopAnotherRunsOfThisBind);
+            AddToGroups("ScriptRuntimeControl", StopAnotherRunsOfThisBind);
+            return answer;
+        }
+
         private void AddToGroups(Function f)
         {
-            if (!groups.ContainsKey(f.GroupName))
-                groups.Add(f.GroupName, new List<string>());
+            AddToGroups(f.GroupName, f.Description);
+        }
 
-            groups[f.GroupName].Add(f.Description);
+        private void AddToGroups(string group, string text)
+        {
+            if (!groups.ContainsKey(group))
+                groups.Add(group, new List<string>());
+
+            groups[group].Add(text);
         }
 
         private HelpProperty GetConstructionsHelp()

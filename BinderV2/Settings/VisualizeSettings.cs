@@ -7,7 +7,7 @@ namespace BinderV2.Settings.Visuals
 {
     public class VisualsSettings
     {
-        public Thickness WindowBorderThickness = new Thickness(2);
+        public Thickness WindowBorderThickness = new Thickness(3);
         public Thickness WindowIconMargin = new Thickness(1,1,1,1);
         public double HeightWindowTitle = 32;
         public double WindowIconSize = 30;

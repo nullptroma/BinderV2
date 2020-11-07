@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading;
 using InterpreterScripts.InterpretationScriptData;
 using InterpreterScripts.ScriptCommand;
 using InterpreterScripts.SyntacticConstructions;
@@ -21,19 +22,23 @@ namespace InterpreterScripts.SyntacticConstructions.Constructions
 
         public Task<object> Execute(CommandModel cmd, InterpretationData data)
         {
-            return Task.Run<object>(()=> 
+            return Task.Factory.StartNew<object>(()=> 
             {
                 int milliseconds = (int)Interpreter.ExecuteCommand(cmd.GetParameters()[0], data);
                 Stopwatch sw = new Stopwatch();
                 sw.Start();
                 while (sw.ElapsedMilliseconds < milliseconds)
                 {
+                    if (data.IsStopped)
+                        throw new StopException();
+                    if (milliseconds - sw.ElapsedMilliseconds > 1100)
+                        Thread.Sleep(1000);
                     if (milliseconds - sw.ElapsedMilliseconds > 50)
                         Task.Delay(1).Wait();
                 }
                 sw.Stop();
                 return milliseconds;
-            });
+            }, TaskCreationOptions.LongRunning);
         }
     }
 }

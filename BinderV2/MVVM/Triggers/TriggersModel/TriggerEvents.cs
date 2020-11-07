@@ -14,6 +14,9 @@ namespace Trigger.Events
             TriggerName = name;
             TriggerScript = script;
             triggerData = _data != null ? _data : new InterpretationData();
+
+            triggerData.Vars["TriggerName"] = name;
+            triggerData.Vars["TriggerScript"] = script;
         }
     }
     public delegate void TriggeredEventHandler(object sendet, TriggeredEventArgs e);

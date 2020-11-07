@@ -10,7 +10,7 @@ namespace BinderV2.MVVM.Models.MainModels
     class WindowsManager
     {
         private SettingsWindow SettingsWindow;
-        private HelpWindow HelpWindow;
+        private HelpWindow HelpWindow = new HelpWindow();
         private RecordWindow RecordWindow;
 
         public void OpenSettingsWindow()
@@ -23,9 +23,6 @@ namespace BinderV2.MVVM.Models.MainModels
 
         public void OpenHelpWindow()
         {
-            if (HelpWindow != null)
-                HelpWindow.Close();
-            HelpWindow = new HelpWindow();
             HelpWindow.Show();
         }
 
@@ -35,6 +32,11 @@ namespace BinderV2.MVVM.Models.MainModels
                 RecordWindow.Close();
             RecordWindow = new RecordWindow();
             RecordWindow.Show();
+        }
+
+        public WindowsManager()
+        {
+            HelpWindow.Closing += (sender, e) => { e.Cancel = true; HelpWindow.Hide(); };
         }
     }
 }

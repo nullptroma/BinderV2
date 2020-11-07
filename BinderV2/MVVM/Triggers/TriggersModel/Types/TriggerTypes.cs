@@ -19,7 +19,7 @@ namespace Trigger.Types
         { get { return new KeysTriggerViewModel(new KeysDownTrigger()); } }
 
         public static KeysTriggerViewModel NewKeysUpTrigger
-        { get { return new KeysTriggerViewModel(new KeysUpTriggerTrigger()); } }
+        { get { return new KeysTriggerViewModel(new KeysUpTrigger()); } }
 
         public static KeysTriggerViewModel NewKeysHoldingOnceTrigger
         { get { return new KeysTriggerViewModel(new KeysHoldingOnce()); } }
@@ -63,7 +63,7 @@ namespace Trigger.Types
                     }
                 case "KeysUpTrigger":
                     {
-                        vm = new KeysTriggerViewModel((KeysUpTriggerTrigger)trigger);
+                        vm = new KeysTriggerViewModel((KeysUpTrigger)trigger);
                         break;
                     }
                 case "KeysHoldingOnce":

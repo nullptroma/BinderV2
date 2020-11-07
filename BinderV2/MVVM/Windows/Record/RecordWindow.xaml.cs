@@ -20,12 +20,11 @@ namespace BinderV2.MVVM.Views
     /// </summary>
     public partial class RecordWindow : Window
     {
-        static RecordViewModel rvm = new RecordViewModel();
         public RecordWindow()
         {
             InitializeComponent();
             StateChanged += CustomizedWindow.WindowStyle.Window_StateChanged;
-            DataContext = rvm;
+            DataContext = new RecordViewModel();
         }
 
         private void TextBox_MouseLeave(object sender, MouseEventArgs e)

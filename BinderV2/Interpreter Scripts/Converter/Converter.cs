@@ -34,7 +34,7 @@ namespace InterpreterScripts.TypeConverter
             if (value.Length < 2)
                 return null;
             if (value[0] == '\"' && value[value.Length-1] == '\"' && value.Replace("\\\"", "").Count(ch=>ch=='\"')==2)
-                return value.Substring(1, Math.Max(1, value.Length - 2));
+                return value.Length > 2 ? value.Substring(1, Math.Max(1, value.Length - 2)).Replace("\\\"", "\"") : "";
             return null;
         }
 

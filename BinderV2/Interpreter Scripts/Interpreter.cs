@@ -26,10 +26,8 @@ namespace InterpreterScripts
     {
         private static Function[] MainLibrary = FuncsLibManager.GetLibrary();
         private static HashSet<Function> AdditionalLibrary = new HashSet<Function>();
-
         private static IEnumerable<Function> FullLibrary;
-        private static bool StopExecuting = false;
-        private static int ExecutingCount = 0;
+        private static Action StopInterpretations;
 
         private static void UpdateFullLibrary()
         {
@@ -50,23 +48,16 @@ namespace InterpreterScripts
         {
             try
             {
-                if (ExecutingCount == 0)
-                    StopExecuting = false;
-                ExecutingCount++;
+                StopInterpretations += data.Stop;
                 string[] commands = ScriptTools.GetCommands(script);
                 foreach (var cmd in commands)
                     ExecuteCommand(cmd, data);
             }
             catch (Exception e) when (!(e is ReturnException) && !(e is BreakException))
             {
-                if(!StopExecuting)
+                if(!data.IsStopped)
                     MessageBox.Show(e.ToString(), "Ошибка");
-            }
-            finally
-            {
-                ExecutingCount--;
-                if (ExecutingCount == 0)
-                    StopExecuting = false;
+                StopInterpretations -= data.Stop;
             }
         }
 
@@ -78,7 +69,7 @@ namespace InterpreterScripts
 
         public static object ExecuteCommand(string cmdString, InterpretationData data)
         {
-            if (StopExecuting)
+            if (data.IsStopped)
                 throw new StopException();
 
             CommandModel cmd = new CommandModel(cmdString.Trim());
@@ -133,9 +124,10 @@ namespace InterpreterScripts
         }
 
         [Description("StopAllScripts() - немедленно останавливает выполнение всех скриптов.")]
+        [FuncGroup("ScriptRuntimeControl")]
         public static object StopAllScripts(params object[] ps)
         {
-            StopExecuting = true;
+            StopInterpretations?.Invoke();
             return ps;
         }
 

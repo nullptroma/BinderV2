@@ -107,6 +107,9 @@ namespace InterpreterScripts.Script
                         countBrackets--;
                         break;
                     case '\"':
+                        if (i > 0)
+                            if (str[i - 1] == '\\')
+                                break;
                         countMarks++;
                         break;
                     case ',':
