@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel;
-using InterpreterScripts.InterpretationScriptData.StandartFunctions;
+using InterpreterScripts.InterpretationFunctions.Standart;
 using System.Security.Cryptography;
 using InterpreterScripts;
 using System.Windows.Forms;
@@ -26,6 +26,7 @@ namespace BinderV2.MVVM.ViewModels
         public string FuncsHelpByGroups { get { return help.FuncsHelpByGroups.AllText; } }
         public string ConstructionsHelp { get { return help.ConstructionsHelp.AllText; } }
         public string TriggersHelp { get { return help.TriggersHelp.AllText; } }
+        public string DynamicFuncsHelp { get { return help.DynamicFuncsHelp.AllText; } }
 
         public override event PropertyChangedEventHandler PropertyChanged;
         public override void OnPropertyChanged(string prop)

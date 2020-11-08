@@ -108,9 +108,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Interpreter Scripts\InterpretationData\Funcs library\Library\AHKScripts.cs" />
-    <Compile Include="Interpreter Scripts\IInterpreterFunction.cs" />
+    <Compile Include="Interpreter Scripts\InterpretationFunctions\Standart Funcs\Funcs library\Library\AHKScripts.cs" />
+    <Compile Include="Interpreter Scripts\InterpretationFunctions\GetInterpretationInfo.cs" />
+    <Compile Include="Interpreter Scripts\InterpretationFunctions\IInterpreterFunction.cs" />
     <Compile Include="Interpreter Scripts\InterpreterExceprions.cs" />
+    <Compile Include="Interpreter Scripts\Syntactic Constructs\Constructs\Vars\NameSpaced\CheckVarNamespaced.cs" />
     <Compile Include="MVVM\Bind\Bind Model\Bind.cs" />
     <Compile Include="MVVM\Bind\Bind Model\Events.cs" />
     <Compile Include="MVVM\Bind\Bind Model\Exeptions.cs" />
@@ -144,22 +146,22 @@
     <Compile Include="Utilities\KeyCodeToUnicode.cs" />
     <Compile Include="Interpreter Scripts\Converter\Converter.cs" />
     <Compile Include="Interpreter Scripts\Syntactic Constructs\Constructs\Delay.cs" />
-    <Compile Include="Interpreter Scripts\InterpretationData\InterpretationData.cs" />
-    <Compile Include="Interpreter Scripts\InterpretationData\Funcs library\FuncType.cs" />
-    <Compile Include="Interpreter Scripts\InterpretationData\Funcs library\Library\BoolScripts.cs" />
-    <Compile Include="Interpreter Scripts\InterpretationData\Funcs library\Library\DoubleScripts.cs" />
-    <Compile Include="Interpreter Scripts\InterpretationData\Funcs library\FuncsLibManager.cs" />
-    <Compile Include="Interpreter Scripts\InterpretationData\Funcs library\Library\IntScripts.cs" />
-    <Compile Include="Interpreter Scripts\InterpretationData\Funcs library\Library\MethodsAndConstants.cs" />
-    <Compile Include="Interpreter Scripts\InterpretationData\Funcs library\Library\StringScripts.cs" />
-    <Compile Include="Interpreter Scripts\InterpretationData\Funcs library\Library\VoidScripts.cs" />
-    <Compile Include="Interpreter Scripts\InterpretationData\Funcs library\FuncGroupAttribute.cs" />
+    <Compile Include="Interpreter Scripts\InterpretationData.cs" />
+    <Compile Include="Interpreter Scripts\InterpretationFunctions\FuncType.cs" />
+    <Compile Include="Interpreter Scripts\InterpretationFunctions\Standart Funcs\Funcs library\Library\BoolScripts.cs" />
+    <Compile Include="Interpreter Scripts\InterpretationFunctions\Standart Funcs\Funcs library\Library\DoubleScripts.cs" />
+    <Compile Include="Interpreter Scripts\InterpretationFunctions\Standart Funcs\Funcs library\FuncsLibManager.cs" />
+    <Compile Include="Interpreter Scripts\InterpretationFunctions\Standart Funcs\Funcs library\Library\IntScripts.cs" />
+    <Compile Include="Interpreter Scripts\InterpretationFunctions\Standart Funcs\Funcs library\Library\MethodsAndConstants.cs" />
+    <Compile Include="Interpreter Scripts\InterpretationFunctions\Standart Funcs\Funcs library\Library\StringScripts.cs" />
+    <Compile Include="Interpreter Scripts\InterpretationFunctions\Standart Funcs\Funcs library\Library\VoidScripts.cs" />
+    <Compile Include="Interpreter Scripts\InterpretationFunctions\Standart Funcs\FuncGroupAttribute.cs" />
     <Compile Include="Interpreter Scripts\Error Exceptions.cs" />
-    <Compile Include="Interpreter Scripts\InterpretationData\Funcs library\Function.cs" />
+    <Compile Include="Interpreter Scripts\InterpretationFunctions\Standart Funcs\Function.cs" />
     <Compile Include="Interpreter Scripts\Interpreter.cs" />
     <Compile Include="Interpreter Scripts\Script Tools\ScriptTools.cs" />
-    <Compile Include="Interpreter Scripts\InterpretationData\User Func\UserFunc.cs" />
-    <Compile Include="Interpreter Scripts\InterpretationData\Variable\Variables.cs" />
+    <Compile Include="Interpreter Scripts\InterpretationFunctions\UserFunc.cs" />
+    <Compile Include="Interpreter Scripts\Variable\Variables.cs" />
     <Compile Include="Interpreter Scripts\ScriptCommand\CommandModel.cs" />
     <Compile Include="Interpreter Scripts\Syntactic Constructs\Constructs\CodeBlock.cs" />
     <Compile Include="Interpreter Scripts\Syntactic Constructs\Constructs\Operators\Break.cs" />
@@ -174,7 +176,6 @@
     <Compile Include="Interpreter Scripts\Syntactic Constructs\Constructs\Vars\Local\CheckVar.cs" />
     <Compile Include="Interpreter Scripts\Syntactic Constructs\Constructs\Vars\Local\GetVar.cs" />
     <Compile Include="Interpreter Scripts\Syntactic Constructs\Constructs\Vars\Local\SetVar.cs" />
-    <Compile Include="Interpreter Scripts\Syntactic Constructs\Constructs\Vars\NameSpaced\CheckVarNamespaced.cs" />
     <Compile Include="Interpreter Scripts\Syntactic Constructs\Constructs\Vars\NameSpaced\GetVarNamespaced.cs" />
     <Compile Include="Interpreter Scripts\Syntactic Constructs\Constructs\Vars\NameSpaced\SetVarNamespaced.cs" />
     <Compile Include="Interpreter Scripts\Vault.cs" />

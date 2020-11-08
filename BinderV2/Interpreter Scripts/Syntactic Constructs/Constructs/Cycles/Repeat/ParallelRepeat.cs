@@ -14,7 +14,14 @@ namespace InterpreterScripts.SyntacticConstructions.Constructions
     {
         public string Description { get { return "parallelRepeat(quant)\n{\n  <скрипт>\n} - параллельно выполняет скрипт quant раз."; } }
 
-        public Task<object> Execute(CommandModel cmd, InterpretationData data)
+        public Task<object> TryExecute(CommandModel cmd, InterpretationData data)
+        {
+            if (IsValidConstruction(cmd, data))
+                return Execute(cmd, data);
+            return null;
+        }
+
+        private Task<object> Execute(CommandModel cmd, InterpretationData data)
         {
             return Task.Run(new Func<object>(() =>
             {
@@ -40,7 +47,7 @@ namespace InterpreterScripts.SyntacticConstructions.Constructions
             }));
         }
 
-        public bool IsValidConstruction(CommandModel cmd, InterpretationData data)
+        private bool IsValidConstruction(CommandModel cmd, InterpretationData data)
         {
             return cmd.Command.StartsWith("parallelRepeat");
         }

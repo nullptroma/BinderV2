@@ -11,8 +11,6 @@ namespace InterpreterScripts.SyntacticConstructions
     public interface ISyntacticConstruction
     {
         string Description { get; }
-
-        Task<object> Execute(CommandModel cmd,InterpretationData data);
-        bool IsValidConstruction(CommandModel cmd, InterpretationData data);
+        Task<object> TryExecute(CommandModel cmd, InterpretationData data);
     }
 }

@@ -15,7 +15,14 @@ namespace InterpreterScripts.SyntacticConstructions.Constructions
     {
         public string Description { get { return "Namespace.Name - получить значение переменной Name в пространстве имён Namespace."; } }
 
-        public Task<object> Execute(CommandModel cmd, InterpretationData data)
+        public Task<object> TryExecute(CommandModel cmd, InterpretationData data)
+        {
+            if (IsValidConstruction(cmd, data))
+                return Execute(cmd, data);
+            return null;
+        }
+
+        private Task<object> Execute(CommandModel cmd, InterpretationData data)
         {
             return Task.Run(new Func<object>(() =>
             {
@@ -27,7 +34,7 @@ namespace InterpreterScripts.SyntacticConstructions.Constructions
             }));
         }
 
-        public bool IsValidConstruction(CommandModel cmd, InterpretationData data)
+        private bool IsValidConstruction(CommandModel cmd, InterpretationData data)
         {
             string script = cmd.Command;
             int dotIndex = ScriptTools.GetCharIndexOutsideBrackets(script, '.');

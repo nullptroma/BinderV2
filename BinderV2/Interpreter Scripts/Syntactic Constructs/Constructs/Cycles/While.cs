@@ -1,6 +1,5 @@
 ﻿using InterpreterScripts.Exceptions;
 using InterpreterScripts.InterpretationScriptData;
-using InterpreterScripts.InterpretationScriptData.CustomFunctions;
 using InterpreterScripts.ScriptCommand;
 using InterpreterScripts.SyntacticConstructions.Constructions.Exceptions;
 using System;
@@ -16,7 +15,14 @@ namespace InterpreterScripts.SyntacticConstructions.Constructions
     {
         public string Description { get { return "while(<условие>)\n{\n  <скрипт>\n} - выполняет скрипт, пока условие == true."; } }
 
-        public Task<object> Execute(CommandModel cmd, InterpretationData data)
+        public Task<object> TryExecute(CommandModel cmd, InterpretationData data)
+        {
+            if (IsValidConstruction(cmd, data))
+                return Execute(cmd, data);
+            return null;
+        }
+
+        private Task<object> Execute(CommandModel cmd, InterpretationData data)
         {
             return Task.Run(new Func<object>(() =>
             {
@@ -39,7 +45,7 @@ namespace InterpreterScripts.SyntacticConstructions.Constructions
             }));
         }
 
-        public bool IsValidConstruction(CommandModel cmd, InterpretationData data)
+        private bool IsValidConstruction(CommandModel cmd, InterpretationData data)
         {
             return cmd.Command.StartsWith("while");
         }

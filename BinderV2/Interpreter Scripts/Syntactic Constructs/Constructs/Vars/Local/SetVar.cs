@@ -14,7 +14,14 @@ namespace InterpreterScripts.SyntacticConstructions.Constructions
     {
         public string Description { get { return "Name = value - задаёт переменную Name в пределах данного скрипта."; } }
 
-        public Task<object> Execute(CommandModel cmd, InterpretationData data)
+        public Task<object> TryExecute(CommandModel cmd, InterpretationData data)
+        {
+            if (IsValidConstruction(cmd, data))
+                return Execute(cmd, data);
+            return null;
+        }
+
+        private Task<object> Execute(CommandModel cmd, InterpretationData data)
         {
             return Task.Run(new Func<object>(()=> 
             {
@@ -28,7 +35,7 @@ namespace InterpreterScripts.SyntacticConstructions.Constructions
             }));
         }
 
-        public bool IsValidConstruction(CommandModel cmd, InterpretationData data)
+        private bool IsValidConstruction(CommandModel cmd, InterpretationData data)
         {
             int index = ScriptTools.GetCharIndexOutsideBrackets(cmd.Command, '=');
             if (index == 0 || index == cmd.Command.Length - 1 || index == -1)

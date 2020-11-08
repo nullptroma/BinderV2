@@ -15,12 +15,19 @@ namespace InterpreterScripts.SyntacticConstructions.Constructions
     {
         public string Description { get { return "Delay(int milliseconds) - приостанавливает выполнение скрипна на milliseconds."; } }
 
-        public bool IsValidConstruction(CommandModel cmd, InterpretationData data)
+        public Task<object> TryExecute(CommandModel cmd, InterpretationData data)
+        {
+            if (IsValidConstruction(cmd, data))
+                return Execute(cmd, data);
+            return null;
+        }
+
+        private bool IsValidConstruction(CommandModel cmd, InterpretationData data)
         {
             return cmd.KeyWord.StartsWith("Delay") && cmd.GetParameters().Length == 1;
         }
 
-        public Task<object> Execute(CommandModel cmd, InterpretationData data)
+        private Task<object> Execute(CommandModel cmd, InterpretationData data)
         {
             return Task.Factory.StartNew<object>(()=> 
             {

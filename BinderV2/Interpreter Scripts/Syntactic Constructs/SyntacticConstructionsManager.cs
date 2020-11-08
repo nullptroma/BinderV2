@@ -44,39 +44,16 @@ namespace InterpreterScripts.SyntacticConstructions
             };
         }
 
-        public static bool IsValidConstruction(CommandModel command, InterpretationData data)
+        public static bool TryExecute(CommandModel command, InterpretationData data, out Task<object> result)
         {
             foreach (var sc in syntacticConstructs)
             {
-                if (sc.IsValidConstruction(command, data))
+                result = sc.TryExecute(command, data);
+                if (result != null)
                     return true;
             }
+            result = null;
             return false;
         }
-
-        public static bool IsValidConstruction(CommandModel command, InterpretationData data, out ISyntacticConstruction construction)
-        {
-            foreach (var sc in syntacticConstructs)
-            {
-                if (sc.IsValidConstruction(command, data))
-                {
-                    construction = sc;
-                    return true;
-                }
-            }
-
-            construction = null;
-            return false;
-        }
-
-        public static Task<object> ExecuteConstruction(CommandModel command, InterpretationData data)
-        {
-            ISyntacticConstruction construction;
-            if (!IsValidConstruction(command, data, out construction))
-                throw new NotFoundScriptConstructException(command.Command);
-            return construction.Execute(command, data);//вызываем подходяющую конструкцию
-        }
-
-        
     }
 }

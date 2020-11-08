@@ -1,8 +1,4 @@
 ﻿using InterpreterScripts;
-using InterpreterScripts.InterpretationScriptData.StandartFunctions;
-using InterpreterScripts.Script;
-using InterpreterScripts.ScriptCommand;
-using InterpreterScripts.SyntacticConstructions.Constructions;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -30,11 +26,17 @@ namespace BinderV2
             Task.Run(()=> 
             {
                 Stopwatch sw = new Stopwatch();
-                string script = File.ReadAllText(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"\Новый текстовый документ.txt");
+                int count = 0;
+                var data = new InterpretationData();
                 sw.Start();
-                Interpreter.ExecuteScript(script);
+                while (sw.ElapsedMilliseconds <= 1000)
+                {
+                    Interpreter.ExecuteScript("0<1000000;", data);
+                    count++;
+                }
+                
                 sw.Stop();
-                MessageBox.Show("Время в мс: " + sw.ElapsedMilliseconds, "Тест пройден ");
+                MessageBox.Show("Время в мс: " + sw.ElapsedMilliseconds, "Тест пройден " + count);
             });
         }
 

@@ -26,6 +26,9 @@
         <TabItem Header="String">
             <TextBox Text="{Binding StringFuncsHelp, Mode=OneWay}"/>
         </TabItem>
+        <TabItem Header="Dynamic">
+            <TextBox Text="{Binding DynamicFuncsHelp, Mode=OneWay}"/>
+        </TabItem>
         <TabItem Header="Other">
             <TextBox Text="{Binding OtherFuncsHelp, Mode=OneWay}"/>
         </TabItem>

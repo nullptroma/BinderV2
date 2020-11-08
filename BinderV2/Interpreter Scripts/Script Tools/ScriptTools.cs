@@ -33,62 +33,6 @@ namespace InterpreterScripts.Script
             return commands.Where(c => c.Trim() != "").ToArray();
         }
 
-        public static string ReplaceParams(string script, Dictionary<string, string> pars)//заменяет параметры всех функций в скрипте 
-        {
-            StringBuilder answer = new StringBuilder();
-            int countMarks = 0;
-            bool previousIsNotLetterOrDigit = true;
-            for (int i = 0; i < script.Length; i++)
-            {
-                if (script[i] == '\"')
-                    countMarks++;
-                if (countMarks % 2 != 0)
-                {
-                    answer.Append(script[i]);
-                    continue;
-                }
-
-                if (!previousIsNotLetterOrDigit)
-                    answer.Append(script[i]);
-                else
-                {
-                    bool changed = false;
-                    foreach (KeyValuePair<string, string> param in pars)
-                    {
-                        try
-                        {
-                            if (StartWith(script, i, param.Key) && IsNotLetterOrDigit(script[i + param.Key.Length]))
-                            {
-                                answer.Append(param.Value);
-                                i += param.Key.Length;
-                                changed = true;
-                                answer.Append(script[i]);
-                                break;
-                            }
-                        }
-                        catch { }
-                    }
-                    if(!changed)
-                        answer.Append(script[i]);
-                }
-                previousIsNotLetterOrDigit = IsNotLetterOrDigit(script[i]);
-            }
-            return answer.ToString();
-        }
-
-        private static bool IsNotLetterOrDigit(char ch)
-        {
-            return !char.IsLetterOrDigit(ch);
-        }
-
-        private static bool StartWith(string source, int startIndex, string toFind)
-        {
-            for (int i = 0; i < toFind.Length; i++)
-                if (source[i + startIndex] != toFind[i])
-                    return false;
-            return true;
-        }
-
         public static string[] GetParameters(string str)//получить массив параметров из строки вида "x, y, abc" без кавычек
         {
             int countBrackets = 0;//счётчик скобок

@@ -14,14 +14,20 @@ namespace InterpreterScripts.SyntacticConstructions.Constructions
 {
     class MathOperators : ISyntacticConstruction
     {
-        public string Description { get { return "*, /, -, + - стандартные математические операторы"  + Environment.NewLine + "%, ^ - остатот от деления, возведение в степень" + Environment.NewLine + "||, &&, ! - логические или, и, не" + Environment.NewLine + "==, !=, <, <=, >=, > - операторы сравнения."; } }
+        public string Description { get { return "*, /, -, + - стандартные математические операторы" + Environment.NewLine + "%, ^ - остатот от деления, возведение в степень" + Environment.NewLine + "||, &&, ! - логические или, и, не" + Environment.NewLine + "==, !=, <, <=, >=, > - операторы сравнения."; } }
 
-        public Task<object> Execute(CommandModel cmd, InterpretationData data)
+        public Task<object> TryExecute(CommandModel cmd, InterpretationData data)
+        {
+            var generalOperator = GetGeneralOperator(cmd.Command);
+            if (generalOperator.PriorityLevel < 7)
+                return Execute(cmd, data, generalOperator);
+            return null;
+        }
+        private Task<object> Execute(CommandModel cmd, InterpretationData data, Operator generalOperator)
         {
             return Task.Run(new Func<object>(() =>
             {
                 string expression = cmd.Command;
-                Operator generalOperator = GetGeneralOperator(expression);
                 object leftValue = Interpreter.ExecuteCommand(generalOperator.StringLeft, data);
                 object rightValue = Interpreter.ExecuteCommand(generalOperator.StringRight, data);
                 switch (generalOperator.StringOperator)
@@ -54,7 +60,7 @@ namespace InterpreterScripts.SyntacticConstructions.Constructions
                     case "||":
                         return (bool)rightValue || (bool)leftValue;
                     case "&&":
-                        
+
                         return (bool)rightValue && (bool)leftValue;
                     case "!":
                         return !((bool)rightValue);
@@ -65,19 +71,13 @@ namespace InterpreterScripts.SyntacticConstructions.Constructions
         }
 
 
-        public bool IsValidConstruction(CommandModel cmd, InterpretationData data)
-        {
-            string expression = cmd.Command;
-            return GetGeneralOperator(expression).PriorityLevel < 7;
-        }
-
         private Operator GetGeneralOperator(string expression)
         {
             int countBrackets = 0;//текущий уровень скобки
             int countMarks = 0;//текущий уровень скобки
             Operator resultOperator = new Operator();
             int operatorIndex = -1;
-            for (int i = expression.Length-1; i >= 0; i--)
+            for (int i = expression.Length - 1; i >= 0; i--)
             {
                 if (expression[i] == '(')
                     countBrackets--;
@@ -86,18 +86,18 @@ namespace InterpreterScripts.SyntacticConstructions.Constructions
                 else if (expression[i] == '\"')
                     countMarks++;
 
-                if (countBrackets == 0 && countMarks%2==0)//если мы не в скобках и не в кавычках
+                if (countBrackets == 0 && countMarks % 2 == 0)//если мы не в скобках и не в кавычках
                 {
-                    if (i>0)
+                    if (i > 0)
                     {
-                        if (resultOperator.ChangeToLessPriorityOperator(expression[i-1].ToString() + expression[i].ToString()))
+                        if (resultOperator.ChangeToLessPriorityOperator(expression[i - 1].ToString() + expression[i].ToString()))
                         {
                             i--;
                             operatorIndex = i;
                             continue;
                         }
                     }
-                    if(resultOperator.ChangeToLessPriorityOperator(expression[i].ToString()))
+                    if (resultOperator.ChangeToLessPriorityOperator(expression[i].ToString()))
                         operatorIndex = i;
                 }
             }
@@ -109,6 +109,6 @@ namespace InterpreterScripts.SyntacticConstructions.Constructions
             return resultOperator;
         }
 
-        
+
     }
 }

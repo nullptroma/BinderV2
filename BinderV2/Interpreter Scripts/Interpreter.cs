@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using InterpreterScripts.InterpretationScriptData;
-using InterpreterScripts.InterpretationScriptData.StandartFunctions;
+using InterpreterScripts.InterpretationFunctions.Standart;
 using InterpreterScripts.ScriptCommand;
 using InterpreterScripts.Script;
 using InterpreterScripts.SyntacticConstructions;
@@ -14,31 +14,25 @@ using System.ComponentModel;
 using InterpreterScripts.TypeConverter;
 using System.Runtime.CompilerServices;
 using Utilities;
-using InterpreterScripts.InterpretationScriptData.CustomFunctions;
 using System.Diagnostics;
+using InterpreterScripts.InterpretationFunctions;
 using System.Linq;
 using InterpreterScripts.SyntacticConstructions.Constructions.Exceptions;
-using InterpreterScripts.FuncAttributes;
+
 
 namespace InterpreterScripts
 {
     public static class Interpreter
     {
-        private static Function[] MainLibrary = FuncsLibManager.GetLibrary();
-        private static HashSet<Function> AdditionalLibrary = new HashSet<Function>();
-        private static IEnumerable<Function> FullLibrary;
+        private static IInterpreterFunction[] MainLibrary = FuncsLibManager.GetLibrary();
+        private static HashSet<IInterpreterFunction> AdditionalLibrary = new HashSet<IInterpreterFunction>();
         private static Action StopInterpretations;
-
-        private static void UpdateFullLibrary()
-        {
-            FullLibrary = MainLibrary.Concat(AdditionalLibrary);
-        }
 
         public static void ExecuteScript(string script)
         {
             ExecuteScript(script, new InterpretationData());
         }
-        public static void ExecuteScript(string script, Function[] additionalFunctions)
+        public static void ExecuteScript(string script, IInterpreterFunction[] additionalFunctions)
         {
             var data = new InterpretationData();
             data.InterpretationFuncs.AddRange(additionalFunctions);
@@ -77,20 +71,22 @@ namespace InterpreterScripts
 
             if (Converter.CanConvertToSimpleType(cmd.Command))//берём простой тип
                 commandTask = Converter.ToSimpleType(cmd.Command);
-            else if (SyntacticConstructionsManager.IsValidConstruction(cmd, data))//ищем конструкции
-                commandTask = SyntacticConstructionsManager.ExecuteConstruction(cmd, data);
-            else 
+            if (commandTask == null)
+                SyntacticConstructionsManager.TryExecute(cmd, data, out commandTask);
+            if(commandTask == null)
             {
                 //ищем функцию по имени во всей библиотеке, начинаем с функций этой интерпретации
                 IInterpreterFunction func = data.InterpretationFuncs.FirstOrDefault(Func => Func.Name == cmd.KeyWord);
                 if (func == null)
-                    func = FullLibrary.FirstOrDefault(Func => Func.Name == cmd.KeyWord);
+                    func = AdditionalLibrary.FirstOrDefault(Func => Func.Name == cmd.KeyWord);
+                if (func == null)
+                    func = MainLibrary.FirstOrDefault(Func => Func.Name == cmd.KeyWord);
                 if (func != null)
                     commandTask = func.GetResult(cmd.GetParameters(), data);
             }
-            
 
-            if(commandTask == null)//если ничего не удалось, возвращаем входную команду, как строку
+
+            if (commandTask == null)//если ничего не удалось, возвращаем входную команду, как строку
                 commandTask = Task.FromResult<object>(cmdString);
 
             if (commandTask.Status == TaskStatus.Created)//если задача создана, но не запущена
@@ -104,23 +100,34 @@ namespace InterpreterScripts
             }
         }
 
-        public static void AddToLibrary(Function f)
-        {
-            AdditionalLibrary.Add(f);
-            UpdateFullLibrary();
-        }
-
-        public static bool RemoveFromLibrary(Function f)
-        {
-            bool result = AdditionalLibrary.Remove(f);
-            UpdateFullLibrary();
-            return result;
-        }
 
         static Interpreter()
         {
+            AddFuncToLib();
+        }
+
+        #region lib
+        static void AddFuncToLib()
+        {
             AddToLibrary(new Function(new Func<object[], object>(StopAllScripts), FuncType.Other));
-            UpdateFullLibrary();
+            AddToLibrary(new GetInterpretationInfo("GetInterpretationInfo"));
+            AddToLibrary(new UserFunc("MyUserFunc", new string[] { "text"}, "MsgBox(text);"));
+        }
+
+        public static void AddToLibrary(IInterpreterFunction f)
+        {
+            //если функция с таким именем есть - заменяем
+            var oldFunc = AdditionalLibrary.Find(curF=>curF.Name == f.Name);
+            if (oldFunc != null)
+                AdditionalLibrary.Remove(oldFunc);
+
+            AdditionalLibrary.Add(f);
+        }
+
+        public static bool RemoveFromLibrary(IInterpreterFunction f)
+        {
+            bool result = AdditionalLibrary.Remove(f);
+            return result;
         }
 
         [Description("StopAllScripts() - немедленно останавливает выполнение всех скриптов.")]
@@ -130,10 +137,11 @@ namespace InterpreterScripts
             StopInterpretations?.Invoke();
             return ps;
         }
+        #endregion
 
-        public static Function[] GetFullLibrary()
+        public static IInterpreterFunction[] GetFullLibrary()
         {
-            return Enumerable.Concat(MainLibrary, AdditionalLibrary).ToArray();
+            return MainLibrary.Concat(AdditionalLibrary).ToArray();
         }
     }
 }

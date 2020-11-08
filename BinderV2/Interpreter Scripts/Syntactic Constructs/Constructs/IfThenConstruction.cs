@@ -15,7 +15,14 @@ namespace InterpreterScripts.SyntacticConstructions.Constructions
     {
         public string Description { get { return "if(<условие1>)\n{\n  <скрипт1>\n}\nelse if(<условие2>)\n{\n  <скрипт1>\n}\nelse\n{\n  <скрипт3>\n} - конструкция if-else. Может иметь любую конфигурацию. После последнего блока кода нужно ставить ;."; } }
 
-        public Task<object> Execute(CommandModel cmd, InterpretationData data)
+        public Task<object> TryExecute(CommandModel cmd, InterpretationData data)
+        {
+            if (IsValidConstruction(cmd, data))
+                return Execute(cmd, data);
+            return null;
+        }
+
+        private Task<object> Execute(CommandModel cmd, InterpretationData data)
         {
             return Task.Run(new Func<object>(()=> {
                 List<ConditionAction> conditions = GetConditionsAndActions(cmd);
@@ -96,7 +103,7 @@ namespace InterpreterScripts.SyntacticConstructions.Constructions
             return s.Length >= 1 ? s.Remove(s.Length - 1, 1) : s;
         }
 
-        public bool IsValidConstruction(CommandModel cmd, InterpretationData data)
+        private bool IsValidConstruction(CommandModel cmd, InterpretationData data)
         {
             return cmd.KeyWord == "if" && cmd.GetParameters().Length == 1;
         }

@@ -1,7 +1,6 @@
 ﻿using InterpreterScripts.InterpretationScriptData;
-using InterpreterScripts.InterpretationScriptData.CustomFunctions;
 using InterpreterScripts.ScriptCommand;
-using InterpreterScripts.InterpretationScriptData.StandartFunctions;
+using InterpreterScripts.InterpretationFunctions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using InterpreterScripts.Exceptions;
 using System.ComponentModel;
-using InterpreterScripts.FuncAttributes;
+using InterpreterScripts.InterpretationFunctions.Standart;
 
 namespace InterpreterScripts.SyntacticConstructions.Constructions
 {
@@ -18,7 +17,14 @@ namespace InterpreterScripts.SyntacticConstructions.Constructions
     {
         public string Description { get { return "func Name(par1, par2...)\n{\n  <скрипт>\n} - объявляет функцию с именем Name, параметрами в скобках. Параметры можно использовать в теле функции."; } }
 
-        public Task<object> Execute(CommandModel cmd, InterpretationData data)
+        public Task<object> TryExecute(CommandModel cmd, InterpretationData data)
+        {
+            if (IsValidConstruction(cmd, data))
+                return Execute(cmd, data);
+            return null;
+        }
+
+        private Task<object> Execute(CommandModel cmd, InterpretationData data)
         {
             return Task.Factory.StartNew(new Func<object>(() =>
             {
@@ -34,7 +40,7 @@ namespace InterpreterScripts.SyntacticConstructions.Constructions
             }), TaskCreationOptions.AttachedToParent);
         }
 
-        public bool IsValidConstruction(CommandModel cmd, InterpretationData data)
+        private bool IsValidConstruction(CommandModel cmd, InterpretationData data)
         {
             return cmd.Command.StartsWith("func");
         }

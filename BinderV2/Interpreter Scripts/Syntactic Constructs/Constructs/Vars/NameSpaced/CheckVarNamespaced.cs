@@ -12,9 +12,16 @@ namespace InterpreterScripts.SyntacticConstructions.Constructions
 {
     class CheckVarNamespaced : ISyntacticConstruction
     {
-        public string Description { get { return "CheckVar(namespace, name) - проверить, существует ли переменная name в пространстве имён namespace."; } }
+        public string Description { get { return "CheckVar(Name) - проверяет наличие переменной Name в пределах данного скрипта."; } }
 
-        public Task<object> Execute(CommandModel cmd, InterpretationData data)
+        public Task<object> TryExecute(CommandModel cmd, InterpretationData data)
+        {
+            if (cmd.KeyWord == "CheckVar" && cmd.GetParameters().Length == 2)
+                return Execute(cmd, data);
+            return null;
+        }
+
+        private Task<object> Execute(CommandModel cmd, InterpretationData data)
         {
             return Task.Run(new Func<object>(() =>
             {
@@ -28,11 +35,6 @@ namespace InterpreterScripts.SyntacticConstructions.Constructions
                     }
                 return false;
             }));
-        }
-        
-        public bool IsValidConstruction(CommandModel cmd, InterpretationData data)
-        {
-            return cmd.KeyWord == "CheckVar" && cmd.GetParameters().Length == 2;
         }
     }
 }

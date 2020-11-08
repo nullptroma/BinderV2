@@ -1,5 +1,5 @@
 ﻿using InterpreterScripts;
-using InterpreterScripts.InterpretationScriptData.StandartFunctions;
+using InterpreterScripts.InterpretationFunctions;
 using InterpreterScripts.SyntacticConstructions;
 using System;
 using System.Collections.Generic;
@@ -22,6 +22,7 @@ namespace BinderV2.MVVM.Models
         public HelpProperty IntFuncsHelp { get; private set; }
         public HelpProperty StringFuncsHelp { get; private set; }
         public HelpProperty OtherFuncsHelp { get; private set; }
+        public HelpProperty DynamicFuncsHelp { get; private set; }
         public HelpProperty FuncsHelpByGroups 
         {
             get
@@ -49,12 +50,13 @@ namespace BinderV2.MVVM.Models
 
         private void SetHelpTexts()
         {
+            DynamicFuncsHelp = GetFuncTypeHelp(FuncType.Dynamic);
             ParametersFuncsHelp = GetFuncTypeHelp(FuncType.Parameters);
             BoolFuncsHelp = GetFuncTypeHelp(FuncType.Boolean);
             DoubleFuncsHelp = GetFuncTypeHelp(FuncType.Double);
             IntFuncsHelp = GetFuncTypeHelp(FuncType.Int);
             StringFuncsHelp = GetFuncTypeHelp(FuncType.String);
-            foreach (Function f in Interpreter.GetFullLibrary())
+            foreach (IInterpreterFunction f in Interpreter.GetFullLibrary())
                 AddToGroups(f);
             OtherFuncsHelp = GetOtherFuncsHelp();
             ConstructionsHelp = GetConstructionsHelp();
@@ -64,7 +66,7 @@ namespace BinderV2.MVVM.Models
         private HelpProperty GetFuncTypeHelp(FuncType type)
         {
             HelpProperty answer = new HelpProperty(_prefix:"{count}");
-            foreach (Function f in Interpreter.GetFullLibrary().Where(func => func.ReturnType == type))
+            foreach (IInterpreterFunction f in Interpreter.GetFullLibrary().Where(func => func.ReturnType == type))
                 answer.Add(f.Description);
 
             return answer;
@@ -92,7 +94,7 @@ namespace BinderV2.MVVM.Models
             return answer;
         }
 
-        private void AddToGroups(Function f)
+        private void AddToGroups(IInterpreterFunction f)
         {
             AddToGroups(f.GroupName, f.Description);
         }
