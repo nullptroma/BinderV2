@@ -66,6 +66,15 @@ namespace InterpreterScripts.InterpretationFunctions.Standart.Library
             }
             return false;
         }
+        
+        [Description("IsBool(var parameter) - является parameter типом Boolean.")]
+        public static object IsBool(params object[] ps)
+        {
+            if (ps.Length != 1)
+                return false;
+
+            return ps[0] is bool;
+        }
 
         
     }

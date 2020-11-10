@@ -36,7 +36,7 @@ namespace InterpreterScripts.SyntacticConstructions.Constructions
                 sw.Start();
                 while (sw.ElapsedMilliseconds < milliseconds)
                 {
-                    if (data.IsStopped)
+                    if (data.Stopper.IsStopped)
                         throw new StopException();
                     if (milliseconds - sw.ElapsedMilliseconds > 1100)
                         Thread.Sleep(1000);

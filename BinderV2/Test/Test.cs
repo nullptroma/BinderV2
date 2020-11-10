@@ -26,17 +26,13 @@ namespace BinderV2
             Task.Run(()=> 
             {
                 Stopwatch sw = new Stopwatch();
-                int count = 0;
                 var data = new InterpretationData();
-                sw.Start();
-                while (sw.ElapsedMilliseconds <= 1000)
-                {
-                    Interpreter.ExecuteScript("0<1000000;", data);
-                    count++;
-                }
                 
+                sw.Start();
+                Interpreter.ExecuteScript("count = 0;\n while(count < 1000000){count = count + 1;};", data);
+
                 sw.Stop();
-                MessageBox.Show("Время в мс: " + sw.ElapsedMilliseconds, "Тест пройден " + count);
+                MessageBox.Show("Время в мс: " + sw.ElapsedMilliseconds, "Кол-во " + data.Vars["count"]);
             });
         }
 

@@ -12,6 +12,8 @@ using InterpreterScripts.InterpretationFunctions.Standart;
 using System.Reflection;
 using System.Windows;
 using System.Threading.Tasks;
+using InterpreterScripts.InterpretationScriptData;
+using InterpreterScripts.InterpretationScriptData.Stopper;
 
 namespace BinderV2.MVVM.Models
 {
@@ -29,11 +31,11 @@ namespace BinderV2.MVVM.Models
                 enable = value;
                 EnableChanged?.Invoke(this, new EnableBindChangedEventArgs(enable));
                 if (!enable)
-                    StopInterpretation?.Invoke();
+                    stopSender.Stop();
             }
         }
         public ObservableCollection<BaseTrigger> Triggers { get; private set; }
-        private Action StopInterpretation;
+        private StopSender stopSender = new StopSender();
         
 
         public Bind()
@@ -62,30 +64,30 @@ namespace BinderV2.MVVM.Models
         {
             if (!Enable)//если выключено - выходим
                 return;
-            StopInterpretation += e.triggerData.Stop;
+            e.triggerData.Stopper.RegisterStopper(stopSender);
             
             e.triggerData.InterpretationFuncs.Add(new Function(new Func<object[], object>((ps)=> {
                 Interpreter.ExecuteScript(Script, e.triggerData);
                 return ps;
             }), FuncType.Parameters, "StartBind"));
             e.triggerData.InterpretationFuncs.Add(new Function(new Func<object[], object>((ps) => {
-                e.triggerData.Stop();
+                e.triggerData.Stopper.IsStopped = true;
                 return ps;
             }), FuncType.Parameters, "Stop"));
             e.triggerData.InterpretationFuncs.Add(new Function(new Func<object[], object>((ps) => {
-                StopInterpretation();
+                stopSender.Stop();
                 return ps;
             }), FuncType.Parameters, "StopThisBind"));
             e.triggerData.InterpretationFuncs.Add(new Function(new Func<object[], object>((ps) => {
-                StopInterpretation -= e.triggerData.Stop;
-                StopInterpretation?.Invoke();
-                StopInterpretation += e.triggerData.Stop;
+                e.triggerData.Stopper.UnRegisterStopper(stopSender);
+                stopSender.Stop();
+                e.triggerData.Stopper.RegisterStopper(stopSender);
                 return ps;
             }), FuncType.Parameters, "StopAnotherRunsOfThisBind"));
 
             Interpreter.ExecuteScript(e.TriggerScript, e.triggerData);
 
-            StopInterpretation -= e.triggerData.Stop;
+            e.triggerData.Stopper.UnRegisterStopper(stopSender);
         }
         
 

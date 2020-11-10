@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using InterpreterScripts.InterpretationScriptData;
+using InterpreterScripts.InterpretationScriptData.Stopper;
 using InterpreterScripts.InterpretationFunctions.Standart;
 using InterpreterScripts.ScriptCommand;
 using InterpreterScripts.Script;
@@ -26,7 +27,7 @@ namespace InterpreterScripts
     {
         private static IInterpreterFunction[] MainLibrary = FuncsLibManager.GetLibrary();
         private static HashSet<IInterpreterFunction> AdditionalLibrary = new HashSet<IInterpreterFunction>();
-        private static Action StopInterpretations;
+        private static StopSender stopSender = new StopSender();
 
         public static void ExecuteScript(string script)
         {
@@ -42,16 +43,19 @@ namespace InterpreterScripts
         {
             try
             {
-                StopInterpretations += data.Stop;
+                data.Stopper.RegisterStopper(stopSender);
                 string[] commands = ScriptTools.GetCommands(script);
                 foreach (var cmd in commands)
                     ExecuteCommand(cmd, data);
             }
             catch (Exception e) when (!(e is ReturnException) && !(e is BreakException))
             {
-                if(!data.IsStopped)
+                if(!data.Stopper.IsStopped)
                     MessageBox.Show(e.ToString(), "Ошибка");
-                StopInterpretations -= data.Stop;
+            }
+            finally
+            {
+                data.Stopper.UnRegisterStopper(stopSender);
             }
         }
 
@@ -63,7 +67,7 @@ namespace InterpreterScripts
 
         public static object ExecuteCommand(string cmdString, InterpretationData data)
         {
-            if (data.IsStopped)
+            if (data.Stopper.IsStopped)
                 throw new StopException();
 
             CommandModel cmd = new CommandModel(cmdString.Trim());
@@ -134,7 +138,7 @@ namespace InterpreterScripts
         [FuncGroup("ScriptRuntimeControl")]
         public static object StopAllScripts(params object[] ps)
         {
-            StopInterpretations?.Invoke();
+            stopSender.Stop();
             return ps;
         }
         #endregion
