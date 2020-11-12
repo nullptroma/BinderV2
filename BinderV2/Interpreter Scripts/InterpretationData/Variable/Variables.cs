@@ -32,5 +32,10 @@ namespace InterpreterScripts.InterpretationScriptData.Vars
         {
             return vars.Keys.ToArray();
         }
+
+        public bool RemoveVar(string name)
+        {
+            return vars.Remove(name);
+        }
     }
 }

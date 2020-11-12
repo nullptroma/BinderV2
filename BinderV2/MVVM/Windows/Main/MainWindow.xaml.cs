@@ -80,11 +80,6 @@ namespace BinderV2.MVVM.Views
             ProgramSettings.RuntimeSettings.MainWindowSize = new Size(Width, Height);
         }
 
-        private void MenuItem_Click(object sender, RoutedEventArgs e)
-        {
-            Test.RunTest();
-        }
-
         private void ItemsControl_Loaded(object sender, RoutedEventArgs e)
         {
             BindsScrollViewer.Tag = true;

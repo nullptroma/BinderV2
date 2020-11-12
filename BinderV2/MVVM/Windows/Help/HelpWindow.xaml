@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="Помощь по функциям" Height="450" Width="800" SizeChanged="Window_SizeChanged" Style="{DynamicResource CurstomWindowStyle}" MinWidth="100" MinHeight="100" >
+        Title="Помощь по функциям" Height="450" Width="800" SizeChanged="Window_SizeChanged" Style="{DynamicResource CurstomWindowStyle}" MinWidth="100" MinHeight="100" Icon="/BinderV2;component/WPF Resources/Images/Icons/Help.png" >
 
     <Window.Resources>
         <Style TargetType="TextBox" BasedOn="{StaticResource UnselectedTextBox}" />

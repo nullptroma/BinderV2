@@ -114,8 +114,8 @@ namespace InterpreterScripts
         static void AddFuncToLib()
         {
             AddToLibrary(new Function(new Func<object[], object>(StopAllScripts), FuncType.Other));
-            AddToLibrary(new GetInterpretationInfo("GetInterpretationInfo"));
-            AddToLibrary(new UserFunc("MyUserFunc", new string[] { "text"}, "MsgBox(text);"));
+            AddToLibrary(new GetInterpretationInfo());
+            AddToLibrary(new RemoveVar());
         }
 
         public static void AddToLibrary(IInterpreterFunction f)

@@ -19,7 +19,7 @@ namespace InterpreterScripts.SyntacticConstructions.Constructions
 
         public Task<object> TryExecute(CommandModel cmd, InterpretationData data)
         {
-            var colonIndex = Script.ScriptTools.GetCharIndexOutsideBrackets(cmd.Command, ':');
+            var colonIndex = Script.ScriptTools.GetCharIndexOutsideBrackets(cmd.Command, ':');//глобально
             if (colonIndex != -1)
             {
                 string newDataName = cmd.Command.Substring(0,colonIndex);
@@ -29,6 +29,18 @@ namespace InterpreterScripts.SyntacticConstructions.Constructions
                 if (!Vault.InterpretationDatas.ContainsKey(newDataName))
                     Vault.InterpretationDatas.Add(newDataName, new InterpretationData());
                 return Task.Run(()=> Interpreter.ExecuteCommand(cmd.Command.Substring(colonIndex + 1), Vault.InterpretationDatas[newDataName]));
+            }
+
+            colonIndex = Script.ScriptTools.GetCharIndexOutsideBrackets(cmd.Command, '.');//локально
+            if (colonIndex != -1)
+            {
+                string newDataName = cmd.Command.Substring(0, colonIndex);
+                if (!IsValidName(newDataName))
+                    return null;
+
+                if (!data.Vars.HasVar(newDataName) || !(data.Vars[newDataName] is InterpretationData))
+                    data.Vars[newDataName] = new InterpretationData();
+                return Task.Run(() => Interpreter.ExecuteCommand(cmd.Command.Substring(colonIndex + 1), (InterpretationData)data.Vars[newDataName]));
             }
             return null;
         }

@@ -10,7 +10,7 @@ namespace InterpreterScripts.InterpretationFunctions
 {
     class GetInterpretationInfo : IInterpreterFunction
     {
-        public string Name { get; private set; }
+        public string Name { get { return "GetInterpretationInfo"; } }
         public string Description { get { return "GetInterpretationInfo() - возвращает информацию о текущей интерпретации."; } }
         public string GroupName { get { return "ScriptRuntimeControl"; } }
         public FuncType ReturnType { get { return FuncType.String; } }
@@ -22,11 +22,6 @@ namespace InterpreterScripts.InterpretationFunctions
             {
                 return data.ToString();
             }));
-        }
-
-        public GetInterpretationInfo(string name)
-        {
-            Name = name;
         }
     }
 }

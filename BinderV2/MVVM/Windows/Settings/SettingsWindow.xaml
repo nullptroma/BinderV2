@@ -8,7 +8,7 @@
         x:Class="BinderV2.MVVM.Views.SettingsWindow"
         mc:Ignorable="d"
         Style="{DynamicResource CurstomWindowStyle}"
-        Title="Настройки"  Icon="/BinderV2;component/WPF Resources/Images/Icons/Select.png" Height="513" Width="300">
+        Title="Настройки"  Icon="/BinderV2;component/WPF Resources/Images/Icons/Settings.png" Height="513" Width="300" MinHeight="513" MinWidth="300">
     
     <Grid x:Name="GridWindow">
         <Grid.RowDefinitions>

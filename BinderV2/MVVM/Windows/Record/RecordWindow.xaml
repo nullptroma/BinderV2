@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
         mc:Ignorable="d"
-        Title="Запись" Height="450" Width="800" Style="{DynamicResource CurstomWindowStyle}" MinWidth="100" MinHeight="100">
+        Title="Запись" Height="450" Width="800" Style="{DynamicResource CurstomWindowStyle}" MinWidth="100" MinHeight="100" Icon="/BinderV2;component/WPF Resources/Images/Icons/Record.png">
     
     <Window.Resources>
         <Style TargetType="TextBox" BasedOn="{StaticResource UnselectedTextBox}" >

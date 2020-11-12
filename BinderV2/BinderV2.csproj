@@ -109,6 +109,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Interpreter Scripts\InterpretationData\Stopper\StopReceiver.cs" />
+    <Compile Include="Interpreter Scripts\InterpretationFunctions\RemoveVar.cs" />
     <Compile Include="Interpreter Scripts\InterpretationFunctions\Standart Funcs\Funcs library\Library\AHKScripts.cs" />
     <Compile Include="Interpreter Scripts\InterpretationFunctions\GetInterpretationInfo.cs" />
     <Compile Include="Interpreter Scripts\InterpretationFunctions\IInterpreterFunction.cs" />
@@ -186,7 +187,6 @@
     <Compile Include="Hooks\Keyboard\KeyEventCustom.cs" />
     <Compile Include="Hooks\MouseHook.cs" />
     <Compile Include="Settings\Settings.cs" />
-    <Compile Include="Test\Test.cs" />
     <Compile Include="MVVM\Triggers\TriggersModel\Exeptions.cs" />
     <Compile Include="MVVM\Triggers\TriggersModel\Types\Triggers\Keys\KeysDownTrigger.cs" />
     <Compile Include="MVVM\RelayCommand.cs" />
@@ -400,6 +400,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="BinderIcon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="WPF Resources\Images\Icons\Help.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="WPF Resources\Images\Icons\Record.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
