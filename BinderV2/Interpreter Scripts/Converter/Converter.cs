@@ -40,7 +40,8 @@ namespace InterpreterScripts.TypeConverter
 
         private static object DoubleConverter(string value)
         {
-            if (double.TryParse(value, System.Globalization.NumberStyles.Any, CultureInfo.InvariantCulture, out double result)) return result;
+            if (double.TryParse(value, System.Globalization.NumberStyles.Any, CultureInfo.InvariantCulture, out double result)) 
+                return result;
             return null;
         }
 

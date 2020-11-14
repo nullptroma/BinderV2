@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using InterpreterScripts.InterpretationFunctions.Standart;
 using System.ComponentModel;
 using System.Windows.Input;
+using System.Drawing;
 
 namespace InterpreterScripts.InterpretationFunctions.Standart.Library
 {
@@ -239,6 +240,24 @@ namespace InterpreterScripts.InterpretationFunctions.Standart.Library
                 thread.Join();
             }
             catch (IndexOutOfRangeException) { MessageBox.Show("В SetClipboardText не передан текст."); }
+            catch (Exception e) { MessageBox.Show(e.Message); }
+            return ps;
+        }
+        
+        
+        [FuncGroup("Files")]
+        [Description("SaveScreenshot(string path) - сохраняет скришнот в путь path.")]
+        public static object[] SaveScreenshot(params object[] ps)
+        {
+            try
+            {
+                string path = ps[0].ToString();
+                Bitmap printscreen = new Bitmap(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height);
+                Graphics graphics = Graphics.FromImage(printscreen as Image);
+                graphics.CopyFromScreen(0, 0, 0, 0, printscreen.Size);
+                printscreen.Save(path, System.Drawing.Imaging.ImageFormat.Jpeg);
+            }
+            catch (IndexOutOfRangeException) { MessageBox.Show("В SaveScreenshot не передан путь."); }
             catch (Exception e) { MessageBox.Show(e.Message); }
             return ps;
         }
