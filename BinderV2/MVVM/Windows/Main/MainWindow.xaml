@@ -45,6 +45,7 @@
                 <MenuItem Header="Настройки" Command="{Binding OpenSettingsWindowCommand}" BorderThickness="1,0,1,0" Height="20"/>
                 <MenuItem Header="Помощь" Command="{Binding OpenHelpWindowCommand}" BorderThickness="1,0,1,0"/>
                 <MenuItem Header="Запись" BorderThickness="1,0,2,0" Command="{Binding OpenRecordWindowCommand}"/>
+                <MenuItem Header="Хранилище" BorderThickness="1,0,2,0" Command="{Binding OpenEditDefaultGlobalScriptWindow}"/>
             </Menu>
         </Border>
         <Border Grid.Column="0" Grid.Row="1" Grid.RowSpan="2" BorderThickness="2,2,0,2" Margin="2,2,4,2">
@@ -52,7 +53,7 @@
                 <Border DockPanel.Dock="Top" BorderThickness="0,0,0,2" Margin="-2,0" >
                     <DockPanel  Height="24" LastChildFill="False">
                         <Button Height="20" Width="20" DockPanel.Dock="Left" Margin="3,0,0,0" Command="{Binding CreateBindCommand}" RenderTransformOrigin="0.5,0.5">
-                            <Image Source="/BinderV2;component/WPF Resources/Images/Plus.png"></Image>
+                            <Image Source="/BinderV2;component/WPF Resources/Images/Plus.png" Margin="-3"/>
                         </Button>
                     </DockPanel>
                 </Border>

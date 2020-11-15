@@ -199,6 +199,19 @@ namespace BinderV2.MVVM.ViewModels
                   }));
             }
         }
+        private RelayCommand editDefaultGlobalScript;
+        public RelayCommand OpenEditDefaultGlobalScriptWindow
+        {
+            get
+            {
+                return editDefaultGlobalScript ??
+                  (editDefaultGlobalScript = new RelayCommand(obj =>
+                  {
+                      wm.OpenEditDefaultGlobalScriptWindow();
+                  }));
+            }
+        }
+
         #endregion
 
         public MainViewModel()
@@ -218,6 +231,7 @@ namespace BinderV2.MVVM.ViewModels
                   }));
             }
         }
+
 
         public override event PropertyChangedEventHandler PropertyChanged;
         public override void OnPropertyChanged(string prop)

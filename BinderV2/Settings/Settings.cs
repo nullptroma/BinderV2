@@ -1,5 +1,6 @@
 ﻿using System;
 using BinderV2.Settings.Visuals;
+using BinderV2.Settings.Interpreter;
 using Utilities;
 using Newtonsoft.Json;
 using System.IO;
@@ -13,13 +14,14 @@ namespace BinderV2.Settings
         public static readonly string SaveSettingsDirectory = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\BinderV2";
         public static ProgramSettings RuntimeSettings { get; private set; }
 
-        public VisualsSettings VisualSettings { get; private set; }
+        public VisualsSettings VisualSettings { get; private set; } = new VisualsSettings();
+        public InterpreterSettings InterpreterSettings { get; private set; } = new InterpreterSettings();
         private bool startWithWindows = false;
         public bool HideOnStart { get; set; }
         public bool AutoLoadBinds { get; set; }
         public string AutoLoadBindsPath { get; set; }
         public bool SaveMainWindowSize { get; set; }
-        public bool CloseEqualsHide { get; set; }
+        public bool CloseEqualsHide { get; set; } = true;
         public Size MainWindowSize { get; set; }
         public bool StartWithWindows
         {
@@ -36,7 +38,7 @@ namespace BinderV2.Settings
 
         private ProgramSettings()
         {
-            VisualSettings = new VisualsSettings();
+             
         }
 
 
@@ -69,7 +71,6 @@ namespace BinderV2.Settings
         public static void Reset()
         {
             RuntimeSettings = new ProgramSettings();
-            RuntimeSettings.CloseEqualsHide = true;
             VisualsSettings.ApplyVisuals(RuntimeSettings.VisualSettings);
             SaveSettings();
         }

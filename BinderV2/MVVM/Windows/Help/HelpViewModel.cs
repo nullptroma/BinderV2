@@ -15,7 +15,7 @@ namespace BinderV2.MVVM.ViewModels
 {
     class HelpViewModel : BaseViewModel
     {
-        HelpModel help = new HelpModel();
+        private readonly HelpModel help = new HelpModel();
 
         public string ParametersFuncsHelp { get { return help.ParametersFuncsHelp.AllText; } }
         public string BoolFuncsHelp { get { return help.BoolFuncsHelp.AllText; ; } }

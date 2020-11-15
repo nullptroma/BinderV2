@@ -25,7 +25,6 @@ namespace BinderV2.MVVM.Views
         {
             InitializeComponent();
             StateChanged += CustomizedWindow.WindowStyle.Window_StateChanged;
-            DataContext = new HelpViewModel();
         }
 
         private void Window_SizeChanged(object sender, SizeChangedEventArgs e)

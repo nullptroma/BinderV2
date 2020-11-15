@@ -40,7 +40,7 @@ namespace InterpreterScripts.InterpretationFunctions
             Name = name;
             Script = script;
             FuncsParamsNames = parameters;
-            Description = Name + "(" + string.Join(", ", funcsParamsNames) + ")" + desc;
+            Description = Name + "(" + string.Join(", ", funcsParamsNames) + ")" +" - " +desc;
         }
 
         public Task<object> GetResult(string[] parameters, InterpretationData data)

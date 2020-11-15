@@ -20,7 +20,7 @@ namespace InterpreterScripts.InterpretationFunctions.Standart
         public string Description { get; private set; }
         public string GroupName { get; private set; }
         public FuncType ReturnType { get; private set; }
-        private Func<object[], object> meth;
+        private readonly Func<object[], object> meth;
 
         public Function(MethodInfo mi, object target, FuncType returnType)
         {
@@ -67,9 +67,8 @@ namespace InterpreterScripts.InterpretationFunctions.Standart
 
         public override bool Equals(object obj)
         {
-            if(obj is Function)
+            if(obj is Function f2)
             {
-                Function f2 = (Function)obj;
                 return Name == f2.Name && meth == f2.meth;
             }
             else

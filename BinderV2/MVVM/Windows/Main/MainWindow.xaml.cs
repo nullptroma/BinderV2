@@ -11,7 +11,7 @@ namespace BinderV2.MVVM.Views
     /// </summary>
     public partial class MainWindow : Window
     {
-        DispatcherTimer updateCursorTimer;
+        readonly DispatcherTimer updateCursorTimer;
 
         public MainWindow()
         {

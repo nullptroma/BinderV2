@@ -19,15 +19,15 @@ using System.Diagnostics;
 using InterpreterScripts.InterpretationFunctions;
 using System.Linq;
 using InterpreterScripts.SyntacticConstructions.Constructions.Exceptions;
-
+using BinderV2.Settings;
 
 namespace InterpreterScripts
 {
     public static class Interpreter
     {
-        private static IInterpreterFunction[] MainLibrary = FuncsLibManager.GetLibrary();
-        private static HashSet<IInterpreterFunction> AdditionalLibrary = new HashSet<IInterpreterFunction>();
-        private static StopSender stopSender = new StopSender();
+        private readonly static IInterpreterFunction[] MainLibrary = FuncsLibManager.GetLibrary();
+        private readonly static HashSet<IInterpreterFunction> AdditionalLibrary = new HashSet<IInterpreterFunction>();
+        private readonly static StopSender stopSender = new StopSender();
 
         public static void ExecuteScript(string script)
         {
@@ -116,6 +116,18 @@ namespace InterpreterScripts
             AddToLibrary(new Function(new Func<object[], object>(StopAllScripts), FuncType.Other));
             AddToLibrary(new GetInterpretationInfo());
             AddToLibrary(new RemoveVar());
+
+            UdpateLibraryFromGlobalScript();
+        }
+
+        public static Task UdpateLibraryFromGlobalScript()
+        {
+            return Task.Run(() =>
+            {
+                InterpretationData data = new InterpretationData();
+                ExecuteScript(ProgramSettings.RuntimeSettings.InterpreterSettings.DefaultGlobalScript, data);
+                data.InterpretationFuncs.ForEach(f => AddToLibrary(f));
+            });
         }
 
         public static void AddToLibrary(IInterpreterFunction f)

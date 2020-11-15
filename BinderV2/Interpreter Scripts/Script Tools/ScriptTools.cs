@@ -86,9 +86,9 @@ namespace InterpreterScripts.Script
         {
             foreach (object parameter in parameters)
             {
-                if (parameter is object[])
+                if (parameter is object[] paramsArray)
                 {
-                    GetParametersFromArrays(ref outputParameters, (object[])parameter);
+                    GetParametersFromArrays(ref outputParameters, paramsArray);
                 }
                 else
                 {

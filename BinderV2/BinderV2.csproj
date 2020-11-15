@@ -146,6 +146,10 @@
     <Compile Include="MVVM\Triggers\TriggersModel\Types\Triggers\Mouse\MouseUpTrigger.cs" />
     <Compile Include="MVVM\Triggers\TriggersModel\Types\Triggers\OnExitTrigger.cs" />
     <Compile Include="MVVM\Triggers\TriggersModel\Types\Triggers\TimerTrigger.cs" />
+    <Compile Include="MVVM\Windows\EditDefaultGlobalScriptWindow.xaml.cs">
+      <DependentUpon>EditDefaultGlobalScriptWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Settings\InterpreterSettings.cs" />
     <Compile Include="Utilities\KeyCodeToUnicode.cs" />
     <Compile Include="Interpreter Scripts\Converter\Converter.cs" />
     <Compile Include="Interpreter Scripts\Syntactic Constructs\Constructs\Delay.cs" />
@@ -241,6 +245,10 @@
     </Compile>
     <Compile Include="WPF Resources\Styles\Scroll Viewer\CustomScrollViewer.cs" />
     <Page Include="MVVM\Triggers\Timer\TimerTriggerControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVVM\Windows\EditDefaultGlobalScriptWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
