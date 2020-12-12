@@ -15,7 +15,7 @@ namespace InterpreterScripts.InterpretationFunctions
         public string Name { get { return "Speak"; } }
         public string Description { get { return "Speak(string text, int volume, int rate, *string path) - превращает текст в речь. Если передать путь - сохранит фразу в файл."; } }
         public string GroupName { get { return "Speech"; } }
-        public FuncType ReturnType { get { return FuncType.Boolean; } }
+        public FuncType ReturnType { get { return FuncType.Parameters; } }
 
 
         public Task<object> GetResult(string[] parameters, InterpretationData data)
@@ -36,7 +36,7 @@ namespace InterpreterScripts.InterpretationFunctions
                 while (!t.IsCompleted && !data.Stopper.IsStopped)
                     Thread.Sleep(50);
                 ss.Dispose();
-                return null;
+                return parameters;
             }));
         }
     }
