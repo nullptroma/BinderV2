@@ -85,6 +85,7 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization.Formatters.Soap" />
+    <Reference Include="System.Speech" />
     <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.ValueTuple.4.5.0\lib\netstandard1.0\System.ValueTuple.dll</HintPath>
       <Private>False</Private>
@@ -108,11 +109,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Interpreter Scripts\InterpretationData\Stopper\StopReceiver.cs" />
-    <Compile Include="Interpreter Scripts\InterpretationFunctions\RemoveVar.cs" />
+    <Compile Include="Interpreter Scripts\InterpretationFunctions\FuncsWhithInterpretationData\GetNowDateTime.cs" />
+    <Compile Include="Interpreter Scripts\InterpretationFunctions\FuncsWhithInterpretationData\RemoveVar.cs" />
+    <Compile Include="Interpreter Scripts\InterpretationFunctions\FuncsWhithInterpretationData\Speak.cs" />
     <Compile Include="Interpreter Scripts\InterpretationFunctions\Standart Funcs\Funcs library\Library\AHKScripts.cs" />
-    <Compile Include="Interpreter Scripts\InterpretationFunctions\GetInterpretationInfo.cs" />
-    <Compile Include="Interpreter Scripts\InterpretationFunctions\IInterpreterFunction.cs" />
+    <Compile Include="Interpreter Scripts\InterpretationFunctions\FuncsWhithInterpretationData\GetInterpretationInfo.cs" />
+    <Compile Include="Interpreter Scripts\InterpretationFunctions\FuncsWhithInterpretationData\IInterpreterFunction.cs" />
     <Compile Include="Interpreter Scripts\InterpreterExceprions.cs" />
     <Compile Include="Interpreter Scripts\InterpretationData\Stopper\StopSender.cs" />
     <Compile Include="Interpreter Scripts\Syntactic Constructs\Constructs\WithOtherData.cs" />

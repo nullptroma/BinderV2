@@ -116,6 +116,8 @@ namespace InterpreterScripts
             AddToLibrary(new Function(new Func<object[], object>(StopAllScripts), FuncType.Other));
             AddToLibrary(new GetInterpretationInfo());
             AddToLibrary(new RemoveVar());
+            AddToLibrary(new GetNowDateTime());
+            AddToLibrary(new Speak());
 
             UdpateLibraryFromGlobalScript();
         }

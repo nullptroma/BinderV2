@@ -17,7 +17,7 @@ namespace InterpreterScripts.SyntacticConstructions.Constructions
 
         public Task<object> TryExecute(CommandModel cmd, InterpretationData data)
         {
-            if (IsValidConstruction(cmd, data))
+            if (IsValidConstruction(cmd))
                 return Execute(cmd, data);
             return null;
         }
@@ -35,9 +35,9 @@ namespace InterpreterScripts.SyntacticConstructions.Constructions
                     }
 
                     object value = Interpreter.ExecuteCommand(ca.Condition, data);
-                    if (value is bool)
+                    if (value is bool boolValue)
                     {
-                        if ((bool)value)
+                        if (boolValue)
                         {
                             Interpreter.ExecuteScript(ca.Action, data);
                             break;
@@ -103,7 +103,7 @@ namespace InterpreterScripts.SyntacticConstructions.Constructions
             return s.Length >= 1 ? s.Remove(s.Length - 1, 1) : s;
         }
 
-        private bool IsValidConstruction(CommandModel cmd, InterpretationData data)
+        private bool IsValidConstruction(CommandModel cmd)
         {
             return cmd.KeyWord == "if" && cmd.GetParameters().Length == 1;
         }

@@ -9,6 +9,8 @@ using InterpreterScripts.InterpretationFunctions.Standart;
 using System.ComponentModel;
 using System.Windows.Input;
 using System.Drawing;
+using System.Speech.Synthesis;
+using System.IO;
 
 namespace InterpreterScripts.InterpretationFunctions.Standart.Library
 {
@@ -258,6 +260,36 @@ namespace InterpreterScripts.InterpretationFunctions.Standart.Library
                 printscreen.Save(path, System.Drawing.Imaging.ImageFormat.Jpeg);
             }
             catch (IndexOutOfRangeException) { MessageBox.Show("В SaveScreenshot не передан путь."); }
+            catch (Exception e) { MessageBox.Show(e.Message); }
+            return ps;
+        }
+
+        [FuncGroup("Files")]
+        [Description("WriteTextInFile(string path, string text) - сохраняет текст в файл path.")]
+        public static object[] WriteTextInFile(params object[] ps)
+        {
+            try
+            {
+                string path = ps[0].ToString();
+                string text = ps[1].ToString();
+                File.WriteAllText(path, text);
+            }
+            catch (IndexOutOfRangeException) { MessageBox.Show("В WriteTextInFile не переданы параметры."); }
+            catch (Exception e) { MessageBox.Show(e.Message); }
+            return ps;
+        }
+
+        [FuncGroup("Files")]
+        [Description("AppendTextInFile(string path, string text) - добавляет текст в конец файла.")]
+        public static object[] AppendTextInFile(params object[] ps)
+        {
+            try
+            {
+                string path = ps[0].ToString();
+                string text = ps[1].ToString();
+                File.AppendAllText(path, text);
+            }
+            catch (IndexOutOfRangeException) { MessageBox.Show("В WriteTextInFile не переданы параметры."); }
             catch (Exception e) { MessageBox.Show(e.Message); }
             return ps;
         }

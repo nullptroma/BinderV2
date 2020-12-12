@@ -11,7 +11,7 @@ namespace InterpreterScripts.TypeConverter
 {
     public static class Converter
     {
-        private static Func<string, object>[] converters = new Func<string, object>[] { StringConverter, IntConverter, DoubleConverter, BoolConverter };
+        private static readonly Func<string, object>[] converters = new Func<string, object>[] { StringConverter, IntConverter, DoubleConverter, BoolConverter };
         public static Task<object> ToSimpleType(string strValue)
         {
             foreach (Func<string, object> converter in converters)

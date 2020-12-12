@@ -9,7 +9,7 @@ namespace InterpreterScripts.InterpretationScriptData.Vars
 {
     public class Variables
     {
-        private Dictionary<string, object> vars = new Dictionary<string, object>();
+        private readonly Dictionary<string, object> vars = new Dictionary<string, object>();
 
         public object this[string name]
         {

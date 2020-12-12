@@ -19,7 +19,7 @@ namespace InterpreterScripts.SyntacticConstructions.Constructions
 
         public Task<object> TryExecute(CommandModel cmd, InterpretationData data)
         {
-            if (IsValidConstruction(cmd, data))
+            if (IsValidConstruction(cmd))
                 return Execute(cmd, data);
             return null;
         }
@@ -47,7 +47,7 @@ namespace InterpreterScripts.SyntacticConstructions.Constructions
             }), TaskCreationOptions.AttachedToParent);
         }
 
-        private bool IsValidConstruction(CommandModel cmd, InterpretationData data)
+        private bool IsValidConstruction(CommandModel cmd)
         {
             return cmd.Command.StartsWith("func") || cmd.Command.StartsWith("[");
         }

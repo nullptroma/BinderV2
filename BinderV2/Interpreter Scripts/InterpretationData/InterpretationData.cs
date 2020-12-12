@@ -12,7 +12,7 @@ namespace InterpreterScripts.InterpretationScriptData
 {
     public class InterpretationData
     {
-        public StopReceiver Stopper { get; set; }
+        public StopReceiver Stopper { get; set; } = new StopReceiver();
 
         private List<IInterpreterFunction> interpretationFuncs = new List<IInterpreterFunction>();
         public List<IInterpreterFunction> InterpretationFuncs
@@ -27,13 +27,7 @@ namespace InterpreterScripts.InterpretationScriptData
             }
         }
 
-        public Variables Vars { get; private set; }
-
-        public InterpretationData()
-        {
-            Vars = new Variables();
-            Stopper = new StopReceiver();
-        }
+        public Variables Vars { get; private set; } = new Variables();
 
         public override string ToString()
         {

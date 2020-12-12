@@ -37,10 +37,21 @@ namespace InterpreterScripts.SyntacticConstructions.Constructions
                 string newDataName = cmd.Command.Substring(0, colonIndex);
                 if (!IsValidName(newDataName))
                     return null;
-
+                InterpretationData dataToExecute = null;
                 if (!data.Vars.HasVar(newDataName) || !(data.Vars[newDataName] is InterpretationData))
-                    data.Vars[newDataName] = new InterpretationData();
-                return Task.Run(() => Interpreter.ExecuteCommand(cmd.Command.Substring(colonIndex + 1), (InterpretationData)data.Vars[newDataName]));
+                {
+                    var newData = Interpreter.ExecuteCommand(newDataName, data);
+                    if (newData is InterpretationData newDataCasted)
+                        dataToExecute = newDataCasted;
+                    else
+                    {
+                        data.Vars[newDataName] = new InterpretationData();
+                        dataToExecute = (InterpretationData)data.Vars[newDataName];
+                    }
+                }
+                else
+                    dataToExecute = (InterpretationData)data.Vars[newDataName];
+                return Task.Run(() => Interpreter.ExecuteCommand(cmd.Command.Substring(colonIndex + 1), dataToExecute));
             }
             return null;
         }

@@ -19,7 +19,7 @@ namespace InterpreterScripts.InterpretationFunctions.Standart.Library
 {
     static public class AHKScripts
     {
-        private static AutoHotkeyEngine ahk = AutoHotkeyEngine.Instance;
+        private static readonly AutoHotkeyEngine ahk = AutoHotkeyEngine.Instance;
 
         [FuncGroup("AutoHotKey")]
         [Description("AHKExecute(string code) - выполняет код ahk.")]

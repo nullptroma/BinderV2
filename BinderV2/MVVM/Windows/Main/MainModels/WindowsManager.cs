@@ -11,7 +11,7 @@ namespace BinderV2.MVVM.Models.MainModels
     class WindowsManager
     {
         private SettingsWindow SettingsWindow;
-        private HelpWindow HelpWindow = new HelpWindow();
+        private readonly HelpWindow HelpWindow = new HelpWindow();
         private RecordWindow RecordWindow;
         private EditDefaultGlobalScriptWindow EditDefaultGlobalScriptWindow;
 

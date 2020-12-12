@@ -98,6 +98,14 @@ namespace InterpreterScripts.InterpretationFunctions.Standart.Library
         }
 
 
+        [FuncGroup("Files")]
+        [Description("GetTextFromFile(string path) - возвращает текст из указанного файла.")]
+        public static object GetTextFromFile(params object[] ps)
+        {
+            return File.ReadAllText(ps[0].ToString());
+        }
+
+
 
         [Description("LayoutSimbols(string text) - возвращает текст с изменённой раскладкой русский-английский по QWERTY.")]
         public static object LayoutSimbols(params object[] ps)
