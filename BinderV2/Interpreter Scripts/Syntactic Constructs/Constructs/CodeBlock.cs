@@ -10,6 +10,7 @@ namespace InterpreterScripts.SyntacticConstructions.Constructions
 {
     class CodeBlock : ISyntacticConstruction
     {
+        public string Name { get { return "CodeBlock"; } }
         public string Description { get { return "{\n  <скрипт>\n} - простой блок кода, ни на что не влияет. Может использоваться с async."; } }
 
         public Task<object> TryExecute(CommandModel cmd, InterpretationData data)

@@ -10,6 +10,7 @@ using InterpreterScripts;
 using System.Windows.Forms;
 using InterpreterScripts.SyntacticConstructions;
 using BinderV2.MVVM.Models;
+using System.Windows.Controls;
 
 namespace BinderV2.MVVM.ViewModels
 {
@@ -24,9 +25,19 @@ namespace BinderV2.MVVM.ViewModels
         public string StringFuncsHelp { get { return help.StringFuncsHelp.AllText; } }
         public string OtherFuncsHelp { get { return help.OtherFuncsHelp.AllText; } }
         public string FuncsHelpByGroups { get { return help.FuncsHelpByGroups.AllText; } }
-        public string ConstructionsHelp { get { return help.ConstructionsHelp.AllText; } }
         public string TriggersHelp { get { return help.TriggersHelp.AllText; } }
         public string DynamicFuncsHelp { get { return help.DynamicFuncsHelp.AllText; } }
+
+        public List<TabItem> ConstructionsItems 
+        { 
+            get
+            {
+                List<TabItem> tabs = new List<TabItem>();
+                foreach (var r in help.ConstructionsHelp)
+                    tabs.Add(new TabItem() { Header = r.Key, Content = r.Value });
+                return tabs;
+            }
+        }
 
         public override event PropertyChangedEventHandler PropertyChanged;
         public override void OnPropertyChanged(string prop)

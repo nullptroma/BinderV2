@@ -10,6 +10,7 @@ namespace InterpreterScripts.SyntacticConstructions
 {
     public interface ISyntacticConstruction
     {
+        string Name { get; }
         string Description { get; }
         Task<object> TryExecute(CommandModel cmd, InterpretationData data);
     }

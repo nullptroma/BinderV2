@@ -12,6 +12,7 @@ namespace InterpreterScripts.SyntacticConstructions.Constructions
 {
     class Repeat : ISyntacticConstruction
     {
+        public string Name { get { return "Repeat"; } }
         public string Description { get { return "repeat(quant)\n{\n  <скрипт>\n} - выполняет скрипт quant раз."; } }
 
         public Task<object> TryExecute(CommandModel cmd, InterpretationData data)

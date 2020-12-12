@@ -15,6 +15,7 @@ namespace InterpreterScripts.SyntacticConstructions.Constructions
 {
     class FunctionDefinition : ISyntacticConstruction
     {
+        public string Name { get { return "FuncDefinition"; } }
         public string Description { get { return "[description]\nfunc Name(par1, par2...)\n{\n  <скрипт>\n} - объявляет функцию с именем Name, параметрами в скобках. Параметры можно использовать в теле функции. Можно добавить описание(необязательно)."; } }
 
         public Task<object> TryExecute(CommandModel cmd, InterpretationData data)

@@ -12,6 +12,7 @@ namespace InterpreterScripts.SyntacticConstructions.Constructions
 {
     class SetVar : ISyntacticConstruction
     {
+        public string Name { get { return "SetVar"; } }
         public string Description { get { return "Name = value - задаёт переменную Name в пределах данного скрипта."; } }
 
         public Task<object> TryExecute(CommandModel cmd, InterpretationData data)

@@ -13,6 +13,7 @@ namespace InterpreterScripts.SyntacticConstructions.Constructions
 {
     class While : ISyntacticConstruction
     {
+        public string Name { get { return "While"; } }
         public string Description { get { return "while(<условие>)\n{\n  <скрипт>\n} - выполняет скрипт, пока условие == true."; } }
 
         public Task<object> TryExecute(CommandModel cmd, InterpretationData data)

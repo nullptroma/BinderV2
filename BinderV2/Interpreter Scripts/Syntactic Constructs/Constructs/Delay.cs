@@ -13,6 +13,7 @@ namespace InterpreterScripts.SyntacticConstructions.Constructions
 {
     public class Delay : ISyntacticConstruction
     {
+        public string Name { get { return "Delay"; } }
         public string Description { get { return "Delay(int milliseconds) - приостанавливает выполнение скрипна на milliseconds."; } }
 
         public Task<object> TryExecute(CommandModel cmd, InterpretationData data)

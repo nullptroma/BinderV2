@@ -14,6 +14,7 @@ namespace InterpreterScripts.SyntacticConstructions.Constructions
 {
     class MathOperators : ISyntacticConstruction
     {
+        public string Name { get { return "MathOperators"; } }
         public string Description { get { return "*, /, -, + - стандартные математические операторы" + Environment.NewLine + "%, ^ - остатот от деления, возведение в степень" + Environment.NewLine + "||, &&, ! - логические или, и, не" + Environment.NewLine + "==, !=, <, <=, >=, > - операторы сравнения."; } }
 
         public Task<object> TryExecute(CommandModel cmd, InterpretationData data)

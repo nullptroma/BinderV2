@@ -36,7 +36,33 @@
             <TextBox Text="{Binding FuncsHelpByGroups, Mode=OneWay}"/>
         </TabItem>
         <TabItem Header="Constructions">
-            <TextBox Text="{Binding ConstructionsHelp, Mode=OneWay}"/>
+            <TabControl ItemsSource="{Binding ConstructionsItems}" TabStripPlacement="Left">
+                <TabControl.Template>
+                    <ControlTemplate TargetType="TabControl">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <ScrollViewer VerticalScrollBarVisibility="Visible" HorizontalAlignment="Left" >
+                                <TabPanel x:Name="HeaderPanel"
+                                          
+                              Panel.ZIndex ="1" 
+                              KeyboardNavigation.TabIndex="1"
+                              Grid.Column="0"
+                              Grid.Row="0"
+                              Margin="2,2,2,0"
+                              IsItemsHost="true" HorizontalAlignment="Left"/>
+                            </ScrollViewer>
+                            <TextBox Text="{Binding ElementName=PART_SelectedContentHost, Path=Content}" IsReadOnly="True" Grid.Column="1" TextWrapping="WrapWithOverflow" VerticalScrollBarVisibility="Auto"/>
+                            <ContentPresenter Visibility="Collapsed" x:Name="PART_SelectedContentHost" Grid.Column="1"
+                                          SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                          Margin="{TemplateBinding Padding}"
+                                          ContentSource="SelectedContent"/>
+                        </Grid>
+                    </ControlTemplate>
+                </TabControl.Template>
+            </TabControl>
         </TabItem>
         <TabItem Header="Triggers">
             <TextBox Text="{Binding TriggersHelp, Mode=OneWay}"/>

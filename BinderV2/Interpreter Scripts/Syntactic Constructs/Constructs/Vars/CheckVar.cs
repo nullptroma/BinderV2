@@ -12,6 +12,7 @@ namespace InterpreterScripts.SyntacticConstructions.Constructions
 {
     class CheckVar : ISyntacticConstruction
     {
+        public string Name { get { return "CheckVar"; } }
         public string Description { get { return "CheckVar(Name) - проверяет наличие переменной Name в пределах данного скрипта."; } }
 
         public Task<object> TryExecute(CommandModel cmd, InterpretationData data)

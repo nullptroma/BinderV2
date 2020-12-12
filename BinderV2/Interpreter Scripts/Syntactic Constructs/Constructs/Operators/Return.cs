@@ -12,6 +12,7 @@ namespace InterpreterScripts.SyntacticConstructions.Constructions
 {
     class Return : ISyntacticConstruction
     {
+        public string Name { get { return "Return"; } }
         public string Description { get { return "return value - возвращает значение value из функции."; } }
 
         public Task<object> TryExecute(CommandModel cmd, InterpretationData data)

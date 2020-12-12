@@ -15,6 +15,7 @@ namespace InterpreterScripts.SyntacticConstructions.Constructions
 {
     public class WithOtherData : ISyntacticConstruction
     {
+        public string Name { get { return "WhithOtherData"; } }
         public string Description { get { return "WithOtherData - выполняет команду с другими данными интерпретации name:команда, где name-имя новых/существующих данных."; } }
 
         public Task<object> TryExecute(CommandModel cmd, InterpretationData data)

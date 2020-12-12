@@ -11,6 +11,7 @@ namespace InterpreterScripts.SyntacticConstructions.Constructions
 {
     class Break : ISyntacticConstruction
     {
+        public string Name { get { return "Break"; } }
         public string Description { get { return "break - прерывает выполнение любого цикла."; } }
 
         public Task<object> TryExecute(CommandModel cmd, InterpretationData data)

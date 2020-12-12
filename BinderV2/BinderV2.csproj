@@ -178,7 +178,7 @@
     <Compile Include="Interpreter Scripts\Syntactic Constructs\Constructs\Operators\Break.cs" />
     <Compile Include="Interpreter Scripts\Syntactic Constructs\ConstructionsExceptions.cs" />
     <Compile Include="Interpreter Scripts\Syntactic Constructs\Constructs\FunctionDefinition.cs" />
-    <Compile Include="Interpreter Scripts\Syntactic Constructs\Constructs\IfThenConstruction.cs" />
+    <Compile Include="Interpreter Scripts\Syntactic Constructs\Constructs\IfElseConstruction.cs" />
     <Compile Include="Interpreter Scripts\Syntactic Constructs\Constructs\Cycles\Repeat\ParallelRepeat.cs" />
     <Compile Include="Interpreter Scripts\Syntactic Constructs\Constructs\Cycles\Repeat\Repeat.cs" />
     <Compile Include="Interpreter Scripts\Syntactic Constructs\Constructs\Operators\Math\MathOperators.cs" />

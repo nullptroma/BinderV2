@@ -39,7 +39,7 @@ namespace BinderV2.MVVM.Models
                 return answer;
             }
         }
-        public HelpProperty ConstructionsHelp { get; private set; }
+        public Dictionary<string, string> ConstructionsHelp { get; private set; }
         public HelpProperty TriggersHelp { get; private set; }
         
 
@@ -107,13 +107,13 @@ namespace BinderV2.MVVM.Models
             groups[group].Add(text);
         }
 
-        private HelpProperty GetConstructionsHelp()
+        private Dictionary<string, string> GetConstructionsHelp()
         {
-            HelpProperty answer = new HelpProperty("После каждой команды нужно писать ;.\nЧтобы сделать команду асинхронной нужно добавить async перед ней. Конструкции так же считаются командами. Нераспознанные команды превращаются в строку.\nСписок всех доступных конструкций для интерпретатора.\n", "{count}");
+            var answer = new Dictionary<string, string>();
+            string main = "После каждой команды нужно писать ;.\nЧтобы сделать команду асинхронной нужно добавить async перед ней. Конструкции так же считаются командами. Нераспознанные команды превращаются в строку.";
+            answer.Add("Основное", main);
             foreach (ISyntacticConstruction sc in SyntacticConstructionsManager.GetSyntacticConstructs())
-            {
-                answer.Add(sc.Description + "\n");
-            }
+                answer.Add(sc.Name, sc.Description);
             return answer;
         }
 

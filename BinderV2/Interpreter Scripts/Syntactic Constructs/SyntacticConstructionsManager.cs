@@ -24,7 +24,7 @@ namespace InterpreterScripts.SyntacticConstructions
                 new Return(), 
                 new Break(), 
                 
-                new IfThenConstruction(),
+                new IfElseConstruction(),
 
                 new While(),
                 new Repeat(),
