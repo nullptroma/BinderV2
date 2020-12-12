@@ -6,3 +6,4 @@ BinderV2/bin/Debug/BinderV2.exe
 *.exe
 *.pdb
 *.cache
+BinderV2/bin/Release/test.wav
