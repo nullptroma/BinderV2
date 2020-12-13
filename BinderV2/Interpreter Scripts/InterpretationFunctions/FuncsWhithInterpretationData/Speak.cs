@@ -18,19 +18,19 @@ namespace InterpreterScripts.InterpretationFunctions
         public FuncType ReturnType { get { return FuncType.Parameters; } }
 
 
-        public Task<object> GetResult(string[] parameters, InterpretationData data)
+        public Task<object> GetResult(object[] parameters, InterpretationData data)
         {
             return Task.Run(new Func<object>(() =>
             {
-                string text = parameters[0];
-                int volume = (int)Interpreter.ExecuteCommand(parameters[1], data);
+                string text = parameters[0].ToString();
+                int volume = (int)parameters[1];
                 volume = volume < 0 ? 0 : volume > 100 ? 100 : volume;
-                int rate = (int)Interpreter.ExecuteCommand(parameters[2], data);
+                int rate = (int)parameters[2];
                 rate = rate < -10 ? -10 : rate > 10 ? 10 : rate;
 
                 SpeechSynthesizer ss = new SpeechSynthesizer() { Volume = volume, Rate = rate };
                 if (parameters.Length > 3)
-                    ss.SetOutputToWaveFile(parameters[3]);
+                    ss.SetOutputToWaveFile(parameters[3].ToString());
 
                 var t = ss.SpeakAsync(text);
                 while (!t.IsCompleted && !data.Stopper.IsStopped)

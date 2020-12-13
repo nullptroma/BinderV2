@@ -17,6 +17,7 @@
                 <ResourceDictionary Source="WPF Resources/Styles/Button/Button Style.xaml" />
                 <ResourceDictionary Source="WPF Resources/Styles/TabControl/TabControlStyle.xaml" />
                 <ResourceDictionary Source="WPF Resources/Styles/TextBox/TextBox Style.xaml" />
+                <ResourceDictionary Source="WPF Resources/Styles/CheckBox/CheckBox.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
             <BooleanToVisibilityConverter x:Key="BoolToVis" />

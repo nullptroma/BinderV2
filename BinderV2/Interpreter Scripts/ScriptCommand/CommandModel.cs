@@ -62,7 +62,7 @@ namespace InterpreterScripts.ScriptCommand
             int bracketIndex = cmd.IndexOf('(');
             if (bracketIndex == -1)
                 return false;
-            KeyWord = cmd.Substring(0, bracketIndex);//берём ключевое слово: всё до параметров
+            KeyWord = cmd.Substring(0, bracketIndex).Trim();//берём ключевое слово: всё до параметров
             if (KeyWord.Contains(' '))//если ключевое слово состоит более чем из 1 слова
                 return false;
             int startParsIndex = bracketIndex + 1;//Начинаем с символа после первой скобки
@@ -71,7 +71,7 @@ namespace InterpreterScripts.ScriptCommand
             int marksCount = 0;
             for (; lastParsIndex < cmd.Length; lastParsIndex++)
             {
-                if (cmd[lastParsIndex] == '\"' && cmd[lastParsIndex-1] != '\\')
+                if (cmd[lastParsIndex] == '\"')
                     marksCount++;
                 if (marksCount % 2 == 0)
                 {
@@ -83,7 +83,8 @@ namespace InterpreterScripts.ScriptCommand
                 if (bracketsCount == 0)
                     break;
             }
-            parameters = ScriptTools.GetParameters(cmd.Substring(startParsIndex, lastParsIndex - startParsIndex));
+            var stringPars = cmd.Substring(startParsIndex, lastParsIndex - startParsIndex);
+            parameters = ScriptTools.GetParameters(stringPars);
             return true;
         }
 

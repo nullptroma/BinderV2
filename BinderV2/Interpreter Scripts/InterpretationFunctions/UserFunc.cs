@@ -43,12 +43,12 @@ namespace InterpreterScripts.InterpretationFunctions
             Description = Name + "(" + string.Join(", ", funcsParamsNames) + ")" +" - " +desc;
         }
 
-        public Task<object> GetResult(string[] parameters, InterpretationData data)
+        public Task<object> GetResult(object[] parameters, InterpretationData data)
         {
             return Task.Run(new Func<object>(() =>
             {
                 for (int i = 0; i < funcsParamsNames.Length; i++)
-                    data.Vars[funcsParamsNames[i]] = Interpreter.ExecuteCommand(parameters[i], data);
+                    data.Vars[funcsParamsNames[i]] = parameters[i];
                 try { Interpreter.ExecuteScript(Script, data); }
                 catch (ReturnException e) { return e.ReturnValue; }
                 catch (Exception) { return null; }

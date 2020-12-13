@@ -18,7 +18,7 @@ namespace Trigger.Types
         {
             KeysTriggersEngine.KeyDown += (sender, e) =>
             {
-                Invoke(e.Key);
+                Invoke(e);
             };
         }
 

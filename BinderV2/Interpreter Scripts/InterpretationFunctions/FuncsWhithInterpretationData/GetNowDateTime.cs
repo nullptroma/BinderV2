@@ -16,7 +16,7 @@ namespace InterpreterScripts.InterpretationFunctions
         public FuncType ReturnType { get { return FuncType.Other; } }
 
 
-        public Task<object> GetResult(string[] parameters, InterpretationData data)
+        public Task<object> GetResult(object[] parameters, InterpretationData data)
         {
             return Task.Run(new Func<object>(() =>
             {

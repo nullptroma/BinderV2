@@ -16,11 +16,14 @@ namespace InterpreterScripts.InterpretationFunctions
         public FuncType ReturnType { get { return FuncType.Boolean; } }
 
 
-        public Task<object> GetResult(string[] parameters, InterpretationData data)
+        public Task<object> GetResult(object[] parameters, InterpretationData data)
         {
             return Task.Run(new Func<object>(() =>
             {
-                return data.Vars.RemoveVar((string)Interpreter.ExecuteCommand(string.Join("", parameters), data));
+                bool deleted = false;
+                foreach (var param in parameters)
+                    deleted = deleted || data.Vars.RemoveVar(param.ToString());
+                return deleted;
             }));
         }
     }

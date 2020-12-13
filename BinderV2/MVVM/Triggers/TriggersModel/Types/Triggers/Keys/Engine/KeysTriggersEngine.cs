@@ -10,12 +10,13 @@ using Trigger.Types;
 
 namespace Triggers.Types.KeysEngine
 {
-    static class KeysTriggersEngine
+    public static class KeysTriggersEngine
     {
         public class PressedKeysEventArgs : EventArgs
         {
             public HashSet<Key> PressedKeys { get; private set; }
             public Key Key { get; private set; }
+            public bool Handled { get; set; }
             public PressedKeysEventArgs(HashSet<Key> _PressedKeys, Key _k) : base()
             { 
                 PressedKeys = _PressedKeys;
@@ -40,18 +41,26 @@ namespace Triggers.Types.KeysEngine
 
         private static void KeysDown(object sender, KeyEventArgsCustom e)
         {
+            var eventArgs = new PressedKeysEventArgs(PressedKeys, e.Key);
             if (PressedKeys.Contains(e.Key))
             {
-                KeysHolding?.Invoke(null, new PressedKeysEventArgs(PressedKeys, e.Key));
+                KeysHolding?.Invoke(null, eventArgs);
+                if (eventArgs.Handled)
+                    e.Handled = true;
                 return;
             }   
             PressedKeys.Add(e.Key);
-            KeyDown?.Invoke(null, new PressedKeysEventArgs(PressedKeys, e.Key));
+            KeyDown?.Invoke(null, eventArgs);
+            if (eventArgs.Handled)
+                e.Handled = true;
         }
         private static void KeysUp(object sender, KeyEventArgsCustom e)
         {
+            var eventArgs = new PressedKeysEventArgs(PressedKeys, e.Key);
             PressedKeys.Remove(e.Key);
-            KeyUp?.Invoke(null, new PressedKeysEventArgs(PressedKeys, e.Key));
+            KeyUp?.Invoke(null, eventArgs);
+            if (eventArgs.Handled)
+                e.Handled = true;
         }
     }
 }

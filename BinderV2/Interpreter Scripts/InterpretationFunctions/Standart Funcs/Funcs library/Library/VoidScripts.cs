@@ -124,7 +124,7 @@ namespace InterpreterScripts.InterpretationFunctions.Standart.Library
         {
             try
             {
-                Process.Start("cmd", ps[0].ToString());
+                Process.Start("cmd", "/c " + ps[0].ToString());
             }
             catch { MessageBox.Show("В RunCmd не передана команда"); return ps; }
             return ps;

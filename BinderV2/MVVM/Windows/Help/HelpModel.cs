@@ -110,7 +110,7 @@ namespace BinderV2.MVVM.Models
         private Dictionary<string, string> GetConstructionsHelp()
         {
             var answer = new Dictionary<string, string>();
-            string main = "После каждой команды нужно писать ;.\nЧтобы сделать команду асинхронной нужно добавить async перед ней. Конструкции так же считаются командами. Нераспознанные команды превращаются в строку.";
+            string main = "После каждой команды нужно писать ;.\nЧтобы сделать команду асинхронной нужно добавить async перед ней. Конструкции так же считаются командами. Нераспознанные команды превращаются в строку. \nЧтобы создать строку, её нужно обернуть в двойные кавычки \". Чтобы написать кавычку внутри строки, нужно написать &quot;.";
             answer.Add("Основное", main);
             foreach (ISyntacticConstruction sc in SyntacticConstructionsManager.GetSyntacticConstructs())
                 answer.Add(sc.Name, sc.Description);

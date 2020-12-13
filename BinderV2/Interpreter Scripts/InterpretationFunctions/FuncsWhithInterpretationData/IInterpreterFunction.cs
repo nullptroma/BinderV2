@@ -13,6 +13,6 @@ namespace InterpreterScripts.InterpretationFunctions
         string GroupName { get; }
         FuncType ReturnType { get; }
 
-        Task<object> GetResult(string[] parameters, InterpretationScriptData.InterpretationData data);
+        Task<object> GetResult(object[] parameters, InterpretationScriptData.InterpretationData data);
     }
 }

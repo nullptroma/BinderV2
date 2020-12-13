@@ -33,7 +33,7 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
-            <Grid Grid.Column="0" Grid.RowSpan="2">
+            <Grid Grid.RowSpan="2">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                     <ColumnDefinition/>
@@ -73,14 +73,18 @@
                     </Button>
                 </StackPanel>
             </Grid>
-            <Label x:Name="labelKeys" Content="{Binding TriggerKeysString}" Margin="4" VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Row="1">
-                <i:Interaction.Triggers>
-                    <i:EventTrigger EventName="MouseDown">
-                        <i:InvokeCommandAction Command="{Binding ChangeKeysCommand}"/>
-                    </i:EventTrigger>
-                </i:Interaction.Triggers>
-            </Label>
-            <Label Content="{Binding TypeDescription}" FontSize="14" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,4,4"/>
+            
+            <StackPanel Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="4,4,4,0">
+                <CheckBox Content="Эксклюзивные клавиши" IsChecked="{Binding Exclusive}" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="4,0,0,-4"/>
+                <Label x:Name="labelKeys" Content="{Binding TriggerKeysString}" VerticalAlignment="Bottom" HorizontalAlignment="Left">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="MouseDown">
+                            <i:InvokeCommandAction Command="{Binding ChangeKeysCommand}"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </Label>
+            </StackPanel>
+            <Label Content="{Binding TypeDescription}" Grid.Row="1" FontSize="14" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,4,4"/>
         </Grid>
     </Border>
 </UserControl>

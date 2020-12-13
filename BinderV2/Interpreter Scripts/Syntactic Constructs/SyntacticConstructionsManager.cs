@@ -49,7 +49,9 @@ namespace InterpreterScripts.SyntacticConstructions
             {
                 result = sc.TryExecute(command, data);
                 if (result != null)
+                {
                     return true;
+                }
             }
             result = null;
             return false;

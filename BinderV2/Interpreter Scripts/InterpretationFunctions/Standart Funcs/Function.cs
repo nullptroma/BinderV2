@@ -49,20 +49,12 @@ namespace InterpreterScripts.InterpretationFunctions.Standart
         }
 
 
-        public Task<object> GetResult(string[] parameters, InterpretationData data)
+        public Task<object> GetResult(object[] parameters, InterpretationData data)
         {
             return Task.Run(() =>
             {
-                return meth.Invoke(ScriptTools.GetParametersFromArray(GetParametersFromStringArray(parameters, data)));
+                return meth.Invoke(ScriptTools.GetParametersFromArray(parameters));
             });
-        }
-
-        private static object[] GetParametersFromStringArray(string[] parametersString, InterpretationData data)
-        {
-            object[] parameters = new object[parametersString.Length];
-            for (int i = 0; i < parameters.Length; i++)
-                parameters[i] = Interpreter.ExecuteCommand(parametersString[i], data);
-            return parameters;
         }
 
         public override bool Equals(object obj)

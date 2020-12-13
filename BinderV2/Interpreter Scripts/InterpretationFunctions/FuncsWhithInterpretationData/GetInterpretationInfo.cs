@@ -17,14 +17,13 @@ namespace InterpreterScripts.InterpretationFunctions
         public FuncType ReturnType { get { return FuncType.String; } }
         
 
-        public Task<object> GetResult(string[] parameters, InterpretationData data)
+        public Task<object> GetResult(object[] parameters, InterpretationData data)
         {
             return Task.Run(new Func<object>(() =>
             {
                 if (parameters.Length > 0)
                 {
-                    object parameterData = Interpreter.ExecuteCommand(parameters[0], data);
-                    if (parameterData is InterpretationData newData)
+                    if (parameters[0] is InterpretationData newData)
                         return newData.ToString();
                 }
                 return data.ToString();

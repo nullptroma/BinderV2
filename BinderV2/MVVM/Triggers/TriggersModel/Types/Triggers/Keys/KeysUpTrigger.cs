@@ -29,7 +29,7 @@ namespace Trigger.Types
                     return;
                 if (NeedKeysWasDown)
                     if (NeedKeysAreUp(e.PressedKeys))
-                        Invoke(e.Key);
+                        Invoke(e);
             };
             KeysTriggersEngine.KeyDown+=(sender, e)=> CheckPressedKeys(e.PressedKeys);
         }

@@ -86,7 +86,13 @@ namespace InterpreterScripts
                 if (func == null)
                     func = MainLibrary.FirstOrDefault(Func => Func.Name == cmd.KeyWord);
                 if (func != null)
-                    commandTask = func.GetResult(cmd.GetParameters(), data);
+                {
+                    var stringParameters = cmd.GetParameters();
+                    object[] parameters = new object[stringParameters.Length];
+                    for (int i = 0; i < parameters.Length; i++)
+                        parameters[i] = ExecuteCommand(stringParameters[i], data);
+                    commandTask = func.GetResult(parameters, data);
+                }
             }
 
 

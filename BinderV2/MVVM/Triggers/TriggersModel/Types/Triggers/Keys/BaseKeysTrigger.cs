@@ -8,12 +8,14 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using Trigger.Events;
+using static Triggers.Types.KeysEngine.KeysTriggersEngine;
 
 namespace Trigger.Types
 {
     public abstract class BaseKeysTrigger : BaseTrigger
     {
         private HashSet<Key> keys;
+        public bool Exclusive { get; set; }
         public HashSet<Key> Keys
         {
             get { return keys; }
@@ -25,11 +27,13 @@ namespace Trigger.Types
             }
         }
 
-        public void Invoke(Key key)
+        public void Invoke(PressedKeysEventArgs key)
         {
             var data = new InterpretationData();
-            data.Vars["Key"] = key.ToString();
+            data.Vars["Key"] = key.Key.ToString();
             base.Invoke(new TriggeredEventArgs(Name, Script, data));
+            if (Exclusive && EnableTrigger && EnableAllTriggers)//блочим только в том случае, если сработали
+                key.Handled = true;
         }
 
         public BaseKeysTrigger(string name) : base(name)

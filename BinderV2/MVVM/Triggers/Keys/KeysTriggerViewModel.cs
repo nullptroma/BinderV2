@@ -17,6 +17,7 @@ namespace BinderV2.MVVM.ViewModels.Triggers
     {
         public string triggerKeysString;
         public string TriggerKeysString { get { return triggerKeysString; } private set { triggerKeysString = value; OnPropertyChanged("TriggerKeysString"); } }
+        public bool Exclusive { get { return Trigger.Exclusive; } set { Trigger.Exclusive = value; OnPropertyChanged("Exclusive"); } }
         private new BaseKeysTrigger Trigger;
 
         public KeysTriggerViewModel(BaseKeysTrigger keysTrigger) : base(keysTrigger) 

@@ -3,6 +3,9 @@ using System.Windows;
 using BinderV2.Settings;
 using BinderV2.MVVM.ViewModels;
 using System.Windows.Threading;
+using System.Threading.Tasks;
+using System.Diagnostics;
+using System.IO;
 
 namespace BinderV2.MVVM.Views
 {
@@ -89,6 +92,24 @@ namespace BinderV2.MVVM.Views
         {
             if (ProgramSettings.RuntimeSettings.HideOnStart)
                 HideWindow();
+        }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            Task.Run(()=>
+            {
+                string scr = File.ReadAllText(Environment.GetFolderPath(Environment.SpecialFolder.Desktop)+@"\test.txt");
+                int count = 0;
+                Stopwatch sw = new Stopwatch();
+                sw.Start();
+                while (sw.ElapsedMilliseconds <= 1000)
+                {
+                    InterpreterScripts.Interpreter.ExecuteScript(scr);
+                    count++;
+                }
+                sw.Stop();
+                MessageBox.Show(count.ToString());
+            });
         }
     }
 }

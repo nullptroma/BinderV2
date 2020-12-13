@@ -17,13 +17,16 @@ namespace InterpreterScripts.Script
         {
             List<string> commands = new List<string>();//ответ
             int countBrakets = 0;//счётчик скобок
+            int countMarks = 0;//счётчик кавычек
             for (int i = 0; i < sc.Length; i++)
             {
                 if (sc[i] == '{')
                     countBrakets++;
                 else if (sc[i] == '}')
                     countBrakets--;
-                if (sc[i] == ';' && countBrakets == 0)//если мы не внутри скобки, и нашли ;, то берём команду
+                else if (sc[i] == '\"')
+                    countMarks++;
+                if (sc[i] == ';' && countBrakets == 0 && countMarks % 2 == 0)//если мы не внутри скобки, и нашли ;, то берём команду
                 {
                     commands.Add(sc.Substring(0, i).Trim());
                     sc = sc.Remove(0, i + 1);
@@ -71,7 +74,7 @@ namespace InterpreterScripts.Script
                 }
             }
             if (pars.Count == 0)
-                pars.Add(str);
+                pars.Add(str.Trim(','));
             return pars.ToArray();
         }
 

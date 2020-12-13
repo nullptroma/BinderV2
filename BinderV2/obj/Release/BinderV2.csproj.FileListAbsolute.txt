@@ -95,3 +95,4 @@ C:\Users\Professional\source\repos\BinderV2\BinderV2\obj\Release\BinderV2.exe
 C:\Users\Professional\source\repos\BinderV2\BinderV2\obj\Release\BinderV2.pdb
 C:\Users\Professional\source\repos\BinderV2\BinderV2\obj\Release\MVVM\Windows\EditDefaultGlobalScriptWindow.g.cs
 C:\Users\Professional\source\repos\BinderV2\BinderV2\obj\Release\MVVM\Windows\EditDefaultGlobalScriptWindow.baml
+C:\Users\Professional\source\repos\BinderV2\BinderV2\obj\Release\WPF Resources\Styles\CheckBox\CheckBox.baml

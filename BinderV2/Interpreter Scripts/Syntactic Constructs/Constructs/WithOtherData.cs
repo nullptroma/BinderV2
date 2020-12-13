@@ -59,7 +59,7 @@ namespace InterpreterScripts.SyntacticConstructions.Constructions
 
         private bool IsValidName(string name)
         {
-            char[] symbols = new char[] { '\"', '\\', ' ', };
+            char[] symbols = new char[] { '\"', '\\', ' ', '(', ')', };
             return char.IsLetter(name[0]) && name.AsParallel().All(ch => !symbols.Contains(ch));
         }
     }

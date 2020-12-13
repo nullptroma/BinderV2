@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Triggers.Types.KeysEngine;
+using static Triggers.Types.KeysEngine.KeysTriggersEngine;
 
 namespace Trigger.Types
 {
@@ -23,7 +24,7 @@ namespace Trigger.Types
             {
                 if (Keys.Count == 0)//если у нас не настроены кнопки, чтобы не срабатывало
                     return;
-                InvokeIfHaveNeedKeys(e.PressedKeys, e.Key);
+                InvokeIfHaveNeedKeys(e.PressedKeys, e);
             };
         }
 
@@ -31,7 +32,7 @@ namespace Trigger.Types
         { }
 
 
-        private void InvokeIfHaveNeedKeys(HashSet<Key> pressedKeys, Key lastKey)
+        private void InvokeIfHaveNeedKeys(HashSet<Key> pressedKeys, PressedKeysEventArgs lastKey)
         {
             if (HaveNeedKeys(pressedKeys))
                 Invoke(lastKey);

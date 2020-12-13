@@ -46,6 +46,7 @@
                 <MenuItem Header="Помощь" Command="{Binding OpenHelpWindowCommand}" BorderThickness="1,0,1,0"/>
                 <MenuItem Header="Запись" BorderThickness="1,0,2,0" Command="{Binding OpenRecordWindowCommand}"/>
                 <MenuItem Header="Хранилище" BorderThickness="1,0,2,0" Command="{Binding OpenEditDefaultGlobalScriptWindow}"/>
+                <MenuItem Header="Test" BorderThickness="1,0,2,0" Click="MenuItem_Click" Visibility="Collapsed"/>
             </Menu>
         </Border>
         <Border Grid.Column="0" Grid.Row="1" Grid.RowSpan="2" BorderThickness="2,2,0,2" Margin="2,2,4,2">
