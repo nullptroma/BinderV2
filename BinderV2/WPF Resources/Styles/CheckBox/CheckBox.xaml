@@ -17,7 +17,7 @@
                     <Border BorderBrush="Transparent" BorderThickness="0">
                         <Grid>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition/>
+                                <ColumnDefinition Width="16"/>
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
                             <Border x:Name="Border" Grid.Column="0" Background="{DynamicResource ButtonsBackground}" BorderBrush="{DynamicResource ButtonBorderColor}" Width="12" Height="12" BorderThickness="1">

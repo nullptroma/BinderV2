@@ -15,25 +15,22 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
 
         <Border Grid.Row="0" BorderThickness="2" Margin="4,4,4,2">
             <StackPanel Margin="5">
-                <CheckBox Content="Запускать программу вместе с Windows" IsChecked="{Binding StartWithWindows}"/>
-                <CheckBox Content="Сворачивать в трей при запуске" IsChecked="{Binding HideOnStart}"/>
-                <CheckBox Content="Автоматически загружать бинды" IsChecked="{Binding AutoLoadBinds}"/>
+                <CheckBox Content="Запускать программу вместе с Windows" IsChecked="{Binding StartWithWindows}" HorizontalAlignment="Left"/>
+                <CheckBox Content="Сворачивать в трей при запуске" IsChecked="{Binding HideOnStart}" HorizontalAlignment="Left"/>
+                <CheckBox Content="Автоматически загружать бинды" IsChecked="{Binding AutoLoadBinds}" HorizontalAlignment="Left"/>
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
                         <ColumnDefinition Width="35"/>
                     </Grid.ColumnDefinitions>
-                    <TextBox x:Name="AutoLoadPath" Margin="35,0,0,0" MinWidth="150" Text="{Binding AutoLoadBindsPath, Mode=OneWay}" IsReadOnly="True" TextChanged="AutoLoadPath_TextChanged"/>
-                    <Button Grid.Column="1" Content="..." Width="25" Margin="5,0" HorizontalAlignment="Right" Command="{Binding ChooseAutoLoadBindsPathCommands}"/>
+                    <TextBox HorizontalAlignment="Stretch" x:Name="AutoLoadPath" Margin="35,1,0,1" MinWidth="150" Text="{Binding AutoLoadBindsPath, Mode=OneWay}" IsReadOnly="True" TextChanged="AutoLoadPath_TextChanged"/>
+                    <Button Grid.Column="1" Content="..." Margin="5,1,0,1" Width="25"  HorizontalAlignment="Left" Command="{Binding ChooseAutoLoadBindsPathCommands}"/>
                 </Grid>
-                <CheckBox Content="Сохранять размер основного окна" IsChecked="{Binding SaveMainWindowSize}"/>
-                <CheckBox Content="Закрыть = скрыть" IsChecked="{Binding CloseEqualsHide}"/>
+                <CheckBox Content="Сохранять размер основного окна" IsChecked="{Binding SaveMainWindowSize}" HorizontalAlignment="Left"/>
+                <CheckBox Content="Закрыть = скрыть" IsChecked="{Binding CloseEqualsHide}" HorizontalAlignment="Left"/>
             </StackPanel>
         </Border>
 
