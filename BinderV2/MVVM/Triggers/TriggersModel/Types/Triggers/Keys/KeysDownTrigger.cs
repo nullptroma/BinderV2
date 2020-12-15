@@ -7,8 +7,7 @@ using System.Threading;
 using System.Windows.Forms;
 using System.Threading.Tasks;
 using Trigger.Events;
-using Triggers.Types.KeysEngine;
-using static Triggers.Types.KeysEngine.KeysTriggersEngine;
+using static Hooks.Keyboard.KeysEngine;
 
 namespace Trigger.Types
 {
@@ -26,14 +25,14 @@ namespace Trigger.Types
             {
                 this.Keys.Add(k);
             }
-            KeysTriggersEngine.KeyDown += (sender, e)=> 
+            KeysEngine.KeyDown += (sender, e)=> 
             {
                 if (Keys.Count == 0)//если у нас не настроены кнопки, чтобы не срабатывало
                     return;
                 if(NeedKeysWasUp)
                     InvokeIfHaveNeedKeys(e.PressedKeys, e);
             };
-            KeysTriggersEngine.KeyUp += (sender, e) => CheckUpKeys(e.PressedKeys);
+            KeysEngine.KeyUp += (sender, e) => CheckUpKeys(e.PressedKeys);
         }
 
         public KeysDownTrigger() : this("Новый триггер", new HashSet<Key>())

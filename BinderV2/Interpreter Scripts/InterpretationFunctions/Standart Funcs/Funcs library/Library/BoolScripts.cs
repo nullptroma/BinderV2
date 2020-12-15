@@ -13,6 +13,7 @@ using System.Runtime.InteropServices;
 using System.CodeDom;
 using InterpreterScripts.InterpretationFunctions.Standart;
 using System.ComponentModel;
+using Hooks.Keyboard;
 
 namespace InterpreterScripts.InterpretationFunctions.Standart.Library
 {
@@ -76,6 +77,10 @@ namespace InterpreterScripts.InterpretationFunctions.Standart.Library
             return ps[0] is bool;
         }
 
-        
+        [Description("ButtonIsDown(string key) - нажата ли указанная клавиша на клавиатуре.")]
+        public static object ButtonIsDown(params object[] ps)
+        {
+            return Hooks.Keyboard.KeysEngine.PressedKeys.Any(k=>k.ToString().ToLower() == ps[0].ToString().ToLower());
+        }
     }
 }

@@ -5,7 +5,6 @@ using System.Windows.Input;
 using Hooks.Keyboard;
 using System.Threading;
 using System.Windows.Forms;
-using Triggers.Types.KeysEngine;
 
 namespace Trigger.Types
 {
@@ -23,7 +22,7 @@ namespace Trigger.Types
             {
                 this.Keys.Add(k);
             }
-            KeysTriggersEngine.KeyUp += (sender, e) => 
+            KeysEngine.KeyUp += (sender, e) => 
             {
                 if (Keys.Count == 0)
                     return;
@@ -31,7 +30,7 @@ namespace Trigger.Types
                     if (NeedKeysAreUp(e.PressedKeys))
                         Invoke(e);
             };
-            KeysTriggersEngine.KeyDown+=(sender, e)=> CheckPressedKeys(e.PressedKeys);
+            KeysEngine.KeyDown+=(sender, e)=> CheckPressedKeys(e.PressedKeys);
         }
 
         public KeysUpTrigger() : this("Новый триггер", new HashSet<Key>())

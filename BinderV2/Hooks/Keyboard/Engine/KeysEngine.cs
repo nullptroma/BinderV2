@@ -8,9 +8,9 @@ using System.Windows;
 using System.Windows.Input;
 using Trigger.Types;
 
-namespace Triggers.Types.KeysEngine
+namespace Hooks.Keyboard
 {
-    public static class KeysTriggersEngine
+    public static class KeysEngine
     {
         public class PressedKeysEventArgs : EventArgs
         {
@@ -29,12 +29,10 @@ namespace Triggers.Types.KeysEngine
         public static event PressedKeysEventHandler KeyUp;
         public static event PressedKeysEventHandler KeysHolding;
 
-        public static HashSet<KeysDownTrigger> AllKeyDownTriggers { get; private set; }
         public static HashSet<Key> PressedKeys { get; private set; }
-        static KeysTriggersEngine()
+        static KeysEngine()
         {
             PressedKeys = new HashSet<Key>();
-            AllKeyDownTriggers = new HashSet<KeysDownTrigger>();
             KeyboardHook.KeyDown += KeysDown;
             KeyboardHook.KeyUp += KeysUp;
         }

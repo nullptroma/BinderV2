@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using Trigger.Events;
-using static Triggers.Types.KeysEngine.KeysTriggersEngine;
+using static Hooks.Keyboard.KeysEngine;
 
 namespace Trigger.Types
 {

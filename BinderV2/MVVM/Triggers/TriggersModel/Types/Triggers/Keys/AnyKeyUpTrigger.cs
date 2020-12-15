@@ -5,7 +5,6 @@ using System.Windows.Input;
 using Hooks.Keyboard;
 using System.Threading;
 using System.Windows.Forms;
-using Triggers.Types.KeysEngine;
 using System.Threading.Tasks;
 
 namespace Trigger.Types
@@ -16,7 +15,7 @@ namespace Trigger.Types
 
         public AnyKeyUpTrigger(string name) : base(name)
         {
-            KeysTriggersEngine.KeyUp += (sender, e) =>
+            KeysEngine.KeyUp += (sender, e) =>
             {
                 Invoke(e);
             };

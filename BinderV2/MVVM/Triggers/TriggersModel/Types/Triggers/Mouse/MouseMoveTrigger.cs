@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Trigger.Types;
-using Triggers.Types.MouseEngine;
+using Hooks.Mouse;
 
 namespace Triggers.Types
 {
@@ -16,7 +16,7 @@ namespace Triggers.Types
 
         public MouseMoveTrigger()
         {
-            MouseTriggersEngine.MouseMove += MouseMove;
+            MouseHook.MouseMove += MouseMove;
         }
 
         private void MouseMove(object sender, MouseEventArgs e)
@@ -26,7 +26,7 @@ namespace Triggers.Types
 
         public override void Dispose()
         {
-            MouseTriggersEngine.MouseMove -= MouseMove;
+            MouseHook.MouseMove -= MouseMove;
             GC.SuppressFinalize(this);
         }
     }

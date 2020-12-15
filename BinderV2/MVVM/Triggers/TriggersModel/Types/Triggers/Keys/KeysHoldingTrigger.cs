@@ -4,8 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using Triggers.Types.KeysEngine;
-using static Triggers.Types.KeysEngine.KeysTriggersEngine;
+using Hooks.Keyboard;
+using static Hooks.Keyboard.KeysEngine;
 
 namespace Trigger.Types
 {
@@ -20,7 +20,7 @@ namespace Trigger.Types
                 throw new ArgumentNullException(nameof(keys));
             foreach (Key k in keys)
                 this.Keys.Add(k);
-            KeysTriggersEngine.KeysHolding += (sender, e) =>
+            KeysEngine.KeysHolding += (sender, e) =>
             {
                 if (Keys.Count == 0)//если у нас не настроены кнопки, чтобы не срабатывало
                     return;
