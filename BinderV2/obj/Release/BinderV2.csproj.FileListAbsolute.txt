@@ -10,10 +10,6 @@ C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Release\BinderV2.csproj.Genera
 C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Release\BinderV2.csproj.CoreCompileInputs.cache
 C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Release\BinderV2.exe
 C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Release\BinderV2.pdb
-C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Release\BinderV2.csproj.CopyComplete
-C:\Users\Roman\source\repos\BinderV2\BinderV2\bin\Release\Hardcodet.Wpf.TaskbarNotification.dll
-C:\Users\Roman\source\repos\BinderV2\BinderV2\bin\Release\Hardcodet.Wpf.TaskbarNotification.pdb
-C:\Users\Roman\source\repos\BinderV2\BinderV2\bin\Release\Hardcodet.Wpf.TaskbarNotification.xml
 C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Release\WPF Resources\Interface Resources\InterfaceResources.baml
 C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Release\WPF Resources\Styles\Button\Button Style.baml
 C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Release\WPF Resources\Styles\ComboBox\ComboBox.baml
@@ -28,11 +24,7 @@ C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Release\App.baml
 C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Release\WPF Resources\Styles\TextBox\TextBox Style.baml
 C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Release\GeneratedInternalTypeHelper.g.cs
 C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Release\WPF Resources\Styles\Scroll Viewer\ScrollStyle.g.cs
-C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Release\MVVM\Triggers\KeysDown\KeysDownTriggerControl.g.cs
-C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Release\MVVM\Triggers\OnAddCallback\OnAddCallbackTriggerControl.g.cs
 C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Release\MVVM\Bind\BindControl.g.cs
-C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Release\MVVM\Triggers\KeysDown\KeysDownTriggerControl.baml
-C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Release\MVVM\Triggers\OnAddCallback\OnAddCallbackTriggerControl.baml
 C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Release\MVVM\Bind\BindControl.baml
 C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Release\MVVM\Windows\Help\HelpWindow.baml
 C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Release\MVVM\Windows\Record\RecordWindow.baml
@@ -96,3 +88,13 @@ C:\Users\Professional\source\repos\BinderV2\BinderV2\obj\Release\BinderV2.pdb
 C:\Users\Professional\source\repos\BinderV2\BinderV2\obj\Release\MVVM\Windows\EditDefaultGlobalScriptWindow.g.cs
 C:\Users\Professional\source\repos\BinderV2\BinderV2\obj\Release\MVVM\Windows\EditDefaultGlobalScriptWindow.baml
 C:\Users\Professional\source\repos\BinderV2\BinderV2\obj\Release\WPF Resources\Styles\CheckBox\CheckBox.baml
+C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Release\BinderV2.csproj.AssemblyReference.cache
+C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Release\WPF Resources\Styles\CheckBox\CheckBox.baml
+C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Release\MVVM\Triggers\Timer\TimerTriggerControl.g.cs
+C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Release\MVVM\Windows\EditDefaultGlobalScriptWindow.g.cs
+C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Release\MVVM\Triggers\Keys\KeysTriggerControl.g.cs
+C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Release\MVVM\Triggers\Other\EmpryTriggerControl.g.cs
+C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Release\MVVM\Triggers\Timer\TimerTriggerControl.baml
+C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Release\MVVM\Windows\EditDefaultGlobalScriptWindow.baml
+C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Release\MVVM\Triggers\Keys\KeysTriggerControl.baml
+C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Release\MVVM\Triggers\Other\EmpryTriggerControl.baml

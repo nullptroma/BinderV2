@@ -77,5 +77,19 @@ namespace InterpreterScripts.InterpretationFunctions.Standart.Library
         {
             return Cursor.Position.Y;
         }
+
+        [Description("SymbolCode(string/char sym) - возвращает код переданного символа.")]
+        public static object SymbolCodeUnicode(params object[] ps)
+        {
+            return BitConverter.ToInt32(Encoding.UTF32.GetBytes(ps[0].ToString()), 0);
+        }
+
+        [Description("len(array a) - возвращает длину переданного массива.")]
+        public static object len(params object[] ps)
+        {
+            if (ps[0] is string st)
+                return st.Length;
+            return ((Array)ps[0]).Length;
+        }
     }
 }

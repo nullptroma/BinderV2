@@ -86,7 +86,13 @@ namespace InterpreterScripts.InterpretationFunctions.Standart.Library
         [Description("GetClipboardText() - возвращает текст из буфера обмена Windows.")]
         public static object GetClipboardText(params object[] ps)
         {
-            return Clipboard.GetText();
+            string data = "";
+            Thread thread;
+            thread = new Thread(() => data = Clipboard.GetText());
+            thread.SetApartmentState(ApartmentState.STA);
+            thread.Start();
+            thread.Join();
+            return data;
         }
         
         
@@ -105,7 +111,11 @@ namespace InterpreterScripts.InterpretationFunctions.Standart.Library
             return File.ReadAllText(ps[0].ToString());
         }
 
-
+        [Description("StrIndex(string str, int index) - возвращает символ по указанному индексу в строке.")]
+        public static object StrIndex(params object[] ps)
+        {
+            return ps[0].ToString()[(int)ps[1]];
+        }
 
         [Description("LayoutSimbols(string text) - возвращает текст с изменённой раскладкой русский-английский по QWERTY.")]
         public static object LayoutSimbols(params object[] ps)
