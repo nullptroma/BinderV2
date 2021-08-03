@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Windows;
 using System.Threading.Tasks;
 using Trigger.Types;
 using Trigger.Events;
@@ -13,7 +14,7 @@ namespace Triggers.Types
         public override string TypeName { get { return "При запуске"; } }
         public OnAddCallbackTrigger(string name) : base(name) 
         {
-            CallbackAdded += (sender, e) => { e.meth.Invoke(this, new TriggeredEventArgs(Name, Script)); };
+            CallbackAdded += (sender, e) => { Invoke(new TriggeredEventArgs(Name, Script)); };
         }
 
         public OnAddCallbackTrigger() : this("Новый триггер")

@@ -97,4 +97,5 @@ C:\Users\Professional\source\repos\BinderV2\BinderV2\obj\Debug\BinderV2.exe
 C:\Users\Professional\source\repos\BinderV2\BinderV2\obj\Debug\BinderV2.pdb
 C:\Users\Professional\source\repos\BinderV2\BinderV2\obj\Debug\MVVM\Windows\EditDefaultGlobalScriptWindow.g.cs
 C:\Users\Professional\source\repos\BinderV2\BinderV2\obj\Debug\MVVM\Windows\EditDefaultGlobalScriptWindow.baml
-C:\Users\Professional\source\repos\BinderV2\BinderV2\obj\Debug\BinderV2.csprojAssemblyReference.cache
+C:\Users\Professional\source\repos\BinderV2\BinderV2\obj\Debug\BinderV2.csproj.AssemblyReference.cache
+C:\Users\Professional\source\repos\BinderV2\BinderV2\obj\Debug\WPF Resources\Styles\CheckBox\CheckBox.baml

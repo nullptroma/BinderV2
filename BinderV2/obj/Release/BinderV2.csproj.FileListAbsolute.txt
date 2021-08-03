@@ -41,7 +41,6 @@ C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Release\MVVM\Windows\TriggerEd
 C:\Users\Professional\source\repos\BinderV2\BinderV2\bin\Release\BinderV2.exe.config
 C:\Users\Professional\source\repos\BinderV2\BinderV2\bin\Release\BinderV2.exe
 C:\Users\Professional\source\repos\BinderV2\BinderV2\bin\Release\BinderV2.pdb
-C:\Users\Professional\source\repos\BinderV2\BinderV2\obj\Release\BinderV2.csprojAssemblyReference.cache
 C:\Users\Professional\source\repos\BinderV2\BinderV2\obj\Release\MVVM\Windows\Help\HelpWindow.baml
 C:\Users\Professional\source\repos\BinderV2\BinderV2\obj\Release\MVVM\Windows\Record\RecordWindow.baml
 C:\Users\Professional\source\repos\BinderV2\BinderV2\obj\Release\WPF Resources\Interface Resources\InterfaceResources.baml
@@ -98,3 +97,4 @@ C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Release\MVVM\Triggers\Timer\Ti
 C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Release\MVVM\Windows\EditDefaultGlobalScriptWindow.baml
 C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Release\MVVM\Triggers\Keys\KeysTriggerControl.baml
 C:\Users\Roman\source\repos\BinderV2\BinderV2\obj\Release\MVVM\Triggers\Other\EmpryTriggerControl.baml
+C:\Users\Professional\source\repos\BinderV2\BinderV2\obj\Release\BinderV2.csproj.AssemblyReference.cache

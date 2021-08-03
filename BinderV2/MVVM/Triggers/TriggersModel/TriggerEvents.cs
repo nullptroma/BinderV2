@@ -19,7 +19,7 @@ namespace Trigger.Events
             triggerData.Vars["TriggerScript"] = script;
         }
     }
-    public delegate void TriggeredEventHandler(object sendet, TriggeredEventArgs e);
+    public delegate void TriggeredEventHandler(object sender, TriggeredEventArgs e);
 
 
     public class EnableTriggerChangedEventArgs : EventArgs
