@@ -15,7 +15,7 @@ namespace Triggers.Types
         public override string TypeName { get { return "При выходе"; } }
         public OnExitTrigger(string name) : base(name)
         {
-            App.Current.MainWindow.Closing += (sender, e) =>
+            App.Current.MainWindow.Closed += (sender, e) =>
             {
                 Invoke(new TriggeredEventArgs(Name, Script)).Wait();
             };

@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-C:\Users\Professional\source\repos\BinderV2\BinderV2\obj\Release\
+C:\Users\mrpyt\source\repos\BinderV2\BinderV2\obj\Release\
 BinderV2
 none
 false
 TRACE
-C:\Users\Professional\source\repos\BinderV2\BinderV2\App.xaml
-222094077338
+C:\Users\mrpyt\source\repos\BinderV2\BinderV2\App.xaml
+22-1142800451
 
-123-451379010
-73-1124535960
+1231863472834
+731459871610
 MVVM\Triggers\Timer\TimerTriggerControl.xaml;MVVM\Windows\EditDefaultGlobalScriptWindow.xaml;MVVM\Windows\Help\HelpWindow.xaml;MVVM\Windows\Record\RecordWindow.xaml;MVVM\Windows\Settings\SettingsWindow.xaml;MVVM\Triggers\Keys\KeysTriggerControl.xaml;MVVM\Triggers\Other\EmpryTriggerControl.xaml;WPF Resources\Interface Resources\InterfaceResources.xaml;WPF Resources\Styles\Button\Button Style.xaml;WPF Resources\Styles\CheckBox\CheckBox.xaml;WPF Resources\Styles\ComboBox\ComboBox.xaml;WPF Resources\Styles\Context Menu\ContextMenu.xaml;WPF Resources\Styles\Controls Styles\ControlsStyles.xaml;WPF Resources\Styles\CustomizedWindow\CurstomWindowStyle.xaml;MVVM\Windows\Main\MainWindow.xaml;MVVM\Windows\TriggerEdit\ChooseTriggerTypeWindow.xaml;MVVM\Windows\TriggerEdit\TriggersEditWindow.xaml;MVVM\Bind\BindControl.xaml;WPF Resources\Styles\Menu Item\MenuItem.xaml;WPF Resources\Styles\Scroll Viewer\ScrollStyle.xaml;WPF Resources\Styles\TabControl\TabControlStyle.xaml;WPF Resources\Styles\TextBox\TextBox Style.xaml;
 
 False
